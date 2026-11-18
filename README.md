@@ -28,7 +28,7 @@ Or open the folder in Android Studio and run the `app` configuration.
 
 | What | Command |
 |---|---|
-| Unit, Robolectric and architecture tests | `./gradlew testDebugUnitTest :core:model:test :core:common:test` |
+| Unit, Robolectric and architecture tests | `./gradlew testDebugUnitTest` |
 | Formatting check (fix with `spotlessApply`) | `./gradlew spotlessCheck` |
 | Lint | `./gradlew :app:lintDebug` |
 | R8-minified release build | `./gradlew :app:assembleRelease` |

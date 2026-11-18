@@ -23,7 +23,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 ## Commands
 
 - Build and install: `./gradlew installDebug`
-- Tests: `./gradlew testDebugUnitTest :core:model:test :core:common:test`
+- Tests: `./gradlew testDebugUnitTest` (every module, including the pure Kotlin ones)
 - Format: `./gradlew spotlessApply` (CI runs `spotlessCheck`)
 - Lint: `./gradlew :app:lintDebug`
 - R8 release build: `./gradlew :app:assembleRelease`, then `test ! -s app/build/outputs/mapping/release/missing_rules.txt`

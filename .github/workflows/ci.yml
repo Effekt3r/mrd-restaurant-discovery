@@ -42,7 +42,7 @@ jobs:
         run: ./gradlew :app:lintDebug
 
       - name: Unit, Robolectric and architecture tests
-        run: ./gradlew testDebugUnitTest :core:model:test :core:common:test
+        run: ./gradlew testDebugUnitTest
 
       - name: Release build (R8)
         run: ./gradlew :app:assembleRelease

@@ -15,7 +15,7 @@ You are this repository's verifier. You check work; you never fix it.
 
 1. List the criteria in scope for this milestone.
 2. For each one, gather evidence in this session: the command you ran and its exit code, test names and results, `adb` output, or a screenshot saved under `docs/qa/screenshots/`.
-3. Always run `./gradlew spotlessCheck :app:lintDebug testDebugUnitTest :core:model:test :core:common:test :app:assembleRelease`, and confirm that `app/build/outputs/mapping/release/missing_rules.txt` is empty or absent.
+3. Always run `./gradlew spotlessCheck :app:lintDebug testDebugUnitTest :app:assembleRelease`, and confirm that `app/build/outputs/mapping/release/missing_rules.txt` is empty or absent.
 4. For UI milestones, walk the app on the emulator, including at least one offline or error path.
 
 ## Output
