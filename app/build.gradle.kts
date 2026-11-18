@@ -66,14 +66,15 @@ dependencies {
     testImplementation(libs.konsist)
 }
 
-// ArchitectureTest (Konsist) reads every module's sources straight from disk, which Gradle can't see. Declare them
-// as inputs, or Gradle reports UP-TO-DATE (or restores a cached pass) after a change to a module that isn't on
-// :app's classpath. The patterns match the modules the test scans: app, core/* and feature/*.
+// ArchitectureTest (Konsist) reads module sources straight from disk, which Gradle can't see. Every Kotlin source in
+// the repository is declared as an input (a superset of what the test reads, so the two can't drift); otherwise
+// Gradle reports UP-TO-DATE (or restores a cached pass) after a change to a module that isn't on :app's classpath.
+// Build output and hidden top-level folders (.gradle, .worktrees, .claude) are left out, as in Spotless.
 tasks.withType<Test>().configureEach {
     inputs.files(
         fileTree(rootDir) {
-            include("app/src/**/*.kt", "core/*/src/**/*.kt", "feature/*/src/**/*.kt")
-            exclude("**/build/**")
+            include("**/*.kt")
+            exclude("**/build/**", ".*/**")
         }
     ).withPathSensitivity(PathSensitivity.RELATIVE).withPropertyName("architectureSources")
 }
