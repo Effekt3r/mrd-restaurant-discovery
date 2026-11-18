@@ -65,3 +65,15 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.konsist)
 }
+
+// ArchitectureTest (Konsist) reads every module's sources straight from disk, which Gradle can't see. Declare them
+// as inputs, or Gradle reports UP-TO-DATE (or restores a cached pass) after a change to a module that isn't on
+// :app's classpath. The patterns match the modules the test scans: app, core/* and feature/*.
+tasks.withType<Test>().configureEach {
+    inputs.files(
+        fileTree(rootDir) {
+            include("app/src/**/*.kt", "core/*/src/**/*.kt", "feature/*/src/**/*.kt")
+            exclude("**/build/**")
+        }
+    ).withPathSensitivity(PathSensitivity.RELATIVE).withPropertyName("architectureSources")
+}
