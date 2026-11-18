@@ -28,3 +28,25 @@ for file in "$ROOT"/.github/rulesets/*.json; do
     echo "ruleset $name: created"
   fi
 done
+
+# Public-repo security.
+# Secret scanning with push protection: pushes containing known secret formats are rejected.
+gh api -X PATCH "repos/$REPO" \
+  -f 'security_and_analysis[secret_scanning][status]=enabled' \
+  -f 'security_and_analysis[secret_scanning_push_protection][status]=enabled' >/dev/null
+# Dependabot alerts and automatic security-fix pull requests.
+gh api -X PUT "repos/$REPO/vulnerability-alerts" >/dev/null
+gh api -X PUT "repos/$REPO/automated-security-fixes" >/dev/null
+# Vulnerabilities are reported privately (Security tab), never in public issues.
+gh api -X PUT "repos/$REPO/private-vulnerability-reporting" >/dev/null
+# Unused features stay off to keep the public surface small.
+gh api -X PATCH "repos/$REPO" -F has_wiki=false -F has_projects=false >/dev/null
+echo "security: secret scanning + push protection, Dependabot alerts + fixes, private reporting"
+
+# GitHub Actions: the workflow token is read-only unless a job asks for more, workflows
+# can't approve pull requests, and workflows from outside contributors wait for approval.
+gh api -X PUT "repos/$REPO/actions/permissions/workflow" \
+  -f default_workflow_permissions=read -F can_approve_pull_request_reviews=false >/dev/null
+gh api -X PUT "repos/$REPO/actions/permissions/fork-pr-contributor-approval" \
+  -f approval_policy=all_external_contributors >/dev/null
+echo "actions: read-only token, no PR approvals, outside contributors need approval"
