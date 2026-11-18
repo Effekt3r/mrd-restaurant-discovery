@@ -8,7 +8,7 @@ import org.junit.Test
 
 /**
  * House rules that would otherwise only live in code review. Each test names the rule it guards and
- * fails with the offending files, so CI catches a violation whoever (or whatever) wrote the code.
+ * fails with the offending lines or declarations, so CI catches a violation whoever (or whatever) wrote it.
  *
  * Konsist reads the sources straight from disk, which Gradle can't see, so app/build.gradle.kts declares
  * them as inputs of the unit-test task. Without that, Gradle reports UP-TO-DATE (or a cached pass) after
@@ -19,18 +19,20 @@ class ArchitectureTest {
     // Only this checkout's Gradle modules: never build-logic, and never nested git worktrees
     // (.worktrees/, .claude/worktrees/), which Konsist would otherwise scan as extra modules.
     private val production = Konsist.scopeFromProduction().slice { isProjectModule(it.moduleName) }.also { scope ->
-        check(scope.files.any { it.moduleName == "app" }) {
-            "Konsist reported no :app sources, so the module filter is wrong and every rule would pass unchecked."
+        val modules = scope.files.map { module(it.moduleName) }.toSet()
+        check("app" in modules && modules.any { it.startsWith("feature/") }) {
+            "Konsist found no :app or feature sources, so the module filter is wrong and every rule would pass " +
+                "unchecked."
         }
     }
 
     @Test
     fun featureModulesNeverImportAnotherFeature() {
         val violations = production.files
-            .filter { it.moduleName.startsWith("feature/") }
+            .filter { module(it.moduleName).startsWith("feature/") }
             .flatMap { file ->
                 val ownPackage =
-                    "$ROOT_PACKAGE.feature." + file.moduleName.removePrefix("feature/").substringBefore('/')
+                    "$ROOT_PACKAGE.feature." + module(file.moduleName).removePrefix("feature/").substringBefore('/')
                 file.imports
                     .map { it.name }
                     .filter { it.startsWith("$ROOT_PACKAGE.feature.") }
@@ -43,7 +45,7 @@ class ArchitectureTest {
     @Test
     fun modelAndCommonModulesHaveNoAndroidDependencies() {
         val violations = production.files
-            .filter { it.moduleName == "core/model" || it.moduleName == "core/common" }
+            .filter { module(it.moduleName) == "core/model" || module(it.moduleName) == "core/common" }
             .flatMap { file ->
                 file.imports
                     .map { it.name }
@@ -56,7 +58,7 @@ class ArchitectureTest {
     @Test
     fun rawColoursOnlyAppearInTheDesignSystem() {
         val violations = production.files
-            .filter { it.moduleName != "core/designsystem" }
+            .filter { module(it.moduleName) != "core/designsystem" }
             .flatMap { it.linesMatching(RAW_COLOUR) }
         assertNoViolations(
             "Colours come from design-system tokens, so both themes stay consistent. Color(...) values and named " +
@@ -68,7 +70,12 @@ class ArchitectureTest {
     @Test
     fun moneyIsNeverAFloatingPointNumber() {
         val violations = production.files.flatMap {
-            it.linesMatching(MONEY_TYPED_AS_FLOATING_POINT, MONEY_FLOATING_POINT_LITERAL, CENTS_TO_FLOATING_POINT)
+            it.linesMatching(
+                MONEY_TYPED_AS_FLOATING_POINT,
+                MONEY_FLOATING_POINT_LITERAL,
+                CENTS_TO_FLOATING_POINT,
+                FLOATING_DIVISION_BY_100
+            )
         }
         assertNoViolations("Money is integer cents (Long), never Double or Float, so amounts stay exact.", violations)
     }
@@ -84,7 +91,7 @@ class ArchitectureTest {
                         val type = property.type?.name
                         val problem = when {
                             type == null -> "has no explicit type"
-                            MUTABLE_STATE_TYPE.containsMatchIn(type) -> "is a $type"
+                            MUTABLE_TYPE.containsMatchIn(type) -> "is a $type"
                             property.isVar && property.setter?.hasPrivateModifier != true -> "has a public setter"
                             else -> null
                         }
@@ -92,7 +99,7 @@ class ArchitectureTest {
                     }
                 val functions = viewModel.functions(includeNested = false, includeLocal = false)
                     .filterNot { it.hasPrivateModifier || it.hasProtectedModifier }
-                    .filter { it.returnType?.name?.let(MUTABLE_STATE_TYPE::containsMatchIn) == true }
+                    .filter { it.returnType?.name?.let(MUTABLE_TYPE::containsMatchIn) == true }
                     .map { "${viewModel.projectPath}: ${viewModel.name}.${it.name}() returns ${it.returnType?.name}" }
                 properties + functions
             }
@@ -108,7 +115,8 @@ class ArchitectureTest {
     fun repositoryImplementationsAreInternal() {
         val violations = production.classesAndObjects()
             .filter { isRepository(it.name) || it.hasParent { parent -> isRepository(parent.name) } }
-            .filter { it.moduleName != "core/testing" && (it.hasPublicOrDefaultModifier || it.hasProtectedModifier) }
+            .filter { module(it.moduleName) != "core/testing" }
+            .filter { it.hasPublicOrDefaultModifier || it.hasProtectedModifier }
             .map { "${it.projectPath}: ${it.name}" }
         assertNoViolations(
             "Repository implementations are internal to :core:data, so other modules depend on its interfaces " +
@@ -141,23 +149,31 @@ class ArchitectureTest {
         val type = property.type?.name
         return when {
             property.isVar -> "is a var"
-            type != null && MUTABLE_MODEL_TYPE.containsMatchIn(type) -> "has the mutable type $type"
+            type != null && MUTABLE_TYPE.containsMatchIn(type) -> "has the mutable type $type"
             type == null && MUTABLE_INITIALISER.containsMatchIn(property.text) -> "holds a mutable value"
             else -> null
         }
     }
 
-    /** Each line that matches any of [patterns], as "path:line: code", so a failure points at the line. */
+    /**
+     * Each line that matches any of [patterns], as "path:line: code", so a failure points at the line. Comment lines
+     * (starting with //, a block-comment opener or a KDoc star) don't count, so documentation can describe a rule; a
+     * comment after code on the same line still does.
+     */
     private fun KoFileDeclaration.linesMatching(vararg patterns: Regex): List<String> {
         val lines = text.lines()
         return patterns
             .flatMap { pattern -> pattern.findAll(text).map { text.lineIndexAt(it.range.first) }.toList() }
             .distinct()
             .sorted()
+            .filterNot { index -> lines[index].isCommentLine() }
             .map { index -> "$projectPath:${index + 1}: ${lines[index].trim()}" }
     }
 
     private fun String.lineIndexAt(offset: Int) = substring(0, offset).count { it == '\n' }
+
+    private fun String.isCommentLine() =
+        trimStart().let { it.startsWith("//") || it.startsWith("/*") || it.startsWith("*") }
 
     private fun assertNoViolations(rule: String, violations: List<String>) {
         assertTrue("$rule\n" + violations.joinToString("\n"), violations.isEmpty())
@@ -180,23 +196,25 @@ class ArchitectureTest {
 
         // deliveryFee: Double, fun totalPrice(items: List<Item>): Double, price: kotlin.Float
         val MONEY_TYPED_AS_FLOATING_POINT =
-            Regex("""\b$MONEY_NAME\s*(?:\((?:[^()]|\([^()]*\))*\))?\s*:\s*(?:kotlin\.)?(?:Double|Float)\b""")
+            Regex("""\b$MONEY_NAME\s*(?:\((?:[^()]++|\([^()]*+\))*+\))?\s*:\s*(?:kotlin\.)?(?:Double|Float)\b""")
 
         // val deliveryFee = 2.99 or val price = 15f: an inferred Double or Float
         val MONEY_FLOATING_POINT_LITERAL =
             Regex("""\b(?:val|var)\s+$MONEY_NAME\s*=\s*-?(?:\d+\.\d+|\d+(?=[fF]))[fF]?\b""")
 
+        // Any floating-point division by 100, the usual way cents become a Double: (deliveryFeeCents ?: 0L) / 100.0,
+        // it / 100f. Integer division (cents / 100) is fine.
+        val FLOATING_DIVISION_BY_100 = Regex("""[\w)]\s*/\s*100(?:\.\d+[fF]?|[fF])\b""")
+
         // deliveryFeeCents / 100.0, cents / 100f, feeCents?.toDouble(); integer cents / 100 is fine
         val CENTS_TO_FLOATING_POINT =
             Regex("""\b(?:\w*[a-z0-9]Cents|cents)\s*(?:/\s*100(?:\.\d+[fF]?|[fF])\b|\??\.to(?:Double|Float)\(\))""")
 
-        // MutableStateFlow, MutableSharedFlow, MutableState, Channel, SnapshotStateList..., qualified or not
-        val MUTABLE_STATE_TYPE = Regex("""^(?:[\w.]+\.)?(?:Mutable\w*|Channel|SendChannel|SnapshotState\w*)\b""")
-
-        // A mutable type anywhere in a declared type: List<MutableList<T>>, kotlin.collections.MutableSet<T>, IntArray
-        val MUTABLE_MODEL_TYPE = Regex(
+        // A mutable type anywhere in a declared type, qualified or not: MutableStateFlow<Int>, Channel<Event>,
+        // SnapshotStateList<T>, StateFlow<MutableList<T>>, kotlin.collections.MutableSet<T>, IntArray
+        val MUTABLE_TYPE = Regex(
             """(?:^|[<,(\s.])(?:Mutable\w*|ArrayList|ArrayDeque|HashMap|HashSet|LinkedHashMap|LinkedHashSet|""" +
-                """Array|[A-Z]\w*Array)\b"""
+                """Array|[A-Z]\w*Array|Channel|SendChannel|SnapshotState\w*)\b"""
         )
 
         // An inferred property initialised with a mutable collection or array: = mutableListOf<T>(), = arrayOf(...)
@@ -207,7 +225,10 @@ class ArchitectureTest {
 
         /** This checkout's Gradle modules, by Konsist's module name: the path from the project root to src/. */
         fun isProjectModule(moduleName: String) =
-            moduleName == "app" || moduleName.startsWith("core/") || moduleName.startsWith("feature/")
+            module(moduleName).let { it == "app" || it.startsWith("core/") || it.startsWith("feature/") }
+
+        /** Konsist builds module names with the OS path separator; normalise so the rules also hold on Windows. */
+        fun module(moduleName: String) = moduleName.replace('\\', '/')
 
         fun isRepository(name: String) =
             name.substringBefore('<').let { it.endsWith("Repository") || it.endsWith("RepositoryImpl") }
