@@ -1,7 +1,9 @@
+import com.android.build.api.dsl.LibraryExtension
 import com.effekt3r.mrd.buildlogic.library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 /**
@@ -16,6 +18,10 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             apply(plugin = "mrd.android.compose")
             apply(plugin = "mrd.hilt")
             apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
+            extensions.configure<LibraryExtension> {
+                // Resource names from every module merge into one namespace; lint fails names without this prefix.
+                resourcePrefix = "${name}_"
+            }
             dependencies {
                 "implementation"(project(":core:designsystem"))
                 "implementation"(project(":core:ui"))
