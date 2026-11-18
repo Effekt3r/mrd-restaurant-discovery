@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.dropUnlessResumed
 
 /**
  * Placeholder for Browse (milestone 1). It proves the navigation wiring and the edge-to-edge insets;
@@ -25,7 +26,7 @@ internal fun BrowseScreen(onRestaurantClick: (String) -> Unit, modifier: Modifie
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(text = stringResource(R.string.browse_title), style = MaterialTheme.typography.headlineMedium)
-        Button(onClick = { onRestaurantClick(SAMPLE_RESTAURANT_ID) }) {
+        Button(onClick = dropUnlessResumed { onRestaurantClick(SAMPLE_RESTAURANT_ID) }) {
             Text(text = stringResource(R.string.browse_placeholder_open_sample))
         }
     }
