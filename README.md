@@ -2,7 +2,7 @@
 
 A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. You can browse nearby restaurants, search by name, filter to what's open now and open a restaurant's details, and it works offline. It's written in Kotlin and Jetpack Compose, with multiple modules, and built to slot into a large app maintained by several squads.
 
-> **Status:** milestone 1 (foundation). The project builds, the app shell navigates between placeholder screens, and CI gates every pull request. The plan and progress are in [`docs/plans/`](docs/plans/).
+> **Status:** milestone 1 (foundation) is done. The project builds, the app shell navigates between placeholder screens, and CI gates every pull request into `dev` and `master`. The plan and progress are in [`docs/plans/`](docs/plans/).
 
 ## Requirements
 
@@ -17,8 +17,10 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 
 ## Getting started
 
+Until the first release reaches `master` (milestone 2), the code is on `dev`, so clone that branch. On the command line, Gradle also needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<absolute path to the SDK>` in `local.properties` (Gradle doesn't expand `~`). That file is git-ignored, and Android Studio writes it for you when it opens the project.
+
 ```sh
-git clone https://github.com/Effekt3r/mrd-restaurant-discovery.git
+git clone --branch dev https://github.com/Effekt3r/mrd-restaurant-discovery.git
 cd mrd-restaurant-discovery
 git config core.hooksPath .githooks   # optional: secret scan on every commit
 ./gradlew installDebug                # build and install on a connected device or emulator
@@ -35,7 +37,7 @@ Or open the folder in Android Studio and run the `app` configuration.
 
 ## Toolchain and version policy
 
-- **Proven over newest.** The toolchain (Gradle 9.7, AGP 9.3, Kotlin 2.3, KSP 2.3, Hilt 2.59) is the combination Google's [Now in Android](https://github.com/android/nowinandroid) builds with. Libraries are the newest stable releases that had been out for at least four weeks when the project started.
+- **Proven over newest.** The toolchain (Gradle 9.7, AGP 9.3, Kotlin 2.3, KSP 2.3, Hilt 2.59) is the combination Google's [Now in Android](https://github.com/android/nowinandroid) builds with. Libraries are stable releases that had been out for at least four weeks when the project started, and that work with compile SDK 36 and Kotlin 2.3. Most are the newest such release; Activity (1.12) and Core (1.17) are a minor version behind.
 - **Why.** A time-boxed build has no room for toolchain surprises, and a large app updates on purpose. A throwaway spike build proved the toolchain before any project code was written. The full list is in the [roadmap](docs/plans/2026-11-18-00-roadmap.md).
 - **Updates.** From the first release on, Dependabot proposes library updates weekly once a release is at least 30 days old, and GitHub Actions updates after 7 days.
 
@@ -50,11 +52,11 @@ Release builds are R8-minified. The release signing key comes from Gradle proper
 | `MRD_KEY_ALIAS` | Key alias |
 | `MRD_KEY_PASSWORD` | Key password |
 
-Without them, a local release build is signed with the debug key, and Gradle prints a warning. That way anyone can install and test an R8 build. CI's release workflow requires real signing and fails without it.
+Without them, a local release build is signed with the debug key, and Gradle prints a warning. That way anyone can install and test an R8 build. The release workflow, which arrives in milestone 7, will require real signing and fail without it.
 
 - Use an absolute path for `MRD_KEYSTORE_FILE`: a relative path resolves against `app/`.
-- Only the release workflow passes `-Pmrd.requireReleaseSigning=true`, because it makes any build without a keystore fail.
-- CI passes the signing secrets as environment variables, not `-P` arguments, which would show up in process listings.
+- Only the release workflow will pass `-Pmrd.requireReleaseSigning=true`, because it makes any build without a keystore fail.
+- It will pass the signing secrets as environment variables, not `-P` arguments, which would show up in process listings.
 
 ## Project structure
 

@@ -2,7 +2,48 @@
 
 Every time the AI got something wrong and it was caught: what happened, what caught it, the fix and the lesson. Entries are newest first.
 
-This is the honest half of `AI_USAGE.md`. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
+This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
+
+## 2026-11-18 · The verifier's report misquoted its own setup step
+
+- **What:** the verifier's second report said it created `local.properties` with `sdk.dir=~/Library/Android/sdk`. Its command had been `echo "sdk.dir=$HOME/Library/Android/sdk"`, so the shell wrote an absolute path. The Android Gradle plugin doesn't expand `~`, so a reader copying the quoted line would hit "SDK location not found". The README didn't say the path must be absolute either.
+- **Caught by:** the controller, which tested the quoted line literally in a scratch clone before committing the report. The verifier then confirmed from its own command history that every build had run with `ANDROID_HOME` unset, so the evidence held and only the quote was wrong.
+- **Fix:** the README asks for an absolute path and says `~` isn't expanded. The report quotes the command that was actually run.
+- **Lesson:** evidence quotes the exact command and its output, never a paraphrase. A verifier's report is checked like any other claim.
+
+## 2026-11-18 · The README's setup only worked on a machine that was already set up
+
+- **What:** two gaps for someone starting from the public repository:
+  - cloning checks out `master`, which holds no code until the first release;
+  - on the command line, Gradle needs `ANDROID_HOME` or `sdk.dir` in `local.properties`, and the README didn't say so. Every earlier check passed only because this machine has `ANDROID_HOME` set.
+- **Caught by:** the verifier, which unset `ANDROID_HOME` in a disposable clone, and the final whole-branch review of milestone 1, which cloned the default branch.
+- **Fix:** the README clones `dev` until the first release, and says how Gradle finds the SDK.
+- **Lesson:** test setup instructions in a clean environment, starting from the public URL.
+
+## 2026-11-18 · Four claims in the docs weren't true
+
+- **What:** the final whole-branch review checked every claim in the documents against the repository and found four that didn't hold:
+  - the README and WORKFLOW.md described the release workflow, which arrives in milestone 7;
+  - the version policy said every library was the newest stable release at least four weeks old, but Activity and Core were a minor version behind;
+  - CLAUDE.md and the verifier's instructions still checked R8's output in the way that fails open, and the README still said CI gates every pull request, after Task 9 had fixed both elsewhere;
+  - Claude Code's Read deny list missed `.p12`, `.pem` and `secrets.properties` files, which `.gitignore` treats as signing material.
+- **Caught by:** the final whole-branch review of milestone 1.
+- **Fix:** each claim now matches the repository, and the deny list mirrors `.gitignore`.
+- **Lesson:** when a fix changes a claim or a check, search for every copy of it. WORKFLOW.md already says to fix the whole class of bug, not just the instance.
+
+## 2026-11-18 · The Gradle wrapper JAR came from Gradle 8.14.5
+
+- **What:** the wrapper was generated with the Gradle 8.14 installed on this machine, so `gradle-wrapper.jar` was 8.14.5's, although it downloads Gradle 9.7.1. Nothing broke, because CI's wrapper validation accepts any Gradle release's JAR.
+- **Caught by:** the final whole-branch review, which matched the JAR's SHA-256 against Gradle's published checksums.
+- **Fix:** Gradle 9.7.1's own `wrapper` task regenerated the wrapper.
+- **Lesson:** after generating a wrapper with another Gradle version, run the wrapper task once more with the new one.
+
+## 2026-11-18 · Links in pull request descriptions broke when their branches were deleted
+
+- **What:** the descriptions of pull requests #2 and #3 linked to files on their branches. The repository deletes a branch when its pull request merges, so the links returned 404.
+- **Caught by:** the final whole-branch review of milestone 1.
+- **Fix:** the links point at the merge commits.
+- **Lesson:** anything that outlives a branch links to a commit.
 
 ## 2026-11-18 · The split submit job started the commercial cache and asked for a permission it didn't need
 

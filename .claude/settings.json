@@ -3,8 +3,11 @@
     "deny": [
       "Read(**/*.jks)",
       "Read(**/*.keystore)",
+      "Read(**/*.p12)",
+      "Read(**/*.pem)",
       "Read(**/keystore.properties)",
       "Read(**/signing.properties)",
+      "Read(**/secrets.properties)",
       "Read(**/.env)",
       "Read(**/.env.*)",
       "Bash(git push --force*)",
