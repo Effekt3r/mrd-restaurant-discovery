@@ -2,7 +2,7 @@
 
 A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. You can browse nearby restaurants, search by name, filter to what's open now and open a restaurant's details, and it works offline. It's written in Kotlin and Jetpack Compose, with multiple modules, and built to slot into a large app maintained by several squads.
 
-> **Status:** milestone 1 (foundation). The project builds, the app shell navigates between placeholder screens, and CI gates every pull request. The plan and progress are in [`docs/plans/`](docs/plans/).
+> **Status:** milestone 1 (foundation) is done. The project builds, the app shell navigates between placeholder screens, and CI gates every pull request into `dev` and `master`. The plan and progress are in [`docs/plans/`](docs/plans/).
 
 ## Requirements
 
@@ -17,8 +17,10 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 
 ## Getting started
 
+Until the first release reaches `master` (milestone 2), the code is on `dev`, so clone that branch. On the command line, Gradle also needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<path to the SDK>` in `local.properties`. That file is git-ignored, and Android Studio writes it for you when it opens the project.
+
 ```sh
-git clone https://github.com/Effekt3r/mrd-restaurant-discovery.git
+git clone --branch dev https://github.com/Effekt3r/mrd-restaurant-discovery.git
 cd mrd-restaurant-discovery
 git config core.hooksPath .githooks   # optional: secret scan on every commit
 ./gradlew installDebug                # build and install on a connected device or emulator
