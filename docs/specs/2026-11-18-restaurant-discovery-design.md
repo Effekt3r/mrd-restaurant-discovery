@@ -481,7 +481,7 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
   - `CLAUDE.md`: a short cold-start brief with the module map, commands, hard rules (each with the reason it exists), the definition of done, and "keep this file true".
   - `WORKFLOW.md`: the general way of working (one step per commit; never bypass hooks; tests with every change; the emulator gate; design tokens only; localised strings; money in integer cents).
   - `.claude/agents/verifier.md`: a QA agent instructed never to edit code; it only writes its reports under `docs/qa/`. It checks §11 with evidence and gives PASS or FAIL first; a FAIL blocks the merge.
-  - `.claude/settings.json`: stops Claude Code's Read tool from opening keystores, signing properties and `.env` files, and denies force pushes and `git commit --no-verify`. The Read rule doesn't cover shell commands, so those files stay outside the repository.
+  - `.claude/settings.json`: stops Claude Code's Read tool from opening the signing material and secrets that `.gitignore` lists (keystores, certificates, signing and secrets properties, `.env` files), and denies force pushes and `git commit --no-verify`. The Read rule doesn't cover shell commands, so those files stay outside the repository.
   - `AI_USAGE.md`: tools, workflow, the decisions I made, and where AI helped or was wrong.
   - `docs/ai/prompts.md`: the exact prompts. A script in `tools/ai/` extracts them from the Claude Code session logs, and the raw logs are never committed.
   - `docs/ai/corrections.md`: each time the AI was wrong and how it was caught.
