@@ -36,6 +36,7 @@ jobs:
         with:
           dependency-graph: generate-and-upload
           cache-provider: basic
+          validate-wrappers: true
 
   submit:
     name: Submit the dependency graph
