@@ -5,6 +5,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.tasks.compile.JavaCompile
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -28,6 +29,10 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension) {
     extensions.configure<KotlinAndroidProjectExtension> {
         compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
     }
+    // Hilt's bytecode transform copies the generated test R classes into the unit-test classes, so a module
+    // without unit tests would fail Gradle 9's "no tests discovered" check. Keep the check where tests exist.
+    val hasUnitTests = layout.projectDirectory.dir("src/test").asFile.exists()
+    tasks.withType<Test>().configureEach { failOnNoDiscoveredTests.set(hasUnitTests) }
 }
 
 /** Java/Kotlin targets for pure Kotlin modules. */
