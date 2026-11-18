@@ -37,7 +37,7 @@ Or open the folder in Android Studio and run the `app` configuration.
 
 - **Proven over newest.** The toolchain (Gradle 9.7, AGP 9.3, Kotlin 2.3, KSP 2.3, Hilt 2.59) is the combination Google's [Now in Android](https://github.com/android/nowinandroid) builds with. Libraries are the newest stable releases that had been out for at least four weeks when the project started.
 - **Why.** A time-boxed build has no room for toolchain surprises, and a large app updates on purpose. A throwaway spike build proved the toolchain before any project code was written. The full list is in the [roadmap](docs/plans/2026-11-18-00-roadmap.md).
-- **Updates.** Dependabot proposes them weekly, and only for releases that are at least 30 days old.
+- **Updates.** From the first release on, Dependabot proposes library updates weekly once a release is at least 30 days old, and GitHub Actions updates after 7 days.
 
 ## Signing
 
