@@ -43,12 +43,16 @@ android {
                 requireReleaseSigning -> throw GradleException(
                     "Release signing is required, but MRD_KEYSTORE_FILE is not set."
                 )
-                else -> {
-                    logger.warn("MRD_KEYSTORE_FILE is not set, so release builds are signed with the debug key.")
-                    signingConfigs.getByName("debug")
-                }
+                else -> signingConfigs.getByName("debug")
             }
         }
+    }
+}
+
+if (releaseKeystore == null) {
+    // Warn when a release APK is actually packaged, not on every build that configures the project.
+    tasks.named { it == "packageRelease" }.configureEach {
+        doFirst { logger.warn("MRD_KEYSTORE_FILE is not set, so this release APK is signed with the debug key.") }
     }
 }
 
