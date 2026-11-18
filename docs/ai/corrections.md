@@ -2,7 +2,7 @@
 
 Every time the AI got something wrong and it was caught: what happened, what caught it, the fix and the lesson. Entries are newest first.
 
-This is the honest half of `AI_USAGE.md`. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
+This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
 ## 2026-11-18 · The split submit job started the commercial cache and asked for a permission it didn't need
 

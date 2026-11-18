@@ -543,7 +543,7 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
 | TheMealDB images could disappear | Placeholders, and Coil's disk cache. |
 | Toolchain compatibility (the Android Gradle Plugin's built-in Kotlin, KSP, Hilt) | Versions are checked together at plan time. The scaffold comes first, with CI from the start. |
 | Subtleties in Paging invalidation | Repository tests with paging-testing, plus the emulator walk. |
-| No physical device | The emulator is used with gesture and three-button navigation, several font scales and landscape. This limitation is stated in SOLUTION.md. |
+| One physical device | Real-device checks run on my Galaxy S25 FE (Android 17, three-button navigation); the emulator covers gesture navigation, several font scales and landscape. SOLUTION.md states the device coverage. |
 | Scope creep | Anything beyond §1 needs a decision first. §12 records what was left out. |
 
 ## 14. References
