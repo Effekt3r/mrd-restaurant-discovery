@@ -4,6 +4,64 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-18 · The split submit job started the commercial cache and asked for a permission it didn't need
+
+- **What:** two slips in the job that submits the dependency graph.
+  - The controller's YAML set no cache option for it. The action sets up Gradle caching before it checks the mode, so the job would have started the default, commercial caching provider, although no Gradle runs there and SECURITY.md says caching uses the open-source provider.
+  - The implementing agent added `actions: read`, copied from Gradle's documented example for a different trigger (`workflow_run`, which reads another run's artifacts).
+- **Caught by:** the controller, reading the action's source at the pinned commit before closing the task.
+- **Fix:** caching is off in the submit job, and `actions: read` is gone.
+- **Lesson:** check an action's behaviour in its source at the pinned version. A documentation example may answer a different question.
+
+## 2026-11-18 · The dependency-submission job ran the build with a write token
+
+- **What:** the first dependency-submission workflow ran the whole Gradle build, including any plugin it downloads, in a job holding a token that can write to the repository.
+- **Caught by:** the Task 9 re-review, citing Gradle's documented way to split the job.
+- **Fix:** a read-only job runs the build and uploads the dependency graph. A separate job with write access submits it and runs no build code.
+- **Lesson:** give a write token only to the step that needs it, and never to a step that runs downloaded code.
+
+## 2026-11-18 · SECURITY.md promised Dependabot fixes for every Gradle dependency
+
+- **What:** it said Dependabot opens security-fix pull requests. For Gradle dependencies sent by dependency submission, that mostly works only for direct dependencies declared in a version catalog. Transitive dependencies get an alert but no pull request.
+- **Caught by:** the Task 9 re-review, from Gradle's dependency-submission FAQ.
+- **Fix:** SECURITY.md and CONTRIBUTING.md say which dependencies get fix pull requests.
+
+## 2026-11-18 · SECURITY.md claimed vulnerability alerts that covered nothing
+
+- **What:** it said Dependabot alerts covered the project's dependencies. GitHub can't read a Gradle build on its own, and actions pinned to a commit SHA never get alerts, so no dependency was covered. It also claimed a secret scan on every pull request, when CI only runs for pull requests into `dev` and `master`.
+- **Caught by:** the Task 9 code-quality review, from GitHub's documentation.
+- **Fix:**
+  - a dependency-submission workflow sends the resolved Gradle dependencies to GitHub;
+  - Dependabot checks actions after 7 days instead of 30;
+  - SECURITY.md states each control's real scope.
+- **Lesson:** before documenting a security control, check what it actually covers.
+
+## 2026-11-18 · Dependabot was described as running before it could start
+
+- **What:** the plan assumed Dependabot would start once its configuration reached `dev`. GitHub reads Dependabot's configuration only from the default branch, which is `master`, so nothing runs until the first release.
+- **Caught by:** the Task 9 code-quality review.
+- **Fix:** I chose to keep `master` as the default branch. SECURITY.md and the README now say that Dependabot starts with the first release.
+
+## 2026-11-18 · A hidden ruleset default could have blocked every merge
+
+- **What:** when a ruleset leaves out `require_extra_approval_for_unattributed_changes`, GitHub fills it in as true. A pull request containing a commit from an email address not linked to the account would then need an approval, which a solo maintainer can't give.
+- **Caught by:** the Task 9 code-quality review, from the rulesets read back from GitHub.
+- **Fix:** the rulesets set it to false explicitly, in code.
+- **Lesson:** read back what an API stored, not just what was sent.
+
+## 2026-11-18 · Every pull request into dev built with a cold Gradle cache
+
+- **What:** setup-gradle's default cache provider is proprietary and only saves the cache on the default branch. That's `master`, which only receives releases, so pull requests into `dev` never had a warm cache.
+- **Caught by:** the Task 9 code-quality review, from the CI logs.
+- **Fix:** the MIT-licensed `basic` provider. Pushes to `dev` and `master` write the cache, and pull requests read it.
+
+## 2026-11-18 · The R8 missing-rules check would have passed if the output moved
+
+- **What:** CI checked that `missing_rules.txt` was absent or empty. If R8's output moved, for example in a new AGP version, the file would be absent and the check would pass without checking anything.
+- **Caught by:** the Task 9 code-quality review.
+- **Fix:** the check first requires R8's mapping file, so a moved output fails the build.
+- **Lesson:** a check that passes when its input is missing fails open. Make it prove that its input exists.
+
 ## 2026-11-18 · A probe meant to show a caching bug changed two things at once
 
 - **What:** the AI coordinating the work (the controller) wrote probe P9 to show that Gradle skipped the architecture tests for a nested module. The probe also wrote a file under a path Gradle already watched, so the tests re-ran anyway and the bug didn't show.

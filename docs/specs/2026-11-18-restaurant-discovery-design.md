@@ -89,7 +89,7 @@ build-logic/         convention plugins (an included build)
 - `:core:data` depends on `:core:network`, `:core:common` and `:core:model`. Retrofit, OkHttp and Room are `implementation` dependencies, so features can't import them. Repository implementations are `internal`; only their interfaces are public.
 - `:core:ui` depends on `:core:model` and `:core:designsystem`.
 - `:core:model` and `:core:common` have no Android dependencies.
-- **The build enforces the feature rule.** The feature convention plugin fails the build when a `:feature:*` module depends on another `:feature:*` module. Rules inside the code are enforced by architecture tests (§7.2).
+- **The build enforces the layering.** A project-wide rule in `settings.gradle.kts` fails the build when a `:feature:*` module depends on another feature, or a `:core:*` module depends on a feature or on `:app`. It checks every module's dependencies, so a core module can't carry one feature onto another's classpath. Rules inside the code are enforced by architecture tests (§7.2).
 
 ### 4.3 How a host app adopts the feature
 
@@ -363,14 +363,17 @@ Screenshot tests and Macrobenchmark are left out on purpose (§12).
 
 ### 7.2 Architecture tests
 
-These house rules fail CI instead of relying on memory. They are also what keeps AI-written code on the rails:
+These house rules fail CI instead of relying on memory. They are also what keeps AI-written code on the rails. `ArchitectureTest` in `:app` checks them with Konsist:
 
 - no `:feature:*` code imports another feature's package;
-- `:core:model` and `:core:common` import nothing from `android.*`;
-- money is never a `Double` or `Float`;
-- no `Color(0x…)` literals outside `:core:designsystem`;
-- ViewModels expose `StateFlow`, never `MutableStateFlow`;
-- repository implementations are `internal`.
+- `:core:model` and `:core:common` import nothing from `android.*` or `androidx.*`;
+- money is never a `Double` or `Float`: not as a declared type, a literal or a conversion from cents;
+- no `Color(…)` values or named `Color` constants outside `:core:designsystem`;
+- ViewModels expose read-only state with explicit types (`StateFlow`, never `MutableStateFlow`), internal members included;
+- repository implementations are `internal`; only the fakes in `:core:testing` are public;
+- `:core:model` types are immutable (no `var`, mutable collections or arrays), because the Compose stability configuration declares them stable.
+
+Konsist reads sources straight from disk, so the test task declares every Kotlin source as a Gradle input; otherwise Gradle could skip the tests or restore a cached pass. The probe kit in `tools/architecture-probes/` proves each rule against deliberate violations, and lists what the rules don't catch.
 
 ### 7.3 Verification gate
 
@@ -390,11 +393,11 @@ Following the rule that a passing build is not proof:
 
 ### 8.1 Toolchain
 
-- **Tools:** Android Studio 2026.2 and JDK 21.
-- **Versions:** Gradle, the Android Gradle Plugin, Kotlin, KSP and the Compose BOM use the newest stable versions that work together, checked at plan time.
+- **Tools:** Android Studio 2026.2.2 or newer, and JDK 17 or newer (21 recommended), as the README lists.
+- **Versions:** proven rather than newest. The toolchain is the combination Google's Now in Android builds with, libraries have been out for at least four weeks, and a spike build validated the set before the plan was written (README, version policy).
 - **SDK levels:** compile and target SDK 36; minSdk 26.
 - **Dependencies** are declared in a version catalogue (`gradle/libs.versions.toml`).
-- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt and the feature-boundary check), `mrd.android.compose`, `mrd.hilt`, `mrd.android.room` and `mrd.jvm.library`.
+- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.hilt` and `mrd.jvm.library`. `mrd.android.room` arrives with the data layer in milestone 3. The layering rule lives in `settings.gradle.kts` (§4.2).
 - **Formatting:** Spotless with ktlint.
 - **Compose stability:** a stability configuration file marks the `:core:model` types as stable.
 
@@ -427,12 +430,14 @@ Following the rule that a passing build is not proof:
 
   It uploads the APKs, test reports and `mapping.txt`.
 - **Hardening:**
-  - Jobs use `permissions: contents: read`.
-  - Third-party actions are pinned to commit SHAs, and checkout uses `persist-credentials: false`.
-  - Allowed actions are limited to GitHub-owned ones, verified creators and the pinned exceptions.
-- **Required checks.** Once `ci.yml` exists, its checks are added as required status checks to the `master` and `dev` rulesets.
+  - The workflow token is read-only (`permissions: contents: read`). The one job that can write submits the dependency graph and runs no build code.
+  - Every action is pinned to a commit SHA, and checkout uses `persist-credentials: false`.
+  - Only GitHub-owned actions and `gradle/actions` may run, and the repository requires SHA pinning. That's stricter than allowing verified creators.
+  - Gradle caching uses the open-source `basic` provider. Pushes to `dev` and `master` write the cache; pull requests only read it.
+- **Required checks.** **Build and test** and **Secret scan** are required status checks in the `master` and `dev` rulesets.
 - **`release.yml`** runs on `v*` tags. It builds the signed release APK and attaches it to a GitHub Release with `gh release create`, without a third-party release action.
-- **Dependabot** sends weekly, grouped version updates for Gradle and GitHub Actions, targeting `dev`.
+- **Dependabot** sends weekly, grouped version updates for Gradle and GitHub Actions, targeting `dev`, after a cooldown: 30 days for libraries and 7 for actions.
+- **Dependency submission.** `dependency-submission.yml` sends the resolved Gradle dependencies to GitHub on pushes to `master`, so Dependabot can raise vulnerability alerts; GitHub can't read a Gradle build on its own. Dependabot reads its configuration from `master`, so both start with the first release.
 
 ### 8.5 App security
 
@@ -460,7 +465,7 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
 - **Settings are code.** `tools/github/apply-repo-settings.sh` and `.github/rulesets/` apply them idempotently.
 - **Security controls:**
   - secret scanning with push protection;
-  - Dependabot alerts and security fixes;
+  - Dependabot alerts, fed by dependency submission, and security-fix pull requests for direct dependencies in the version catalog;
   - private vulnerability reporting;
   - a read-only Actions token by default; workflows can't approve pull requests, and outside contributors' workflows need approval;
   - wiki and projects off;
@@ -475,8 +480,8 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
 - **Committed so assessors can see it:**
   - `CLAUDE.md`: a short cold-start brief with the module map, commands, hard rules (each with the reason it exists), the definition of done, and "keep this file true".
   - `WORKFLOW.md`: the general way of working (one step per commit; never bypass hooks; tests with every change; the emulator gate; design tokens only; localised strings; money in integer cents).
-  - `.claude/agents/verifier.md`: a QA agent that can't edit code. It checks §11 with evidence and gives PASS or FAIL first; a FAIL blocks the merge.
-  - `.claude/settings.json`: blocks reading keystores and signing properties, and blocks `git push --force`.
+  - `.claude/agents/verifier.md`: a QA agent instructed never to edit code; it only writes its reports under `docs/qa/`. It checks §11 with evidence and gives PASS or FAIL first; a FAIL blocks the merge.
+  - `.claude/settings.json`: stops Claude Code's Read tool from opening keystores, signing properties and `.env` files, and denies force pushes and `git commit --no-verify`. The Read rule doesn't cover shell commands, so those files stay outside the repository.
   - `AI_USAGE.md`: tools, workflow, the decisions I made, and where AI helped or was wrong.
   - `docs/ai/prompts.md`: the exact prompts. A script in `tools/ai/` extracts them from the Claude Code session logs, and the raw logs are never committed.
   - `docs/ai/corrections.md`: each time the AI was wrong and how it was caught.

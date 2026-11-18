@@ -7,13 +7,13 @@ These scripts plant deliberate violations next to allowed look-alikes. They prov
   - `remove-probes.sh` deletes exactly the files the create scripts write, then prunes directories left empty. It's safe in the main checkout, where `.worktrees/` holds real worktrees.
 - Where the probes go:
   - **Probes in real modules** (`:core:common`, `:core:data`, `:core:model`) go in `src/probe/kotlin`. Konsist reports them under the right module, but Gradle never compiles that source set, so they can't break the build once these modules have real code.
-  - **Feature probes** go in `feature/probe/`. That isn't a Gradle module, so its package must stay `…feature.probe`, because P1 relies on it.
+  - **Feature probes** go in `feature/probe/`, which isn't a Gradle module. Their package must stay `…feature.probe`, because P1 works out a feature's own package from its directory name.
   - **The nested-checkout control** goes in `.worktrees/zz-architecture-probe-control/`.
 
 | Script | What it plants |
 |---|---|
 | `create-p1-p7.sh` | One probe file per rule (P1 to P7), plus a violation inside a nested `.worktrees/` checkout that must be ignored |
-| `create-p8.sh` | A public repository in `:core:data`, a module outside `:app`'s test classpath. It proves Gradle re-runs the tests instead of reporting them UP-TO-DATE. |
+| `create-p8.sh` | A public repository in `:core:data`'s `src/probe` folder, which no Gradle task compiles, so it's never on `:app`'s test classpath. It proves Gradle re-runs the tests instead of reporting them UP-TO-DATE. |
 | `create-p9.sh` | A raw colour in a nested module (`feature/browse/impl`), and nothing else. It proves Gradle re-runs the tests for a change in a nested module. |
 | `create-p10.sh` | Nullable-fee money conversions, a KDoc line that must not count, and `internal` ViewModel state |
 | `remove-probes.sh` | Removes every probe and the empty directories the probes created |

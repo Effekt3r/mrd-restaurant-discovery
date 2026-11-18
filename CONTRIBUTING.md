@@ -33,7 +33,7 @@ Branches are short-lived and start from `dev`. Rulesets protect `master` and `de
 1. Open a release pull request from `dev` to `master`.
 2. After it merges, tag `master` as `vX.Y.Z`. Release tags can't be moved or deleted.
 
-Dependabot's security-fix pull requests target `master`. After one merges, merge `master` back into `dev`, as with a hotfix.
+Dependabot's security-fix pull requests, for direct dependencies in the version catalog, target `master`. After one merges, merge `master` back into `dev`, as with a hotfix.
 
 ## Local setup
 
