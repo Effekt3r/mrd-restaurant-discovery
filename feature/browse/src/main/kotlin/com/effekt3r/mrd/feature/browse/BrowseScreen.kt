@@ -1,11 +1,11 @@
 package com.effekt3r.mrd.feature.browse
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material3.Button
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,19 +16,22 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.dropUnlessResumed
 
 /**
- * Placeholder for Browse (milestone 1). It proves the navigation wiring and the edge-to-edge insets;
- * milestone 5 replaces it with the restaurant list.
+ * Placeholder for Browse (milestone 1): one sample restaurant that opens Details when tapped, which proves the
+ * navigation wiring and the edge-to-edge insets. Milestone 5 replaces it with the real restaurant list.
  */
 @Composable
 internal fun BrowseScreen(onRestaurantClick: (String) -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.fillMaxSize().safeDrawingPadding().padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Text(text = stringResource(R.string.browse_title), style = MaterialTheme.typography.headlineMedium)
-        Button(onClick = dropUnlessResumed { onRestaurantClick(SAMPLE_RESTAURANT_ID) }) {
-            Text(text = stringResource(R.string.browse_placeholder_open_sample))
-        }
+    Column(modifier = modifier.fillMaxSize().safeDrawingPadding()) {
+        Text(
+            text = stringResource(R.string.browse_title),
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(16.dp)
+        )
+        ListItem(
+            headlineContent = { Text(text = stringResource(R.string.browse_sample_restaurant_name)) },
+            supportingContent = { Text(text = stringResource(R.string.browse_sample_restaurant_cuisines)) },
+            modifier = Modifier.clickable(onClick = dropUnlessResumed { onRestaurantClick(SAMPLE_RESTAURANT_ID) })
+        )
     }
 }
 
