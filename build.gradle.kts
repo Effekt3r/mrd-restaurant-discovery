@@ -12,14 +12,18 @@ plugins {
 // Formatting for every Kotlin and Gradle Kotlin file (ktlint; style settings in .editorconfig).
 // Run ./gradlew spotlessApply before committing; CI runs spotlessCheck.
 spotless {
+    // A file tree, not a "**/" string: Spotless then doesn't read every subproject's build directory
+    // (an isolated-projects violation), and hidden top-level folders (.gradle, .worktrees, .claude) are skipped.
+    fun sources(pattern: String) = fileTree(rootDir) {
+        include(pattern)
+        exclude("**/build/**", ".*/**")
+    }
     kotlin {
-        target("**/*.kt")
-        targetExclude("**/build/**")
+        target(sources("**/*.kt"))
         ktlint(libs.versions.ktlint.get())
     }
     kotlinGradle {
-        target("**/*.kts")
-        targetExclude("**/build/**")
+        target(sources("**/*.kts"))
         ktlint(libs.versions.ktlint.get())
     }
 }
