@@ -49,3 +49,6 @@ gradle.lifecycle.beforeProject {
 
 rootProject.name = "mrd-restaurant-discovery"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(":core:common")
+include(":core:model")
