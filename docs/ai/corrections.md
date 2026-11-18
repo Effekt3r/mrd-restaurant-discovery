@@ -4,6 +4,13 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-18 · The verifier's report misquoted its own setup step
+
+- **What:** the verifier's second report said it created `local.properties` with `sdk.dir=~/Library/Android/sdk`. Its command had been `echo "sdk.dir=$HOME/Library/Android/sdk"`, so the shell wrote an absolute path. The Android Gradle plugin doesn't expand `~`, so a reader copying the quoted line would hit "SDK location not found". The README didn't say the path must be absolute either.
+- **Caught by:** the controller, which tested the quoted line literally in a scratch clone before committing the report. The verifier then confirmed from its own command history that every build had run with `ANDROID_HOME` unset, so the evidence held and only the quote was wrong.
+- **Fix:** the README asks for an absolute path and says `~` isn't expanded. The report quotes the command that was actually run.
+- **Lesson:** evidence quotes the exact command and its output, never a paraphrase. A verifier's report is checked like any other claim.
+
 ## 2026-11-18 · The README's setup only worked on a machine that was already set up
 
 - **What:** two gaps for someone starting from the public repository:
