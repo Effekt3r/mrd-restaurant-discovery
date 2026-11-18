@@ -4,7 +4,9 @@ import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
@@ -36,5 +38,9 @@ internal fun Project.configureKotlinJvm() {
     }
     extensions.configure<KotlinJvmProjectExtension> {
         compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+        // Compile against the JDK 17 API, not the JDK running Gradle: these modules run on Android, where
+        // JDK 21-only members such as List.removeFirst crash below API 35.
+        compilerOptions.freeCompilerArgs.add("-Xjdk-release=17")
     }
+    tasks.withType<JavaCompile>().configureEach { options.release.set(17) }
 }
