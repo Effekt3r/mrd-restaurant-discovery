@@ -7,7 +7,11 @@ import androidx.navigation.toRoute
 import com.effekt3r.mrd.feature.details.RestaurantScreen
 import kotlinx.serialization.Serializable
 
-/** The Details destination for one restaurant. */
+/**
+ * The Details destination for one restaurant. [id] is deliberately required: Navigation turns a required
+ * argument into a path segment, which the mrd://restaurant/{id} deep link (milestone 6) depends on. A default
+ * value would move it into the query string.
+ */
 @Serializable
 data class RestaurantRoute(val id: String)
 
