@@ -48,4 +48,4 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 
 ## Current state
 
-Milestone 1 (foundation) is in progress. Next is milestone 2 (mock API data); see `docs/plans/2026-11-18-00-roadmap.md`.
+Milestone 1 (foundation) is done: the modules, convention plugins, app shell, architecture tests, CI and the README requirements. Its verification report is `docs/qa/2026-11-18-m1-foundation.md`. Next is milestone 2 (mock API data), which ends with the first release to `master`; see `docs/plans/2026-11-18-00-roadmap.md`.
