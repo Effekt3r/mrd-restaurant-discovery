@@ -52,3 +52,8 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":core:common")
 include(":core:model")
+include(":core:data")
+include(":core:designsystem")
+include(":core:network")
+include(":core:testing")
+include(":core:ui")
