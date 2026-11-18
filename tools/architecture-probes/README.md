@@ -4,6 +4,11 @@ These scripts plant deliberate violations next to allowed look-alikes. They prov
 
 - Run them from the repository root whenever a rule changes, and remove the probes afterwards.
 - They only add and remove untracked probe files.
+  - `remove-probes.sh` deletes exactly the files the create scripts write, then prunes directories left empty. It's safe in the main checkout, where `.worktrees/` holds real worktrees.
+- Where the probes go:
+  - **Probes in real modules** (`:core:common`, `:core:data`, `:core:model`) go in `src/probe/kotlin`. Konsist reports them under the right module, but Gradle never compiles that source set, so they can't break the build once these modules have real code.
+  - **Feature probes** go in `feature/probe/`. That isn't a Gradle module, so its package must stay `…feature.probe`, because P1 relies on it.
+  - **The nested-checkout control** goes in `.worktrees/zz-architecture-probe-control/`.
 
 | Script | What it plants |
 |---|---|
@@ -55,4 +60,6 @@ These aren't claimed as covered:
 - Members of a ViewModel's companion object aren't checked.
 - Money held in a `List<Double>`, in UPPER_SNAKE constants, or under names such as `amount` isn't caught.
 - For the text-based rules, a comment after code on the same line still counts.
+- A line that starts with a comment is skipped as a whole, so code after an inline block comment on that line isn't checked. ktlint's formatting rejects that shape anyway.
+- A line starting with Kotlin's spread operator (`*items`) is also treated as a comment.
 - Konsist is pinned at 0.17.3. After an upgrade, re-run every probe: the module-name format and the type-name text are the most likely to change.

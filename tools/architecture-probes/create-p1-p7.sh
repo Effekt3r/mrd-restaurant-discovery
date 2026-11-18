@@ -2,9 +2,9 @@
 # Creates architecture-test probes P1-P7 in the current repo root. Remove them with remove-probes.sh.
 set -euo pipefail
 mkdir -p feature/probe/src/main/kotlin/com/effekt3r/mrd/feature/details feature/probe/src/main/kotlin/com/effekt3r/mrd/feature/probe \
-  core/common/src/main/kotlin/com/effekt3r/mrd/core/common core/data/src/main/kotlin/com/effekt3r/mrd/core/data \
-  core/model/src/main/kotlin/com/effekt3r/mrd/core/model \
-  .worktrees/other-branch/core/model/src/main/kotlin/com/effekt3r/mrd/core/model
+  core/common/src/probe/kotlin/com/effekt3r/mrd/core/common core/data/src/probe/kotlin/com/effekt3r/mrd/core/data \
+  core/model/src/probe/kotlin/com/effekt3r/mrd/core/model \
+  .worktrees/zz-architecture-probe-control/core/model/src/main/kotlin/com/effekt3r/mrd/core/model
 
 cat > feature/probe/src/main/kotlin/com/effekt3r/mrd/feature/details/ProbeCrossFeature.kt <<'EOF'
 // In feature/probe but declares the details package: the old package-based check let this through.
@@ -16,7 +16,7 @@ import com.effekt3r.mrd.feature.probe.ProbeThing // allowed: its own feature
 val probeRoute = RestaurantRoute("r-1")
 EOF
 
-cat > core/common/src/main/kotlin/com/effekt3r/mrd/core/common/ProbeAndroid.kt <<'EOF'
+cat > core/common/src/probe/kotlin/com/effekt3r/mrd/core/common/ProbeAndroid.kt <<'EOF'
 package com.effekt3r.mrd.core.common
 
 import androidx.annotation.VisibleForTesting // flagged
@@ -79,7 +79,7 @@ class ProbeScreenState : ViewModel() {
 }
 EOF
 
-cat > core/data/src/main/kotlin/com/effekt3r/mrd/core/data/ProbeRepositories.kt <<'EOF'
+cat > core/data/src/probe/kotlin/com/effekt3r/mrd/core/data/ProbeRepositories.kt <<'EOF'
 package com.effekt3r.mrd.core.data
 
 interface RestaurantRepository // allowed: the public interface
@@ -91,7 +91,7 @@ private class LocalRestaurantRepository : RestaurantRepository // allowed: priva
 abstract class RepositoryModule // allowed: not a repository
 EOF
 
-cat > core/model/src/main/kotlin/com/effekt3r/mrd/core/model/ProbeModel.kt <<'EOF'
+cat > core/model/src/probe/kotlin/com/effekt3r/mrd/core/model/ProbeModel.kt <<'EOF'
 package com.effekt3r.mrd.core.model
 
 data class ProbeRestaurant(
@@ -122,7 +122,7 @@ var probeTopLevel = 0 // flagged
 EOF
 
 # Control: a nested worktree. Its violation must NOT be reported.
-cat > .worktrees/other-branch/core/model/src/main/kotlin/com/effekt3r/mrd/core/model/NestedCheckout.kt <<'EOF'
+cat > .worktrees/zz-architecture-probe-control/core/model/src/main/kotlin/com/effekt3r/mrd/core/model/NestedCheckout.kt <<'EOF'
 package com.effekt3r.mrd.core.model
 
 data class NestedCheckout(var x: Int)
