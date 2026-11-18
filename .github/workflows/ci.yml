@@ -53,15 +53,19 @@ jobs:
 
       - name: No missing R8 keep rules
         run: |
-          rules=app/build/outputs/mapping/release/missing_rules.txt
-          if [ -s "$rules" ]; then
+          dir=app/build/outputs/mapping/release
+          if [ ! -s "$dir/mapping.txt" ]; then
+            echo "No R8 mapping in $dir: has the release output path changed?"
+            exit 1
+          fi
+          if [ -s "$dir/missing_rules.txt" ]; then
             echo "R8 reported missing keep rules:"
-            cat "$rules"
+            cat "$dir/missing_rules.txt"
             exit 1
           fi
 
       - name: Upload build outputs
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: build-outputs
