@@ -26,7 +26,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 - Tests: `./gradlew testDebugUnitTest` (every module, including the pure Kotlin ones)
 - Format: `./gradlew spotlessApply` (CI runs `spotlessCheck`)
 - Lint: `./gradlew :app:lintDebug`
-- R8 release build: `./gradlew :app:assembleRelease`, then `test ! -s app/build/outputs/mapping/release/missing_rules.txt`
+- R8 release build: `./gradlew :app:assembleRelease`, then check that R8 ran and found nothing missing: `test -s app/build/outputs/mapping/release/mapping.txt && test ! -s app/build/outputs/mapping/release/missing_rules.txt`
 
 ## Hard rules, and why
 

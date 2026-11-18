@@ -405,7 +405,7 @@ Following the rule that a passing build is not proof:
 
 - **Release settings:** `isMinifyEnabled = true`, `isShrinkResources = true` and `proguard-android-optimize.txt`.
 - **Keep rules:** the libraries' bundled rules are used. Any rule the app adds carries a comment saying why it's needed.
-- **CI** fails if R8's `missing_rules.txt` isn't empty. It keeps `mapping.txt` as a build artifact; in production this would be uploaded for crash de-obfuscation.
+- **CI** fails if R8's `missing_rules.txt` isn't empty, or if R8's `mapping.txt` is missing, so a moved output can't pass unchecked. It keeps `mapping.txt` as a build artifact; in production this would be uploaded for crash de-obfuscation.
 - **Device check:** the release APK is walked through on the emulator (§7.3).
 
 ### 8.3 Signing
@@ -422,7 +422,7 @@ Following the rule that a passing build is not proof:
 
 ### 8.4 CI
 
-- **`ci.yml`** runs on pull requests and on pushes to `dev` and `master`:
+- **`ci.yml`** runs on pull requests into `dev` and `master`, and on pushes to them:
   - the Spotless check and Android Lint;
   - the unit, Robolectric and architecture tests;
   - `assembleRelease` with the debug-key fallback, and the R8 missing-rules check;
