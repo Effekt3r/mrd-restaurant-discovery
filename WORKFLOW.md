@@ -7,7 +7,7 @@ The general way of working in this repository: process, guardrails and terminolo
 - Branches: `master` (releases), `dev` (integration) and short-lived `feature/`, `fix/` and `chore/` branches. Details are in `CONTRIBUTING.md`.
 - One logical step per commit, with its tests in the same commit.
 - Never bypass a safety check: no `--no-verify`, and no force pushes to shared branches. If a hook fails, fix the cause.
-- Never tag unless asked. A `v*` tag builds and publishes a signed release.
+- Never tag unless asked. From milestone 7, a `v*` tag builds and publishes a signed release.
 - Commit messages: a conventional subject, the reason in the body, and a `Verified:` line.
 
 ## Testing and verification

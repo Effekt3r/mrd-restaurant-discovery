@@ -52,11 +52,11 @@ Release builds are R8-minified. The release signing key comes from Gradle proper
 | `MRD_KEY_ALIAS` | Key alias |
 | `MRD_KEY_PASSWORD` | Key password |
 
-Without them, a local release build is signed with the debug key, and Gradle prints a warning. That way anyone can install and test an R8 build. CI's release workflow requires real signing and fails without it.
+Without them, a local release build is signed with the debug key, and Gradle prints a warning. That way anyone can install and test an R8 build. The release workflow, which arrives in milestone 7, will require real signing and fail without it.
 
 - Use an absolute path for `MRD_KEYSTORE_FILE`: a relative path resolves against `app/`.
-- Only the release workflow passes `-Pmrd.requireReleaseSigning=true`, because it makes any build without a keystore fail.
-- CI passes the signing secrets as environment variables, not `-P` arguments, which would show up in process listings.
+- Only the release workflow will pass `-Pmrd.requireReleaseSigning=true`, because it makes any build without a keystore fail.
+- It will pass the signing secrets as environment variables, not `-P` arguments, which would show up in process listings.
 
 ## Project structure
 
