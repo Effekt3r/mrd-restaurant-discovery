@@ -1,0 +1,20 @@
+# Who would own what if this feature lived inside the Mr D app.
+# Squad names are illustrative; in this repository one person owns everything.
+
+# Mobile Platform: app shell, build logic, CI, networking and test infrastructure
+*                     @Effekt3r
+/app/                 @Effekt3r
+/build-logic/         @Effekt3r
+/.github/             @Effekt3r
+/core/network/        @Effekt3r
+/core/testing/        @Effekt3r
+
+# Design Platform: the design system
+/core/designsystem/   @Effekt3r
+
+# Discovery squad: restaurant data, shared restaurant UI and the discovery screens
+/core/model/          @Effekt3r
+/core/data/           @Effekt3r
+/core/ui/             @Effekt3r
+/feature/browse/      @Effekt3r
+/feature/details/     @Effekt3r
