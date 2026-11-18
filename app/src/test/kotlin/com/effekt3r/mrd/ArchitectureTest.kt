@@ -79,7 +79,7 @@ class ArchitectureTest {
             .filter { it.name.endsWith("ViewModel") || it.hasParentWithName("ViewModel", "AndroidViewModel") }
             .flatMap { viewModel ->
                 val properties = viewModel.properties(includeNested = false)
-                    .filter { it.hasPublicOrDefaultModifier }
+                    .filterNot { it.hasPrivateModifier || it.hasProtectedModifier }
                     .mapNotNull { property ->
                         val type = property.type?.name
                         val problem = when {
@@ -91,14 +91,15 @@ class ArchitectureTest {
                         problem?.let { "${viewModel.projectPath}: ${viewModel.name}.${property.name} $it" }
                     }
                 val functions = viewModel.functions(includeNested = false, includeLocal = false)
-                    .filter { it.hasPublicOrDefaultModifier }
+                    .filterNot { it.hasPrivateModifier || it.hasProtectedModifier }
                     .filter { it.returnType?.name?.let(MUTABLE_STATE_TYPE::containsMatchIn) == true }
                     .map { "${viewModel.projectPath}: ${viewModel.name}.${it.name}() returns ${it.returnType?.name}" }
                 properties + functions
             }
         assertNoViolations(
             "ViewModels expose read-only state (StateFlow, never MutableStateFlow) with an explicit type, so the " +
-                "UI can't change it; changes go through the ViewModel's functions.",
+                "UI can't change it; changes go through the ViewModel's functions. Internal members count too: a " +
+                "screen in the same module can reach them.",
             violations
         )
     }
