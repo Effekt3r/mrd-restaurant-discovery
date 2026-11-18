@@ -50,3 +50,11 @@ gh api -X PUT "repos/$REPO/actions/permissions/workflow" \
 gh api -X PUT "repos/$REPO/actions/permissions/fork-pr-contributor-approval" \
   -f approval_policy=all_external_contributors >/dev/null
 echo "actions: read-only token, no PR approvals, outside contributors need approval"
+
+# Actions supply chain: only GitHub-owned actions and gradle/actions may run, and every action must be
+# pinned to a full commit SHA.
+gh api -X PUT "repos/$REPO/actions/permissions" \
+  -F enabled=true -f allowed_actions=selected -F sha_pinning_required=true >/dev/null
+gh api -X PUT "repos/$REPO/actions/permissions/selected-actions" \
+  -F github_owned_allowed=true -F verified_allowed=false -f 'patterns_allowed[]=gradle/actions/*' >/dev/null
+echo "actions: GitHub-owned and gradle/actions only, pinned to commit SHAs"

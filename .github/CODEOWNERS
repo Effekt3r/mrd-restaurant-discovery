@@ -1,11 +1,12 @@
 # Who would own what if this feature lived inside the Mr D app.
 # Squad names are illustrative; in this repository one person owns everything.
 
-# Mobile Platform: app shell, build logic, CI, networking and test infrastructure
+# Mobile Platform: app shell, build logic, CI, common infrastructure, networking and test infrastructure
 *                     @Effekt3r
 /app/                 @Effekt3r
 /build-logic/         @Effekt3r
 /.github/             @Effekt3r
+/core/common/         @Effekt3r
 /core/network/        @Effekt3r
 /core/testing/        @Effekt3r
 

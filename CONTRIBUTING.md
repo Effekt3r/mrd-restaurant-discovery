@@ -26,12 +26,14 @@ Branches are short-lived and start from `dev`. Rulesets protect `master` and `de
 - `feature/`, `fix/` and `chore/` branches target `dev`. Releases and hotfixes target `master`.
 - Fill in the template: what and why, how it was verified, screenshots for UI changes, and AI notes.
 - Pull requests are merged with a merge commit (squash and rebase are disabled), so each branch's commits stay in the history. The branch is then deleted; the pull request keeps the record.
-- All review threads must be resolved before merging.
+- All review threads must be resolved, and the **Build and test** and **Secret scan** checks must pass, before merging.
 
 ## Releases
 
 1. Open a release pull request from `dev` to `master`.
 2. After it merges, tag `master` as `vX.Y.Z`. Release tags can't be moved or deleted.
+
+Dependabot's security-fix pull requests, for direct dependencies in the version catalog, target `master`. After one merges, merge `master` back into `dev`, as with a hotfix.
 
 ## Local setup
 

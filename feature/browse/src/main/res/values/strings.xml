@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="browse_title">Restaurants</string>
+    <string name="browse_sample_restaurant_name">Cape Town Grill</string>
+    <string name="browse_sample_restaurant_cuisines">Steakhouse · Grill</string>
+</resources>
