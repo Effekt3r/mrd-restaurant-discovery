@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
-import com.effekt3r.mrd.buildlogic.libs
+import com.effekt3r.mrd.buildlogic.library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -31,11 +31,10 @@ class AndroidComposeConventionPlugin : Plugin<Project> {
     private fun Project.configureCompose(extension: CommonExtension) {
         extension.buildFeatures.compose = true
         dependencies {
-            val bom = libs.findLibrary("androidx-compose-bom").get()
-            "implementation"(platform(bom))
-            "testImplementation"(platform(bom))
-            "implementation"(libs.findLibrary("androidx-compose-ui-tooling-preview").get())
-            "debugImplementation"(libs.findLibrary("androidx-compose-ui-tooling").get())
+            "implementation"(platform(library("androidx-compose-bom")))
+            "testImplementation"(platform(library("androidx-compose-bom")))
+            "implementation"(library("androidx-compose-ui-tooling-preview"))
+            "debugImplementation"(library("androidx-compose-ui-tooling"))
         }
     }
 }

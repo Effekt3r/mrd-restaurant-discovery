@@ -1,4 +1,4 @@
-import com.effekt3r.mrd.buildlogic.libs
+import com.effekt3r.mrd.buildlogic.library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -19,11 +19,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 "implementation"(project(":core:designsystem"))
                 "implementation"(project(":core:ui"))
-                "implementation"(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
-                "implementation"(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
-                "implementation"(libs.findLibrary("androidx-hilt-lifecycle-viewmodel-compose").get())
-                "implementation"(libs.findLibrary("androidx-navigation-compose").get())
-                "implementation"(libs.findLibrary("kotlinx-serialization-core").get())
+                "implementation"(library("androidx-lifecycle-runtime-compose"))
+                "implementation"(library("androidx-lifecycle-viewmodel-compose"))
+                "implementation"(library("androidx-hilt-lifecycle-viewmodel-compose"))
+                "implementation"(library("androidx-navigation-compose"))
+                "implementation"(library("kotlinx-serialization-core"))
             }
         }
     }

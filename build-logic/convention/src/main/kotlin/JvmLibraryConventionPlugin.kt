@@ -1,5 +1,5 @@
 import com.effekt3r.mrd.buildlogic.configureKotlinJvm
-import com.effekt3r.mrd.buildlogic.libs
+import com.effekt3r.mrd.buildlogic.library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -12,7 +12,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
             apply(plugin = "org.jetbrains.kotlin.jvm")
             configureKotlinJvm()
             dependencies {
-                "testImplementation"(libs.findLibrary("junit").get())
+                "testImplementation"(library("junit"))
             }
         }
     }

@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.LibraryExtension
 import com.effekt3r.mrd.buildlogic.TARGET_SDK
 import com.effekt3r.mrd.buildlogic.configureKotlinAndroid
-import com.effekt3r.mrd.buildlogic.libs
+import com.effekt3r.mrd.buildlogic.library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -20,7 +20,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 testOptions.unitTests.isIncludeAndroidResources = true
             }
             dependencies {
-                "testImplementation"(libs.findLibrary("junit").get())
+                "testImplementation"(library("junit"))
             }
         }
     }
