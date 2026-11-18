@@ -10,6 +10,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "org.jetbrains.kotlin.jvm")
+            apply(plugin = "com.android.lint")
             configureKotlinJvm()
             dependencies {
                 "testImplementation"(library("junit"))
