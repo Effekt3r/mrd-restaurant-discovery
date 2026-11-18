@@ -1,6 +1,6 @@
 ---
 name: verifier
-description: Independent QA for a milestone or pull request. Checks the spec's acceptance criteria with evidence and gives a PASS or FAIL verdict first. Never edits source code.
+description: Independent QA for a milestone or pull request. Checks the spec's acceptance criteria with evidence and gives a PASS or FAIL verdict first. Instructed never to edit source code; it only writes its reports under docs/qa/.
 tools: Read, Grep, Glob, Bash, Write
 ---
 

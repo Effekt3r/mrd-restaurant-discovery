@@ -49,9 +49,7 @@ This is the honest half of `AI_USAGE.md`. Most of these were caught by the two i
 
 - **What:** the placeholders called their navigation callbacks directly. The screen you're leaving stays clickable during the 700 ms transition, so a double tap on Back popped past the start screen.
 - **Caught by:** the Task 5 code-quality review, from the Navigation and Lifecycle library bytecode.
-- **Fix:**
-  - clicks go through `dropUnlessResumed`;
-  - Back uses `navigateUp`, which never pops the last screen.
+- **Fix:** clicks go through `dropUnlessResumed`. On the same review's advice, the app shell (written next) used `navigateUp` for Back, which never pops the last screen.
 
 ## 2026-11-18 · Gradle 9's "no tests discovered" check would have failed CI
 

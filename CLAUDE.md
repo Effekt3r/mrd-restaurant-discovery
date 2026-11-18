@@ -30,13 +30,13 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 
 ## Hard rules, and why
 
-- **Features never depend on features, and core modules never depend on features or `:app`.** A project-wide rule in `settings.gradle.kts` fails the build, and `ArchitectureTest` fails the tests. Why: squads ship features independently, and `:app` is the only place features meet.
+- **Features never depend on features, and core modules never depend on features or `:app`.** A project-wide rule in `settings.gradle.kts` fails the build for both; `ArchitectureTest` also fails on feature-to-feature imports. Why: squads ship features independently and `:app` is the only place features meet, and core modules sit below features, so depending upward would invert the architecture.
 - **Pinned versions stay pinned** unless a plan says otherwise. Why: the version policy in the README; a spike build validated the set together.
-- **Money is `Long` cents, colours come from design tokens, and user-facing text lives in string resources.** `ArchitectureTest` enforces the first two.
+- **Money is integer cents, never floating point; colours come from design tokens; user-facing text lives in string resources.** `ArchitectureTest` enforces the first two: it rejects `Double` or `Float` money and raw colours outside the design system.
 - **Never weaken a test or a rule to make something pass.** Fix the code, or stop and ask.
 - **House rules are proven, not assumed.** When you change `ArchitectureTest`, re-run the probes in `tools/architecture-probes/` and compare the results with its README. A rule that can't fail is worse than having no rule.
 - **Release builds are R8-minified.** Anything read by name at runtime needs a keep rule with a comment. Check R8 changes by running the release APK, not by compiling.
-- **Never commit secrets.** Signing comes from `MRD_*` properties or environment variables, and `.claude/settings.json` blocks reading keystores.
+- **Never commit secrets.** Signing comes from `MRD_*` properties or environment variables, so no keystore or password ever lives in the repository. `.claude/settings.json` also stops Claude Code's Read tool from opening keystore and signing files, but it doesn't cover shell commands, so keep those files outside the repository.
 
 ## Definition of done for each change
 
