@@ -298,6 +298,7 @@ Added on 2026-11-19, when I chose to include the brief's optional menu data.
 - **Loading and caching:**
   - Details renders the restaurant from the list cache straight away, and the menu loads afterwards with its own state: loading, content, not available, or error.
   - The validated menu is cached in Room per restaurant, with the time it was fetched, so a menu seen before is available offline.
+  - A cached menu that no longer decodes, for example after an app update changed the cache's format, counts as no cache: it's deleted and fetched again.
   - Requests revalidate with the ETag, as the list's do (§5.3). A 404 deletes any cached menu for that id.
 - **Generated data.** `:tools:datagen` writes the menus from the same seed (§5.2). The dishes are curated per concept and Cape Town-flavoured, the prices are integer cents, and some items are sold out or carry options. The deliberate edge cases are listed in `mock-api/README.md`.
 

@@ -1,5 +1,6 @@
 package com.effekt3r.mrd.core.data
 
+import com.effekt3r.mrd.core.data.database.MenuEntity
 import com.effekt3r.mrd.core.model.MenuState
 import com.effekt3r.mrd.core.model.RestaurantId
 import com.effekt3r.mrd.core.model.SyncError
@@ -88,6 +89,21 @@ class OfflineFirstMenuRepositoryTest {
     fun badDataIsAnErrorWithoutACachedMenu() = runTest {
         server.enqueue(ok(menu.replace("\"r-1\"", "\"r-2\"")))
         assertEquals(listOf(MenuState.Loading, MenuState.Error(SyncError.BadData, null)), repository.menu(id).toList())
+    }
+
+    @Test
+    fun aCachedMenuThatNoLongerDecodesIsDroppedAndFetchedAgain() = runTest {
+        // As if CachedMenu had gained a field without a default since this row was written.
+        database.menuDao().upsert(MenuEntity("r-1", """{"categories": [{"id": "c-1"}]}""", fetchedAt = 0))
+        server.enqueue(status(503))
+        server.enqueue(ok(menu))
+        assertEquals(
+            listOf(MenuState.Loading, MenuState.Error(SyncError.Server(503), null)),
+            repository.menu(id).toList()
+        )
+        assertNull(database.menuDao().menu("r-1"))
+        val recovered = repository.menu(id).toList().last() as MenuState.Content
+        assertEquals(listOf("Samoosas"), recovered.menu.categories.single().items.map { it.name })
     }
 
     @Test

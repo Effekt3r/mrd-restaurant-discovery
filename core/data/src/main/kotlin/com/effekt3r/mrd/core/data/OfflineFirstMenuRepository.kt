@@ -32,15 +32,25 @@ internal class OfflineFirstMenuRepository @Inject constructor(
 
     // flowOn: the response body is read where the flow runs, which must not be the main thread.
     override fun menu(id: RestaurantId): Flow<MenuState> = flow {
-        val cached = dao.menu(id.value)?.let {
-            MenuState.Content(
-                json.decodeFromString(CachedMenu.serializer(), it.menuJson).toModel(),
-                Instant.ofEpochMilli(it.fetchedAt)
-            )
-        }
+        val cached = cachedMenu(id.value)
         emit(cached ?: MenuState.Loading)
         emit(fetch(id.value, cached))
     }.flowOn(ioDispatcher)
+
+    // A cached menu that no longer decodes, say because CachedMenu gained a field without a default, counts as none.
+    // It's deleted, so it can't stand in the way of the fetch that replaces it.
+    private suspend fun cachedMenu(restaurantId: String): MenuState.Content? {
+        val entity = dao.menu(restaurantId) ?: return null
+        return try {
+            MenuState.Content(
+                json.decodeFromString(CachedMenu.serializer(), entity.menuJson).toModel(),
+                Instant.ofEpochMilli(entity.fetchedAt)
+            )
+        } catch (e: IllegalArgumentException) { // SerializationException is an IllegalArgumentException
+            dao.delete(restaurantId)
+            null
+        }
+    }
 
     // The same client, ETag revalidation and error mapping as the list (spec §5.9), plus NotAvailable for a 404.
     private suspend fun fetch(restaurantId: String, cached: MenuState.Content?): MenuState {
