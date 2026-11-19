@@ -57,7 +57,7 @@ Every test runs on the JVM, so no emulator is needed. CI runs all of the first f
 - **The exceptions:**
   - **Compile SDK 37, target SDK 36.** Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37. The [target SDK](https://developer.android.com/build#android_sdk_settings), not the compile SDK, decides which platform behaviour the app gets, so it stays at 36 until the app has been tested against Android 17's.
   - **Activity and Lifecycle resolve higher than the catalog.** It pins Activity 1.12.4 and Lifecycle 2.10.0, but Navigation 2.10 and androidx.hilt 1.4 pull in 1.13.0 and 2.11.0, because Gradle treats a catalog version as a minimum.
-  - **Konsist stays at 0.17.3,** the version the spike validated, because an upgrade means re-running every architecture probe.
+  - **Konsist stays at 0.17.3,** the version the spike validated. 0.18 needed Kotlin 2.4 while the project was on 2.3, and an upgrade means re-running every architecture probe.
   - **Gradle's own Kotlin.** `build-logic` is compiled with the Kotlin embedded in Gradle, 2.4.10, not the project's 2.4.21. [SECURITY.md](SECURITY.md#open-dependabot-alerts) says why that matters.
 
 The [version catalog](gradle/libs.versions.toml) is the source of truth. The main versions:
