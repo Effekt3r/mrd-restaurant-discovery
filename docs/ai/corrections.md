@@ -4,6 +4,13 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · I said full-size card photos wouldn't cost memory, and Coil's source says they do
+
+- **What:** when I moved the cards to full-size photos, my instruction said Coil decodes to the view's size, so memory wouldn't change. `AsyncImage` asks for an inexact size, and Coil never scales a photo up past its own size. A phone's card is wider than the 700 px photo, so each card's bitmap is the whole photo: about 2 MB, against 1 MB at `/large`.
+- **Caught by:** the implementing agent, which read Coil's decoder before writing the claim into the spec.
+- **Fix:** spec §5.7 states the real cost. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
+- **Lesson:** check a library's behaviour in its source before stating it, even when the claim sounds standard.
+
 ## 2026-11-19 · Two commit messages for the screens stated figures that weren't true
 
 - **What:** the `Verified:` line of `636326e` (the colour roles) says ":core:designsystem tests, 9 of 9"; the module had 7 tests, and the probe's own output said "7 tests completed". The body of `5217404` (the Browse screen) says the grid has "two or more [columns] from 600 dp"; with 300 dp cards, 16 dp gaps and the side padding, a second column needs a window about 650 dp wide.
