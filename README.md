@@ -66,6 +66,7 @@ The app's restaurants come from static JSON in this repository, served over HTTP
 |---|---|---|
 | [`mock-api/v1/restaurants.json`](mock-api/v1/restaurants.json) | 220 | What the app shows |
 | [`mock-api/v1/restaurants-10k.json`](mock-api/v1/restaurants-10k.json) | 10,000 | The stress test; its first 220 are the same restaurants |
+| [`mock-api/v1/menus/`](mock-api/v1/menus/) | 218 menus, one per restaurant in `restaurants.json` | Details; stress-only restaurants have none (404) |
 
 The data is fictional and deliberately messy, so the app's fallbacks get exercised. `./gradlew :tools:datagen:run` regenerates it, and a test fails if the committed files differ from what the generator writes. [`mock-api/README.md`](mock-api/README.md) has the endpoints, the edge cases and the image credits.
 
