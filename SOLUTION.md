@@ -4,10 +4,10 @@ How I designed Mr D Restaurant Discovery, the trade-offs I made, and how I'd evo
 
 ## What I built
 
-- **Browse:** a paged, adaptive grid of restaurants with search by name, an Open now toggle, a result count, pull-to-refresh, an offline banner, and distinct loading, empty and error states (spec §6.2).
-- **Details:** the photo, the rating, ETA and delivery fee, the status with its next change, the week's opening hours and the menu, which loads separately with its own states (spec §6.3).
-- **Favourites** on both screens, kept across restarts and refreshes (spec §5.8).
-- **A deep link,** `mrd://restaurant/{id}`, that opens Details with Browse underneath (spec §4.5).
+- **Browse:** a paged, adaptive grid of restaurants with search by name, an Open now toggle, a result count, pull-to-refresh, an offline banner, and distinct loading, empty and error states (spec [§6.2](docs/specs/2026-11-18-restaurant-discovery-design.md#62-browse)).
+- **Details:** the photo, the rating, ETA and delivery fee, the status with its next change, the week's opening hours and the menu, which loads separately with its own states (spec [§6.3](docs/specs/2026-11-18-restaurant-discovery-design.md#63-details)).
+- **Favourites** on both screens, kept across restarts and refreshes (spec [§5.8](docs/specs/2026-11-18-restaurant-discovery-design.md#58-favourites)).
+- **A deep link,** `mrd://restaurant/{id}`, that opens Details with Browse underneath (spec [§4.5](docs/specs/2026-11-18-restaurant-discovery-design.md#45-navigation-and-deep-links)).
 - **Offline first.** Room is the single source of truth, so all of the above works offline from the last snapshot.
 - **The Task 3 improvement:** Open now stays correct offline, [measured below](#the-measurable-improvement-open-now-stays-correct-offline).
 - **A mock API** that a seeded generator writes into this repository, served over HTTPS, with deliberately messy data and a 10,000-restaurant stress file.
@@ -31,8 +31,8 @@ The brief asks five questions. Each answer starts from what's in this repository
 | `:core:designsystem` | Mr D's tokens, Figtree, `MrdTheme` and generic components | Design Platform |
 | `:core:network`, `:core:common`, `:core:testing` | HTTP and JSON; dispatchers, clock and ticker; test utilities | Mobile Platform |
 
-- **Two kinds of core module.** The platform stand-ins (`:core:network`, `:core:common`, `:core:designsystem` and `:core:testing`) are things the Mr D app already has, and its own would replace them. The discovery modules would move across as they are (spec §4.1).
-- **The host contract runs through Hilt.** The host provides an `OkHttpClient` carrying its own auth, logging or pinning interceptors, the `Json` configuration, an IO dispatcher, a `Clock`, a `NetworkMonitor` and an application scope. Each feature exposes its route types and a function that adds it to the host's navigation graph (spec §4.3).
+- **Two kinds of core module.** The platform stand-ins (`:core:network`, `:core:common`, `:core:designsystem` and `:core:testing`) are things the Mr D app already has, and its own would replace them. The discovery modules would move across as they are (spec [§4.1](docs/specs/2026-11-18-restaurant-discovery-design.md#41-modules-and-ownership)).
+- **The host contract runs through Hilt.** The host provides an `OkHttpClient` carrying its own auth, logging or pinning interceptors, the `Json` configuration, an IO dispatcher, a `Clock`, a `NetworkMonitor` and an application scope. Each feature exposes its route types and a function that adds it to the host's navigation graph (spec [§4.3](docs/specs/2026-11-18-restaurant-discovery-design.md#43-how-a-host-app-adopts-the-feature)).
 - **Components are shared in two layers.** The design system's components take display-ready text, never model types. `:core:ui` turns the restaurant model into that text for both features. So the design system knows nothing about restaurants, and neither feature repeats the other's formatting.
 - **Convention plugins** in `build-logic/` (`mrd.android.application`, `.library`, `.compose`, `.feature`, `.room`, `mrd.hilt` and `mrd.jvm.library`) hold the shared setup, so each module's build file states only what's unique to it.
 - **The layering is enforced, not just documented.** A rule in `settings.gradle.kts` fails the build when any module breaks it: a feature depending on a feature, or a core module on a feature or on `:app`. Konsist's `ArchitectureTest` enforces the rules inside the code, and the [probe kit](tools/architecture-probes/README.md) proves each rule fails when it's broken.
@@ -50,14 +50,14 @@ The brief asks five questions. Each answer starts from what's in this repository
 
 **As built:**
 - **Navigation.** Each feature owns `@Serializable` routes: `BrowseRoute` and `RestaurantRoute(id)`. It exposes `NavGraphBuilder.browseScreen(onRestaurantClick)`, `NavGraphBuilder.restaurantScreen(onBack)` and `NavController.navigateToRestaurant(id)`, and [`MrdNavHost`](app/src/main/kotlin/com/effekt3r/mrd/navigation/MrdNavHost.kt) in `:app` is the only place they meet. Browse doesn't know Details exists; it only reports which restaurant was tapped.
-- **Deep links.** `mrd://restaurant/{id}` is declared on `RestaurantRoute`, and its intent filter sits on `MainActivity` in `:app`, because the host owns external entry points. On a cold or a warm start it opens Details with Browse underneath, so Back returns to the list (spec §4.5).
-- **State.** Each screen's ViewModel exposes one `StateFlow` of immutable UI state, shared with `WhileSubscribed(5_000)`, so the minute ticker and the connectivity callback stop once the screen leaves the foreground. Input arrives as plain functions and navigation as callbacks, not as events. The search text and the Open now toggle live in `SavedStateHandle`, so they survive process death (spec §4.4).
-- **Data.** `RestaurantRepository` and `MenuRepository` are `:core:data`'s public face. Their implementations are `internal`, and Retrofit, OkHttp and Room are `implementation` dependencies, so a feature can't reach past the interfaces. Room is the single source of truth: the screens read only from the database, and network responses only ever land in it. Every failure is mapped once into a typed `SyncError` (`Network`, `Server`, `BadData` or `Storage`), and the screens see a `SyncStatus`, never an exception (spec §5.4).
+- **Deep links.** `mrd://restaurant/{id}` is declared on `RestaurantRoute`, and its intent filter sits on `MainActivity` in `:app`, because the host owns external entry points. On a cold or a warm start it opens Details with Browse underneath, so Back returns to the list (spec [§4.5](docs/specs/2026-11-18-restaurant-discovery-design.md#45-navigation-and-deep-links)).
+- **State, in a unidirectional data flow.** Each screen's ViewModel exposes one `StateFlow` of immutable UI state, shared with `WhileSubscribed(5_000)`, so the minute ticker and the connectivity callback stop once the screen leaves the foreground. Input goes up as plain function calls, state comes down, and navigation is a callback, not an event. The search text and the Open now toggle live in `SavedStateHandle`, so they survive process death (spec [§4.4](docs/specs/2026-11-18-restaurant-discovery-design.md#44-state-and-unidirectional-data-flow)).
+- **Data.** `RestaurantRepository` and `MenuRepository` are `:core:data`'s public face. Their implementations are `internal`, and Retrofit, OkHttp and Room are `implementation` dependencies, so a feature can't reach past the interfaces. Room is the single source of truth: the screens read only from the database, and network responses only ever land in it. Every failure is mapped once into a typed `SyncError` (`Network`, `Server`, `BadData` or `Storage`), and the screens see a `SyncStatus`, never an exception (spec [§5.4](docs/specs/2026-11-18-restaurant-discovery-design.md#54-errors)).
 
 **With many squads:**
 - **Routes in `api` modules, wiring in the host.** Other squads navigate with the route types from `:feature:details:api`, and the app's navigation graph wires them. A feature declares its deep links next to its routes, so it brings its own entry points.
-- **Navigation 3** once an adaptive list-detail layout for tablets and foldables is a goal. For two screens, Navigation Compose's built-in deep links and predictive back were enough (spec §3).
-- **Data owned per squad, shared through interfaces.** Squads share repository interfaces and model types through small `api` modules, never DAOs or entities. A domain layer of use cases arrives when two features share logic, not before (spec §3).
+- **Navigation 3** once an adaptive list-detail layout for tablets and foldables is a goal. For two screens, Navigation Compose's built-in deep links and predictive back were enough (spec [§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions)).
+- **Data owned per squad, shared through interfaces.** Squads share repository interfaces and model types through small `api` modules, never DAOs or entities. A domain layer of use cases arrives when two features share logic, not before (spec [§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions)).
 - **Background sync with WorkManager** once data must be fresh before a screen opens, for example for notifications.
 
 ### How I'd approach testing
@@ -78,8 +78,8 @@ The brief asks five questions. Each answer starts from what's in this repository
 | Data generator | Determinism, edge cases, rates, no real restaurant names, and the golden files | 76 |
 
 - **Tests that can fail.** Each verification broke the code on purpose. [Milestone 3's report](docs/qa/2026-11-19-m3-data-layer.md) lists 17 mutations: 14 failed a test, and the three that didn't led to new or stronger tests.
-- **ViewModels and Compose UI.** ViewModel tests use Turbine and fakes for each screen's states, the search debounce, retry, refresh on reconnect and state restored after process death. Compose UI tests on Robolectric cover every screen state, the card's single TalkBack item and its action, and the deep link (spec §7.1).
-- **What JVM tests can't show** is walked on the R8 release APK: airplane mode, process death, rotation, 200% font, TalkBack, the dark theme, landscape, both navigation modes and the deep link (spec §7.3). The reports are in [`docs/qa/`](docs/qa/).
+- **ViewModels and Compose UI.** ViewModel tests use Turbine and fakes for each screen's states, the search debounce, retry, refresh on reconnect and state restored after process death. Compose UI tests on Robolectric cover every screen state, the card's single TalkBack item and its action, and the deep link (spec [§7.1](docs/specs/2026-11-18-restaurant-discovery-design.md#71-tests)).
+- **What JVM tests can't show** is walked on the R8 release APK: airplane mode, process death, rotation, 200% font, TalkBack, the dark theme, landscape, both navigation modes and the deep link (spec [§7.3](docs/specs/2026-11-18-restaurant-discovery-design.md#73-verification-gate)). The reports are in [`docs/qa/`](docs/qa/).
 
 **With many squads:**
 - **Screenshot tests** for the design system's components first, once several squads change shared UI, so visual regressions show up in review. I left them out because they cost time to set up and maintain for one developer.
@@ -92,20 +92,20 @@ The brief asks five questions. Each answer starts from what's in this repository
 
 **As built:**
 - **Paging 3 over Room.** Paging loads 30 rows at a time as the grid scrolls. The database does the search, the Open now filter and the status, so the UI never filters or maps the whole list in memory.
-- **Status in SQL.** The list's status, the filter and the count come from two query parameters, the current week minute and the current time, so paging and the count stay right at 10,000 rows (spec §5.6).
+- **Status in SQL.** The list's status, the filter and the count come from two query parameters, the current week minute and the current time, so paging and the count stay right at 10,000 rows (spec [§5.6](docs/specs/2026-11-18-restaurant-discovery-design.md#56-open-now-stays-correct-offline-task-3)).
 - **Search on a normalised column.** `name_search` holds the name lowercased, without accents and with whitespace collapsed. The query is normalised the same way, its wildcards are escaped, and it's matched with `LIKE`, so "cafe" finds "Café".
 - **Updates that don't move the list.** Each minute tick invalidates the current `PagingSource` rather than building a new pager, so Paging's refresh key keeps the scroll position when a status flips.
 - **A sync that doesn't block the UI.** The response is read into memory and parsed record by record on the IO dispatcher, never as a JSON tree, then swapped in with one Room transaction, off the main thread. The old list stays scrollable and searchable until the new one commits. Deleting and inserting the whole snapshot avoids `NOT IN` with 10,000 ids, which would exceed SQLite's 999-variable limit on Android 10 and lower.
 - **Cheap recomposition.** `:core:model`'s types are immutable, which a Konsist rule checks, and [`compose-stability.conf`](compose-stability.conf) declares them stable, so Compose can skip a card whose data hasn't changed. The grid keys each card by restaurant id.
-- **Images sized for where they're shown.** A resolver asks TheMealDB for `/medium` images on cards (about 33 KB) and `/large` on Details (about 58 KB), not the 105 KB original. Coil shares the app's `OkHttpClient` and keeps its own disk cache, so images already seen still show offline (spec §5.7).
-- **Debounced search.** The query reaches the database 250 ms after the last keystroke, and the text field itself never waits (spec §4.4).
+- **Images sized for where they're shown.** A resolver asks TheMealDB for `/medium` images on cards (about 33 KB) and `/large` on Details (about 58 KB), not the 105 KB original. Coil shares the app's `OkHttpClient` and keeps its own disk cache, so images already seen still show offline (spec [§5.7](docs/specs/2026-11-18-restaurant-discovery-design.md#57-connectivity-and-images)).
+- **Debounced search.** The query reaches the database 250 ms after the last keystroke, and the text field itself never waits (spec [§4.4](docs/specs/2026-11-18-restaurant-discovery-design.md#44-state-and-unidirectional-data-flow)).
 - **A stress dataset.** `-Pmrd.dataset=10k` points a debug build at 10,000 restaurants, about 6.1 MB (about 470 KB gzipped), to exercise all of this under load.
 
 **As it grows further:**
 - **Server-side paging and search** (`RemoteMediator`) once the list is national rather than one delivery area. One area's snapshot stays small.
 - **Full-text search** when `LIKE` on a normalised column gets slow. It's fast enough for thousands of rows.
 - **A `maxSize` for Paging,** so pages far from the viewport are dropped rather than kept for the whole session.
-- **`@Streaming`,** so a larger body is parsed as it arrives rather than read into memory first (spec §5.3).
+- **`@Streaming`,** so a larger body is parsed as it arrives rather than read into memory first (spec [§5.3](docs/specs/2026-11-18-restaurant-discovery-design.md#53-sync)).
 - **Baseline Profiles** for the list and Details, **Macrobenchmark** for scroll jank and startup in CI on real devices, and **JankStats** in production.
 
 ### How I'd use AI productively while keeping quality
@@ -128,7 +128,7 @@ The brief asks five questions. Each answer starts from what's in this repository
 
 ## The measurable improvement: Open now stays correct offline
 
-Of the brief's options, I chose "Enhance the offline baseline in a meaningful, demonstrable way" (spec §5.6).
+Of the brief's options, I chose "Enhance the offline baseline in a meaningful, demonstrable way" (spec [§5.6](docs/specs/2026-11-18-restaurant-discovery-design.md#56-open-now-stays-correct-offline-task-3)).
 
 ### The problem
 
@@ -180,26 +180,26 @@ Restaurants without hours show as Unknown, because the snapshot is no longer fre
 
 | Decision | Instead of | Why |
 |---|---|---|
-| `Cache-Control: max-age=0` on every request | `no-cache` | OkHttp revalidates its cached copy against GitHub's ETag, so unchanged data costs a 304 of a few hundred bytes. With `no-cache`, OkHttp skips its cache and downloads the whole file every time, 6 MB for the stress file. Milestone 3's spike caught this (§5.3). |
-| Storing the snapshot's ETag in `sync_state` | Trusting any 304 | A 304 proves OkHttp's cache is current, not the database: a refresh can fail after OkHttp has cached the body. So a 304 skips the write only when its ETag matches the stored snapshot's (§5.3, §5.5). |
-| `SyncError.Storage` | Letting database exceptions escape | A full disk during a swap used to escape `refresh()` and leave it refreshing for good. Now every failure is one typed error, and a refresh always ends (§5.4). |
-| A full snapshot, swapped in one transaction | `RemoteMediator` and server-side paging | The API returns one delivery area, which stays small. Server-side paging comes once the list is national (§5.3, §12). |
-| `LIKE` on a normalised name column | Full-text search | It's fast enough for thousands of rows, and handles case and accents. FTS is the next step (§5.5, §12). |
-| Compile SDK 37, target SDK 36 | Moving both, or holding back the androidx updates | Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37, which only changes the APIs the code compiles against. The target SDK opts the app into Android 17's behaviour changes, so it moves once the app has been tested against them (§8.1). |
-| A menu endpoint per restaurant | Menus inside the list | The list stays small. A menu loads when Details opens, with its own loading, not-available and error states, and is cached per restaurant for offline (§5.9). |
-| Navigation Compose with type-safe routes | Navigation 3 | Built-in deep links with Browse underneath, and predictive back, for two screens. Navigation 3 earns its place with an adaptive list-detail layout (§3, §4.5). |
-| kotlinx.serialization | Moshi | One compile-time, reflection-free serializer for the network data and the navigation routes, and easy on R8 (§3). |
-| A custom `mrd://` scheme | HTTPS App Links | App Links need a hosted `assetlinks.json` that matches the signing key, and reviewers' own debug builds wouldn't match it. In the Mr D app they'd be App Links on Mr D's domain (§4.5). |
-| Static JSON in this repository, over HTTPS | An in-app fake server, or bundled assets | Real network behaviour: airplane mode really fails, so offline and retry are shown honestly (§3, §5.1). |
-| No domain layer | A use case per action | Nothing is shared between features yet. Use cases arrive when two features share logic (§3). |
-| minSdk 26 | 24 with desugaring | `java.time` without core library desugaring (§3). |
+| `Cache-Control: max-age=0` on every request | `no-cache` | OkHttp revalidates its cached copy against GitHub's ETag, so unchanged data costs a 304 of a few hundred bytes. With `no-cache`, OkHttp skips its cache and downloads the whole file every time, 6 MB for the stress file. Milestone 3's spike caught this ([§5.3](docs/specs/2026-11-18-restaurant-discovery-design.md#53-sync)). |
+| Storing the snapshot's ETag in `sync_state` | Trusting any 304 | A 304 proves OkHttp's cache is current, not the database: a refresh can fail after OkHttp has cached the body. So a 304 skips the write only when its ETag matches the stored snapshot's ([§5.3](docs/specs/2026-11-18-restaurant-discovery-design.md#53-sync), [§5.5](docs/specs/2026-11-18-restaurant-discovery-design.md#55-room-schema)). |
+| `SyncError.Storage` | Letting database exceptions escape | A full disk during a swap used to escape `refresh()` and leave it refreshing for good. Now every failure is one typed error, and a refresh always ends ([§5.4](docs/specs/2026-11-18-restaurant-discovery-design.md#54-errors)). |
+| A full snapshot, swapped in one transaction | `RemoteMediator` and server-side paging | The API returns one delivery area, which stays small. Server-side paging comes once the list is national ([§5.3](docs/specs/2026-11-18-restaurant-discovery-design.md#53-sync), [§12](docs/specs/2026-11-18-restaurant-discovery-design.md#12-deliberately-not-done)). |
+| `LIKE` on a normalised name column | Full-text search | It's fast enough for thousands of rows, and handles case and accents. FTS is the next step ([§5.5](docs/specs/2026-11-18-restaurant-discovery-design.md#55-room-schema), [§12](docs/specs/2026-11-18-restaurant-discovery-design.md#12-deliberately-not-done)). |
+| Compile SDK 37, target SDK 36 | Moving both, or holding back the androidx updates | Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37, which only changes the APIs the code compiles against. The target SDK opts the app into Android 17's behaviour changes, so it moves once the app has been tested against them ([§8.1](docs/specs/2026-11-18-restaurant-discovery-design.md#81-toolchain)). |
+| A menu endpoint per restaurant | Menus inside the list | The list stays small. A menu loads when Details opens, with its own loading, not-available and error states, and is cached per restaurant for offline ([§5.9](docs/specs/2026-11-18-restaurant-discovery-design.md#59-menus)). |
+| Navigation Compose with type-safe routes | Navigation 3 | Built-in deep links with Browse underneath, and predictive back, for two screens. Navigation 3 earns its place with an adaptive list-detail layout ([§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions), [§4.5](docs/specs/2026-11-18-restaurant-discovery-design.md#45-navigation-and-deep-links)). |
+| kotlinx.serialization | Moshi | One compile-time, reflection-free serializer for the network data and the navigation routes, and easy on R8 ([§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions)). |
+| A custom `mrd://` scheme | HTTPS App Links | App Links need a hosted `assetlinks.json` that matches the signing key, and reviewers' own debug builds wouldn't match it. In the Mr D app they'd be App Links on Mr D's domain ([§4.5](docs/specs/2026-11-18-restaurant-discovery-design.md#45-navigation-and-deep-links)). |
+| Static JSON in this repository, over HTTPS | An in-app fake server, or bundled assets | Real network behaviour: airplane mode really fails, so offline and retry are shown honestly ([§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions), [§5.1](docs/specs/2026-11-18-restaurant-discovery-design.md#51-api-contract)). |
+| No domain layer | A use case per action | Nothing is shared between features yet. Use cases arrive when two features share logic ([§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions)). |
+| minSdk 26 | 24 with desugaring | `java.time` without core library desugaring ([§3](docs/specs/2026-11-18-restaurant-discovery-design.md#3-key-decisions)). |
 
-- **Play App Signing.** The release workflow signs with an upload key, kept outside the repository. On Google Play, Play App Signing keeps the app signing key, and Google signs what users install; the upload key only proves that an upload came from me, and Google can reset it if it's lost or leaked. The APK on GitHub Releases is signed with the upload key itself, because it's installed directly, not through Play (spec §8.3).
-- **Device coverage.** Real-device checks ran on my Galaxy S25 FE (Android 17, three-button navigation). The emulator covered gesture navigation, several font scales and landscape (spec §13).
+- **Play App Signing.** The release workflow signs with an upload key, kept outside the repository. On Google Play, Play App Signing keeps the app signing key, and Google signs what users install; the upload key only proves that an upload came from me, and Google can reset it if it's lost or leaked. The APK on GitHub Releases is signed with the upload key itself, because it's installed directly, not through Play (spec [§8.3](docs/specs/2026-11-18-restaurant-discovery-design.md#83-signing)).
+- **Device coverage.** Real-device checks ran on my Galaxy S25 FE (Android 17, three-button navigation). The emulator covered gesture navigation, several font scales and landscape (spec [§13](docs/specs/2026-11-18-restaurant-discovery-design.md#13-risks)).
 
 ## Deliberately not done
 
-From spec §12, updated with what I learned while building:
+From spec [§12](docs/specs/2026-11-18-restaurant-discovery-design.md#12-deliberately-not-done), updated with what I learned while building:
 
 | Not done | Why, and when it would be done |
 |---|---|
@@ -214,12 +214,12 @@ From spec §12, updated with what I learned while building:
 | HTTPS App Links | Verification needs an `assetlinks.json` that matches the signing key. |
 | Languages other than English | The strings are already resources, so a language is a translation task. |
 | Signed commits | They'd need an SSH signing key; not needed for a solo assessment. |
-| `@Streaming` responses | The 6 MB stress file fits in memory. Streaming also changes when OkHttp writes its cache, so it waits until payloads grow (§5.3). |
-| Target SDK 37 | After the app has been tested against Android 17's behaviour changes (§8.1). |
+| `@Streaming` responses | The 6 MB stress file fits in memory. Streaming also changes when OkHttp writes its cache, so it waits until payloads grow ([§5.3](docs/specs/2026-11-18-restaurant-discovery-design.md#53-sync)). |
+| Target SDK 37 | After the app has been tested against Android 17's behaviour changes ([§8.1](docs/specs/2026-11-18-restaurant-discovery-design.md#81-toolchain)). |
 | Discovery's fakes in a test module of their own | `FakeRestaurantRepository` and `FakeMenuRepository` live in `:core:testing`, a platform stand-in. With several squads they'd move to a discovery-owned test module, as in Now in Android's `:core:data-test`. |
 | Two weak tests in the data generator | Milestone 2b's review found that the menu edge-case tests check only the spot each one breaks, and that a "generate twice" test compares two runs in one process. The golden test still pins every byte of the data, so I left them as known gaps ([corrections log](docs/ai/corrections.md)). |
 
-Menus were on this list until I added them on 2026-11-19 (spec §5.9).
+Menus were on this list until I added them on 2026-11-19 (spec [§5.9](docs/specs/2026-11-18-restaurant-discovery-design.md#59-menus)).
 
 ## Security and the supply chain
 
