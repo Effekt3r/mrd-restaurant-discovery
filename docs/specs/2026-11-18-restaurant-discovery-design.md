@@ -270,8 +270,8 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 ### 5.7 Connectivity and images
 
 - **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes.
-- **Images.** Coil 3 uses the shared `OkHttpClient` and Coil's own disk cache, so images the user has already seen still show offline.
-- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown. TheMealDB serves `/medium` (about 33 KB) for cards and `/large` (about 58 KB) for the details header, against about 105 KB at full size. The resolver stands in for an image CDN's resize parameters.
+- **Images.** Coil 3 uses the shared `OkHttpClient`'s connections and Coil's own disk cache, so images the user has already seen still show offline. It doesn't use the client's HTTP cache (`newBuilder().cache(null)`): photos there would evict the restaurant list's entry, whose ETag makes an unchanged refresh a 304.
+- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown. TheMealDB serves `/medium` (about 33 KB, 350 px wide) for cards, `/large` (about 58 KB, 500 px) for the details header and `/small` (150 px) for menu thumbnails, against about 105 KB (700 px) at full size. The resolver stands in for an image CDN's resize parameters.
 
 ### 5.8 Favourites
 
@@ -324,7 +324,7 @@ Added on 2026-11-19, when I chose to include the brief's optional menu data.
 ### 6.2 Browse
 
 **Layout:**
-- **Pinned header:**
+- **Header**, which slides away as the list scrolls up and comes back as soon as it scrolls down. Pinned whole, at 200% font in landscape it left the list about 40% of the screen, and none with the keyboard open. A surface strip stays behind the status bar.
   - a "Restaurants" title;
   - a grey search field ("Search restaurants", with a clear button and the keyboard's search action);
   - the Open now chip, filled with ink when on and outlined when off;

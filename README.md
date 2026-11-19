@@ -2,7 +2,7 @@
 
 A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. You can browse nearby restaurants, search by name, filter to what's open now and open a restaurant's details, and it works offline. It's written in Kotlin and Jetpack Compose, with multiple modules, and built to slot into a large app maintained by several squads.
 
-> **Status:** milestones 1 (foundation) and 2 (mock API) are done. The app shell navigates between placeholder screens, the [mock API](#mock-api) serves generated restaurant data from this repository, and CI gates every pull request into `dev` and `master`. The plan and progress are in [`docs/plans/`](docs/plans/).
+> **Status:** milestones 1 to 6 are done. Browse lists the [mock API](#mock-api)'s restaurants from an offline-first cache, with search, Open now and every loading, empty and error state; Details shows a restaurant's hours and menu and opens from a [deep link](#deep-link). CI gates every pull request into `dev` and `master`. Milestone 7 brings the signed release and the remaining documentation. The plan and progress are in [`docs/plans/`](docs/plans/).
 
 ## Requirements
 
@@ -70,6 +70,16 @@ The app's restaurants come from static JSON in this repository, served over HTTP
 
 The data is fictional and deliberately messy, so the app's fallbacks get exercised. `./gradlew :tools:datagen:run` regenerates it, and a test fails if the committed files differ from what the generator writes. [`mock-api/README.md`](mock-api/README.md) has the endpoints, the edge cases and the image credits.
 
+## Deep link
+
+`mrd://restaurant/{id}` opens that restaurant's Details, with Browse underneath, whether the app is running or not:
+
+```sh
+adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd
+```
+
+An id the app doesn't know shows "Restaurant not found". Opened offline before the app has ever loaded its restaurants, Details says so and offers Retry.
+
 ## Project structure
 
 | Module | Role | Would be owned by |
@@ -80,7 +90,7 @@ The data is fictional and deliberately messy, so the app's fallbacks get exercis
 | `:core:data` | Restaurant API, Room database, repositories, sync | Discovery squad |
 | `:core:model` | Domain types (plain Kotlin) | Discovery squad |
 | `:core:ui` | Restaurant UI shared by both features | Discovery squad |
-| `:core:network` | Shared HTTP client, JSON and connectivity | Mobile Platform |
+| `:core:network` | Shared HTTP client, JSON, the image loader and connectivity | Mobile Platform |
 | `:core:common` | Dispatchers and clock (plain Kotlin) | Mobile Platform |
 | `:core:designsystem` | Mr D tokens and components | Design Platform |
 | `:core:testing` | Test utilities | Mobile Platform |
@@ -125,3 +135,14 @@ Features never depend on each other. The build enforces it, and so do the archit
 | Material Symbols in Compose | https://developer.android.com/develop/ui/compose/graphics/images/material |
 | Adaptive icons | https://developer.android.com/develop/ui/views/launch/icon_design_adaptive |
 | Accessibility in Compose | https://developer.android.com/develop/ui/compose/accessibility |
+| Paging (paged data in Compose) | https://developer.android.com/topic/libraries/architecture/paging/v3-paged-data |
+| Lazy lists and grids | https://developer.android.com/develop/ui/compose/lists |
+| Text fields (`TextFieldState`) | https://developer.android.com/develop/ui/compose/text/user-input |
+| Pull to refresh | https://developer.android.com/develop/ui/compose/components/pull-to-refresh |
+| Nested scrolling (the header that slides away) | https://developer.android.com/develop/ui/compose/touch-input/pointer-input/scroll |
+| Saved state in ViewModels | https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate |
+| Lifecycle-aware coroutines | https://developer.android.com/topic/libraries/architecture/coroutines |
+| Loading images (Coil) | https://developer.android.com/develop/ui/compose/graphics/images/loading |
+| Deep links | https://developer.android.com/guide/navigation/design/deep-link |
+| Testing Compose | https://developer.android.com/develop/ui/compose/testing |
+| Testing flows (Turbine) | https://developer.android.com/kotlin/flow/test |
