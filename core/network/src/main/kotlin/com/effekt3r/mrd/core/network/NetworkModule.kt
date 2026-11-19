@@ -62,6 +62,6 @@ internal interface NetworkModule {
          * go to Coil's disk cache only. In OkHttp's 10 MB cache, a few hundred photos would evict the restaurant
          * list's entry, whose ETag lets an unchanged refresh cost a 304 (spec §5.3).
          */
-        fun imageClient(client: OkHttpClient): OkHttpClient = client.newBuilder().cache(null).build()
+        private fun imageClient(client: OkHttpClient): OkHttpClient = client.newBuilder().cache(null).build()
     }
 }
