@@ -7,8 +7,11 @@
     <string name="designsystem_add_to_favourites">Add to favourites</string>
     <string name="designsystem_remove_from_favourites">Remove from favourites</string>
     <string name="designsystem_rating_new">New</string>
+    <!-- What TalkBack reads for a rating: "Rated 4.6", or, with no rating yet, the "New" tag explained. -->
+    <string name="designsystem_rated">Rated %1$s</string>
+    <string name="designsystem_rating_new_spoken">New, not rated yet</string>
     <string name="designsystem_sold_out">Sold out</string>
     <string name="designsystem_back">Back</string>
-    <!-- Between the parts of a card's details row: "★ 4.6 · R15 delivery · Open". -->
+    <!-- Between the parts of a card's details row: "★ 4.6 · R15 delivery · Open". A line never starts or ends with it. -->
     <string name="designsystem_separator">·</string>
 </resources>

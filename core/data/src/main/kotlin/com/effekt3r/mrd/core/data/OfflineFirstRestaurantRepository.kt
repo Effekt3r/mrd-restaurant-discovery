@@ -19,6 +19,8 @@ import com.effekt3r.mrd.core.model.SyncStatus
 import com.effekt3r.mrd.core.model.WeekMinute
 import java.time.Clock
 import java.time.Instant
+import java.time.temporal.ChronoUnit
+import java.util.concurrent.atomic.AtomicReference
 import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -38,15 +40,26 @@ internal class OfflineFirstRestaurantRepository @Inject constructor(
     private val clock: Clock
 ) : RestaurantRepository {
 
-    override fun restaurants(query: String, openNow: Boolean): Flow<PagingData<RestaurantSummary>> = channelFlow {
+    override fun restaurants(
+        query: String,
+        openNow: Boolean,
+        ticks: Flow<Instant>
+    ): Flow<PagingData<RestaurantSummary>> = channelFlow {
         val pattern = likePattern(query)
+        // The minute the current PagingSource worked its statuses out for. The factory runs on Paging's coroutine and
+        // the ticks on another, so it's an atomic reference.
+        val loadedFor = AtomicReference<Instant>()
         val sources = InvalidatingPagingSourceFactory {
             val now = clock.instant()
+            loadedFor.set(now.truncatedTo(ChronoUnit.MINUTES))
             dao.restaurants(pattern, openNow, WeekMinute.at(now).value, now.toEpochMilli())
         }
-        // Each tick invalidates the PagingSource instead of building a new Pager, so Paging's refresh key keeps the
-        // scroll position when a status flips (spec §5.6). The first tick is now, which the first source already used.
-        launch { ticker.ticks().drop(1).collect { sources.invalidate() } }
+        // A tick in a later minute invalidates the PagingSource instead of building a new Pager, so Paging's refresh key
+        // keeps the scroll position when a status flips (spec §5.6). A tick in the minute the list was loaded for, such
+        // as the one a screen sends as it becomes visible, changes nothing.
+        launch {
+            ticks.collect { tick -> if (tick.truncatedTo(ChronoUnit.MINUTES) != loadedFor.get()) sources.invalidate() }
+        }
         Pager(PagingConfig(pageSize = PAGE_SIZE), pagingSourceFactory = sources).flow
             .collect { send(it.map(RestaurantRow::toModel)) }
     }

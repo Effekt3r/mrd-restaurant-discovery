@@ -4,25 +4,42 @@
     <string name="browse_search_placeholder">Search restaurants</string>
     <string name="browse_open_now">Open now</string>
 
-    <!-- The sample cards' words, until milestone 5's formatters replace them. -->
-    <string name="browse_sample_separator">" · "</string>
-    <plurals name="browse_sample_eta">
-        <item quantity="one">%d min</item>
-        <item quantity="other">%d mins</item>
+    <!-- The result count under the search field, which TalkBack announces when it changes (spec §6.2). -->
+    <plurals name="browse_count_all">
+        <item quantity="one">%d restaurant</item>
+        <item quantity="other">%d restaurants</item>
     </plurals>
-    <string name="browse_sample_delivery_fee">R%1$s delivery</string>
-    <string name="browse_sample_free_delivery">Free delivery</string>
-    <string name="browse_sample_open">Open</string>
-    <string name="browse_sample_closed">Closed · Opens %1$s</string>
+    <plurals name="browse_count_open_now">
+        <item quantity="one">%d open now</item>
+        <item quantity="other">%d open now</item>
+    </plurals>
 
-    <!-- What TalkBack reads for a sample card, as spec section 6.5 describes. -->
-    <string name="browse_sample_description">%1$s. %2$s. %3$s. %4$s. %5$s. %6$s.</string>
-    <string name="browse_sample_spoken_separator">", "</string>
-    <string name="browse_sample_rated">Rated %1$s</string>
-    <string name="browse_sample_not_rated">New</string>
-    <plurals name="browse_sample_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-    <string name="browse_sample_closed_spoken">Closed, opens %1$s</string>
+    <!-- What TalkBack says once for the skeleton cards. -->
+    <string name="browse_loading">Loading restaurants</string>
+    <string name="browse_retry">Retry</string>
+
+    <!-- The banner over cached restaurants. %1$s is when they were fetched: "10:42", or "Mon 10:42". -->
+    <string name="browse_banner_offline">You\'re offline · Showing restaurants from %1$s</string>
+    <string name="browse_banner_failed">Couldn\'t connect · Showing restaurants from %1$s</string>
+    <string name="browse_banner_storage">Couldn\'t save restaurants on this device. Free up some space and try again.</string>
+
+    <!-- The full-screen error when there are no restaurants yet. -->
+    <string name="browse_error_offline_title">You\'re offline</string>
+    <string name="browse_error_offline_message">Connect to the internet to see the restaurants that deliver to you.</string>
+    <string name="browse_error_failed_title">Couldn\'t connect</string>
+    <string name="browse_error_failed_message">Restaurants didn\'t load. Check your connection and try again.</string>
+    <string name="browse_error_storage_title">Couldn\'t save restaurants</string>
+    <string name="browse_error_storage_message">Couldn\'t save restaurants on this device. Free up some space and try again.</string>
+
+    <!-- No matches (spec §6.2). %1$s is the search text. -->
+    <string name="browse_no_matches_title">No restaurants match ‘%1$s’</string>
+    <string name="browse_no_matches_message">Check the spelling, or search for another name.</string>
+    <string name="browse_no_matches_open_now_message">Search for another name, or turn off Open now to include restaurants that are closed.</string>
+    <string name="browse_none_open_title">No restaurants are open right now</string>
+    <string name="browse_none_open_message">Turn off Open now to see every restaurant, and when it opens.</string>
+    <string name="browse_clear_search">Clear search</string>
+    <string name="browse_turn_off_open_now">Turn off Open now</string>
+
+    <string name="browse_empty_title">No restaurants deliver here yet</string>
+    <string name="browse_empty_message">New restaurants join all the time, so check back soon.</string>
 </resources>

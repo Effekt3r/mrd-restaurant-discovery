@@ -98,8 +98,23 @@ internal val openStatusCases: List<OpenStatusCase> = run {
             snapshotAge = Duration.ofHours(6)
         ),
         OpenStatusCase("no hours and no is_open", noHours, at(MONDAY, 12), OpenStatus.Unknown, openSnapshot = null),
+        // The time passed in is the latest minute tick, so a sync that lands between two ticks is newer than it.
         OpenStatusCase(
-            "no hours, snapshot from the future (the clock was set back)",
+            "no hours, synced seconds after the minute tick",
+            noHours,
+            at(MONDAY, 12),
+            OpenStatus.Open(closesAt = null),
+            snapshotAge = Duration.ofSeconds(-6)
+        ),
+        OpenStatusCase(
+            "no hours, synced 59 seconds after the minute tick",
+            noHours,
+            at(MONDAY, 12),
+            OpenStatus.Open(closesAt = null),
+            snapshotAge = Duration.ofSeconds(-59)
+        ),
+        OpenStatusCase(
+            "no hours, snapshot a minute ahead of the tick (the clock was set back)",
             noHours,
             at(MONDAY, 12),
             OpenStatus.Unknown,

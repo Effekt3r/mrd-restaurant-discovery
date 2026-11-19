@@ -30,11 +30,15 @@ Or open the folder in Android Studio and run the `app` configuration.
 
 **Or install the release.** Each [release](https://github.com/Effekt3r/mrd-restaurant-discovery/releases) has an R8-minified APK signed with the upload key: download it and run `adb install mrd-restaurant-discovery-v1.0.0.apk`.
 
-**Try the deep link** on a device or emulator with the app installed. It opens Cape Town Grill's details, with Browse underneath:
+## Deep link
+
+`mrd://restaurant/{id}` opens that restaurant's Details, with Browse underneath, whether the app is running, closed, or killed by Android in the background:
 
 ```sh
-adb shell am start -a android.intent.action.VIEW -d "mrd://restaurant/r-1001"
+adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd
 ```
+
+An id the app doesn't know shows "Restaurant not found". Opened offline before the app has ever loaded its restaurants, Details says so and offers Retry.
 
 ## Testing
 
@@ -126,7 +130,7 @@ The upload keystore is kept outside the repository and is never committed. On Go
 | `:core:data` | Restaurant and menu API, Room database, repositories, sync | Discovery squad |
 | `:core:model` | Domain types and the open-status rules (plain Kotlin) | Discovery squad |
 | `:core:ui` | Restaurant UI shared by both features | Discovery squad |
-| `:core:network` | Shared HTTP client, JSON and connectivity | Mobile Platform |
+| `:core:network` | Shared HTTP client, JSON, the image loader and connectivity | Mobile Platform |
 | `:core:common` | Dispatchers, clock, minute ticker and the connectivity interface (plain Kotlin) | Mobile Platform |
 | `:core:designsystem` | Mr D tokens, Figtree, `MrdTheme` and components | Design Platform |
 | `:core:testing` | Test rules, fakes and a test clock | Mobile Platform |
@@ -156,7 +160,9 @@ Features never depend on each other. The build enforces it, and so do the archit
 | Version catalogs | https://developer.android.com/build/migrate-to-catalogs |
 | Jetpack Compose | https://developer.android.com/develop/ui/compose/documentation |
 | Lazy lists and grids | https://developer.android.com/develop/ui/compose/lists |
+| Text fields (`TextFieldState`) | https://developer.android.com/develop/ui/compose/text/user-input |
 | Pull to refresh | https://developer.android.com/develop/ui/compose/components/pull-to-refresh |
+| Nested scrolling (the header that slides away) | https://developer.android.com/develop/ui/compose/touch-input/pointer-input/scroll |
 | Stability in Compose | https://developer.android.com/develop/ui/compose/performance/stability |
 | Custom design systems (theming Material 3) | https://developer.android.com/develop/ui/compose/designsystems/custom |
 | Fonts and variable fonts | https://developer.android.com/develop/ui/compose/text/fonts |
@@ -168,16 +174,19 @@ Features never depend on each other. The build enforces it, and so do the archit
 | Saved state in a ViewModel | https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate |
 | StateFlow | https://developer.android.com/kotlin/flow/stateflow-and-sharedflow |
 | Kotlin coroutines | https://developer.android.com/kotlin/coroutines |
+| Lifecycle-aware coroutines | https://developer.android.com/topic/libraries/architecture/coroutines |
 | Navigation (type safety) | https://developer.android.com/guide/navigation/design/type-safety |
 | Deep links | https://developer.android.com/guide/navigation/design/deep-link |
 | Predictive back | https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture |
 | Hilt | https://developer.android.com/training/dependency-injection/hilt-android |
 | Room | https://developer.android.com/training/data-storage/room |
 | Paging | https://developer.android.com/topic/libraries/architecture/paging/v3-overview |
+| Paging (paged data in Compose) | https://developer.android.com/topic/libraries/architecture/paging/v3-paged-data |
 | Retrofit | https://lysine.dev/retrofit/ |
 | OkHttp | https://lysine.dev/okhttp/ |
 | kotlinx.serialization (JSON) | https://kotlinlang.org/docs/serialization.html |
-| Coil (images) | https://coil-kt.github.io/coil/ |
+| Loading images (Coil) | https://developer.android.com/develop/ui/compose/graphics/images/loading |
+| Coil | https://coil-kt.github.io/coil/ |
 | Reading network state | https://developer.android.com/develop/connectivity/network-ops/reading-network-state |
 | Network security config | https://developer.android.com/privacy-and-security/security-config |
 | R8 | https://developer.android.com/topic/performance/app-optimization/enable-app-optimization |
@@ -189,6 +198,7 @@ Features never depend on each other. The build enforces it, and so do the archit
 | Testing Room | https://developer.android.com/training/data-storage/room/testing-db |
 | Testing Paging | https://developer.android.com/topic/libraries/architecture/paging/test |
 | Testing coroutines | https://developer.android.com/kotlin/coroutines/test |
+| Testing flows (Turbine) | https://developer.android.com/kotlin/flow/test |
 | Turbine | https://github.com/cashapp/turbine |
 | Testing Compose | https://developer.android.com/develop/ui/compose/testing |
 | Konsist | https://docs.konsist.lemonappdev.com/ |

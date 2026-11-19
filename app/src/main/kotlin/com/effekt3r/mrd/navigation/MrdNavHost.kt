@@ -2,9 +2,10 @@ package com.effekt3r.mrd.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.effekt3r.mrd.feature.browse.navigation.BrowseRoute
 import com.effekt3r.mrd.feature.browse.navigation.browseScreen
 import com.effekt3r.mrd.feature.details.navigation.navigateToRestaurant
@@ -15,9 +16,14 @@ import com.effekt3r.mrd.feature.details.navigation.restaurantScreen
  * Browse is connected to Details.
  */
 @Composable
-fun MrdNavHost(modifier: Modifier = Modifier, navController: NavHostController = rememberNavController()) {
+fun MrdNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController = navController, startDestination = BrowseRoute, modifier = modifier) {
-        browseScreen(onRestaurantClick = navController::navigateToRestaurant)
-        restaurantScreen(onBack = navController::navigateUp)
+        mrdDestinations(navController)
     }
+}
+
+/** Browse, the start destination, and Details, with its deep link. */
+internal fun NavGraphBuilder.mrdDestinations(navController: NavController) {
+    browseScreen(onRestaurantClick = navController::navigateToRestaurant)
+    restaurantScreen(onBack = navController::navigateUp)
 }

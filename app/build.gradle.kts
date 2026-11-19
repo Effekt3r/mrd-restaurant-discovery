@@ -59,16 +59,22 @@ if (releaseKeystore == null) {
 }
 
 dependencies {
-    // The data layer arrives before the screens that use it (milestones 5 and 6). Depending on it now puts its Hilt
-    // modules in the app's graph and its code under :app:lintDebug, which only lints the app's dependencies.
+    // The features bring the data layer too; depending on it here keeps its Hilt modules in the app's graph and its
+    // code under :app:lintDebug, which lints the app's dependencies, whichever feature uses it.
     implementation(projects.core.data)
     implementation(projects.core.designsystem)
+    // MrdApplication hands Coil the image loader that :core:network provides.
+    implementation(projects.core.network)
     implementation(projects.feature.browse)
     implementation(projects.feature.details)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil)
+    testImplementation(libs.androidx.navigation.testing)
+    testImplementation(libs.androidx.test.core)
     testImplementation(libs.konsist)
+    testImplementation(libs.robolectric)
 }
 
 // ArchitectureTest (Konsist) reads module sources straight from disk, which Gradle can't see. Every Kotlin source in
