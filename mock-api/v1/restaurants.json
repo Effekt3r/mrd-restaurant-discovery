@@ -1,0 +1,4210 @@
+{
+  "restaurants": [
+    {
+      "id": "r-1001",
+      "name": "Cape Town Grill",
+      "cuisines": ["Steakhouse", "Grill"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1002",
+      "name": "Lion's Head Izakaya",
+      "cuisines": ["Sushi", "Seafood"],
+      "rating": 3.8,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 31,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/c6ghxm1763335584.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1003",
+      "name": "Sea Point Pâtisserie",
+      "cuisines": ["Crêpes", "Desserts"],
+      "rating": 4.5,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 30,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "14:00" }
+      ]
+    },
+    {
+      "id": "r-1004",
+      "name": "Llandudno Masala",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 4.3,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1005",
+      "name": "Constantia Sushi Co.",
+      "cuisines": ["Sushi", "Japanese"],
+      "rating": 4.7,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 45,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1006",
+      "name": "Rondebosch Fish Shack",
+      "cuisines": ["Seafood"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 45,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/nmtq3n1782772031.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1007",
+      "name": "Noordhoek Patty Shack",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 4.0,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1008",
+      "name": "Tamboerskloof Pad Thai Bar",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sstssx1487349585.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1009",
+      "name": "Gardens Fish & Chips",
+      "cuisines": ["Seafood"],
+      "rating": 3.2,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/fpl3mv1766433431.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1010",
+      "name": "Kirstenbosch Coffee Bar",
+      "cuisines": ["Café", "Breakfast"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 16,
+      "is_open": false,
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "16:00" }
+      ]
+    },
+    {
+      "name": "De Waterkant Pizza Kitchen",
+      "cuisines": ["Pizza"],
+      "rating": 4.2,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1012",
+      "name": "Bo-Kaap Steakhouse",
+      "cuisines": ["Grill"],
+      "rating": 4.3,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1013",
+      "name": "Fish Hoek Bakery",
+      "cuisines": ["Bakery", "Café"],
+      "rating": 4.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 16,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/rpvptu1511641092.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1014",
+      "name": "Salt River Thai",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/6g3rso1763486069.jpg"
+    },
+    {
+      "id": "r-1015",
+      "name": "Woodstock Taverna",
+      "cuisines": ["Greek"],
+      "rating": 4.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1016",
+      "name": "Oranjezicht Mezze",
+      "cuisines": ["Greek", "Mediterranean"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1017",
+      "name": "Observatory Chicken Shack",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.4,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1018",
+      "name": "Dassie Smash Burgers",
+      "cuisines": ["Burgers", "American"],
+      "rating": 3.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1550440197.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1019",
+      "name": "Bakoven Sushi Co.",
+      "cuisines": ["Japanese"],
+      "rating": 4.5,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1020",
+      "name": "False Bay Roti Bar",
+      "cuisines": ["South African", "Grill"],
+      "rating": 4.9,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sxysrt1468240488.jpg"
+    },
+    {
+      "id": "r-1021",
+      "name": "   ",
+      "cuisines": ["Pizza"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1022",
+      "name": "Wynberg Trattoria",
+      "cuisines": ["Italian"],
+      "rating": 3.9,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1023",
+      "name": "Tafelberg Wok",
+      "cuisines": ["Chinese"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 44,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1024",
+      "name": "Sea Point Café",
+      "cuisines": ["Café", "Bakery", "Breakfast"],
+      "rating": 4.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 26,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/u9ezi21764375474.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1025",
+      "name": "Kloof Street Pizzeria",
+      "cuisines": ["Pizza"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1026",
+      "name": "Signal Hill Burger Co.",
+      "cuisines": ["Burgers", "American"],
+      "rating": 3.8,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1027",
+      "name": "Simon's Town Taqueria",
+      "cuisines": ["Mexican", "Burritos", "Tacos"],
+      "rating": 4.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1028",
+      "name": "Cape Point Peri-Peri",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": 4.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 15,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/cj56fs1762340001.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1029",
+      "name": "De Waterkant Café",
+      "cuisines": ["Breakfast", "Coffee"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 25,
+      "is_open": false,
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "16:00" }
+      ]
+    },
+    {
+      "id": "r-1030",
+      "name": "Fynbos Pizza Bar",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 37,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1030",
+      "name": "Wynberg Grill",
+      "cuisines": ["Grill", "South African"],
+      "rating": 3.9,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 47,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/uttrxw1511637813.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1032",
+      "name": "Clifton Steakhouse",
+      "cuisines": ["Grill", "South African"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 48,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1033",
+      "name": "Constantia Pad Thai Bar",
+      "cuisines": ["Thai", "Noodles"],
+      "rating": 4.7,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/568t931763584227.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1034",
+      "name": "Long Street Burger Bar",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 4.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1035",
+      "name": "Hout Bay Wok",
+      "cuisines": ["Chinese", "Asian"],
+      "rating": 4.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1036",
+      "name": "Fish Hoek Osteria",
+      "cuisines": ["Italian"],
+      "rating": 3.4,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rvxxuy1468312893.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1037",
+      "name": "Scarborough Chicken Co.",
+      "cuisines": ["Chicken"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 23,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/6s3i3p1763488540.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1038",
+      "name": "Lion's Head Kitchen",
+      "cuisines": ["Breakfast", "Coffee"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/30s7vf1763741844.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1039",
+      "name": "Woodstock Tacos",
+      "cuisines": ["Mexican", "Tacos"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 20,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1040",
+      "name": "Kalk Bay Sushi Co.",
+      "cuisines": ["Sushi", "Seafood"],
+      "rating": 3.5,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 39,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wkhwqr1782774765.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1041",
+      "name": "Fish Hoek Thai Garden",
+      "cuisines": ["Thai"],
+      "rating": 5.4,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qqlwv91763501559.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1042",
+      "name": "Simon's Town Oyster Bar",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "rating": 3.7,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/7ttta31593350374.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1043",
+      "name": "Long Street Curry Co.",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 4.6,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1044",
+      "name": "Tamboerskloof Steakhouse",
+      "cuisines": ["Grill", "South African"],
+      "rating": 4.2,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 37,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8x09hy1560460923.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1045",
+      "name": "Bree Street Pizza Co.",
+      "cuisines": ["Pizza"],
+      "rating": 3.4,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 22,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1046",
+      "name": "Newlands Grill",
+      "cuisines": ["Steakhouse", "Grill"],
+      "delivery_fee_cents": 0,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1047",
+      "name": "Long Street Kebab Bar",
+      "cuisines": ["Middle Eastern", "Shawarma"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/3um6il1763794322.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1048",
+      "name": "Long Street Flame Chicken",
+      "cuisines": ["Chicken"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1049",
+      "name": "Newlands Pad Thai Bar",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 4.7,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1050",
+      "name": "Devil's Peak Smash Burgers",
+      "cuisines": ["Burgers", "American"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qxutws1486978099.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1051",
+      "name": "Scarborough Mezze",
+      "cuisines": ["Lebanese", "Middle Eastern", "Mediterranean"],
+      "rating": null,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1052",
+      "name": "Woodstock Patty Shack",
+      "cuisines": ["Burgers", "American"],
+      "rating": 4.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1053",
+      "name": "Fish Hoek Fish Shack",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "rating": 3.6,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1054",
+      "name": "Cape Point Fish & Chips",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "rating": 3.8,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/2i0plx1784837241.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1055",
+      "name": "Cape Point Noodle Bar",
+      "cuisines": ["Chinese"],
+      "rating": 4.9,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 43,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1525873040.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1056",
+      "name": "Kommetjie Burger Bar",
+      "cuisines": ["Burgers"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/h3ijwo1581013377.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1057",
+      "name": "Fynbos Wok",
+      "cuisines": ["Chinese"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/f3cxnc1765656994.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1058",
+      "name": "Southeaster Woodfire Pizza",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.5,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 23,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1059",
+      "name": "Gardens Steakhouse",
+      "cuisines": ["Grill", "South African"],
+      "rating": 4.2,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 39,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1060",
+      "name": "Protea Catch",
+      "cuisines": ["Seafood", "Sushi"],
+      "rating": 3.2,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 31,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1525873040.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1061",
+      "name": "Bakoven Rotisserie",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": "4.5",
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/o93jur1782769321.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1062",
+      "name": "Noordhoek Smash Burgers",
+      "cuisines": ["Burgers", "American"],
+      "rating": 4.2,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xqrwyr1511133646.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1063",
+      "name": "Kloof Street Curry Co.",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 51,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1064",
+      "name": "Green Point Chicken Co.",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.4,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 28,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+    },
+    {
+      "id": "r-1065",
+      "name": "Clifton Taqueria",
+      "cuisines": ["Mexican", "Tacos"],
+      "rating": 4.2,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1066",
+      "name": "Bree Street Flame Chicken",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": 3.6,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 18,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1067",
+      "name": "Scarborough Roastery",
+      "cuisines": ["Café"],
+      "rating": 3.9,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 26,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "14:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "14:00" }
+      ]
+    },
+    {
+      "id": "r-1068",
+      "name": "Fynbos Dim Sum",
+      "cuisines": ["Chinese"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529444113.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1069",
+      "name": "Dassie Shawarma",
+      "cuisines": ["Lebanese", "Middle Eastern", "Mediterranean"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/jyylmo1763790808.jpg"
+    },
+    {
+      "id": "r-1070",
+      "name": "Kommetjie Ramen Bar",
+      "cuisines": ["Japanese"],
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 43,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1071",
+      "name": "Bloubergstrand Breakfast Club",
+      "cuisines": ["Café"],
+      "rating": 3.8,
+      "delivery_fee_cents": -500,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1072",
+      "name": "Salt River Wok",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.2,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1525876468.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1073",
+      "name": "Woodstock Flame Chicken",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.8,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 20,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1074",
+      "name": "Bo-Kaap Braai",
+      "cuisines": ["Steakhouse"],
+      "rating": 4.0,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1075",
+      "name": "Kirstenbosch Dim Sum",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 45,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529442316.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1076",
+      "name": "Kirstenbosch Wok",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.5,
+      "eta_minutes": 44,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529444830.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1077",
+      "name": "Camps Bay Mezze",
+      "cuisines": ["Lebanese", "Middle Eastern", "Mediterranean"],
+      "rating": 3.7,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1078",
+      "name": "Rondebosch Pastificio",
+      "cuisines": ["Italian"],
+      "rating": 4.7,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1079",
+      "name": "Tafelberg Flame Chicken",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 17,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1080",
+      "name": "Tafelberg Burger Joint",
+      "cuisines": ["Burgers"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 24,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1081",
+      "name": "Long Street Steakhouse",
+      "cuisines": ["Steakhouse", "Grill"],
+      "rating": 4.9,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 0,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1082",
+      "name": "Kloof Street Breakfast Club",
+      "cuisines": ["Café", "Breakfast"],
+      "rating": 3.4,
+      "eta_minutes": 23,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "14:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "14:00" }
+      ]
+    },
+    {
+      "id": "r-1083",
+      "name": "Dassie Roti Bar",
+      "cuisines": ["Cape Malay", "Curry"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 47,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg"
+    },
+    {
+      "id": "r-1084",
+      "name": "Salt River Smash Burgers",
+      "cuisines": ["Burgers"],
+      "rating": 3.9,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1085",
+      "name": "Southeaster Rotisserie",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1086",
+      "name": "Bo-Kaap Pasta Bar",
+      "cuisines": ["Italian", "Pizza", "Pasta"],
+      "rating": 4.5,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg"
+    },
+    {
+      "id": "r-1087",
+      "name": "Bo-Kaap Thai",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1088",
+      "name": "Kalk Bay Thai",
+      "cuisines": ["Thai"],
+      "rating": 3.2,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1089",
+      "name": "Salt River Chicken Shack",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1090",
+      "name": "Two Oceans Wok",
+      "cuisines": ["Chinese", "Asian"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 32,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/j9nray1765657692.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1091",
+      "name": "Kloof Street Sushi & Grill",
+      "cuisines": ["Sushi", "Seafood"],
+      "rating": 3.4,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 43,
+      "is_open": true,
+      "image_url": "http://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1092",
+      "name": "Rondebosch Crêperie",
+      "cuisines": ["Bakery"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 17,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/zy4fs51777540384.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1093",
+      "name": "Clifton Fish Shack",
+      "cuisines": ["Seafood"],
+      "rating": 4.7,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1094",
+      "name": "Newlands Tandoor",
+      "cuisines": ["Indian", "Curry"],
+      "rating": 4.1,
+      "delivery_fee_cents": 1500,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1095",
+      "name": "De Waterkant Salad Bar",
+      "cuisines": ["Vegan"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 25,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1096",
+      "name": "Oranjezicht Sushi Bar",
+      "cuisines": ["Sushi", "Seafood"],
+      "rating": 3.9,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1097",
+      "name": "Salt River Cantina",
+      "cuisines": ["Mexican"],
+      "rating": 3.5,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1098",
+      "name": "Salt River Chophouse",
+      "cuisines": ["Steakhouse"],
+      "rating": 4.1,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1099",
+      "name": "Camps Bay Sushi & Grill",
+      "cuisines": ["Sushi", "Japanese"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1100",
+      "name": "Signal Hill Kitchen",
+      "cuisines": ["Café", "Bakery", "Breakfast"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 15,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/5xdrkw1764444472.jpg"
+    },
+    {
+      "id": "r-1101",
+      "name": "Sea Point Pasta Bar",
+      "cuisines": ["Italian", "Pizza", "Pasta"],
+      "rating": 4.4,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg",
+      "opening_hours": []
+    },
+    {
+      "id": "r-1102",
+      "name": "Llandudno Osteria",
+      "cuisines": ["Italian"],
+      "rating": 4.0,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1103",
+      "name": "Sea Point Pizza Kitchen",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1104",
+      "name": "Protea Braai",
+      "cuisines": ["Grill", "South African"],
+      "rating": 4.7,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 41,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/vssrtx1511557680.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1105",
+      "name": "Camps Bay Pizza Bar",
+      "cuisines": ["Pizza"],
+      "rating": 4.1,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1106",
+      "name": "Green Point Peri-Peri",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": 4.9,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/li30ck1763281992.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1107",
+      "name": "Observatory Ramen Bar",
+      "cuisines": ["Japanese"],
+      "rating": 3.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1108",
+      "name": "Kommetjie Bredie Pot",
+      "cuisines": ["Cape Malay", "Curry"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 46,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/gl92ih1789802951.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1109",
+      "name": "Muizenberg Noodle Bar",
+      "cuisines": ["Chinese"],
+      "rating": 4.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 36,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ip5xtp1769779958.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1110",
+      "name": "Scarborough Café",
+      "cuisines": ["Breakfast", "Coffee"],
+      "rating": 4.2,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 27,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1111",
+      "name": "Simon's Town Shawarma",
+      "cuisines": ["Greek"],
+      "rating": 3.7,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "15:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1112",
+      "name": "Two Oceans Rotisserie",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1113",
+      "name": "Chapman's Peak Eatery",
+      "cuisines": ["South African"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1114",
+      "name": "Muizenberg Curry Co.",
+      "cuisines": ["Curry"],
+      "rating": 4.7,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 52,
+      "is_open": true,
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1115",
+      "name": "Kirstenbosch Pizzeria",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 21,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1116",
+      "name": "Kirstenbosch Bowls",
+      "cuisines": ["Vegetarian", "Healthy"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 20,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1117",
+      "name": "Signal Hill Chicken Shack",
+      "cuisines": ["Chicken"],
+      "rating": 3.4,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 16,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1118",
+      "name": "Rondebosch Burger Joint",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 3.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 20,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1119",
+      "name": "Bakoven Juicery",
+      "cuisines": ["Vegetarian", "Healthy"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/yoj48r1763817100.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1120",
+      "name": "False Bay Peri-Peri",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1121",
+      "name": "Llandudno Fish & Chips",
+      "cuisines": ["Seafood"],
+      "rating": 4.1,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/prrirc1763781360.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "FUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1122",
+      "name": "Gardens Flame Chicken",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 16,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1123",
+      "name": "Kalk Bay Izakaya",
+      "cuisines": ["Sushi", "Japanese"],
+      "rating": 4.2,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1124",
+      "name": "Woodstock Pastificio",
+      "cuisines": ["Italian", "Pizza", "Pasta"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 34,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1125",
+      "name": "Cape Point Flame Chicken",
+      "cuisines": ["Chicken"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 16,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kzxflc1763194887.jpg",
+      "opening_hours": []
+    },
+    {
+      "id": "r-1126",
+      "name": "Observatory Seafood",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "rating": 4.0,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/5rk8vc1779740302.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1127",
+      "name": "Southeaster Chicken Shack",
+      "cuisines": ["Chicken", "Peri-Peri"],
+      "rating": 3.6,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 19,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1128",
+      "name": "Lion's Head Braai",
+      "cuisines": ["Grill"],
+      "rating": 4.8,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1129",
+      "name": "Dassie Woodfire Pizza",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.6,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 31,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1130",
+      "name": "Observatory Café",
+      "cuisines": ["Breakfast", "Coffee"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 29,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "16:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "16:00" }
+      ]
+    },
+    {
+      "id": "r-1131",
+      "name": "Signal Hill Dumpling Bar",
+      "cuisines": ["Chinese"],
+      "rating": 4.8,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 43,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/i0610h1765659464.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "25:00" }
+      ]
+    },
+    {
+      "id": "r-1132",
+      "name": "False Bay Woodfire Pizza",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 21,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1133",
+      "name": "Wynberg Roastery",
+      "cuisines": ["Café", "Breakfast"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 30,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1134",
+      "name": "Newlands Wok & Noodle",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 30,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1135",
+      "name": "Llandudno Cantina",
+      "cuisines": ["Mexican"],
+      "delivery_fee_cents": 0,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1136",
+      "name": "Wynberg Catch",
+      "cuisines": ["Seafood", "Sushi"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 44,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1137",
+      "name": "Rondebosch Sushi & Grill",
+      "cuisines": ["Japanese"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1900,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1138",
+      "name": "Noordhoek Grill",
+      "cuisines": ["Steakhouse", "Grill"],
+      "rating": 3.2,
+      "delivery_fee_cents": 3500,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1139",
+      "name": "Mouille Point Patty Shack",
+      "cuisines": ["Burgers"],
+      "rating": 3.3,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 15,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1140",
+      "name": "Dassie Café",
+      "cuisines": ["Café"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 20,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/jvjnoh1780086318.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "06:30", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1141",
+      "name": "Muizenberg Pizzeria",
+      "cuisines": ["Pizza", " ", "Pizza", "", "Italian"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1142",
+      "name": "Lion's Head Pizza Kitchen",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1900,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1143",
+      "name": "Fish Hoek Taverna",
+      "cuisines": ["Middle Eastern"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1144",
+      "name": "Mouille Point Souvlaki",
+      "cuisines": ["Greek", "Mediterranean"],
+      "rating": 4.2,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1145",
+      "name": "Lion's Head Catch",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "rating": 4.4,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/9r2xrg1763771238.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1146",
+      "name": "De Waterkant Noodle Bar",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1147",
+      "name": "Clifton Juicery",
+      "cuisines": ["Vegetarian", "Healthy"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1148",
+      "name": "Tafelberg Trattoria",
+      "cuisines": ["Italian", "Pasta"],
+      "rating": 4.5,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hbte551782770868.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1149",
+      "name": "Kloof Street Pad Thai Bar",
+      "cuisines": ["Thai", "Noodles"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ol2xxt1763582263.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1150",
+      "name": "Tamboerskloof Dumpling Bar",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.7,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 37,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1525872624.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1151",
+      "name": "Oranjezicht Burger Bar",
+      "cuisines": ["Burgers", "American"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 32,
+      "image_url": "https://www.themealdb.com/images/media/meals/1544384070.jpg"
+    },
+    {
+      "id": "r-1152",
+      "name": "Constantia Curry Co.",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1153",
+      "name": "Protea Thai",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 3.4,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/9c5nlx1763424766.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1154",
+      "name": "Newlands Roti Bar",
+      "cuisines": ["Cape Malay"],
+      "rating": 4.2,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 46,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1155",
+      "name": "De Waterkant Greens",
+      "cuisines": ["Vegan"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1156",
+      "name": "Southeaster Masala",
+      "cuisines": ["Indian"],
+      "rating": 4.1,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 52,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1157",
+      "name": "Hout Bay Thai Garden",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 41,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/6g3rso1763486069.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1158",
+      "name": "Dassie Sushi Bar",
+      "cuisines": ["Sushi", "Japanese"],
+      "rating": 3.5,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 31,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wrustq1511475474.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1159",
+      "name": "Bakoven Burger Co.",
+      "cuisines": ["Burgers"],
+      "rating": 3.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 23,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xqrwyr1511133646.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1160",
+      "name": "Kloof Street Wok & Noodle",
+      "cuisines": ["Chinese", "Asian"],
+      "rating": 4.9,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 39,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529445434.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1161",
+      "name": "100% Plant Kitchen",
+      "cuisines": ["Vegan"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 24,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/p5m3w21779644533.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1162",
+      "name": "Fynbos Chophouse",
+      "cuisines": ["Steakhouse", "Grill"],
+      "rating": 3.6,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 52,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1163",
+      "name": "Bo-Kaap Biryani Bar",
+      "cuisines": ["Indian"],
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 55,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1164",
+      "name": "Woodstock Bredie Pot",
+      "cuisines": ["Cape Malay", "Curry"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1165",
+      "name": "Simon's Town Tacos",
+      "cuisines": ["Mexican"],
+      "rating": 4.8,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1166",
+      "name": "Observatory Roastery",
+      "cuisines": ["Breakfast", "Coffee"],
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 27,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1167",
+      "name": "Kommetjie Breakfast Club",
+      "cuisines": ["Café"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1500,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1168",
+      "name": "Simon's Town Wok",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.9,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 45,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529446137.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1169",
+      "name": "Chapman's Peak Grill",
+      "cuisines": ["Steakhouse"],
+      "rating": 3.3,
+      "delivery_fee_cents": 2900,
+      "eta_minutes": 49,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1170",
+      "name": "Lion's Head Café",
+      "cuisines": ["Breakfast", "Coffee"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 22,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1171",
+      "name": "Café Fynbos",
+      "cuisines": ["Café", "Breakfast"],
+      "rating": 3.5,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 28,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1172",
+      "name": "Llandudno Wok & Noodle",
+      "cuisines": ["Chinese"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529445893.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1173",
+      "name": "Tafelberg Peri-Peri",
+      "cuisines": ["Chicken"],
+      "rating": 4.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1174",
+      "name": "Rondebosch Peri-Peri",
+      "cuisines": ["Chicken"],
+      "rating": 3.4,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 16,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1525872624.jpg"
+    },
+    {
+      "id": "r-1175",
+      "name": "Sea Point Chicken Shack",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 4.7,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 21,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1176",
+      "name": "Newlands Patty Shack",
+      "cuisines": ["Burgers", "American"],
+      "rating": 3.9,
+      "delivery_fee_cents": 900,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1177",
+      "name": "Kloof Street Pizza Co.",
+      "cuisines": ["Pizza"],
+      "rating": 4.1,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1178",
+      "name": "False Bay Cantina",
+      "cuisines": ["Mexican", "Burritos", "Tacos"],
+      "rating": 3.9,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 23,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1179",
+      "name": "Two Oceans Kebab Bar",
+      "cuisines": ["Greek"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 22,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1180",
+      "name": "Mouille Point Tandoor",
+      "cuisines": ["Indian"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 46,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1181",
+      "name": "Muizenberg Sushi Bar",
+      "cuisines": ["Sushi", "Japanese"],
+      "delivery_fee_cents": 0,
+      "eta_minutes": 48,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg"
+    },
+    {
+      "id": "r-1182",
+      "name": "Scarborough Catch",
+      "cuisines": ["Seafood", "Fish & Chips"],
+      "delivery_fee_cents": 0,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/yxiilf1763759428.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1183",
+      "name": "Muizenberg Flame Chicken",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 4.1,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 21,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "id": "r-1184",
+      "name": "Muizenberg Ramen Bar",
+      "cuisines": ["Japanese"],
+      "rating": 4.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 27,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1185",
+      "name": "Two Oceans Burger Joint",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 4.5,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 24,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "02:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:30" }
+      ]
+    },
+    {
+      "id": "r-1186",
+      "name": "Fynbos Burger Bar",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 3.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 15,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1187",
+      "name": "Camps Bay Doughnuts",
+      "cuisines": ["Bakery", "Café"],
+      "rating": 4.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 24,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8cvkcz1766596315.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1188",
+      "name": "Long Street Ramen Bar",
+      "cuisines": ["Sushi", "Seafood"],
+      "rating": 4.8,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 39,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/118oj61763423896.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1189",
+      "name": "Tafelberg Oyster Bar",
+      "cuisines": ["Seafood"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 39,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1190",
+      "name": "Devil's Peak Pad Thai Bar",
+      "cuisines": ["Thai", "Noodles"],
+      "rating": 4.0,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 42,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1191",
+      "name": "Fish Hoek Burger Bar",
+      "cuisines": ["Burgers", "Grill"],
+      "rating": 3.3,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 22,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1192",
+      "name": "Kommetjie Tandoor",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 50,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1193",
+      "name": "Scarborough Tacos",
+      "cuisines": ["Mexican"],
+      "rating": 3.3,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 20,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1194",
+      "name": "Muizenberg Fish Shack",
+      "cuisines": ["Seafood"],
+      "rating": 4.3,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/tqd7s21763780609.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:45" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:45" }
+      ]
+    },
+    {
+      "id": "r-1195",
+      "name": "Gardens Tandoor",
+      "cuisines": ["Indian"],
+      "rating": 4.4,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 40,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1196",
+      "name": "Wynberg Curry Co.",
+      "cuisines": ["Indian"],
+      "rating": 3.6,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1197",
+      "name": "Signal Hill Burger Joint",
+      "cuisines": ["Burgers", "American"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 15,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1198",
+      "name": "Camps Bay Bowls",
+      "cuisines": ["Healthy", "Salads"],
+      "rating": 3.2,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 16,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/4uje7l1763762276.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "06:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "06:30", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1199",
+      "name": "Protea Woodfire Pizza",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 3.5,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1200",
+      "name": "Camps Bay Pizza Co.",
+      "cuisines": ["Pizza"],
+      "rating": 3.7,
+      "delivery_fee_cents": 900,
+      "eta_minutes": 23,
+      "is_open": true,
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1201",
+      "name": "Kirstenbosch Juicery",
+      "cuisines": ["Healthy", "Salads"],
+      "rating": 4.1,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 19,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/rvxxuy1468312893.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1202",
+      "name": "Chapman's Peak Curry Kitchen",
+      "cuisines": ["Indian"],
+      "rating": 4.7,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 49,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg",
+      "opening_hours": [
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1203",
+      "name": "Bo-Kaap Greens",
+      "cuisines": ["Vegetarian", "Healthy"],
+      "rating": 4.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 23,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:00", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1204",
+      "name": "Lion's Head Burrito Bar",
+      "cuisines": ["Mexican", "Burritos", "Tacos"],
+      "rating": 4.6,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 29,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1205",
+      "name": "Mouille Point Fish & Chips",
+      "cuisines": ["Seafood"],
+      "rating": 3.6,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "11:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "11:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1206",
+      "name": "Salt River Masala",
+      "cuisines": ["Indian", "Curry"],
+      "rating": 3.8,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 46,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1207",
+      "name": "Oranjezicht Rotisserie",
+      "cuisines": ["Chicken"],
+      "rating": 4.5,
+      "delivery_fee_cents": 1500,
+      "eta_minutes": 19,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/o93jur1782769321.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1208",
+      "name": "Chapman's Peak Grill Room",
+      "cuisines": ["Grill", "South African"],
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 52,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "17:30", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "17:30", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1209",
+      "name": "Fish Hoek Sushi & Grill",
+      "cuisines": ["Japanese"],
+      "rating": 4.3,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:00" }
+      ]
+    },
+    {
+      "id": "r-1210",
+      "name": "De Waterkant Thai Kitchen",
+      "cuisines": ["Thai"],
+      "rating": 4.5,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 26,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/7kb44y1763589084.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1211",
+      "name": "Bakoven Peri-Peri",
+      "cuisines": ["Peri-Peri", "Portuguese"],
+      "rating": 3.2,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 28,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "TUESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "WEDNESDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "THURSDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "FRIDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SATURDAY", "opens": "00:00", "closes": "24:00" },
+        { "day": "SUNDAY", "opens": "00:00", "closes": "24:00" }
+      ]
+    },
+    {
+      "id": "r-1212",
+      "name": "False Bay Pizza Kitchen",
+      "cuisines": ["Pizza"],
+      "rating": 3.4,
+      "delivery_fee_cents": 0,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1213",
+      "name": "Clifton Dim Sum",
+      "cuisines": ["Chinese"],
+      "rating": 3.4,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 38,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529443236.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:30", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:30", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1214",
+      "name": "Tafelberg Curry Kitchen",
+      "cuisines": ["Curry"],
+      "rating": 4.4,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 37,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1215",
+      "name": "Tafelberg Chophouse",
+      "cuisines": ["Grill"],
+      "rating": 3.7,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 33,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "22:30" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "22:30" }
+      ]
+    },
+    {
+      "id": "r-1216",
+      "name": "Devil's Peak Dim Sum",
+      "cuisines": ["Chinese", "Dim Sum", "Noodles"],
+      "rating": 4.1,
+      "delivery_fee_cents": 1900,
+      "eta_minutes": 37,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/1529442316.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "TUESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "WEDNESDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "THURSDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "FRIDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SATURDAY", "opens": "10:00", "closes": "21:00" },
+        { "day": "SUNDAY", "opens": "10:00", "closes": "21:00" }
+      ]
+    },
+    {
+      "id": "r-1217",
+      "name": "Rondebosch Salad Bar",
+      "cuisines": ["Healthy", "Salads"],
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 26,
+      "is_open": false,
+      "image_url": "https://www.themealdb.com/images/media/meals/7b862e1763194846.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "TUESDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "WEDNESDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "THURSDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "FRIDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "SATURDAY", "opens": "07:30", "closes": "15:00" },
+        { "day": "SUNDAY", "opens": "07:30", "closes": "15:00" }
+      ]
+    },
+    {
+      "id": "r-1218",
+      "name": "Bakoven Thai Kitchen",
+      "cuisines": ["Thai", "Asian"],
+      "rating": 4.9,
+      "delivery_fee_cents": 2500,
+      "eta_minutes": 25,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/snmtd61763426568.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "23:00" }
+      ]
+    },
+    {
+      "id": "r-1219",
+      "name": "Kommetjie Curry Kitchen",
+      "cuisines": ["Indian", "Curry", "Vegetarian"],
+      "rating": 3.4,
+      "delivery_fee_cents": 1200,
+      "eta_minutes": 35,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "MONDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "TUESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "TUESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "WEDNESDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "WEDNESDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "THURSDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "THURSDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "FRIDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "FRIDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SATURDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SATURDAY", "opens": "18:00", "closes": "21:30" },
+        { "day": "SUNDAY", "opens": "12:00", "closes": "14:30" },
+        { "day": "SUNDAY", "opens": "18:00", "closes": "21:30" }
+      ]
+    },
+    {
+      "id": "r-1220",
+      "name": "Fish Hoek Pizza Co.",
+      "cuisines": ["Pizza", "Italian"],
+      "rating": 4.0,
+      "delivery_fee_cents": 0,
+      "is_open": true,
+      "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg",
+      "opening_hours": [
+        { "day": "MONDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "TUESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "WEDNESDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "THURSDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "FRIDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SATURDAY", "opens": "11:30", "closes": "23:00" },
+        { "day": "SUNDAY", "opens": "11:30", "closes": "23:00" }
+      ]
+    }
+  ]
+}

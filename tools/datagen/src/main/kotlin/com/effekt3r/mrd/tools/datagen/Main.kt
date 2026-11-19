@@ -8,16 +8,27 @@ import java.net.http.HttpResponse
 import java.time.Duration
 
 /**
- * The generator's entry point, run from the repository root by Gradle. `--args=fetch-images` refreshes the image pool
- * from TheMealDB, the only command that needs the network.
+ * The generator's entry point, run from the repository root by Gradle. `./gradlew :tools:datagen:run` writes both
+ * datasets from the committed image pool, with no network. `--args=fetch-images` refreshes the pool from TheMealDB,
+ * the only command that needs the network.
  */
 fun main(args: Array<String>) {
     check(File("tools/datagen").isDirectory) {
         "Run the generator from the repository root, through Gradle: ./gradlew :tools:datagen:run"
     }
     when (args.singleOrNull()) {
+        "generate" -> generate()
         "fetch-images" -> fetchImages()
-        else -> error("Unknown command '${args.joinToString(" ")}'. The only command so far is fetch-images.")
+        else -> error("Unknown command '${args.joinToString(" ")}'. Use generate (the default) or fetch-images.")
+    }
+}
+
+private fun generate() {
+    val pool = ImagePool.load()
+    Dataset.entries.forEach { dataset ->
+        val text = dataset.render(pool)
+        File(dataset.path).apply { parentFile.mkdirs() }.writeText(text)
+        println("Wrote ${dataset.path}: ${dataset.size} restaurants, ${text.toByteArray().size} bytes")
     }
 }
 
