@@ -4,7 +4,7 @@ The restaurant data the app reads: static JSON, served over HTTPS by `raw.github
 
 ## Endpoints
 
-`dev` plays the part of staging and `master` of production (spec §5.1). From milestone 3, debug builds will read `dev` and release builds `master`, and `-Pmrd.dataset=10k` will switch a debug build to the stress file.
+`dev` plays the part of staging and `master` of production (spec §5.1). Debug builds read `dev` and release builds `master`, and `-Pmrd.dataset=10k` switches a debug build to the stress file.
 
 | Environment | Restaurants (220) | Stress test (10,000) |
 |---|---|---|

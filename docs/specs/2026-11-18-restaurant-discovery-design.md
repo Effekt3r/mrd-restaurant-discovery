@@ -98,7 +98,8 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
   - an `OkHttpClient`, carrying whatever auth, logging or certificate-pinning interceptors the host uses;
   - the `Json` configuration;
   - an `@IoDispatcher` `CoroutineDispatcher`;
-  - a `java.time.Clock`.
+  - a `java.time.Clock`;
+  - a `NetworkMonitor` (validated internet as a flow) and an `@ApplicationScope` `CoroutineScope`.
 
   In this repo, `:core:network` and `:core:common` provide them.
 - **The features expose:**
@@ -194,10 +195,8 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 
 ### 5.3 Sync
 
-- **A refresh** fetches the JSON, then maps and validates it on `Dispatchers.Default`. One Room transaction then:
-  - upserts the restaurants;
-  - replaces their opening intervals;
-  - deletes restaurants missing from the new snapshot;
+- **A refresh** streams the JSON and validates each record as it's read, on the IO dispatcher, so a 10,000-restaurant payload never sits in memory as a JSON tree. One Room transaction then:
+  - replaces the restaurants and their opening intervals. It deletes every restaurant and inserts the new snapshot, because `NOT IN` with 10,000 ids would exceed SQLite's 999-variable limit on Android 10 and lower;
   - records `sync_state.last_synced_at`.
 
   Favourites are never touched.
@@ -207,7 +206,7 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
   - when the connection returns after a failed refresh;
   - when Details is opened for an id that isn't cached and no sync has happened yet.
 - **One request at a time.** Refreshes that overlap join the one already running, so there is only one network call.
-- **HTTP caching.** OkHttp has a 10 MB disk cache, and each request sends `Cache-Control: no-cache`, so the response is always revalidated against GitHub's ETag. Unchanged data comes back as a 304 of a few hundred bytes. A 304 skips the database write and only updates `last_synced_at`, unless the database is empty.
+- **HTTP caching.** OkHttp has a 10 MB disk cache, and each request sends `Cache-Control: max-age=0`, so the response is always revalidated against GitHub's ETag. (`no-cache` would make OkHttp skip its cache and download the whole file every time.) Unchanged data comes back as a 304 of a few hundred bytes. A 304 skips the database write and only updates `last_synced_at`, unless the database is empty.
 - **Timeouts** are 10 seconds to connect and 20 seconds to read, since the stress file is about 6 MB (under 0.5 MB gzipped).
 - **Bad data never wipes the cache.** If the payload contained records but none survived validation, the refresh fails as `BadData` and the current snapshot stays.
 
@@ -226,10 +225,11 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 
 | Table | Columns | Notes |
 |---|---|---|
-| `restaurants` | `id` (primary key), `name`, `name_search`, `cuisines`, `rating`, `delivery_fee_cents`, `eta_minutes`, `is_open_snapshot`, `image_url`, `has_hours`, `position` | `name_search` is the name lowercased, with accents removed and whitespace collapsed, so "cafe" finds "Café". `cuisines` is stored as a JSON array through a type converter. `position` keeps the server's order, because ranking is a backend concern. |
+| `restaurants` | `id` (primary key), `name`, `name_search`, `cuisines`, `rating_tenths`, `delivery_fee_cents`, `eta_minutes`, `is_open_snapshot`, `image_url`, `has_hours`, `position` | `name_search` is the name lowercased, with accents removed and whitespace collapsed, so "cafe" finds "Café". `cuisines` is stored as a JSON array through a type converter. `position` keeps the server's order, because ranking is a backend concern. |
 | `opening_intervals` | `restaurant_id`, `start_minute`, `end_minute` | Primary key (`restaurant_id`, `start_minute`). A foreign key to `restaurants` with cascade delete. |
 | `favourites` | `restaurant_id` (primary key), `created_at` | No foreign key, so a favourite survives snapshot replacement and a restaurant that temporarily disappears. |
 | `sync_state` | `id` (always 0), `last_synced_at` | A single row. |
+| `menus` | `restaurant_id` (primary key), `menu_json`, `fetched_at` | The validated menu as JSON (§5.9). No foreign key: a restaurant's menu is replaced, or deleted on a 404. |
 
 **Search.** The query is normalised the same way as `name_search`. The wildcard characters `%`, `_` and `\` are escaped, and the query is matched with `LIKE '%' || :query || '%' ESCAPE '\'`.
 
@@ -248,7 +248,7 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - **Unknown** after that.
 - **Open now includes only Open.** The app never claims a restaurant is open when it can't back that up.
 - **Details shows the next change:** "Closes 22:00" (following intervals across midnight), "Opens 11:00", "Opens tomorrow 11:00" or "Opens Mon 11:00".
-- **Status is computed in SQL.** The list status and the filter come from a single `:weekMinute` parameter plus `:snapshotFresh`, so paging and the result count stay correct at 10,000 rows. Details uses the same rules as pure Kotlin functions.
+- **Status is computed in SQL.** The list status and the filter come from two parameters, `:weekMinute` and `:now`, so paging and the result count stay correct at 10,000 rows. The query reads the snapshot's freshness from `sync_state`, so Room re-runs it when a sync lands. Details uses the same rules as pure Kotlin functions.
 - **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting. On each tick, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
 
 **How it's measured:**
@@ -401,7 +401,7 @@ Following the rule that a passing build is not proof:
 - **Versions:** proven rather than newest. The toolchain is the combination Google's Now in Android builds with, libraries have been out for at least four weeks, and a spike build validated the set before the plan was written (README, version policy).
 - **SDK levels:** compile and target SDK 36; minSdk 26.
 - **Dependencies** are declared in a version catalogue (`gradle/libs.versions.toml`).
-- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.hilt` and `mrd.jvm.library`. `mrd.android.room` arrives with the data layer in milestone 3. The layering rule lives in `settings.gradle.kts` (§4.2).
+- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.android.room` (Room with KSP and the exported schema), `mrd.hilt` and `mrd.jvm.library`. The layering rule lives in `settings.gradle.kts` (§4.2).
 - **Formatting:** Spotless with ktlint.
 - **Compose stability:** a stability configuration file marks the `:core:model` types as stable.
 

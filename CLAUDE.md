@@ -14,11 +14,11 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 |---|---|
 | `:app` | Host shell: navigation graph, edge-to-edge, R8, signing. No feature logic. |
 | `:feature:browse`, `:feature:details` | Screens. They never depend on each other. |
-| `:core:data` | Restaurant API, Room, repositories (implementations are `internal`). |
-| `:core:model`, `:core:common` | Plain Kotlin: domain types, dispatchers and clock. |
+| `:core:data` | Restaurant and menu API, Room, sync, repositories (implementations are `internal`). |
+| `:core:model`, `:core:common` | Plain Kotlin: domain types and open-status rules; dispatchers, clock, minute ticker and the connectivity interface. |
 | `:core:ui` | Restaurant UI shared by both features. |
 | `:core:network`, `:core:designsystem`, `:core:testing` | Platform stand-ins: HTTP and JSON, tokens and components, test utilities. |
-| `build-logic/` | Convention plugins `mrd.android.application`, `.library`, `.compose`, `.feature`, `mrd.hilt` and `mrd.jvm.library`. |
+| `build-logic/` | Convention plugins `mrd.android.application`, `.library`, `.compose`, `.feature`, `.room`, `mrd.hilt` and `mrd.jvm.library`. |
 | `:tools:datagen` | Build-time tool that generates the mock API's data in `mock-api/v1/`. Never ships in the app. |
 
 ## Commands
