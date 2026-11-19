@@ -448,7 +448,7 @@ Following the rule that a passing build is not proof:
 ### 8.1 Toolchain
 
 - **Tools:** Android Studio 2026.2.2 or newer, and JDK 17 or newer (21 recommended), as the README lists.
-- **Versions:** proven rather than newest. The toolchain is the combination Google's Now in Android builds with, libraries have been out for at least four weeks, and a spike build validated the set before the plan was written (README, version policy).
+- **Versions:** proven rather than newest. The toolchain started as the combination Google's Now in Android builds with, libraries had been out for at least four weeks, and a spike build validated the set before the plan was written. Dependabot has updated it since, each update merged once CI passed (README, version policy).
 - **SDK levels:** compile SDK 37, target SDK 36, minSdk 26. Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37, which only changes the APIs the code compiles against. The target SDK sets the platform behaviour the app opts into, so it moves to 37 only once the app has been tested against Android 17's behaviour changes.
 - **Dependencies** are declared in a version catalogue (`gradle/libs.versions.toml`).
 - **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.android.room` (Room with KSP and the exported schema), `mrd.hilt` and `mrd.jvm.library`. The layering rule lives in `settings.gradle.kts` (§4.2).
@@ -484,7 +484,7 @@ Following the rule that a passing build is not proof:
 
   It uploads the APKs, test reports and `mapping.txt`.
 - **Hardening:**
-  - The workflow token is read-only (`permissions: contents: read`). The one job that can write submits the dependency graph and runs no build code.
+  - The workflow token is read-only (`permissions: contents: read`). Two jobs can write: dependency submission's submit job, which runs no build code, and `release.yml`'s job, which runs only for `v*` tags and needs `contents: write` to create the GitHub Release.
   - Every action is pinned to a commit SHA, and checkout uses `persist-credentials: false`.
   - Only GitHub-owned actions and `gradle/actions` may run, and the repository requires SHA pinning. That's stricter than allowing verified creators.
   - Gradle caching uses the open-source `basic` provider. Pushes to `dev` and `master` write the cache; pull requests only read it.
