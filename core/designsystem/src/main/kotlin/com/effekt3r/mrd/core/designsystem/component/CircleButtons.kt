@@ -28,9 +28,12 @@ import com.effekt3r.mrd.core.designsystem.preview.MrdPreviews
 import com.effekt3r.mrd.core.designsystem.theme.MrdSpacing
 import com.effekt3r.mrd.core.designsystem.theme.MrdTheme
 
-/** A heart in a white circle, for photos. A 48 dp toggle whose state TalkBack reads (spec section 6.5). */
+/**
+ * A heart in a white circle, for photos. A 48 dp toggle whose state TalkBack reads (spec section 6.5).
+ * [onFavouriteChange] receives the value it toggles to, as Material's toggles do.
+ */
 @Composable
-fun MrdFavouriteButton(isFavourite: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun MrdFavouriteButton(isFavourite: Boolean, onFavouriteChange: (Boolean) -> Unit, modifier: Modifier = Modifier) {
     val label = stringResource(R.string.designsystem_favourite)
     val state = stringResource(
         if (isFavourite) R.string.designsystem_favourite_on else R.string.designsystem_favourite_off
@@ -39,7 +42,7 @@ fun MrdFavouriteButton(isFavourite: Boolean, onClick: () -> Unit, modifier: Modi
         icon = if (isFavourite) MrdIcons.FavouriteFilled else MrdIcons.Favourite,
         modifier = modifier
             .clip(CircleShape)
-            .toggleable(value = isFavourite, role = Role.Checkbox, onValueChange = { onClick() })
+            .toggleable(value = isFavourite, role = Role.Checkbox, onValueChange = onFavouriteChange)
             .semantics {
                 contentDescription = label
                 stateDescription = state
@@ -87,8 +90,8 @@ private fun CircleButtonsPreview() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             MrdBackButton(onClick = {})
-            MrdFavouriteButton(isFavourite = false, onClick = {})
-            MrdFavouriteButton(isFavourite = true, onClick = {})
+            MrdFavouriteButton(isFavourite = false, onFavouriteChange = {})
+            MrdFavouriteButton(isFavourite = true, onFavouriteChange = {})
             Text("48 dp targets", Modifier.padding(MrdSpacing.Small))
         }
     }

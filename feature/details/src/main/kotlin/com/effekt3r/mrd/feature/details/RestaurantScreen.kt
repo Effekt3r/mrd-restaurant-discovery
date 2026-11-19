@@ -102,7 +102,7 @@ private fun SampleDetails(
                 )
                 MrdFavouriteButton(
                     isFavourite = isFavourite,
-                    onClick = onFavouriteClick,
+                    onFavouriteChange = { onFavouriteClick() },
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .windowInsetsPadding(

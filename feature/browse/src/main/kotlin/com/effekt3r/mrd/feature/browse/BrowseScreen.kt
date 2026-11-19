@@ -152,7 +152,7 @@ private fun SampleRestaurantCard(
         isFavourite = isFavourite,
         contentDescription = description,
         onClick = onClick,
-        onFavouriteClick = onFavouriteClick,
+        onFavouriteChange = { onFavouriteClick() },
         placeholderSeed = sample.cuisines.first()
     )
 }
