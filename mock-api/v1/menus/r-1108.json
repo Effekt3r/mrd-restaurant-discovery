@@ -1,0 +1,336 @@
+{
+  "restaurant_id": "r-1108",
+  "categories": [
+    {
+      "id": "c-1108-1",
+      "name": "Curries & Bredies",
+      "items": [
+        {
+          "id": "i-1108-101",
+          "name": "Cape Malay Chicken Curry",
+          "price_cents": 10000,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+          "options": [
+            { "id": "o-1108-101-1", "name": "Add rice", "price_cents": 1000 },
+            { "id": "o-1108-101-2", "name": "Make it hot", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1108-102",
+          "name": "Tomato Bredie",
+          "price_cents": 10000,
+          "available": true,
+          "options": [
+            { "id": "o-1108-102-1", "name": "Add sambals", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1108-103",
+          "name": "Butter Bean Curry",
+          "price_cents": 13500,
+          "available": true,
+          "description": "Vegetarian, with tomato"
+        },
+        {
+          "id": "i-1108-104",
+          "name": "Fish Curry",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Hake, tomato and curry leaves",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+          "options": [
+            { "id": "o-1108-104-1", "name": "Extra roti", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1108-105",
+          "name": "Waterblommetjie Bredie",
+          "price_cents": 13500,
+          "available": true,
+          "description": "Lamb with Cape water lilies",
+          "options": [
+            { "id": "o-1108-105-1", "name": "Make it hot", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1108-2",
+      "name": "Breyani",
+      "items": [
+        {
+          "id": "i-1108-201",
+          "name": "Chicken Breyani",
+          "price_cents": 12500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg",
+          "options": [
+            { "id": "o-1108-201-1", "name": "Extra lentils", "price_cents": 1000 },
+            { "id": "o-1108-201-2", "name": "Add sambals", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1108-202",
+          "name": "Lamb Breyani",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Slow-cooked, with lentils and potato",
+          "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg"
+        },
+        {
+          "id": "i-1108-203",
+          "name": "Mutton Breyani",
+          "price_cents": 14000,
+          "available": true,
+          "description": "The Sunday favourite",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        },
+        {
+          "id": "i-1108-204",
+          "name": "Prawn Breyani",
+          "price_cents": 10500,
+          "available": false,
+          "description": "With saffron and fried onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+          "options": [
+            { "id": "o-1108-204-1", "name": "Extra lentils", "price_cents": 1000 },
+            { "id": "o-1108-204-2", "name": "Add sambals", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1108-205",
+          "name": "Vegetable Breyani",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Seasonal vegetables and lentils",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg",
+          "options": [
+            { "id": "o-1108-205-1", "name": "Extra lentils", "price_cents": 2000 },
+            { "id": "o-1108-205-2", "name": "Make it hot", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1108-206",
+          "name": "Chicken Akhni",
+          "price_cents": 14500,
+          "available": true,
+          "description": "A lighter rice dish with chicken and potato"
+        }
+      ]
+    },
+    {
+      "id": "c-1108-3",
+      "name": "Gatsbys & Rotis",
+      "items": [
+        {
+          "id": "i-1108-301",
+          "name": "Masala Steak Gatsby",
+          "price_cents": 14000,
+          "available": true,
+          "description": "Steak, chips, lettuce and masala sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg"
+        },
+        {
+          "id": "i-1108-302",
+          "name": "Slap Chip Gatsby",
+          "price_cents": 10500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1550441275.jpg"
+        },
+        {
+          "id": "i-1108-303",
+          "name": "Chicken Gatsby",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Grilled chicken, chips and salad",
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg",
+          "options": [
+            { "id": "o-1108-303-1", "name": "Add chilli sauce", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1108-304",
+          "name": "Calamari Gatsby",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Fried calamari, chips and sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg"
+        },
+        {
+          "id": "i-1108-305",
+          "name": "Bunny Chow",
+          "price_cents": 9500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+          "options": [
+            { "id": "o-1108-305-1", "name": "Add chilli sauce", "price_cents": 2000 },
+            { "id": "o-1108-305-2", "name": "Add egg", "price_cents": 0 },
+            { "id": "o-1108-305-3", "name": "Extra chips", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1108-306",
+          "name": "Chicken Salomie",
+          "price_cents": 8500,
+          "available": true
+        },
+        {
+          "id": "i-1108-307",
+          "name": "Mutton Roti",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Curry in a flaky roti",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg"
+        },
+        {
+          "id": "i-1108-308",
+          "name": "Dhaltjies",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Chilli bites, six per portion",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1108-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1108-401",
+          "name": "Hand-Cut Chips",
+          "price_cents": 6000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg"
+        },
+        {
+          "id": "i-1108-402",
+          "name": "Sweet Potato Fries",
+          "price_cents": 3000,
+          "available": true,
+          "description": "With chipotle mayo"
+        },
+        {
+          "id": "i-1108-403",
+          "name": "Creamed Spinach",
+          "price_cents": 4000,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1108-404",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "options": [
+            { "id": "o-1108-404-1", "name": "Large", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1108-405",
+          "name": "Grilled Mielies",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+          "options": [
+            { "id": "o-1108-405-1", "name": "Garlic aioli", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1108-406",
+          "name": "Coleslaw",
+          "price_cents": 2500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1108-5",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1108-501",
+          "name": "Malva Pudding",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Warm apricot sponge with custard",
+          "options": [
+            { "id": "o-1108-501-1", "name": "Add vanilla ice cream", "price_cents": 3500 },
+            { "id": "o-1108-501-2", "name": "Add whipped cream", "price_cents": 500 },
+            { "id": "o-1108-501-3", "name": "Extra custard", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1108-502",
+          "name": "Milk Tart",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/1ugsho1763248007.jpg"
+        },
+        {
+          "id": "i-1108-503",
+          "name": "Koeksisters",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Plaited and syrup-soaked, two per portion",
+          "image_url": "https://www.themealdb.com/images/media/meals/h7zrys1779736460.jpg",
+          "options": [
+            { "id": "o-1108-503-1", "name": "Add whipped cream", "price_cents": 3000 },
+            { "id": "o-1108-503-2", "name": "Extra custard", "price_cents": 3500 },
+            { "id": "o-1108-503-3", "name": "Add vanilla ice cream", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1108-504",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg",
+          "options": [
+            { "id": "o-1108-504-1", "name": "Extra custard", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1108-505",
+          "name": "Chocolate Brownie",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/bjtjyl1779552068.jpg"
+        },
+        {
+          "id": "i-1108-506",
+          "name": "Baked Cheesecake",
+          "price_cents": 7500,
+          "available": true,
+          "description": "With berry compote",
+          "image_url": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg",
+          "options": [
+            { "id": "o-1108-506-1", "name": "Add whipped cream", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1108-507",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Torched meringue on a buttery base",
+          "image_url": "https://www.themealdb.com/images/media/meals/jp09191782856005.jpg"
+        },
+        {
+          "id": "i-1108-508",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 6000,
+          "available": false,
+          "description": "Three scoops with chocolate sauce"
+        }
+      ]
+    }
+  ]
+}

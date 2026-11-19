@@ -1,0 +1,283 @@
+{
+  "restaurant_id": "r-1071",
+  "categories": [
+    {
+      "id": "c-1071-1",
+      "name": "Breakfast",
+      "items": [
+        {
+          "id": "i-1071-101",
+          "name": "Full Breakfast",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Eggs, bacon, boerewors, mushrooms, tomato and toast"
+        },
+        {
+          "id": "i-1071-102",
+          "name": "Eggs Benedict",
+          "price_cents": 6500,
+          "available": true
+        },
+        {
+          "id": "i-1071-103",
+          "name": "Avo on Toast",
+          "price_cents": 12500,
+          "available": true,
+          "options": [
+            { "id": "o-1071-103-1", "name": "Gluten-free toast", "price_cents": 0 },
+            { "id": "o-1071-103-2", "name": "Add avo", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1071-104",
+          "name": "Shakshuka",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Eggs baked in a spiced tomato sauce",
+          "options": [
+            { "id": "o-1071-104-1", "name": "Swap to rye", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1071-105",
+          "name": "Flapjacks",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Three, with bacon and syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg"
+        },
+        {
+          "id": "i-1071-106",
+          "name": "Mince on Toast",
+          "price_cents": 10500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg",
+          "options": [
+            { "id": "o-1071-106-1", "name": "Gluten-free toast", "price_cents": 500 },
+            { "id": "o-1071-106-2", "name": "Swap to rye", "price_cents": 2500 },
+            { "id": "o-1071-106-3", "name": "Add avo", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1071-107",
+          "name": "French Toast",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Brioche, berries and mascarpone"
+        },
+        {
+          "id": "i-1071-108",
+          "name": "Granola Bowl",
+          "price_cents": 8000,
+          "available": true,
+          "description": "Yoghurt, berries and honey",
+          "image_url": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1071-2",
+      "name": "Light Meals",
+      "items": [
+        {
+          "id": "i-1071-201",
+          "name": "Chicken Mayo Toastie",
+          "price_cents": 13000,
+          "available": false,
+          "description": "On sourdough",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+          "options": [
+            { "id": "o-1071-201-1", "name": "Add chips", "price_cents": 2000 },
+            { "id": "o-1071-201-2", "name": "Add a side salad", "price_cents": 2000 },
+            { "id": "o-1071-201-3", "name": "Add avo", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1071-202",
+          "name": "Cheese & Tomato Toastie",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Melted cheddar and tomato",
+          "options": [
+            { "id": "o-1071-202-1", "name": "Add avo", "price_cents": 3500 },
+            { "id": "o-1071-202-2", "name": "Add chips", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1071-203",
+          "name": "Club Sandwich",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Chicken, bacon and egg in three layers"
+        },
+        {
+          "id": "i-1071-204",
+          "name": "Chicken Caesar Salad",
+          "price_cents": 9500,
+          "available": true
+        },
+        {
+          "id": "i-1071-205",
+          "name": "Bobotie Pie",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Spiced mince in puff pastry",
+          "image_url": "https://www.themealdb.com/images/media/meals/1543774956.jpg"
+        },
+        {
+          "id": "i-1071-206",
+          "name": "Soup of the Day",
+          "price_cents": 8000,
+          "available": true,
+          "description": "With freshly baked bread",
+          "image_url": "https://www.themealdb.com/images/media/meals/f3ee3y1763309332.jpg"
+        },
+        {
+          "id": "i-1071-207",
+          "name": "Halloumi Wrap",
+          "price_cents": 11500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg",
+          "options": [
+            { "id": "o-1071-207-1", "name": "Add chips", "price_cents": 2500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1071-3",
+      "name": "Bakery",
+      "items": [
+        {
+          "id": "i-1071-301",
+          "name": "Croissant",
+          "price_cents": 5000,
+          "available": true,
+          "description": "All butter",
+          "options": [
+            { "id": "o-1071-301-1", "name": "Add cream", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1071-302",
+          "name": "Pain au Chocolat",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Dark chocolate",
+          "image_url": "https://www.themealdb.com/images/media/meals/5xdrkw1764444472.jpg"
+        },
+        {
+          "id": "i-1071-303",
+          "name": "Carrot Cake",
+          "price_cents": 3500,
+          "available": false,
+          "description": "With cream cheese icing",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg",
+          "options": [
+            { "id": "o-1071-303-1", "name": "Add butter and jam", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1071-304",
+          "name": "Scones",
+          "price_cents": 6500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/txce0y1782494894.jpg",
+          "options": [
+            { "id": "o-1071-304-1", "name": "Add cream", "price_cents": 1500 },
+            { "id": "o-1071-304-2", "name": "Add butter and jam", "price_cents": 3500 },
+            { "id": "o-1071-304-3", "name": "Warmed", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1071-305",
+          "name": "Milk Tart Slice",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Cinnamon custard on crisp pastry"
+        },
+        {
+          "id": "i-1071-306",
+          "name": "Cinnamon Bun",
+          "price_cents": 5500,
+          "available": true,
+          "description": "With a cream cheese glaze",
+          "image_url": "https://www.themealdb.com/images/media/meals/u1gisz1784732667.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1071-4",
+      "name": "Coffee & Tea",
+      "items": [
+        {
+          "id": "i-1071-401",
+          "name": "Espresso",
+          "price_cents": 2500,
+          "available": false,
+          "description": "A double shot"
+        },
+        {
+          "id": "i-1071-402",
+          "name": "Americano",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1071-403",
+          "name": "Flat White",
+          "price_cents": 3000,
+          "available": true,
+          "description": "A double shot with steamed milk"
+        },
+        {
+          "id": "i-1071-404",
+          "name": "Café Latte",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Mild and milky",
+          "options": [
+            { "id": "o-1071-404-1", "name": "Extra shot", "price_cents": 2500 },
+            { "id": "o-1071-404-2", "name": "Oat milk", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1071-405",
+          "name": "Red Cappuccino",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1071-406",
+          "name": "Rooibos Tea",
+          "price_cents": 4000,
+          "available": true,
+          "description": "With honey and lemon",
+          "options": [
+            { "id": "o-1071-406-1", "name": "Extra shot", "price_cents": 1500 },
+            { "id": "o-1071-406-2", "name": "Oat milk", "price_cents": 1500 },
+            { "id": "o-1071-406-3", "name": "Large", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1071-407",
+          "name": "Chai Latte",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Spiced and sweetened"
+        },
+        {
+          "id": "i-1071-408",
+          "name": "Hot Chocolate",
+          "price_cents": 3500,
+          "available": true,
+          "options": [
+            { "id": "o-1071-408-1", "name": "Almond milk", "price_cents": 2500 },
+            { "id": "o-1071-408-2", "name": "Extra shot", "price_cents": 3500 },
+            { "id": "o-1071-408-3", "name": "Decaf", "price_cents": 2000 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,53 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The circle buttons' icons took their colour from whatever surrounded them
+
+- **What:** the design system's back and favourite buttons draw their own surface-coloured circle, but the icon inherited the surrounding content colour. Outside a full-screen `Surface` that colour is black, and the component's own dark preview showed black icons on an ink circle. The app looked right only because `MainActivity` wraps everything in a `Surface`.
+- **Caught by:** milestone 4's combined verifier and code review, from the preview and Material 3's sources.
+- **Fix:** the icon is tinted `onSurface`, the colour that belongs to the circle it sits on.
+- **Lesson:** a component that draws its own background must also set its own content colour.
+
+## 2026-11-19 · Stripping an icon attribute by line broke the back arrow
+
+- **What:** milestone 4's spike removed each Material Symbols icon's `android:tint` line, because the attribute needs AppCompat. In `arrow_back`, `android:autoMirrored` comes after the tint, so the `>` that closed the tag went with it, and the attribute became stray text.
+- **Caught by:** lint's `ExtraText` error, in the spike's gate. The spike's own check, parsing each file as XML, passed, because stray text is valid XML.
+- **Fix:** the download removes the attribute, not the line, and each icon is checked against a recorded SHA-256 hash.
+- **Lesson:** check a generated file with the tool that consumes it. "Well-formed" isn't "valid for Android".
+
+## 2026-11-19 · The restyled lists scrolled under the status-bar icons
+
+- **What:** the restyled placeholders draw edge to edge, so their content scrolled behind the transparent status bar: Browse's cards always, and Details' menu at 200% font, where the text ran into the clock. Over a dark photo, the dark icons would have disappeared.
+- **Caught by:** screenshots of the scrolled screens in milestone 4's spike; the first frames looked fine.
+- **Fix:** a strip in the surface colour sits behind the status bar: always on Browse, and on Details once its header, which belongs under the status bar, has scrolled away.
+- **Lesson:** walk a screen in motion and at 200% font, not just its first frame.
+
+## 2026-11-19 · Milestone 2b's review found checks that couldn't fail
+
+- **What:** some of milestone 2b's tests and docs promised more than they checked.
+  - Each deliberately broken menu is meant to carry only its listed problem, but the edge-case tests only look at the spot they break. Widening one break to a whole category passed every test.
+  - One generator test compared the code with itself. The "generate twice" test compared two calls in the same process, so it couldn't catch a difference between runs.
+  - CLAUDE.md said the golden test covers any file in `mock-api/v1/`, but only `menus/` is checked for stray files.
+- **Caught by:** the combined verifier and code review of milestone 2b, which proved each one in a disposable clone.
+- **Fix:**
+  - CLAUDE.md now says what the golden test covers.
+  - The test gaps stay as known gaps, to save time. The verifier's own checker confirmed that each broken menu has exactly its listed problem, and the golden test still pins every byte of the data.
+- **Lesson:** a test proves only what it compares, and comparing code with itself proves nothing.
+
+## 2026-11-19 · The menu spec counted 219 files where there are 218
+
+- **What:** spec §5.9, written with the menu design, said every distinct id in the 220-restaurant file has a menu, "219 files, because one record has no id and one id appears twice". Without the record that has no id there are 219 ids, but one of them appears twice, so there are 218 distinct ids and 218 files.
+- **Caught by:** the spike for milestone 2b's plan, counting the ids in `restaurants.json`.
+- **Fix:** the spec says 218, and a test pins the count.
+- **Lesson:** count from the data, not from the description of it.
+
+## 2026-11-19 · A probe passed because its edit never happened
+
+- **What:** the spike for milestone 2b's plan checked that an edited menu fails the golden test. The edit targeted a line number that held a different key, so nothing changed, and the test passed as it should have for unchanged data.
+- **Caught by:** the spike itself: `git diff --stat` after the edit was empty.
+- **Fix:** the plan's break-it steps show the diff before running the test, and say to stop when it's empty.
+- **Lesson:** a probe proves nothing until it shows that it changed what it meant to change.
+
 ## 2026-11-19 · Three of the generator's tests couldn't fail
 
 - **What:** three of the plan's checks passed whatever the data said.

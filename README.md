@@ -66,6 +66,7 @@ The app's restaurants come from static JSON in this repository, served over HTTP
 |---|---|---|
 | [`mock-api/v1/restaurants.json`](mock-api/v1/restaurants.json) | 220 | What the app shows |
 | [`mock-api/v1/restaurants-10k.json`](mock-api/v1/restaurants-10k.json) | 10,000 | The stress test; its first 220 are the same restaurants |
+| [`mock-api/v1/menus/`](mock-api/v1/menus/) | 218 menus, one per restaurant in `restaurants.json` | Details; stress-only restaurants have none (404) |
 
 The data is fictional and deliberately messy, so the app's fallbacks get exercised. `./gradlew :tools:datagen:run` regenerates it, and a test fails if the committed files differ from what the generator writes. [`mock-api/README.md`](mock-api/README.md) has the endpoints, the edge cases and the image credits.
 
@@ -88,6 +89,12 @@ The data is fictional and deliberately messy, so the app's fallbacks get exercis
 | `mock-api/` | The mock API's JSON, served by `raw.githubusercontent.com` | Discovery squad |
 
 Features never depend on each other. The build enforces it, and so do the architecture tests.
+
+## Credits
+
+- **Figtree**, the app's typeface, is by Erik Kennedy and the Figtree Project Authors, under the [SIL Open Font License 1.1](core/designsystem/FIGTREE-OFL.txt). The app bundles the variable font from [google/fonts](https://github.com/google/fonts/tree/main/ofl/figtree).
+- **Icons** are Google's [Material Symbols](https://fonts.google.com/icons) (rounded), under the Apache License 2.0.
+- **Food photos** in the mock API are from [TheMealDB](https://www.themealdb.com/api.php); see [`mock-api/README.md`](mock-api/README.md).
 
 ## Documentation
 
@@ -113,3 +120,8 @@ Features never depend on each other. The build enforces it, and so do the archit
 | kotlinx.serialization (JSON) | https://kotlinlang.org/docs/serialization.html |
 | Gradle application plugin (the data generator) | https://docs.gradle.org/current/userguide/application_plugin.html |
 | TheMealDB API (food photos) | https://www.themealdb.com/api.php |
+| Custom design systems (theming Material 3) | https://developer.android.com/develop/ui/compose/designsystems/custom |
+| Fonts and variable fonts | https://developer.android.com/develop/ui/compose/text/fonts |
+| Material Symbols in Compose | https://developer.android.com/develop/ui/compose/graphics/images/material |
+| Adaptive icons | https://developer.android.com/develop/ui/views/launch/icon_design_adaptive |
+| Accessibility in Compose | https://developer.android.com/develop/ui/compose/accessibility |

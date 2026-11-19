@@ -1,0 +1,258 @@
+{
+  "restaurant_id": "r-1074",
+  "categories": [
+    {
+      "id": "c-1074-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1074-101",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1529444830.jpg"
+        },
+        {
+          "id": "i-1074-102",
+          "name": "Biltong Platter",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Beef biltong and droëwors",
+          "options": [
+            { "id": "o-1074-102-1", "name": "Extra lemon", "price_cents": 1500 },
+            { "id": "o-1074-102-2", "name": "Add garlic bread", "price_cents": 2000 },
+            { "id": "o-1074-102-3", "name": "Make it a main", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1074-103",
+          "name": "Calamari Strips",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Lemon butter or peri-peri",
+          "image_url": "https://www.themealdb.com/images/media/meals/uttupv1511815050.jpg"
+        },
+        {
+          "id": "i-1074-104",
+          "name": "Garlic Snails",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Six, baked in garlic butter",
+          "options": [
+            { "id": "o-1074-104-1", "name": "Add garlic bread", "price_cents": 1500 },
+            { "id": "o-1074-104-2", "name": "Extra lemon", "price_cents": 0 },
+            { "id": "o-1074-104-3", "name": "Make it a main", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1074-2",
+      "name": "Steaks",
+      "items": [
+        {
+          "id": "i-1074-201",
+          "name": "Fillet 250 g",
+          "price_cents": 18000,
+          "available": true
+        },
+        {
+          "id": "i-1074-202",
+          "name": "Ribeye 350 g",
+          "price_cents": 17000,
+          "available": true,
+          "description": "Well marbled",
+          "image_url": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg"
+        },
+        {
+          "id": "i-1074-203",
+          "name": "T-Bone 500 g",
+          "price_cents": 21000,
+          "available": true,
+          "description": "Sirloin and fillet on the bone",
+          "options": [
+            { "id": "o-1074-203-1", "name": "Add prawns", "price_cents": 2000 },
+            { "id": "o-1074-203-2", "name": "Cheese sauce", "price_cents": 1000 },
+            { "id": "o-1074-203-3", "name": "Garlic butter", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1074-204",
+          "name": "Wagyu Rump 250 g",
+          "price_cents": 25000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/mq27gf1764436795.jpg"
+        },
+        {
+          "id": "i-1074-205",
+          "name": "Lamb Chops",
+          "price_cents": 20500,
+          "available": true,
+          "description": "Three, with rosemary and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1074-3",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1074-301",
+          "name": "Classic Beef Burger",
+          "price_cents": 14000,
+          "available": true,
+          "description": "Lettuce, tomato, pickles and house sauce"
+        },
+        {
+          "id": "i-1074-302",
+          "name": "Cheese Burger",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Double cheddar and caramelised onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg",
+          "options": [
+            { "id": "o-1074-302-1", "name": "Add avo", "price_cents": 0 },
+            { "id": "o-1074-302-2", "name": "Add a fried egg", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1074-303",
+          "name": "Mushroom Burger",
+          "price_cents": 11500,
+          "available": true,
+          "description": "With a creamy mushroom sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg"
+        },
+        {
+          "id": "i-1074-304",
+          "name": "Chilli Cheese Burger",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Jalapeños, chilli jam and cheddar",
+          "image_url": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"
+        },
+        {
+          "id": "i-1074-305",
+          "name": "Chicken Burger",
+          "price_cents": 16500,
+          "available": true,
+          "description": "Crumbed breast, slaw and peri-peri mayo"
+        },
+        {
+          "id": "i-1074-306",
+          "name": "Veggie Burger",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Chickpea patty, avo and tomato relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg",
+          "options": [
+            { "id": "o-1074-306-1", "name": "Add cheese", "price_cents": 3500 },
+            { "id": "o-1074-306-2", "name": "Gluten-free bun", "price_cents": 500 },
+            { "id": "o-1074-306-3", "name": "Add avo", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1074-307",
+          "name": "Boerewors Roll",
+          "price_cents": 16500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/8859m71764377470.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1074-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1074-401",
+          "name": "Hand-Cut Chips",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/sqpqtp1515365614.jpg"
+        },
+        {
+          "id": "i-1074-402",
+          "name": "Onion Rings",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg"
+        },
+        {
+          "id": "i-1074-403",
+          "name": "Creamed Spinach",
+          "price_cents": 6500,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1074-404",
+          "name": "Pap & Chakalaka",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/p7eid81782503889.jpg"
+        },
+        {
+          "id": "i-1074-405",
+          "name": "Grilled Mielies",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Two cobs with herb butter"
+        },
+        {
+          "id": "i-1074-406",
+          "name": "Coleslaw",
+          "price_cents": 5000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1074-5",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1074-501",
+          "name": "Malva Pudding",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Warm apricot sponge with custard"
+        },
+        {
+          "id": "i-1074-502",
+          "name": "Baked Cheesecake",
+          "price_cents": 8500,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/kzi6p51764787198.jpg",
+          "options": [
+            { "id": "o-1074-502-1", "name": "Add whipped cream", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1074-503",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 8000,
+          "available": false,
+          "description": "Torched meringue on a buttery base",
+          "image_url": "https://www.themealdb.com/images/media/meals/xvgpng1764121726.jpg",
+          "options": [
+            { "id": "o-1074-503-1", "name": "Extra custard", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1074-504",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Three scoops with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg"
+        }
+      ]
+    }
+  ]
+}

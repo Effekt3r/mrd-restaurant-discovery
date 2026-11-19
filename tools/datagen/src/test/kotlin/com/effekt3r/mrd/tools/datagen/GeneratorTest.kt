@@ -46,6 +46,19 @@ class GeneratorTest {
     }
 
     @Test
+    fun eachRestaurantComesWithTheConceptAndPhotoKeyItWasDrawnFrom() {
+        val generated = Generator.generate(Dataset.STANDARD.size, pool)
+        assertEquals(standard, generated.map { it.record })
+        assertEquals("steakhouse", generated.first().concept.key)
+        generated.forEach { restaurant ->
+            val where = "${restaurant.record}"
+            assertTrue(where, restaurant.photoKey in restaurant.concept.menus.map { it.imageKey })
+            val photo = restaurant.record["image_url"]?.jsonPrimitive?.content?.replace("http:", "https:")
+            photo?.let { assertTrue(where, it in pool.photos.getValue(restaurant.photoKey)) }
+        }
+    }
+
+    @Test
     fun theFirstRestaurantIsTheBriefsExample() {
         val hours = listOf("22:00", "22:00", "22:00", "22:00", "02:00", "02:00", "21:00")
             .zip(DayOfWeek.entries) { closes, day -> """{"day":"$day","opens":"11:00","closes":"$closes"}""" }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The pin with a round hole: the system tints it to match the wallpaper. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="@color/designsystem_ink"
+        android:fillType="evenOdd"
+        android:pathData="M54,76L40.23,56.97A17,17 0,1 1,67.77 56.97Z M54,40.5A6.5,6.5 0,1 1,54 53.5A6.5,6.5 0,1 1,54 40.5Z" />
+</vector>

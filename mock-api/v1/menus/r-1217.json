@@ -1,0 +1,156 @@
+{
+  "restaurant_id": "r-1217",
+  "categories": [
+    {
+      "id": "c-1217-1",
+      "name": "Bowls",
+      "items": [
+        {
+          "id": "i-1217-101",
+          "name": "Poke Bowl",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Salmon, sushi rice, edamame and avo",
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg"
+        },
+        {
+          "id": "i-1217-102",
+          "name": "Buddha Bowl",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Roast sweet potato, chickpeas and tahini"
+        },
+        {
+          "id": "i-1217-103",
+          "name": "Teriyaki Tofu Bowl",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Brown rice, broccoli and sesame"
+        },
+        {
+          "id": "i-1217-104",
+          "name": "Burrito Bowl",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xrrwpx1487347049.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1217-2",
+      "name": "Salads",
+      "items": [
+        {
+          "id": "i-1217-201",
+          "name": "Greek Salad",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+          "options": [
+            { "id": "o-1217-201-1", "name": "Add feta", "price_cents": 3000 },
+            { "id": "o-1217-201-2", "name": "Add avo", "price_cents": 2000 },
+            { "id": "o-1217-201-3", "name": "Add chicken", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1217-202",
+          "name": "Chicken & Avo Salad",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Leaves, cherry tomatoes and seeds",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529446137.jpg"
+        },
+        {
+          "id": "i-1217-203",
+          "name": "Butternut & Feta Salad",
+          "price_cents": 7900,
+          "available": false,
+          "description": "Roasted butternut, rocket and pumpkin seeds",
+          "image_url": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+          "options": [
+            { "id": "o-1217-203-1", "name": "Add feta", "price_cents": 0 },
+            { "id": "o-1217-203-2", "name": "Add avo", "price_cents": 1500 },
+            { "id": "o-1217-203-3", "name": "Dressing on the side", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1217-204",
+          "name": "Quinoa Salad",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Herbs, pomegranate and lemon",
+          "image_url": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg"
+        },
+        {
+          "id": "i-1217-205",
+          "name": "Caesar Salad",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Cos, parmesan and croutons"
+        },
+        {
+          "id": "i-1217-206",
+          "name": "Beetroot & Goat's Cheese",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Walnuts and a honey dressing"
+        },
+        {
+          "id": "i-1217-207",
+          "name": "Asian Slaw",
+          "price_cents": 7900,
+          "available": false,
+          "description": "Cabbage and carrot with a sesame-ginger dressing",
+          "image_url": "https://www.themealdb.com/images/media/meals/0nswfe1763279040.jpg",
+          "options": [
+            { "id": "o-1217-207-1", "name": "Dressing on the side", "price_cents": 1000 },
+            { "id": "o-1217-207-2", "name": "Add feta", "price_cents": 2500 },
+            { "id": "o-1217-207-3", "name": "Add chicken", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1217-3",
+      "name": "Smoothies & Juices",
+      "items": [
+        {
+          "id": "i-1217-301",
+          "name": "Green Smoothie",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Spinach, apple, cucumber and ginger"
+        },
+        {
+          "id": "i-1217-302",
+          "name": "Berry Smoothie",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1217-303",
+          "name": "Mango Smoothie",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Mango, granadilla and coconut",
+          "options": [
+            { "id": "o-1217-303-1", "name": "Add protein", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1217-304",
+          "name": "Peanut Butter Smoothie",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1217-305",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        }
+      ]
+    }
+  ]
+}

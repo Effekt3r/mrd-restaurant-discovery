@@ -1,0 +1,227 @@
+{
+  "restaurant_id": "r-1080",
+  "categories": [
+    {
+      "id": "c-1080-1",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1080-101",
+          "name": "Classic Beef Burger",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Lettuce, tomato, pickles and house sauce"
+        },
+        {
+          "id": "i-1080-102",
+          "name": "Cheese Burger",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Double cheddar and caramelised onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/xqrwyr1511133646.jpg"
+        },
+        {
+          "id": "i-1080-103",
+          "name": "Bacon & Cheese Burger",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Streaky bacon, cheddar and smoky mayo"
+        },
+        {
+          "id": "i-1080-104",
+          "name": "Mushroom Burger",
+          "price_cents": 14500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/h3ijwo1581013377.jpg"
+        },
+        {
+          "id": "i-1080-105",
+          "name": "Chicken Burger",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xutquv1505330523.jpg"
+        },
+        {
+          "id": "i-1080-106",
+          "name": "Veggie Burger",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Chickpea patty, avo and tomato relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg"
+        },
+        {
+          "id": "i-1080-107",
+          "name": "Boerewors Roll",
+          "price_cents": 9000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/40r49m1763197022.jpg",
+          "options": [
+            { "id": "o-1080-107-1", "name": "Make it a double", "price_cents": 3000 },
+            { "id": "o-1080-107-2", "name": "Add a fried egg", "price_cents": 2500 },
+            { "id": "o-1080-107-3", "name": "Add bacon", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1080-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1080-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg"
+        },
+        {
+          "id": "i-1080-202",
+          "name": "Creamed Spinach",
+          "price_cents": 6000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg"
+        },
+        {
+          "id": "i-1080-203",
+          "name": "Pap & Chakalaka",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/1550440197.jpg"
+        },
+        {
+          "id": "i-1080-204",
+          "name": "Grilled Mielies",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/xutquv1505330523.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1080-3",
+      "name": "Milkshakes",
+      "items": [
+        {
+          "id": "i-1080-301",
+          "name": "Vanilla Milkshake",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Real vanilla ice cream",
+          "options": [
+            { "id": "o-1080-301-1", "name": "Large", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1080-302",
+          "name": "Chocolate Milkshake",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Dark chocolate and cocoa",
+          "options": [
+            { "id": "o-1080-302-1", "name": "Add whipped cream", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1080-303",
+          "name": "Strawberry Milkshake",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Made with fresh strawberries",
+          "options": [
+            { "id": "o-1080-303-1", "name": "Add whipped cream", "price_cents": 3500 },
+            { "id": "o-1080-303-2", "name": "Large", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1080-304",
+          "name": "Bubblegum Milkshake",
+          "price_cents": 4500,
+          "available": true,
+          "description": "A South African favourite"
+        },
+        {
+          "id": "i-1080-305",
+          "name": "Coffee Milkshake",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Espresso and vanilla",
+          "options": [
+            { "id": "o-1080-305-1", "name": "Extra thick", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1080-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1080-401",
+          "name": "Still Water",
+          "price_cents": 3000,
+          "available": true,
+          "description": "500 ml, chilled",
+          "options": [
+            { "id": "o-1080-401-1", "name": "Extra lemon", "price_cents": 2000 },
+            { "id": "o-1080-401-2", "name": "No ice", "price_cents": 3000 },
+            { "id": "o-1080-401-3", "name": "Add mint", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1080-402",
+          "name": "Sparkling Water",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1080-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1080-404",
+          "name": "Ginger Beer",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1080-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1080-406",
+          "name": "Rock Shandy",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1080-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1080-407-1", "name": "Extra lemon", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1080-408",
+          "name": "Cream Soda Float",
+          "price_cents": 4000,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

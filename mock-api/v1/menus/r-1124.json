@@ -1,0 +1,215 @@
+{
+  "restaurant_id": "r-1124",
+  "categories": [
+    {
+      "id": "c-1124-1",
+      "name": "Antipasti",
+      "items": [
+        {
+          "id": "i-1124-101",
+          "name": "Calamari Fritti",
+          "price_cents": 8900,
+          "available": true
+        },
+        {
+          "id": "i-1124-102",
+          "name": "Garlic Focaccia",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Rosemary and sea salt"
+        },
+        {
+          "id": "i-1124-103",
+          "name": "Caprese Salad",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Tomato, mozzarella and basil",
+          "image_url": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg"
+        },
+        {
+          "id": "i-1124-104",
+          "name": "Antipasto Board",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Cured meats, cheese and olives",
+          "image_url": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1124-2",
+      "name": "Pasta",
+      "items": [
+        {
+          "id": "i-1124-201",
+          "name": "Spaghetti Bolognese",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Slow-cooked beef ragù",
+          "image_url": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg"
+        },
+        {
+          "id": "i-1124-202",
+          "name": "Fettuccine Alfredo",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Parmesan cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg",
+          "options": [
+            { "id": "o-1124-202-1", "name": "Add chilli", "price_cents": 2000 },
+            { "id": "o-1124-202-2", "name": "Extra parmesan", "price_cents": 500 },
+            { "id": "o-1124-202-3", "name": "Add chicken", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1124-203",
+          "name": "Spaghetti Carbonara",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Guanciale, egg yolk and pecorino",
+          "image_url": "https://www.themealdb.com/images/media/meals/rvxxuy1468312893.jpg"
+        },
+        {
+          "id": "i-1124-204",
+          "name": "Butternut Ravioli",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Sage butter and toasted pine nuts",
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg",
+          "options": [
+            { "id": "o-1124-204-1", "name": "Add chicken", "price_cents": 3000 },
+            { "id": "o-1124-204-2", "name": "Add chilli", "price_cents": 2500 },
+            { "id": "o-1124-204-3", "name": "Gluten-free pasta", "price_cents": 1500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1124-3",
+      "name": "Dolci",
+      "items": [
+        {
+          "id": "i-1124-301",
+          "name": "Tiramisu",
+          "price_cents": 4900,
+          "available": false,
+          "description": "Espresso, mascarpone and cocoa",
+          "image_url": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg"
+        },
+        {
+          "id": "i-1124-302",
+          "name": "Panna Cotta",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Vanilla, with a berry coulis",
+          "image_url": "https://www.themealdb.com/images/media/meals/qpqtuu1511386216.jpg",
+          "options": [
+            { "id": "o-1124-302-1", "name": "Extra espresso", "price_cents": 2500 },
+            { "id": "o-1124-302-2", "name": "Add whipped cream", "price_cents": 3500 },
+            { "id": "o-1124-302-3", "name": "Add vanilla gelato", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1124-303",
+          "name": "Affogato",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Gelato drowned in espresso",
+          "image_url": "https://www.themealdb.com/images/media/meals/3wnyvh1764373818.jpg",
+          "options": [
+            { "id": "o-1124-303-1", "name": "Extra espresso", "price_cents": 2000 },
+            { "id": "o-1124-303-2", "name": "Add vanilla gelato", "price_cents": 3000 },
+            { "id": "o-1124-303-3", "name": "Add whipped cream", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1124-304",
+          "name": "Lemon Tart",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg",
+          "options": [
+            { "id": "o-1124-304-1", "name": "Add whipped cream", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1124-305",
+          "name": "Gelato",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/u1gisz1784732667.jpg",
+          "options": [
+            { "id": "o-1124-305-1", "name": "Add vanilla gelato", "price_cents": 3500 },
+            { "id": "o-1124-305-2", "name": "Extra espresso", "price_cents": 3000 },
+            { "id": "o-1124-305-3", "name": "Add whipped cream", "price_cents": 1500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1124-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1124-401",
+          "name": "Still Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1124-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1124-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1124-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger",
+          "options": [
+            { "id": "o-1124-404-1", "name": "No ice", "price_cents": 2500 },
+            { "id": "o-1124-404-2", "name": "Extra lemon", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1124-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1124-406",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1124-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1124-408",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}
