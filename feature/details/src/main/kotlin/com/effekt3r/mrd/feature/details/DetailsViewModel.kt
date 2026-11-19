@@ -20,11 +20,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
@@ -52,20 +52,30 @@ class DetailsViewModel @Inject constructor(
     private val menuAttempts = MutableStateFlow(0)
 
     /**
-     * The menu, fetched again on each attempt. One that failed is retried when the connection returns, as the
-     * restaurant list is (spec §5.7), so it doesn't keep blaming a connection that's back; one that loaded isn't.
+     * The menu, fetched again on each attempt. When the connection returns, a new attempt starts unless the latest has
+     * finished with the menu, or with none to show (spec §5.9), so the menu doesn't keep blaming a connection that's
+     * back. That covers a fetch that has failed, and one still running, which began before the connection returned and
+     * would fail after it, whether or not a cached menu is showing.
      */
     private val menu: Flow<MenuState> = channelFlow {
         var latest: MenuState = MenuState.Loading
+        var fetching = false
         launch {
             // Only a change back to online counts, never the first value.
             networkMonitor.isOnline.drop(1).filter { it }.collect {
-                if (latest is MenuState.Error) menuAttempts.update { it + 1 }
+                val loaded = !fetching && (latest is MenuState.Content || latest is MenuState.NotAvailable)
+                if (!loaded) menuAttempts.update { it + 1 }
             }
         }
-        menuAttempts.flatMapLatest { menuRepository.menu(id) }.collect {
-            latest = it
-            send(it)
+        // collectLatest cancels the attempt that's running when a new one starts. Its block stores each state before it
+        // marks the fetch finished, so the check above never sees a finished fetch with a state from before its result.
+        menuAttempts.collectLatest {
+            fetching = true
+            menuRepository.menu(id).collect { state ->
+                latest = state
+                send(state)
+            }
+            fetching = false
         }
     }
 
