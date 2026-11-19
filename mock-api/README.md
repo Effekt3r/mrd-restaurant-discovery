@@ -116,5 +116,5 @@ Eleven menus are broken on purpose, at the indexes ending in 5, so none belongs 
 
 ## Images and names
 
-- **Photos** are from [TheMealDB](https://www.themealdb.com/api.php), through its free API's public test key. `image-pool.json` holds 19 keys with at least 5 photos each, fetched by category, area or meal name (`ImagePoolFetcher.QUERIES`). TheMealDB has no South African dishes, so Cape Malay and South African restaurants use the `indian` and `lamb` photos. Each URL is the canonical one: spec §5.7 has the app ask for `/medium` or `/large`.
+- **Photos** are from [TheMealDB](https://www.themealdb.com/api.php), through its free API's public test key. `image-pool.json` holds 19 keys with at least 5 photos each, fetched by category, area or meal name (`ImagePoolFetcher.QUERIES`). TheMealDB has no South African dishes, so Cape Malay and South African restaurants use the `indian` and `lamb` photos. Each URL is the canonical, full-size one: spec §5.7 has the app ask for `/large` or `/small`, or use the URL as it is.
 - **Names are fictional**: a Cape Town place and a noun, such as "Lion's Head Izakaya" (`r-1002`). A test fails if any name contains a South African chain or a well-known Cape Town restaurant (`RealNames.kt`). The first 220 names are unique; later ones repeat, as chains' do.
