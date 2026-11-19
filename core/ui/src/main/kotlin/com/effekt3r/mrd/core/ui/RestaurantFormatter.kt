@@ -119,21 +119,30 @@ class RestaurantFormatter(
 
     /**
      * What TalkBack reads for a card (spec §6.5): "Cape Town Grill. Steakhouse, Grill. Rated 4.6. 32 minutes.
-     * R15 delivery. Open, closes 22:00." Missing values are left out, except the rating, which is "New".
+     * R15 delivery. Open, closes 22:00." Missing values are left out, except the rating, which is "New". A part that
+     * already ends a sentence, such as "Fish Hoek Pizza Co.", isn't given a second full stop.
      */
-    fun description(restaurant: RestaurantSummary, now: WeekMinute): String = listOfNotNull(
-        restaurant.name,
-        restaurant.cuisines.takeIf { it.isNotEmpty() }
-            ?.joinToString(resources.getString(R.string.ui_spoken_list_separator)),
-        restaurant.rating?.let { resources.getString(R.string.ui_spoken_rated, rating(it)) }
-            ?: resources.getString(R.string.ui_spoken_not_rated),
-        restaurant.etaMinutes?.let(::etaSpoken),
-        restaurant.deliveryFee?.let(::deliveryFee),
-        spokenStatus(restaurant.openStatus, now)
-    ).joinToString(
-        separator = resources.getString(R.string.ui_spoken_sentence_separator),
-        postfix = resources.getString(R.string.ui_spoken_sentence_end)
-    )
+    fun description(restaurant: RestaurantSummary, now: WeekMinute): String {
+        val parts = listOfNotNull(
+            restaurant.name,
+            restaurant.cuisines.takeIf { it.isNotEmpty() }
+                ?.joinToString(resources.getString(R.string.ui_spoken_list_separator)),
+            restaurant.rating?.let { resources.getString(R.string.ui_spoken_rated, rating(it)) }
+                ?: resources.getString(R.string.ui_spoken_not_rated),
+            restaurant.etaMinutes?.let(::etaSpoken),
+            restaurant.deliveryFee?.let(::deliveryFee),
+            spokenStatus(restaurant.openStatus, now)
+        )
+        val end = resources.getString(R.string.ui_spoken_sentence_end)
+        val separator = resources.getString(R.string.ui_spoken_sentence_separator)
+        return buildString {
+            parts.forEach { part ->
+                if (isNotEmpty()) append(if (endsWith(end)) separator.removePrefix(end) else separator)
+                append(part)
+            }
+            if (!endsWith(end)) append(end)
+        }
+    }
 
     /**
      * When a snapshot or a menu was fetched, in [zone]: "10:42" today, "Mon 10:42" within the last week, else

@@ -133,6 +133,16 @@ class RestaurantFormatterTest {
     }
 
     @Test
+    fun aNameEndingInAFullStopIsNotGivenASecondOne() {
+        val pizza = summary(rating = null, fee = Money(0), eta = null, status = OpenStatus.Unknown)
+            .copy(name = "Fish Hoek Pizza Co.", cuisines = listOf("Pizza"))
+        assertEquals(
+            "Fish Hoek Pizza Co. Pizza. New, not rated yet. Free delivery. Hours unknown.",
+            format.description(pizza, at(MONDAY, 12))
+        )
+    }
+
+    @Test
     fun aFetchTimeNamesItsDayOnceItIsNotToday() {
         val zone = ZoneId.of("Africa/Johannesburg")
         val now = Instant.parse("2026-11-18T12:00:00Z") // Wednesday 14:00 in Cape Town
