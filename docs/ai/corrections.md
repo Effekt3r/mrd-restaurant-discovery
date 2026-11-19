@@ -4,6 +4,18 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · Milestone 2b's review found checks that couldn't fail
+
+- **What:** some of milestone 2b's tests and docs promised more than they checked.
+  - Each deliberately broken menu is meant to carry only its listed problem, but the edge-case tests only look at the spot they break. Widening one break to a whole category passed every test.
+  - One generator test compared the code with itself. The "generate twice" test compared two calls in the same process, so it couldn't catch a difference between runs.
+  - CLAUDE.md said the golden test covers any file in `mock-api/v1/`, but only `menus/` is checked for stray files.
+- **Caught by:** the combined verifier and code review of milestone 2b, which proved each one in a disposable clone.
+- **Fix:**
+  - CLAUDE.md now says what the golden test covers.
+  - The test gaps stay as known gaps, to save time. The verifier's own checker confirmed that each broken menu has exactly its listed problem, and the golden test still pins every byte of the data.
+- **Lesson:** a test proves only what it compares, and comparing code with itself proves nothing.
+
 ## 2026-11-19 · The menu spec counted 219 files where there are 218
 
 - **What:** spec §5.9, written with the menu design, said every distinct id in the 220-restaurant file has a menu, "219 files, because one record has no id and one id appears twice". Without the record that has no id there are 219 ids, but one of them appears twice, so there are 218 distinct ids and 218 files.
