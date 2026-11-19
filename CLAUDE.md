@@ -19,6 +19,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 | `:core:ui` | Restaurant UI shared by both features. |
 | `:core:network`, `:core:designsystem`, `:core:testing` | Platform stand-ins: HTTP and JSON, tokens and components, test utilities. |
 | `build-logic/` | Convention plugins `mrd.android.application`, `.library`, `.compose`, `.feature`, `mrd.hilt` and `mrd.jvm.library`. |
+| `:tools:datagen` | Build-time tool that generates the mock API's data in `mock-api/v1/`. Never ships in the app. |
 
 ## Commands
 
@@ -27,6 +28,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 - Format: `./gradlew spotlessApply` (CI runs `spotlessCheck`)
 - Lint: `./gradlew :app:lintDebug`
 - R8 release build: `./gradlew :app:assembleRelease`, then check that R8 ran and found nothing missing: `test -s app/build/outputs/mapping/release/mapping.txt && test ! -s app/build/outputs/mapping/release/missing_rules.txt`
+- Regenerate the mock API data: `./gradlew :tools:datagen:run`. `./gradlew :tools:datagen:run --args=fetch-images` refreshes the image pool, the only command that needs the network; regenerate afterwards.
 
 ## Hard rules, and why
 
@@ -36,6 +38,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 - **Never weaken a test or a rule to make something pass.** Fix the code, or stop and ask.
 - **House rules are proven, not assumed.** When you change `ArchitectureTest`, re-run the probes in `tools/architecture-probes/` and compare the results with its README. A rule that can't fail is worse than having no rule.
 - **Release builds are R8-minified.** Anything read by name at runtime needs a keep rule with a comment. Check R8 changes by running the release APK, not by compiling.
+- **The mock API's data is generated, never edited by hand.** Change the generator, run `./gradlew :tools:datagen:run`, and commit the code and the data together. Why: `GoldenFilesTest` fails when `mock-api/v1/*.json` differs from the generator's output, so the data always matches the code and the docs that describe it.
 - **Never commit secrets.** Signing comes from `MRD_*` properties or environment variables, so no keystore or password ever lives in the repository. `.claude/settings.json` also stops Claude Code's Read tool from opening keystore and signing files, but it doesn't cover shell commands, so keep those files outside the repository.
 
 ## Definition of done for each change
