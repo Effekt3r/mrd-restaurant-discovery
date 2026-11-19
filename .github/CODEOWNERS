@@ -19,3 +19,5 @@
 /core/ui/             @Effekt3r
 /feature/browse/      @Effekt3r
 /feature/details/     @Effekt3r
+/tools/datagen/       @Effekt3r
+/mock-api/            @Effekt3r

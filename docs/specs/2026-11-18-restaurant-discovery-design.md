@@ -76,6 +76,7 @@ Everything else is listed in §12 with the reason it was left out.
 :core:designsystem   platform stand-in: Mr D design tokens and generic components
 :core:testing        platform stand-in: test rules, fakes, test data
 build-logic/         convention plugins (an included build)
+tools/datagen        build-time tool that generates the mock API's data (§5.2); never ships in the app
 ```
 
 - **Platform stand-ins** are things the Mr D app already has: a design system, a networking stack, common infrastructure and test utilities. If this feature moved into their codebase, theirs would replace these.
@@ -178,14 +179,17 @@ build-logic/         convention plugins (an included build)
 
 ### 5.2 Generated dataset
 
-- **The generator** is a Kotlin script in `tools/datagen/` with a fixed random seed. It writes `mock-api/v1/restaurants.json` (220 restaurants) and `mock-api/v1/restaurants-10k.json` (10,000).
-- **Images** come from a pool of TheMealDB photos, fetched once per cuisine and committed as `tools/datagen/image-pool.json`. Generation is therefore repeatable and needs no network.
-- **Names** are fictional and Cape Town-flavoured. There are no real brands.
+- **The generator** is a small pure Kotlin module, `:tools:datagen`, with a fixed random seed. `./gradlew :tools:datagen:run` writes `mock-api/v1/restaurants.json` (220 restaurants, pretty-printed) and `mock-api/v1/restaurants-10k.json` (10,000, on one line).
+  - Each restaurant depends only on the seed, its position and the names before it. Regenerating changes nothing, and the stress file's first 220 restaurants are the standard file's.
+  - A golden test fails when a committed file differs from the generator's output, so the files are never edited by hand.
+- **Images** come from a pool of TheMealDB photos, fetched once per cuisine with `--args=fetch-images` and committed as `tools/datagen/src/main/resources/image-pool.json`. Generation is therefore repeatable and needs no network.
+- **Names** are fictional and Cape Town-flavoured. A test fails if one contains a real chain's or a well-known Cape Town restaurant's name.
+- **`is_open`** describes Friday 19:00 in Cape Town, like a server snapshot that's never refreshed (§5.6).
 - **The data is deliberately messy:**
-  - about 6% have no rating, 4% no fee, 4% no ETA, 6% no image and 5% no hours;
+  - each restaurant has a 6% chance of no rating, 4% of no fee, 4% of no ETA, 6% of no image and 5% of no hours. The 10,000-restaurant file matches these within a point; the 220-restaurant file, a small sample, varies by a few points;
   - there are overnight hours, split lunch and dinner shifts, 24-hour places, and restaurants closed on some weekdays;
   - about 15% have free delivery;
-  - one record has no id, one has a blank name, and one id appears twice.
+  - one record has no id, one has a blank name, and one id appears twice. Fourteen more edge cases exercise the rules in §5.1, such as a rating sent as a string. `mock-api/README.md` lists them all.
 - **The stress dataset** is selected for debug builds with `-Pmrd.dataset=10k`.
 
 ### 5.3 Sync
@@ -204,7 +208,7 @@ build-logic/         convention plugins (an included build)
   - when Details is opened for an id that isn't cached and no sync has happened yet.
 - **One request at a time.** Refreshes that overlap join the one already running, so there is only one network call.
 - **HTTP caching.** OkHttp has a 10 MB disk cache, and each request sends `Cache-Control: no-cache`, so the response is always revalidated against GitHub's ETag. Unchanged data comes back as a 304 of a few hundred bytes. A 304 skips the database write and only updates `last_synced_at`, unless the database is empty.
-- **Timeouts** are 10 seconds to connect and 20 seconds to read, since the stress file is about 5 MB.
+- **Timeouts** are 10 seconds to connect and 20 seconds to read, since the stress file is about 6 MB (under 0.5 MB gzipped).
 - **Bad data never wipes the cache.** If the payload contained records but none survived validation, the refresh fails as `BadData` and the current snapshot stays.
 
 ### 5.4 Errors

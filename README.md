@@ -2,7 +2,7 @@
 
 A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. You can browse nearby restaurants, search by name, filter to what's open now and open a restaurant's details, and it works offline. It's written in Kotlin and Jetpack Compose, with multiple modules, and built to slot into a large app maintained by several squads.
 
-> **Status:** milestone 1 (foundation) is done. The project builds, the app shell navigates between placeholder screens, and CI gates every pull request into `dev` and `master`. The plan and progress are in [`docs/plans/`](docs/plans/).
+> **Status:** milestones 1 (foundation) and 2 (mock API) are done. The app shell navigates between placeholder screens, the [mock API](#mock-api) serves generated restaurant data from this repository, and CI gates every pull request into `dev` and `master`. The plan and progress are in [`docs/plans/`](docs/plans/).
 
 ## Requirements
 
@@ -17,10 +17,10 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 
 ## Getting started
 
-Until the first release reaches `master` (milestone 2), the code is on `dev`, so clone that branch. On the command line, Gradle also needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<absolute path to the SDK>` in `local.properties` (Gradle doesn't expand `~`). That file is git-ignored, and Android Studio writes it for you when it opens the project.
+On the command line, Gradle needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<absolute path to the SDK>` in `local.properties` (Gradle doesn't expand `~`). That file is git-ignored, and Android Studio writes it for you when it opens the project.
 
 ```sh
-git clone --branch dev https://github.com/Effekt3r/mrd-restaurant-discovery.git
+git clone https://github.com/Effekt3r/mrd-restaurant-discovery.git
 cd mrd-restaurant-discovery
 git config core.hooksPath .githooks   # optional: secret scan on every commit
 ./gradlew installDebug                # build and install on a connected device or emulator
@@ -58,6 +58,17 @@ Without them, a local release build is signed with the debug key, and Gradle pri
 - Only the release workflow will pass `-Pmrd.requireReleaseSigning=true`, because it makes any build without a keystore fail.
 - It will pass the signing secrets as environment variables, not `-P` arguments, which would show up in process listings.
 
+## Mock API
+
+The app's restaurants come from static JSON in this repository, served over HTTPS by `raw.githubusercontent.com`. The `dev` branch plays the part of staging and `master` of production: from milestone 3, debug builds will read `dev` and release builds `master`.
+
+| File | Restaurants | Use |
+|---|---|---|
+| [`mock-api/v1/restaurants.json`](mock-api/v1/restaurants.json) | 220 | What the app shows |
+| [`mock-api/v1/restaurants-10k.json`](mock-api/v1/restaurants-10k.json) | 10,000 | The stress test; its first 220 are the same restaurants |
+
+The data is fictional and deliberately messy, so the app's fallbacks get exercised. `./gradlew :tools:datagen:run` regenerates it, and a test fails if the committed files differ from what the generator writes. [`mock-api/README.md`](mock-api/README.md) has the endpoints, the edge cases and the image credits.
+
 ## Project structure
 
 | Module | Role | Would be owned by |
@@ -73,6 +84,8 @@ Without them, a local release build is signed with the debug key, and Gradle pri
 | `:core:designsystem` | Mr D tokens and components | Design Platform |
 | `:core:testing` | Test utilities | Mobile Platform |
 | `build-logic/` | Convention plugins (`mrd.*`) | Mobile Platform |
+| `tools/datagen` | Build-time generator for the mock API's data; never ships in the app | Discovery squad |
+| `mock-api/` | The mock API's JSON, served by `raw.githubusercontent.com` | Discovery squad |
 
 Features never depend on each other. The build enforces it, and so do the architecture tests.
 
@@ -97,3 +110,6 @@ Features never depend on each other. The build enforces it, and so do the archit
 | App signing | https://developer.android.com/studio/publish/app-signing |
 | Network security config | https://developer.android.com/privacy-and-security/security-config |
 | Konsist | https://docs.konsist.lemonappdev.com/ |
+| kotlinx.serialization (JSON) | https://kotlinlang.org/docs/serialization.html |
+| Gradle application plugin (the data generator) | https://docs.gradle.org/current/userguide/application_plugin.html |
+| TheMealDB API (food photos) | https://www.themealdb.com/api.php |
