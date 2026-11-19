@@ -3,6 +3,7 @@ package com.effekt3r.mrd.feature.details.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigation.navDeepLink
 import com.effekt3r.mrd.feature.details.RestaurantScreen
 import kotlinx.serialization.Serializable
 
@@ -19,9 +20,16 @@ fun NavController.navigateToRestaurant(id: String) {
     navigate(RestaurantRoute(id))
 }
 
-/** Adds Details to the host's graph. Its ViewModel reads the restaurant's id from the route. */
+/**
+ * Adds Details to the host's graph, with its deep link, mrd://restaurant/{id} (spec §4.5). Navigation builds the
+ * deep link's back stack from the graph, so Browse, the start destination, sits underneath. The host declares the
+ * matching intent filter, since it owns the app's external entry points. Details' ViewModel reads the id from the
+ * route.
+ */
 fun NavGraphBuilder.restaurantScreen(onBack: () -> Unit) {
-    composable<RestaurantRoute> {
+    composable<RestaurantRoute>(deepLinks = listOf(navDeepLink<RestaurantRoute>(basePath = DEEP_LINK_BASE))) {
         RestaurantScreen(onBack = onBack)
     }
 }
+
+private const val DEEP_LINK_BASE = "mrd://restaurant"
