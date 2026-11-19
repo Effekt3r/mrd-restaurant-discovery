@@ -101,13 +101,17 @@ class OfflineFirstRestaurantRepositoryTest {
             parsedRestaurant("r-1", name = "Café Fynbos"),
             parsedRestaurant("r-2", name = "100% Plant Kitchen"),
             parsedRestaurant("r-3", name = "Cape  Town Grill"),
-            parsedRestaurant("r-4", name = "Plant_Based")
+            parsedRestaurant("r-4", name = "Plant_Based"),
+            parsedRestaurant("r-5", name = "Plant Based"), // a wildcard _ would match it
+            parsedRestaurant("r-6", name = """Pizza\Pasta Co""")
         )
         val repository = repository()
         suspend fun search(query: String) = repository.restaurants(query, openNow = false).asSnapshot().map { it.name }
         assertEquals(listOf("Café Fynbos"), search("CAFE"))
         assertEquals(listOf("100% Plant Kitchen"), search("0%"))
         assertEquals(listOf("Plant_Based"), search("t_b"))
+        // An unescaped \ would escape the p instead, and "ap" matches Cape.
+        assertEquals(listOf("""Pizza\Pasta Co"""), search("""a\p"""))
         assertEquals(listOf("Cape  Town Grill"), search("  cape town "))
         assertEquals(emptyList<String>(), search("%%"))
         assertEquals(1, repository.count("cafe", openNow = false).first())
