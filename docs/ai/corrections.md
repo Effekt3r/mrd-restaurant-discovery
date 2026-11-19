@@ -4,6 +4,20 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · `Cache-Control: no-cache` would have downloaded the whole list on every refresh
+
+- **What:** the spec said each request sends `no-cache`, so OkHttp revalidates against GitHub's ETag and gets a 304. OkHttp does the opposite: when the request says `no-cache`, it ignores its cache and sends no `If-None-Match` (`CacheStrategy.kt`, line 158, in 5.3.2). Every refresh would have downloaded the whole file, 6 MB for the stress dataset.
+- **Caught by:** milestone 3's spike, whose MockWebServer test for a 304 failed: the second request had no `If-None-Match`.
+- **Fix:** requests send `max-age=0`, which OkHttp's `Cache` documentation recommends for revalidation. The test passes, and fails again if the header goes back to `no-cache`.
+- **Lesson:** check what a library does with a header, not what the header means in the HTTP specification.
+
+## 2026-11-19 · The lint gate didn't cover modules the app doesn't use yet
+
+- **What:** the gate runs `:app:lintDebug`, which lints the app and its dependencies (`checkDependencies`). The data layer arrives two milestones before the screens that use it, so none of its code would have been linted.
+- **Caught by:** milestone 3's spike, with a lint probe in `:core:data` that `:app:lintDebug` didn't report until the app depended on the module.
+- **Fix:** `:app` depends on `:core:data` from milestone 3.
+- **Lesson:** a check that covers "the dependencies" covers only what's depended on. Prove what a gate reaches with a probe.
+
 ## 2026-11-19 · Three of the generator's tests couldn't fail
 
 - **What:** three of the plan's checks passed whatever the data said.
