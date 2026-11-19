@@ -1,15 +1,23 @@
 package com.effekt3r.mrd.feature.browse
 
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasScrollToIndexAction
+import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeUp
@@ -24,6 +32,7 @@ import com.effekt3r.mrd.core.model.RestaurantSummary
 import com.effekt3r.mrd.core.model.SyncError
 import com.effekt3r.mrd.core.model.SyncStatus
 import java.time.Instant
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -56,13 +65,17 @@ class BrowseScreenTest {
         isFavourite = false
     )
 
+    private fun List<RestaurantSummary>.foundBy(query: String, openNow: Boolean = false) =
+        map { BrowseListItem(it, BrowseFilters(query, openNow)) }
+
     private fun setScreen(state: BrowseUiState, restaurants: List<RestaurantSummary> = emptyList()) =
         compose.setContent {
             MrdTheme {
                 BrowseScreen(
                     state = state,
                     searchState = TextFieldState(state.query),
-                    restaurants = flowOf(PagingData.from(restaurants)).collectAsLazyPagingItems(),
+                    restaurants = flowOf(PagingData.from(restaurants.foundBy(state.query, state.openNow)))
+                        .collectAsLazyPagingItems(),
                     onOpenNowToggled = { events += "openNow=$it" },
                     onClearSearch = { events += "clear" },
                     onRefresh = { events += "refresh" },
@@ -145,5 +158,104 @@ class BrowseScreenTest {
     fun anEmptyAreaSaysNoRestaurantsDeliverHere() {
         setScreen(BrowseUiState(resultCount = 0, syncStatus = synced, now = now))
         compose.onNodeWithText("No restaurants deliver here yet").assertExists()
+    }
+
+    // Spec §6.2: changing a filter scrolls to the top. Clearing "cafe" here: the 3 cafés are restaurants 20 to 22 of the
+    // 40 that the cleared search finds.
+    private val cafeIndices = 20..22
+    private val all = List(40) { i ->
+        val name = if (i in cafeIndices) "Café $i" else "Restaurant $i"
+        grill.copy(id = RestaurantId("r-$i"), name = name)
+    }
+    private val cafes = all.slice(cafeIndices)
+    private var state by mutableStateOf(BrowseUiState(query = "cafe", resultCount = 3, syncStatus = synced, now = now))
+    private val list = MutableStateFlow(PagingData.from(cafes.foundBy("cafe")))
+
+    @Composable
+    private fun SearchScreen() = MrdTheme {
+        BrowseScreen(
+            state = state,
+            searchState = remember { TextFieldState(state.query) },
+            restaurants = list.collectAsLazyPagingItems(),
+            onOpenNowToggled = {},
+            onClearSearch = {},
+            onRefresh = {},
+            onRestaurantClick = {},
+            onFavouriteToggled = {}
+        )
+    }
+
+    private fun clearTheSearch() {
+        state = state.copy(query = "", resultCount = null)
+    }
+
+    private fun allRestaurantsArrive() {
+        list.value = PagingData.from(all.foundBy(""))
+    }
+
+    /** The index of the first card the grid shows, read from its name: "Café 20" is at index 20. */
+    private fun firstShownIndex(): Int {
+        val gridTop = compose.onNode(hasScrollToIndexAction()).fetchSemanticsNode().boundsInRoot.top
+        return compose.onAllNodes(hasContentDescription("Steakhouse, Grill", substring = true))
+            .fetchSemanticsNodes()
+            .filter { it.boundsInRoot.bottom > gridTop }
+            .minBy { it.boundsInRoot.top }
+            .config[SemanticsProperties.ContentDescription]
+            .single()
+            .let { Regex("""\d+""").find(it)!!.value.toInt() }
+    }
+
+    @Test
+    fun aNewSearchStartsAtTheTopWhenItsResultsArriveAfterTheNextLayout() {
+        compose.setContent { SearchScreen() }
+        compose.runOnIdle { clearTheSearch() }
+        compose.waitForIdle() // a layout with the cafés still shown
+        compose.runOnIdle { allRestaurantsArrive() }
+        compose.waitForIdle()
+        assertEquals(0, firstShownIndex())
+    }
+
+    @Test
+    fun aNewSearchStartsAtTheTopWhenItsResultsArriveBeforeTheNextLayout() {
+        compose.setContent { SearchScreen() }
+        // No frames, so Paging presents the new results before the grid is laid out again.
+        compose.mainClock.autoAdvance = false
+        compose.runOnIdle {
+            clearTheSearch()
+            allRestaurantsArrive()
+        }
+        compose.waitForIdle()
+        compose.mainClock.autoAdvance = true
+        compose.waitForIdle()
+        assertEquals(0, firstShownIndex())
+        // Only a new search moves the list: a later reload of the same results leaves it where the user scrolled.
+        compose.onNode(hasScrollToIndexAction()).performScrollToIndex(10)
+        compose.runOnIdle { list.value = PagingData.from(all.map { it.copy(isFavourite = true) }.foundBy("")) }
+        compose.waitForIdle()
+        assertEquals(10, firstShownIndex())
+    }
+
+    @Test
+    fun aReloadOfTheSameSearchKeepsTheScrollPosition() {
+        clearTheSearch()
+        allRestaurantsArrive()
+        compose.setContent { SearchScreen() }
+        compose.onNode(hasScrollToIndexAction()).performScrollToIndex(10)
+        // A minute's tick or a refresh reloads the same search's results.
+        compose.runOnIdle { list.value = PagingData.from(all.map { it.copy(isFavourite = true) }.foundBy("")) }
+        compose.waitForIdle()
+        assertEquals(10, firstShownIndex())
+    }
+
+    @Test
+    fun theScrollPositionSurvivesRecreation() {
+        clearTheSearch()
+        allRestaurantsArrive()
+        val restoration = StateRestorationTester(compose)
+        restoration.setContent { SearchScreen() }
+        compose.onNode(hasScrollToIndexAction()).performScrollToIndex(10)
+        // A rotation, or the process restored after Android killed it: the same search, so the same position.
+        restoration.emulateSavedInstanceStateRestore()
+        assertEquals(10, firstShownIndex())
     }
 }

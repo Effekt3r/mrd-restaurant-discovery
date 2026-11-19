@@ -3,6 +3,7 @@ package com.effekt3r.mrd.feature.browse
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.lifecycle.SavedStateHandle
+import androidx.paging.testing.asSnapshot
 import app.cash.turbine.test
 import com.effekt3r.mrd.core.model.OpenStatus
 import com.effekt3r.mrd.core.model.Restaurant
@@ -106,6 +107,21 @@ class BrowseViewModelTest {
         }
         runCurrent()
         assertEquals(listOf("" to false, "" to true), repository.listRequests)
+    }
+
+    @Test
+    fun eachRestaurantInTheListCarriesTheFiltersThatFoundIt() = runTest {
+        // The screen starts a new list at the top by these (spec §6.2).
+        repository.restaurants.value = listOf(restaurant("r-1", open = true), restaurant("r-2", open = false))
+        val viewModel = viewModel()
+        viewModel.type("r-")
+        viewModel.onOpenNowToggled(true)
+        advanceTimeBy(250)
+        runCurrent()
+        assertEquals(
+            listOf(BrowseListItem(restaurant("r-1").summary, BrowseFilters(query = "r-", openNow = true))),
+            viewModel.restaurants.asSnapshot()
+        )
     }
 
     @Test

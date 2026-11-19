@@ -1,5 +1,6 @@
 package com.effekt3r.mrd.feature.browse
 
+import com.effekt3r.mrd.core.model.RestaurantSummary
 import com.effekt3r.mrd.core.model.SyncStatus
 import com.effekt3r.mrd.core.model.WeekMinute
 import com.effekt3r.mrd.core.ui.SyncProblem
@@ -45,6 +46,15 @@ data class BrowseUiState(
     /** The banner over cached restaurants: shown when offline, or when the last refresh failed. */
     val banner: SyncProblem? get() = problem.takeIf { syncStatus.lastSyncedAt != null }
 }
+
+/** What Browse's list is filtered by: the search, trimmed and debounced, and the Open now toggle. */
+data class BrowseFilters(val query: String = "", val openNow: Boolean = false)
+
+/**
+ * A restaurant in Browse's list, with the filters that found it. Each new search or toggle shows a new list, which
+ * starts at the top (spec §6.2), and the grid tells the lists apart by these filters.
+ */
+data class BrowseListItem(val restaurant: RestaurantSummary, val filters: BrowseFilters)
 
 enum class BrowseBody {
     /** No snapshot yet, and the first refresh is running: skeleton cards. */

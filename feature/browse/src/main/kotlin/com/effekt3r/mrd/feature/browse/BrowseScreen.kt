@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -31,11 +30,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -104,16 +100,14 @@ internal fun BrowseScreen(onRestaurantClick: (String) -> Unit, viewModel: Browse
 internal fun BrowseScreen(
     state: BrowseUiState,
     searchState: TextFieldState,
-    restaurants: LazyPagingItems<RestaurantSummary>,
+    restaurants: LazyPagingItems<BrowseListItem>,
     onOpenNowToggled: (Boolean) -> Unit,
     onClearSearch: () -> Unit,
     onRefresh: () -> Unit,
     onRestaurantClick: (String) -> Unit,
     onFavouriteToggled: (RestaurantId) -> Unit,
-    modifier: Modifier = Modifier,
-    gridState: LazyGridState = rememberLazyGridState()
+    modifier: Modifier = Modifier
 ) {
-    ScrollToTopOnNewFilters(state, gridState)
     val header = rememberCollapsingHeaderState()
     Column(modifier.fillMaxSize().nestedScroll(header.connection)) {
         // The status bar keeps a plain surface behind its icons while the header slides away under it.
@@ -143,14 +137,7 @@ internal fun BrowseScreen(
                     Modifier.windowInsetsPadding(insets)
                 )
 
-                BrowseBody.Results -> RestaurantGrid(
-                    state,
-                    restaurants,
-                    gridState,
-                    insets,
-                    onRestaurantClick,
-                    onFavouriteToggled
-                )
+                BrowseBody.Results -> RestaurantGrid(state, restaurants, insets, onRestaurantClick, onFavouriteToggled)
 
                 BrowseBody.NoMatches -> NoMatches(
                     state,
@@ -237,26 +224,25 @@ private fun Banner(problem: SyncProblem, state: BrowseUiState, onRetry: () -> Un
 }
 
 /**
- * A new search or toggle starts the list at the top; ticks and refreshes leave it where it is (spec §6.2). The last
- * filters shown are saved with the screen, so a rotation or a restored process keeps the scroll position.
+ * The grid's scroll position, one for each list (spec §6.2). A new search or toggle shows a new list, which starts at
+ * the top; ticks and refreshes reload the same list, which stays where it is. The position is saved with the screen, so
+ * a rotation or a restored process keeps it (AC-13).
+ *
+ * It follows the filters of the list on screen, which its restaurants carry, not the state's. The new results can
+ * arrive a frame or more after the filters change, and a grid laid out once more over the old results would remember
+ * their first restaurant, find it among the new results and scroll to it instead of the top.
  */
 @Composable
-private fun ScrollToTopOnNewFilters(state: BrowseUiState, gridState: LazyGridState) {
-    val filters = state.query to state.openNow
-    var shownFilters by rememberSaveable { mutableStateOf(filters) }
-    LaunchedEffect(filters) {
-        if (filters != shownFilters) {
-            gridState.requestScrollToItem(0)
-            shownFilters = filters
-        }
-    }
+private fun rememberGridState(restaurants: LazyPagingItems<BrowseListItem>): LazyGridState {
+    // Every restaurant in a list carries the same filters, and a list on screen has at least one page loaded.
+    val shownFilters = restaurants.itemSnapshotList.items.firstOrNull()?.filters
+    return rememberSaveable(shownFilters, saver = LazyGridState.Saver) { LazyGridState() }
 }
 
 @Composable
 private fun RestaurantGrid(
     state: BrowseUiState,
-    restaurants: LazyPagingItems<RestaurantSummary>,
-    gridState: LazyGridState,
+    restaurants: LazyPagingItems<BrowseListItem>,
     insets: WindowInsets,
     onRestaurantClick: (String) -> Unit,
     onFavouriteToggled: (RestaurantId) -> Unit
@@ -266,7 +252,7 @@ private fun RestaurantGrid(
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = CARD_MIN_WIDTH),
         modifier = Modifier.fillMaxSize(),
-        state = gridState,
+        state = rememberGridState(restaurants),
         contentPadding = insets.add(
             WindowInsets(MrdSpacing.Large, MrdSpacing.Medium, MrdSpacing.Large, MrdSpacing.Large)
         )
@@ -276,10 +262,10 @@ private fun RestaurantGrid(
     ) {
         items(
             count = restaurants.itemCount,
-            key = restaurants.itemKey { it.id.value },
+            key = restaurants.itemKey { it.restaurant.id.value },
             contentType = restaurants.itemContentType { RESTAURANT_CONTENT_TYPE }
         ) { index ->
-            val restaurant = restaurants[index]
+            val restaurant = restaurants[index]?.restaurant
             if (restaurant == null) {
                 MrdSkeletonCard()
             } else {
@@ -407,7 +393,8 @@ private fun BrowseScreenPreview() {
                     now = now
                 ),
                 searchState = TextFieldState(),
-                restaurants = flowOf(PagingData.from(listOf(grill, cafe))).collectAsLazyPagingItems(),
+                restaurants = flowOf(PagingData.from(listOf(grill, cafe).map { BrowseListItem(it, BrowseFilters()) }))
+                    .collectAsLazyPagingItems(),
                 onOpenNowToggled = {},
                 onClearSearch = {},
                 onRefresh = {},

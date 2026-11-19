@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.paging.map
 import com.effekt3r.mrd.core.common.MinuteTicker
 import com.effekt3r.mrd.core.common.NetworkMonitor
 import com.effekt3r.mrd.core.data.RestaurantRepository
 import com.effekt3r.mrd.core.model.RestaurantId
-import com.effekt3r.mrd.core.model.RestaurantSummary
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Clock
 import java.time.Instant
@@ -51,15 +51,15 @@ class BrowseViewModel @Inject constructor(
 
     // The filters the list and the count use. The query waits until typing pauses (spec §4.4), but an empty one, as
     // Clear search makes it, applies at once. The restored filters are the initial value, so they don't wait either.
-    private val filters: StateFlow<Filters> = combine(
+    private val filters: StateFlow<BrowseFilters> = combine(
         snapshotFlow { searchState.text.toString().trim() }
             .debounce { query -> if (query.isEmpty()) 0L else SEARCH_DEBOUNCE_MILLIS },
         savedStateHandle.getStateFlow(OPEN_NOW_KEY, false),
-        ::Filters
+        ::BrowseFilters
     ).stateIn(
         viewModelScope,
         SharingStarted.Eagerly,
-        Filters(searchState.text.toString().trim(), savedStateHandle[OPEN_NOW_KEY] ?: false)
+        BrowseFilters(searchState.text.toString().trim(), savedStateHandle[OPEN_NOW_KEY] ?: false)
     )
 
     // The list's minute ticks. cachedIn keeps the paged flow collected for as long as this ViewModel lives, in the
@@ -67,9 +67,15 @@ class BrowseViewModel @Inject constructor(
     // instead, which runs only while the screen collects it (spec §5.6).
     private val listTicks = MutableSharedFlow<Instant>()
 
-    /** The restaurants matching the filters, a page at a time; they reload in place when a status changes. */
-    val restaurants: Flow<PagingData<RestaurantSummary>> = filters
-        .flatMapLatest { repository.restaurants(it.query, it.openNow, listTicks) }
+    /**
+     * The restaurants matching the filters, a page at a time; they reload in place when a status changes. Each carries
+     * the filters that found it, so the screen can tell a new search's results from a reload of the same ones.
+     */
+    val restaurants: Flow<PagingData<BrowseListItem>> = filters
+        .flatMapLatest { filters ->
+            repository.restaurants(filters.query, filters.openNow, listTicks)
+                .map { page -> page.map { BrowseListItem(it, filters) } }
+        }
         .cachedIn(viewModelScope)
 
     /**
@@ -118,8 +124,6 @@ class BrowseViewModel @Inject constructor(
     fun onFavouriteToggled(id: RestaurantId) {
         viewModelScope.launch { repository.toggleFavourite(id) }
     }
-
-    private data class Filters(val query: String, val openNow: Boolean)
 
     internal companion object {
         const val QUERY_KEY = "query"

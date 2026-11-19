@@ -1,5 +1,7 @@
 package com.effekt3r.mrd.core.testing
 
+import androidx.paging.LoadState
+import androidx.paging.LoadStates
 import androidx.paging.PagingData
 import com.effekt3r.mrd.core.data.RestaurantRepository
 import com.effekt3r.mrd.core.model.OpenStatus
@@ -40,7 +42,8 @@ class FakeRestaurantRepository : RestaurantRepository {
     ): Flow<PagingData<RestaurantSummary>> = channelFlow {
         listRequests += query to openNow
         launch { ticks.collect { listTicks += it } }
-        matching(query, openNow).collect { send(PagingData.from(it)) }
+        // Each page says it has finished loading, as a Pager's does, so paging-testing's asSnapshot() can read it.
+        matching(query, openNow).collect { send(PagingData.from(it, LOADED)) }
     }
 
     override fun count(query: String, openNow: Boolean): Flow<Int> = matching(query, openNow).map { it.size }
@@ -62,6 +65,14 @@ class FakeRestaurantRepository : RestaurantRepository {
         all.map {
             if (it.summary.id != id) it else it.copy(summary = it.summary.copy(isFavourite = !it.summary.isFavourite))
         }
+    }
+
+    private companion object {
+        val LOADED = LoadStates(
+            refresh = LoadState.NotLoading(endOfPaginationReached = false),
+            prepend = LoadState.NotLoading(endOfPaginationReached = true),
+            append = LoadState.NotLoading(endOfPaginationReached = true)
+        )
     }
 
     private fun matching(query: String, openNow: Boolean) = restaurants.map { all ->
