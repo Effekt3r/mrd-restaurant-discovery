@@ -1,0 +1,153 @@
+{
+  "restaurant_id": "r-1125",
+  "categories": [
+    {
+      "id": "c-1125-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1125-101",
+          "name": "Quarter Chicken",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Leg and thigh, basted as you like it",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529446352.jpg"
+        },
+        {
+          "id": "i-1125-102",
+          "name": "Half Chicken",
+          "price_cents": 14500,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "options": [
+            { "id": "o-1125-102-1", "name": "Extra hot", "price_cents": 2500 },
+            { "id": "o-1125-102-2", "name": "Extra peri-peri sauce", "price_cents": 1500 },
+            { "id": "o-1125-102-3", "name": "Add a roll", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1125-103",
+          "name": "Whole Chicken",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg"
+        },
+        {
+          "id": "i-1125-104",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 19500,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg",
+          "options": [
+            { "id": "o-1125-104-1", "name": "Add a roll", "price_cents": 0 },
+            { "id": "o-1125-104-2", "name": "Extra hot", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1125-105",
+          "name": "Chicken Espetada",
+          "price_cents": 11500,
+          "available": true,
+          "description": "A hanging skewer with garlic butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529444113.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1125-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1125-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg"
+        },
+        {
+          "id": "i-1125-202",
+          "name": "Onion Rings",
+          "price_cents": 4500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/nlxald1764112200.jpg"
+        },
+        {
+          "id": "i-1125-203",
+          "name": "Side Salad",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1125-204",
+          "name": "Creamed Spinach",
+          "price_cents": 5000,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg",
+          "options": [
+            { "id": "o-1125-204-1", "name": "Large", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1125-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1125-301",
+          "name": "Still Water",
+          "price_cents": 4500,
+          "available": true,
+          "description": "500 ml, chilled",
+          "options": [
+            { "id": "o-1125-301-1", "name": "Add mint", "price_cents": 3500 },
+            { "id": "o-1125-301-2", "name": "No ice", "price_cents": 3000 },
+            { "id": "o-1125-301-3", "name": "Large", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1125-302",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3000,
+          "available": true,
+          "options": [
+            { "id": "o-1125-302-1", "name": "Extra lemon", "price_cents": 3500 },
+            { "id": "o-1125-302-2", "name": "No ice", "price_cents": 500 },
+            { "id": "o-1125-302-3", "name": "Add mint", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1125-303",
+          "name": "Ginger Beer",
+          "price_cents": 2500,
+          "available": true
+        },
+        {
+          "id": "i-1125-304",
+          "name": "Homemade Lemonade",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda",
+          "options": [
+            { "id": "o-1125-304-1", "name": "No ice", "price_cents": 3000 },
+            { "id": "o-1125-304-2", "name": "Add mint", "price_cents": 2500 },
+            { "id": "o-1125-304-3", "name": "Extra lemon", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1125-305",
+          "name": "Cream Soda Float",
+          "price_cents": 4000,
+          "available": true,
+          "options": [
+            { "id": "o-1125-305-1", "name": "Extra lemon", "price_cents": 2500 },
+            { "id": "o-1125-305-2", "name": "No ice", "price_cents": 1000 }
+          ]
+        }
+      ]
+    }
+  ]
+}

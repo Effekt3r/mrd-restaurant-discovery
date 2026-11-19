@@ -1,0 +1,219 @@
+{
+  "restaurant_id": "r-1163",
+  "categories": [
+    {
+      "id": "c-1163-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1163-101",
+          "name": "Onion Bhaji",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Crispy fritters with a tamarind dip",
+          "options": [
+            { "id": "o-1163-101-1", "name": "Make it hot", "price_cents": 0 },
+            { "id": "o-1163-101-2", "name": "Extra raita", "price_cents": 3000 },
+            { "id": "o-1163-101-3", "name": "Mint chutney", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1163-102",
+          "name": "Chilli Bites",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        },
+        {
+          "id": "i-1163-103",
+          "name": "Chicken Tikka",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Roasted in the tandoor, with raita"
+        },
+        {
+          "id": "i-1163-104",
+          "name": "Paneer Tikka",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Grilled cottage cheese and peppers",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg"
+        },
+        {
+          "id": "i-1163-105",
+          "name": "Lamb Seekh Kebab",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Minced lamb skewers",
+          "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg"
+        },
+        {
+          "id": "i-1163-106",
+          "name": "Papadums",
+          "price_cents": 6900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1163-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1163-201",
+          "name": "Butter Chicken",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+          "options": [
+            { "id": "o-1163-201-1", "name": "Add raita", "price_cents": 500 },
+            { "id": "o-1163-201-2", "name": "Add basmati rice", "price_cents": 2500 },
+            { "id": "o-1163-201-3", "name": "Make it hot", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1163-202",
+          "name": "Lamb Rogan Josh",
+          "price_cents": 16900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg"
+        },
+        {
+          "id": "i-1163-203",
+          "name": "Durban Lamb Curry",
+          "price_cents": 16900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
+          "options": [
+            { "id": "o-1163-203-1", "name": "Add raita", "price_cents": 2000 },
+            { "id": "o-1163-203-2", "name": "Add basmati rice", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1163-204",
+          "name": "Prawn Curry",
+          "price_cents": 10900,
+          "available": true
+        },
+        {
+          "id": "i-1163-205",
+          "name": "Lamb Vindaloo",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Fiery, with potato",
+          "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+          "options": [
+            { "id": "o-1163-205-1", "name": "Add raita", "price_cents": 3500 },
+            { "id": "o-1163-205-2", "name": "Add basmati rice", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1163-206",
+          "name": "Paneer Makhani",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Cottage cheese in a buttery sauce"
+        }
+      ]
+    },
+    {
+      "id": "c-1163-3",
+      "name": "Breads & Rice",
+      "items": [
+        {
+          "id": "i-1163-301",
+          "name": "Butter Naan",
+          "price_cents": 3900,
+          "available": true,
+          "description": "From the tandoor"
+        },
+        {
+          "id": "i-1163-302",
+          "name": "Garlic Naan",
+          "price_cents": 2900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+          "options": [
+            { "id": "o-1163-302-1", "name": "Add garlic", "price_cents": 500 },
+            { "id": "o-1163-302-2", "name": "Extra butter", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1163-303",
+          "name": "Cheese Naan",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Stuffed with cheddar"
+        },
+        {
+          "id": "i-1163-304",
+          "name": "Roti",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg"
+        },
+        {
+          "id": "i-1163-305",
+          "name": "Basmati Rice",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Steamed",
+          "image_url": "https://www.themealdb.com/images/media/meals/gl92ih1789802951.jpg",
+          "options": [
+            { "id": "o-1163-305-1", "name": "Extra butter", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1163-306",
+          "name": "Jeera Rice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With toasted cumin"
+        },
+        {
+          "id": "i-1163-307",
+          "name": "Pilau Rice",
+          "price_cents": 3900,
+          "available": false,
+          "description": "With whole spices",
+          "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1163-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1163-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1163-402",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1163-403",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1163-404",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

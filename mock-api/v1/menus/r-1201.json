@@ -1,0 +1,130 @@
+{
+  "restaurant_id": "r-1201",
+  "categories": [
+    {
+      "id": "c-1201-1",
+      "name": "Bowls",
+      "items": [
+        {
+          "id": "i-1201-101",
+          "name": "Buddha Bowl",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Roast sweet potato, chickpeas and tahini",
+          "image_url": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg"
+        },
+        {
+          "id": "i-1201-102",
+          "name": "Chicken Quinoa Bowl",
+          "price_cents": 9500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/pb6mj11763788331.jpg"
+        },
+        {
+          "id": "i-1201-103",
+          "name": "Açaí Bowl",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Banana, berries and granola",
+          "image_url": "https://www.themealdb.com/images/media/meals/k1if4d1782589892.jpg"
+        },
+        {
+          "id": "i-1201-104",
+          "name": "Burrito Bowl",
+          "price_cents": 9500,
+          "available": true
+        },
+        {
+          "id": "i-1201-105",
+          "name": "Harvest Bowl",
+          "price_cents": 12000,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1201-2",
+      "name": "Salads",
+      "items": [
+        {
+          "id": "i-1201-201",
+          "name": "Greek Salad",
+          "price_cents": 8000,
+          "available": false,
+          "description": "Feta, olives, cucumber and red onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg"
+        },
+        {
+          "id": "i-1201-202",
+          "name": "Caesar Salad",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Cos, parmesan and croutons",
+          "image_url": "https://www.themealdb.com/images/media/meals/9tddhg1764443699.jpg"
+        },
+        {
+          "id": "i-1201-203",
+          "name": "Beetroot & Goat's Cheese",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Walnuts and a honey dressing",
+          "image_url": "https://www.themealdb.com/images/media/meals/yqwtvu1487426027.jpg",
+          "options": [
+            { "id": "o-1201-203-1", "name": "Add chicken", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1201-204",
+          "name": "Asian Slaw",
+          "price_cents": 7500,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1201-3",
+      "name": "Smoothies & Juices",
+      "items": [
+        {
+          "id": "i-1201-301",
+          "name": "Green Smoothie",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Spinach, apple, cucumber and ginger"
+        },
+        {
+          "id": "i-1201-302",
+          "name": "Berry Smoothie",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Mixed berries, banana and yoghurt"
+        },
+        {
+          "id": "i-1201-303",
+          "name": "Mango Smoothie",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1201-304",
+          "name": "Peanut Butter Smoothie",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Banana, oats and dates"
+        },
+        {
+          "id": "i-1201-305",
+          "name": "Fresh Orange Juice",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1201-306",
+          "name": "Iced Matcha",
+          "price_cents": 4500,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

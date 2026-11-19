@@ -1,0 +1,200 @@
+{
+  "restaurant_id": "r-1030",
+  "categories": [
+    {
+      "id": "c-1030-1",
+      "name": "Pizzas",
+      "items": [
+        {
+          "id": "i-1030-101",
+          "name": "Boerewors & Chakalaka",
+          "price_cents": 14900,
+          "available": true
+        },
+        {
+          "id": "i-1030-102",
+          "name": "Peri-Peri Chicken",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Chicken, peppers and peri-peri sauce"
+        },
+        {
+          "id": "i-1030-103",
+          "name": "Four Cheese",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Mozzarella, gorgonzola, feta and parmesan",
+          "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg"
+        },
+        {
+          "id": "i-1030-104",
+          "name": "Vegetarian",
+          "price_cents": 17900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1030-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1030-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+        },
+        {
+          "id": "i-1030-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 2900,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg",
+          "options": [
+            { "id": "o-1030-202-1", "name": "Garlic aioli", "price_cents": 0 },
+            { "id": "o-1030-202-2", "name": "Peri-peri salt", "price_cents": 3000 },
+            { "id": "o-1030-202-3", "name": "Add cheese sauce", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1030-203",
+          "name": "Creamed Spinach",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+          "options": [
+            { "id": "o-1030-203-1", "name": "Garlic aioli", "price_cents": 2500 },
+            { "id": "o-1030-203-2", "name": "Peri-peri salt", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1030-204",
+          "name": "Coleslaw",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Creamy, with apple and carrot"
+        }
+      ]
+    },
+    {
+      "id": "c-1030-3",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1030-301",
+          "name": "Malva Pudding",
+          "price_cents": 5900,
+          "available": false
+        },
+        {
+          "id": "i-1030-302",
+          "name": "Milk Tart",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg"
+        },
+        {
+          "id": "i-1030-303",
+          "name": "Koeksisters",
+          "price_cents": 7900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/p277uc1764109195.jpg",
+          "options": [
+            { "id": "o-1030-303-1", "name": "Extra custard", "price_cents": 0 },
+            { "id": "o-1030-303-2", "name": "Add whipped cream", "price_cents": 0 },
+            { "id": "o-1030-303-3", "name": "Add vanilla ice cream", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1030-304",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg",
+          "options": [
+            { "id": "o-1030-304-1", "name": "Add vanilla ice cream", "price_cents": 0 },
+            { "id": "o-1030-304-2", "name": "Extra custard", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1030-305",
+          "name": "Chocolate Brownie",
+          "price_cents": 4900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg"
+        },
+        {
+          "id": "i-1030-306",
+          "name": "Baked Cheesecake",
+          "price_cents": 8900,
+          "available": true,
+          "description": "With berry compote",
+          "options": [
+            { "id": "o-1030-306-1", "name": "Add vanilla ice cream", "price_cents": 3500 },
+            { "id": "o-1030-306-2", "name": "Add whipped cream", "price_cents": 1000 },
+            { "id": "o-1030-306-3", "name": "Extra custard", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1030-307",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 7900,
+          "available": false,
+          "description": "Torched meringue on a buttery base"
+        },
+        {
+          "id": "i-1030-308",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 5900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1030-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1030-401",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1030-402",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1030-403",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1030-403-1", "name": "Extra lemon", "price_cents": 1500 },
+            { "id": "o-1030-403-2", "name": "Large", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1030-404",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

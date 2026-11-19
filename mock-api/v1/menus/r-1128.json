@@ -1,0 +1,265 @@
+{
+  "restaurant_id": "r-1128",
+  "categories": [
+    {
+      "id": "c-1128-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1128-101",
+          "name": "Grilled Halloumi",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Citrus glaze, micro herbs",
+          "image_url": "https://www.themealdb.com/images/media/meals/k07k271782502861.jpg"
+        },
+        {
+          "id": "i-1128-102",
+          "name": "Biltong Platter",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/mobh1l1779648766.jpg"
+        },
+        {
+          "id": "i-1128-103",
+          "name": "Calamari Strips",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Lemon butter or peri-peri",
+          "image_url": "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg"
+        },
+        {
+          "id": "i-1128-104",
+          "name": "Pork Belly Bites",
+          "price_cents": 6900,
+          "available": true,
+          "description": "With a sticky soy glaze",
+          "image_url": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg"
+        },
+        {
+          "id": "i-1128-105",
+          "name": "Boerewors Bites",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Grilled, with a chakalaka dip"
+        },
+        {
+          "id": "i-1128-106",
+          "name": "Prawn Cocktail",
+          "price_cents": 8900,
+          "available": true,
+          "description": "With Marie Rose sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1128-2",
+      "name": "Steaks",
+      "items": [
+        {
+          "id": "i-1128-201",
+          "name": "Rump 300 g",
+          "price_cents": 23900,
+          "available": true,
+          "description": "Aged for 21 days and basted"
+        },
+        {
+          "id": "i-1128-202",
+          "name": "Sirloin 300 g",
+          "price_cents": 17900,
+          "available": true,
+          "description": "Aged, with its fat cap"
+        },
+        {
+          "id": "i-1128-203",
+          "name": "Fillet 250 g",
+          "price_cents": 16900,
+          "available": true,
+          "description": "The leanest, most tender cut",
+          "image_url": "https://www.themealdb.com/images/media/meals/st9shl1763755808.jpg"
+        },
+        {
+          "id": "i-1128-204",
+          "name": "Ribeye 350 g",
+          "price_cents": 23900,
+          "available": true
+        },
+        {
+          "id": "i-1128-205",
+          "name": "Wagyu Rump 250 g",
+          "price_cents": 17900,
+          "available": true,
+          "description": "Rich and buttery",
+          "options": [
+            { "id": "o-1128-205-1", "name": "Mushroom sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1128-206",
+          "name": "Pork Ribs",
+          "price_cents": 18900,
+          "available": true,
+          "description": "A full rack with a sticky basting",
+          "image_url": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg"
+        },
+        {
+          "id": "i-1128-207",
+          "name": "Lamb Chops",
+          "price_cents": 21900,
+          "available": true,
+          "description": "Three, with rosemary and garlic"
+        }
+      ]
+    },
+    {
+      "id": "c-1128-3",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1128-301",
+          "name": "Classic Beef Burger",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Lettuce, tomato, pickles and house sauce",
+          "options": [
+            { "id": "o-1128-301-1", "name": "Gluten-free bun", "price_cents": 3500 },
+            { "id": "o-1128-301-2", "name": "Add a fried egg", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1128-302",
+          "name": "Cheese Burger",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg",
+          "options": [
+            { "id": "o-1128-302-1", "name": "Add cheese", "price_cents": 0 },
+            { "id": "o-1128-302-2", "name": "Add a fried egg", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1128-303",
+          "name": "Mushroom Burger",
+          "price_cents": 12900,
+          "available": true,
+          "description": "With a creamy mushroom sauce"
+        },
+        {
+          "id": "i-1128-304",
+          "name": "Chilli Cheese Burger",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/dnd87q1782775269.jpg"
+        },
+        {
+          "id": "i-1128-305",
+          "name": "Chicken Burger",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Crumbed breast, slaw and peri-peri mayo",
+          "options": [
+            { "id": "o-1128-305-1", "name": "Gluten-free bun", "price_cents": 1500 },
+            { "id": "o-1128-305-2", "name": "Add avo", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1128-306",
+          "name": "Veggie Burger",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Chickpea patty, avo and tomato relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg"
+        },
+        {
+          "id": "i-1128-307",
+          "name": "Boerewors Roll",
+          "price_cents": 12900,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1128-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1128-401",
+          "name": "Onion Rings",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Beer-battered"
+        },
+        {
+          "id": "i-1128-402",
+          "name": "Side Salad",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes"
+        },
+        {
+          "id": "i-1128-403",
+          "name": "Creamed Spinach",
+          "price_cents": 2900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/st9shl1763755808.jpg"
+        },
+        {
+          "id": "i-1128-404",
+          "name": "Pap & Chakalaka",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg"
+        },
+        {
+          "id": "i-1128-405",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1128-5",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1128-501",
+          "name": "Malva Pudding",
+          "price_cents": 8900,
+          "available": false,
+          "description": "Warm apricot sponge with custard",
+          "image_url": "https://www.themealdb.com/images/media/meals/wtqrqw1511639627.jpg",
+          "options": [
+            { "id": "o-1128-501-1", "name": "Add vanilla ice cream", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1128-502",
+          "name": "Milk Tart",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg"
+        },
+        {
+          "id": "i-1128-503",
+          "name": "Koeksisters",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/yk78uc1763075719.jpg"
+        },
+        {
+          "id": "i-1128-504",
+          "name": "Baked Cheesecake",
+          "price_cents": 7900,
+          "available": false,
+          "description": "With berry compote"
+        }
+      ]
+    }
+  ]
+}

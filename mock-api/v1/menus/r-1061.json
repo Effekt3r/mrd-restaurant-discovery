@@ -1,0 +1,165 @@
+{
+  "restaurant_id": "r-1061",
+  "categories": [
+    {
+      "id": "c-1061-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1061-101",
+          "name": "Quarter Chicken",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Leg and thigh, basted as you like it"
+        },
+        {
+          "id": "i-1061-102",
+          "name": "Half Chicken",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "image_url": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg"
+        },
+        {
+          "id": "i-1061-103",
+          "name": "Whole Chicken",
+          "price_cents": 17900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+          "options": [
+            { "id": "o-1061-103-1", "name": "Extra peri-peri sauce", "price_cents": 2500 },
+            { "id": "o-1061-103-2", "name": "Lemon & herb basting", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1061-104",
+          "name": "Chicken Wings",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting",
+          "options": [
+            { "id": "o-1061-104-1", "name": "Add a roll", "price_cents": 1000 },
+            { "id": "o-1061-104-2", "name": "Extra hot", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1061-105",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 6900,
+          "available": false,
+          "description": "Pan-fried, with a Portuguese roll"
+        },
+        {
+          "id": "i-1061-106",
+          "name": "Chicken Espetada",
+          "price_cents": 15900,
+          "available": true,
+          "options": [
+            { "id": "o-1061-106-1", "name": "Extra hot", "price_cents": 2500 },
+            { "id": "o-1061-106-2", "name": "Add a roll", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1061-107",
+          "name": "Chicken Prego Roll",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll"
+        },
+        {
+          "id": "i-1061-108",
+          "name": "Chicken Strips",
+          "price_cents": 13900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1061-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1061-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 4900,
+          "available": true
+        },
+        {
+          "id": "i-1061-202",
+          "name": "Onion Rings",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1061-203",
+          "name": "Side Salad",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg"
+        },
+        {
+          "id": "i-1061-204",
+          "name": "Creamed Spinach",
+          "price_cents": 4900,
+          "available": true
+        },
+        {
+          "id": "i-1061-205",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1061-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1061-301",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger",
+          "options": [
+            { "id": "o-1061-301-1", "name": "Add mint", "price_cents": 3000 },
+            { "id": "o-1061-301-2", "name": "No ice", "price_cents": 0 },
+            { "id": "o-1061-301-3", "name": "Large", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1061-302",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1061-303",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1061-304",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1061-305",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "restaurant_id": "r-1173",
+  "categories": [
+    {
+      "id": "c-1173-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1173-101",
+          "name": "Quarter Chicken",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Leg and thigh, basted as you like it",
+          "image_url": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg"
+        },
+        {
+          "id": "i-1173-102",
+          "name": "Half Chicken",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "image_url": "https://www.themealdb.com/images/media/meals/ro8mzj1763800655.jpg"
+        },
+        {
+          "id": "i-1173-103",
+          "name": "Whole Chicken",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg"
+        },
+        {
+          "id": "i-1173-104",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg"
+        },
+        {
+          "id": "i-1173-105",
+          "name": "Chicken Espetada",
+          "price_cents": 9900,
+          "available": true,
+          "description": "A hanging skewer with garlic butter",
+          "options": [
+            { "id": "o-1173-105-1", "name": "Extra hot", "price_cents": 2000 },
+            { "id": "o-1173-105-2", "name": "Add a roll", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1173-106",
+          "name": "Chicken Prego Roll",
+          "price_cents": 17900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll"
+        },
+        {
+          "id": "i-1173-107",
+          "name": "Chicken Strips",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Crumbed, with honey mustard",
+          "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1173-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1173-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 2900,
+          "available": true,
+          "options": [
+            { "id": "o-1173-201-1", "name": "Peri-peri salt", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1173-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 4900,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg"
+        },
+        {
+          "id": "i-1173-203",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg"
+        },
+        {
+          "id": "i-1173-204",
+          "name": "Coleslaw",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/d8bfyg1764117503.jpg",
+          "options": [
+            { "id": "o-1173-204-1", "name": "Garlic aioli", "price_cents": 1500 },
+            { "id": "o-1173-204-2", "name": "Add cheese sauce", "price_cents": 1500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1173-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1173-301",
+          "name": "Still Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, chilled",
+          "options": [
+            { "id": "o-1173-301-1", "name": "Extra lemon", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1173-302",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Home-brewed with fresh ginger",
+          "options": [
+            { "id": "o-1173-302-1", "name": "No ice", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1173-303",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "options": [
+            { "id": "o-1173-303-1", "name": "No ice", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1173-304",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": false
+        },
+        {
+          "id": "i-1173-305",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

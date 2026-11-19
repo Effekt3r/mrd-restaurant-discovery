@@ -16,6 +16,8 @@ How GitHub serves them:
 - `cache-control: max-age=300` and a strong `etag`: a request with `If-None-Match` gets a `304` with no body;
 - gzip, when the request accepts it.
 
+Each restaurant in `restaurants.json` also has a menu, at `v1/menus/{id}.json` on the same branch: for example https://raw.githubusercontent.com/Effekt3r/mrd-restaurant-discovery/dev/mock-api/v1/menus/r-1001.json. GitHub serves it the same way. A restaurant without one, such as `r-1300` in the stress file, answers `404`.
+
 ## Schema
 
 Spec §5.1 defines the fields, and what the app does when one is missing or invalid.
@@ -66,11 +68,48 @@ Deliberately broken records at fixed positions, in both files. Each has only the
 
 Restaurant `r-1001`, the first, is the brief's example: Cape Town Grill, a steakhouse open until 02:00 on Friday and Saturday nights.
 
+## Menus
+
+One file per distinct id in `restaurants.json`, made from that id's first record: 218 files, because the record at index 10 has no id and `r-1030` appears twice (its menu is index 29's, Fynbos Pizza Bar's). Restaurants that are only in the stress file have no menu: the API answers `404`, and Details says the restaurant hasn't shared a menu. That's deliberate.
+
+- **Schema:** spec §5.9 defines the fields, and what the app does when one is missing or invalid. Keys come in this order: `restaurant_id`, then `categories` of `id`, `name` and `items`. Each item has `id`, `name`, `price_cents`, `available`, `description`, `image_url` and `options`, and each option `id`, `name` and `price_cents`. An item without a description, photo or options leaves that key out.
+- **Ids** carry the restaurant's number: category `c-1001-1`, item `i-1001-101` (category 1, item 1) and option `o-1001-101-1`.
+- **Content:** each concept has 3 to 5 courses, such as Pizzas, Sides, Desserts and Drinks, and each menu lists 4 to 8 of a course's dishes in menu order. The dishes are curated in `Courses.kt`, generic and Cape Town-flavoured (bobotie, gatsbys, malva pudding), and a test fails if any name, description or option contains a brand or a real restaurant's name.
+- **Prices** are whole rands in cents: R25 to R250, and R20 to R45 for drinks. Each restaurant prices in round fives (R85) or just under (R89). Options cost R5 to R35, and some are free.
+
+| Across the 207 menus without edge cases (4,945 items) | Measured | Drawn per item |
+|---|---|---|
+| Sold out (`"available": false`) | 9.0% | 8% |
+| No description | 25.6% | 25% |
+| A photo, from the restaurant's own photo key (desserts from `dessert`) | 49.7% | 65% of dishes; drinks never |
+| Options (1 to 3) | 29.5% | 30% |
+| Free options | 21.0% of 2,889 | 20% |
+
+The menus total about 1.6 MB, a few KB each: `r-1001.json` is about 11 KB, or 2 KB gzipped.
+
+### Menu edge cases
+
+Eleven menus are broken on purpose, at the indexes ending in 5, so none belongs to a restaurant edge case. Each has only the problem listed. `MenuEdgeCases.kt` defines them and `MenuEdgeCasesTest` checks them.
+
+| Index | Menu | What's wrong | Spec §5.9's handling |
+|---|---|---|---|
+| 5 | `r-1006` | Item `i-1006-101`, Oysters, has no `price_cents` | The item is dropped |
+| 15 | `r-1016` | Item `i-1016-101`, Baba Ganoush, costs -500 | The item is dropped |
+| 25 | `r-1026` | Item `i-1026-101` has no `name` | The item is dropped |
+| 35 | `r-1036` | Item `i-1036-101`, Bruschetta, has the price `"8900"`, a string | The item is dropped |
+| 45 | `r-1046` | Category `c-1046-1` has no `name` | The category is dropped |
+| 55 | `r-1056` | Every item in category `c-1056-2`, Sides, has `"price_cents": null` | The category is hidden |
+| 65 | `r-1066` | Option `o-1066-102-2` of Half Chicken costs -500 | The option is dropped |
+| 75 | `r-1076` | Item `i-1076-103`, Chicken Siu Mai, has an `http://` image | No thumbnail |
+| 85 | `r-1086` | `restaurant_id` is `r-1087` | `BadData` |
+| 95 | `r-1096` | `categories` is `[]` | "This restaurant hasn't shared a menu yet" |
+| 105 | `r-1106` | Half Chicken repeats Quarter Chicken's id, `i-1106-101` | The first wins: Half Chicken is dropped |
+
 ## Regenerating
 
 | Command | What it does |
 |---|---|
-| `./gradlew :tools:datagen:run` | Writes both files from the committed image pool, in about a second. No network. |
+| `./gradlew :tools:datagen:run` | Writes both files and the menus from the committed image pool, in about two seconds, and deletes any menu whose restaurant has gone. No network. |
 | `./gradlew :tools:datagen:run --args=fetch-images` | Refreshes `tools/datagen/src/main/resources/image-pool.json` from TheMealDB. Regenerate afterwards. |
 
 `GoldenFilesTest` fails when a committed file differs by a single byte from what the generator writes, so never edit these files by hand: change the generator, regenerate and commit both. The output depends only on the code, the image pool and the seed. One caveat: `kotlin.random` only promises the same sequence within one Kotlin version, so a Kotlin upgrade may change the data. The golden test then fails, and regenerating is the fix.

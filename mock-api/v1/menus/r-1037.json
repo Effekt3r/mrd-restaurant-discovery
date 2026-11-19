@@ -1,0 +1,149 @@
+{
+  "restaurant_id": "r-1037",
+  "categories": [
+    {
+      "id": "c-1037-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1037-101",
+          "name": "Half Chicken",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "options": [
+            { "id": "o-1037-101-1", "name": "Extra hot", "price_cents": 2500 },
+            { "id": "o-1037-101-2", "name": "Lemon & herb basting", "price_cents": 1500 },
+            { "id": "o-1037-101-3", "name": "Add a roll", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1037-102",
+          "name": "Chicken Wings",
+          "price_cents": 19000,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting",
+          "image_url": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg"
+        },
+        {
+          "id": "i-1037-103",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 19000,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "options": [
+            { "id": "o-1037-103-1", "name": "Extra hot", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1037-104",
+          "name": "Chicken Strips",
+          "price_cents": 8000,
+          "available": true,
+          "description": "Crumbed, with honey mustard",
+          "image_url": "https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1037-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1037-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 3500,
+          "available": false,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/tytyxu1515363282.jpg"
+        },
+        {
+          "id": "i-1037-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 3500,
+          "available": false,
+          "description": "With chipotle mayo",
+          "options": [
+            { "id": "o-1037-202-1", "name": "Add cheese sauce", "price_cents": 500 },
+            { "id": "o-1037-202-2", "name": "Large", "price_cents": 1000 },
+            { "id": "o-1037-202-3", "name": "Peri-peri salt", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1037-203",
+          "name": "Onion Rings",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/bpkxtw1763332446.jpg"
+        },
+        {
+          "id": "i-1037-204",
+          "name": "Side Salad",
+          "price_cents": 6500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/bmbvjk1782770310.jpg"
+        },
+        {
+          "id": "i-1037-205",
+          "name": "Creamed Spinach",
+          "price_cents": 3000,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg"
+        },
+        {
+          "id": "i-1037-206",
+          "name": "Grilled Mielies",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg",
+          "options": [
+            { "id": "o-1037-206-1", "name": "Add cheese sauce", "price_cents": 2000 },
+            { "id": "o-1037-206-2", "name": "Garlic aioli", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1037-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1037-301",
+          "name": "Sparkling Water",
+          "price_cents": 4000,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1037-301-1", "name": "Extra lemon", "price_cents": 1000 },
+            { "id": "o-1037-301-2", "name": "Large", "price_cents": 1000 },
+            { "id": "o-1037-301-3", "name": "Add mint", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1037-302",
+          "name": "Ginger Beer",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1037-303",
+          "name": "Homemade Lemonade",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1037-304",
+          "name": "Cream Soda Float",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}
