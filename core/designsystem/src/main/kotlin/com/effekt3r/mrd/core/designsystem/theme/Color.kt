@@ -28,6 +28,10 @@ internal object MrdPalette {
     val Green = Color(0xFF1E7B34)
     val Red = Color(0xFFB3261E)
 
+    /** Red's hue, pale and deep: error containers, which no screen uses yet, in the light and dark themes. */
+    val RedPale = Color(0xFFFCE8E6)
+    val RedDeep = Color(0xFF8C1D18)
+
     // The dark theme: ink surfaces, white text.
     val InkRaised = Color(0xFF2E3134)
     val MutedOnInk = Color(0xFFB4BCC4)
@@ -69,6 +73,19 @@ data class MrdColors(
     val onImagePlaceholder: Color
 )
 
+/**
+ * Material's "fixed" roles keep one colour in both themes. They're sky behind ink, like the tags: Mr D has no other
+ * accent to give them.
+ */
+private object MrdFixed {
+    val Container = MrdPalette.Sky
+    val OnContainer = MrdPalette.Ink
+}
+
+/**
+ * Every Material role is set, so a stock component (a tonal button, a selected chip, a navigation bar's indicator)
+ * never falls back to Material's baseline purple. ColorSchemeTest fails if a role is left unset.
+ */
 internal val LightColorScheme: ColorScheme = lightColorScheme(
     primary = MrdPalette.Ink,
     onPrimary = MrdPalette.White,
@@ -76,6 +93,12 @@ internal val LightColorScheme: ColorScheme = lightColorScheme(
     onPrimaryContainer = MrdPalette.Ink,
     secondary = MrdPalette.SkyDeep,
     onSecondary = MrdPalette.White,
+    secondaryContainer = MrdPalette.Sky,
+    onSecondaryContainer = MrdPalette.Ink,
+    tertiary = MrdPalette.SkyDeep,
+    onTertiary = MrdPalette.White,
+    tertiaryContainer = MrdPalette.Sky,
+    onTertiaryContainer = MrdPalette.Ink,
     background = MrdPalette.White,
     onBackground = MrdPalette.Ink,
     surface = MrdPalette.White,
@@ -93,10 +116,28 @@ internal val LightColorScheme: ColorScheme = lightColorScheme(
     inversePrimary = MrdPalette.Sky,
     error = MrdPalette.Red,
     onError = MrdPalette.White,
+    errorContainer = MrdPalette.RedPale,
+    onErrorContainer = MrdPalette.Red,
     outline = MrdPalette.Outline,
-    outlineVariant = MrdPalette.FieldGrey
+    outlineVariant = MrdPalette.FieldGrey,
+    scrim = MrdPalette.Ink,
+    surfaceBright = MrdPalette.White,
+    surfaceDim = MrdPalette.FieldGrey,
+    primaryFixed = MrdFixed.Container,
+    primaryFixedDim = MrdFixed.Container,
+    onPrimaryFixed = MrdFixed.OnContainer,
+    onPrimaryFixedVariant = MrdFixed.OnContainer,
+    secondaryFixed = MrdFixed.Container,
+    secondaryFixedDim = MrdFixed.Container,
+    onSecondaryFixed = MrdFixed.OnContainer,
+    onSecondaryFixedVariant = MrdFixed.OnContainer,
+    tertiaryFixed = MrdFixed.Container,
+    tertiaryFixedDim = MrdFixed.Container,
+    onTertiaryFixed = MrdFixed.OnContainer,
+    onTertiaryFixedVariant = MrdFixed.OnContainer
 )
 
+/** The dark theme sets every role too, from the same palette. */
 internal val DarkColorScheme: ColorScheme = darkColorScheme(
     primary = MrdPalette.White,
     onPrimary = MrdPalette.Ink,
@@ -104,6 +145,12 @@ internal val DarkColorScheme: ColorScheme = darkColorScheme(
     onPrimaryContainer = MrdPalette.Ink,
     secondary = MrdPalette.SkyPale,
     onSecondary = MrdPalette.Ink,
+    secondaryContainer = MrdPalette.Sky,
+    onSecondaryContainer = MrdPalette.Ink,
+    tertiary = MrdPalette.SkyPale,
+    onTertiary = MrdPalette.Ink,
+    tertiaryContainer = MrdPalette.Sky,
+    onTertiaryContainer = MrdPalette.Ink,
     background = MrdPalette.Ink,
     onBackground = MrdPalette.White,
     surface = MrdPalette.Ink,
@@ -121,8 +168,25 @@ internal val DarkColorScheme: ColorScheme = darkColorScheme(
     inversePrimary = MrdPalette.Ink,
     error = MrdPalette.RedOnInk,
     onError = MrdPalette.Ink,
+    errorContainer = MrdPalette.RedDeep,
+    onErrorContainer = MrdPalette.RedPale,
     outline = MrdPalette.OutlineOnInk,
-    outlineVariant = MrdPalette.InkRaised
+    outlineVariant = MrdPalette.InkRaised,
+    scrim = MrdPalette.Ink,
+    surfaceBright = MrdPalette.InkRaised,
+    surfaceDim = MrdPalette.Ink,
+    primaryFixed = MrdFixed.Container,
+    primaryFixedDim = MrdFixed.Container,
+    onPrimaryFixed = MrdFixed.OnContainer,
+    onPrimaryFixedVariant = MrdFixed.OnContainer,
+    secondaryFixed = MrdFixed.Container,
+    secondaryFixedDim = MrdFixed.Container,
+    onSecondaryFixed = MrdFixed.OnContainer,
+    onSecondaryFixedVariant = MrdFixed.OnContainer,
+    tertiaryFixed = MrdFixed.Container,
+    tertiaryFixedDim = MrdFixed.Container,
+    onTertiaryFixed = MrdFixed.OnContainer,
+    onTertiaryFixedVariant = MrdFixed.OnContainer
 )
 
 internal val LightMrdColors = MrdColors(
