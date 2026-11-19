@@ -254,7 +254,9 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 - **Open now includes only Open.** The app never claims a restaurant is open when it can't back that up.
 - **Details shows the next change:** "Closes 22:00" (following intervals across midnight), "Opens 11:00", "Opens tomorrow 11:00" or "Opens Mon 11:00".
 - **Status is computed in SQL.** The list status and the filter come from two parameters, `:weekMinute` and `:now`, so paging and the result count stay correct at 10,000 rows. The query reads the snapshot's freshness from `sync_state`, so Room re-runs it when a sync lands. Details uses the same rules as pure Kotlin functions.
-- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting. On each tick, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting its state. On each tick in a new minute, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+  - The paged list takes its ticks from the screen: `restaurants(query, openNow, ticks)`. `cachedIn(viewModelScope)` keeps the list collected for as long as the ViewModel lives, so the list couldn't stop a ticker of its own when the app goes to the background.
+  - A tick in the minute the list was loaded for changes nothing, so the tick a screen sends as it becomes visible reloads the list only if it's out of date.
 
 **How it's measured:**
 - **Correctness.** The same boundary cases run against both the Kotlin functions and the SQL query:

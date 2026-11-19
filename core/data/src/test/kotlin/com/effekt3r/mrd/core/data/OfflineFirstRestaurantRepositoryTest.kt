@@ -1,5 +1,6 @@
 package com.effekt3r.mrd.core.data
 
+import androidx.paging.PagingData
 import androidx.paging.testing.asSnapshot
 import com.effekt3r.mrd.core.data.database.intervalEntities
 import com.effekt3r.mrd.core.data.database.toEntity
@@ -7,6 +8,7 @@ import com.effekt3r.mrd.core.data.network.ParsedRestaurant
 import com.effekt3r.mrd.core.data.sync.RestaurantSync
 import com.effekt3r.mrd.core.model.OpenStatus
 import com.effekt3r.mrd.core.model.RestaurantId
+import com.effekt3r.mrd.core.model.RestaurantSummary
 import com.effekt3r.mrd.core.model.SyncError
 import com.effekt3r.mrd.core.testing.FakeNetworkMonitor
 import com.effekt3r.mrd.core.testing.TestClock
@@ -15,6 +17,8 @@ import java.time.DayOfWeek.MONDAY
 import java.time.DayOfWeek.TUESDAY
 import java.time.Instant
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -22,6 +26,7 @@ import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import mockwebserver3.MockWebServer
 import org.junit.After
@@ -77,7 +82,7 @@ class OfflineFirstRestaurantRepositoryTest {
     fun aTickReloadsTheListInPlaceWithTheNewStatus() = runTest {
         // Open 11:00 to 22:00. At 21:59 Open now lists it; at 22:00 it doesn't, once the minute ticks.
         seed(parsedRestaurant("r-1"))
-        val openNow = repository().restaurants(query = "", openNow = true)
+        val openNow = repository().restaurants(query = "", openNow = true, ticks = ticker.ticks())
         val withoutATick = openNow.asSnapshot { clock.set(at(MONDAY, 22).instant()) }
         clock.set(at(MONDAY, 21, 59).instant())
         val afterATick = openNow.asSnapshot {
@@ -89,9 +94,42 @@ class OfflineFirstRestaurantRepositoryTest {
     }
 
     @Test
+    fun aTickInTheMinuteTheListWasLoadedForChangesNothing() = runTest {
+        seed(parsedRestaurant("r-1"))
+        val ticks = MutableSharedFlow<Instant>()
+        val lists = mutableListOf<PagingData<RestaurantSummary>>()
+        backgroundScope.launch { repository().restaurants("", openNow = false, ticks).collect { lists += it } }
+        runCurrent()
+        assertEquals("the first list", 1, lists.size)
+        // A screen becoming visible sends the time at once: 21:59, the minute the list was loaded for.
+        ticks.emit(clock.instant())
+        ticks.emit(clock.instant().plusSeconds(30))
+        runCurrent()
+        assertEquals("ticks in the same minute reload nothing", 1, lists.size)
+        clock.set(at(MONDAY, 22).instant())
+        ticks.emit(clock.instant())
+        runCurrent()
+        assertEquals("a tick in a new minute reloads the list", 2, lists.size)
+    }
+
+    @Test
+    fun withoutTicksTheListStaysAsLoaded() = runTest {
+        // What a screen in the background gets: the ViewModel's cachedIn keeps the list collected, but no ticks arrive.
+        seed(parsedRestaurant("r-1"))
+        val ticks = MutableSharedFlow<Instant>()
+        val lists = mutableListOf<PagingData<RestaurantSummary>>()
+        backgroundScope.launch { repository().restaurants("", openNow = true, ticks).collect { lists += it } }
+        runCurrent()
+        clock.set(at(MONDAY, 23).instant())
+        ticker.tick() // the app's clock ticks, but nobody forwards it to the list
+        runCurrent()
+        assertEquals(1, lists.size)
+    }
+
+    @Test
     fun theListShowsEachStatusWithItsNextChange() = runTest {
         seed(parsedRestaurant("r-1"), parsedRestaurant("r-2", windows = daily(hm(22), hm(23))))
-        val statuses = repository().restaurants("", openNow = false).asSnapshot().map { it.openStatus }
+        val statuses = repository().restaurants("", openNow = false, emptyFlow()).asSnapshot().map { it.openStatus }
         assertEquals(listOf(OpenStatus.Open(at(MONDAY, 22)), OpenStatus.Closed(at(MONDAY, 22))), statuses)
     }
 
@@ -106,7 +144,8 @@ class OfflineFirstRestaurantRepositoryTest {
             parsedRestaurant("r-6", name = """Pizza\Pasta Co""")
         )
         val repository = repository()
-        suspend fun search(query: String) = repository.restaurants(query, openNow = false).asSnapshot().map { it.name }
+        suspend fun search(query: String) =
+            repository.restaurants(query, openNow = false, emptyFlow()).asSnapshot().map { it.name }
         assertEquals(listOf("Café Fynbos"), search("CAFE"))
         assertEquals(listOf("100% Plant Kitchen"), search("0%"))
         assertEquals(listOf("Plant_Based"), search("t_b"))
@@ -153,7 +192,10 @@ class OfflineFirstRestaurantRepositoryTest {
         seed(parsedRestaurant("r-2"))
         seed(parsedRestaurant("r-1"), parsedRestaurant("r-2"))
         assertEquals(true, repository.restaurant(RestaurantId("r-1")).first()?.summary?.isFavourite)
-        assertEquals(listOf(true, false), repository.restaurants("", false).asSnapshot().map { it.isFavourite })
+        assertEquals(
+            listOf(true, false),
+            repository.restaurants("", false, emptyFlow()).asSnapshot().map { it.isFavourite }
+        )
         repository.toggleFavourite(RestaurantId("r-1"))
         assertEquals(false, repository.restaurant(RestaurantId("r-1")).first()?.summary?.isFavourite)
     }
