@@ -5,6 +5,8 @@ plugins {
 
 android {
     namespace = "com.effekt3r.mrd.core.designsystem"
+    // Resource names from every module merge into one namespace; lint fails names without this prefix.
+    resourcePrefix = "designsystem_"
 }
 
 dependencies {
