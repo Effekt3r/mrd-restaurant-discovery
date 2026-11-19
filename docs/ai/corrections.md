@@ -4,6 +4,20 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The menu spec counted 219 files where there are 218
+
+- **What:** spec §5.9, written with the menu design, said every distinct id in the 220-restaurant file has a menu, "219 files, because one record has no id and one id appears twice". Without the record that has no id there are 219 ids, but one of them appears twice, so there are 218 distinct ids and 218 files.
+- **Caught by:** the spike for milestone 2b's plan, counting the ids in `restaurants.json`.
+- **Fix:** the spec says 218, and a test pins the count.
+- **Lesson:** count from the data, not from the description of it.
+
+## 2026-11-19 · A probe passed because its edit never happened
+
+- **What:** the spike for milestone 2b's plan checked that an edited menu fails the golden test. The edit targeted a line number that held a different key, so nothing changed, and the test passed as it should have for unchanged data.
+- **Caught by:** the spike itself: `git diff --stat` after the edit was empty.
+- **Fix:** the plan's break-it steps show the diff before running the test, and say to stop when it's empty.
+- **Lesson:** a probe proves nothing until it shows that it changed what it meant to change.
+
 ## 2026-11-19 · Three of the generator's tests couldn't fail
 
 - **What:** three of the plan's checks passed whatever the data said.
