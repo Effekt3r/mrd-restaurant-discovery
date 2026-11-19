@@ -164,7 +164,14 @@ private fun Header(state: BrowseUiState, searchState: TextFieldState, onOpenNowT
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface)
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
-            .padding(start = MrdSpacing.Large, end = MrdSpacing.Large, top = MrdSpacing.Medium),
+            // The bottom padding keeps the Open now chip's touch target whole. The 48 dp target is centred on the chip
+            // as drawn, which rounding can leave a pixel below the chip's 48 dp box, and the header clips its edge.
+            .padding(
+                start = MrdSpacing.Large,
+                end = MrdSpacing.Large,
+                top = MrdSpacing.Medium,
+                bottom = MrdSpacing.ExtraSmall
+            ),
         verticalArrangement = Arrangement.spacedBy(MrdSpacing.Medium)
     ) {
         Text(
