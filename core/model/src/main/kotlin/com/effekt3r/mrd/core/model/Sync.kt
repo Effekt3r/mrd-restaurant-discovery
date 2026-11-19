@@ -14,4 +14,7 @@ sealed interface SyncError {
 
     /** Malformed JSON, or a payload whose records all failed validation. */
     data object BadData : SyncError
+
+    /** The database failed, for example because the disk is full. */
+    data object Storage : SyncError
 }

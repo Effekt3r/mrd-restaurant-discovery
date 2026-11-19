@@ -1,7 +1,10 @@
 package com.effekt3r.mrd.core.data.sync
 
+import android.database.sqlite.SQLiteFullException
 import androidx.paging.PagingSource
+import com.effekt3r.mrd.core.data.database.OpeningIntervalEntity
 import com.effekt3r.mrd.core.data.database.RestaurantDao
+import com.effekt3r.mrd.core.data.database.RestaurantEntity
 import com.effekt3r.mrd.core.data.database.intervalEntities
 import com.effekt3r.mrd.core.data.database.toEntity
 import com.effekt3r.mrd.core.data.inMemoryDatabase
@@ -16,7 +19,12 @@ import com.effekt3r.mrd.core.testing.TestClock
 import java.time.Duration
 import java.time.Instant
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -51,14 +59,27 @@ class RestaurantSyncTest {
         database.close()
     }
 
-    private fun TestScope.sync(readTimeoutMillis: Long = 5_000) = RestaurantSync(
+    private fun TestScope.sync(
+        readTimeoutMillis: Long = 5_000,
+        dao: RestaurantDao = this@RestaurantSyncTest.dao,
+        scope: CoroutineScope = backgroundScope
+    ) = RestaurantSync(
         api = testApi(server, cacheDir.root, readTimeoutMillis),
         dao = dao,
         json = testJson,
         clock = clock,
         ioDispatcher = Dispatchers.IO,
-        scope = backgroundScope
+        scope = scope
     )
+
+    // The real DAO, except that the snapshot swap runs [swap] instead.
+    private fun swapping(swap: suspend () -> Unit): RestaurantDao = object : RestaurantDao by dao {
+        override suspend fun replaceSnapshot(
+            restaurants: List<RestaurantEntity>,
+            intervals: List<OpeningIntervalEntity>,
+            syncedAt: Long
+        ) = swap()
+    }
 
     // A snapshot written straight to the database, as if an earlier refresh had stored it.
     private suspend fun seed(vararg ids: String) {
@@ -134,6 +155,33 @@ class RestaurantSyncTest {
         sync.refresh()
         assertEquals(SyncError.BadData, sync.state.value.lastError)
         assertEquals(listOf("r-1"), dao.storedIds())
+    }
+
+    @Test
+    fun aDatabaseFailureIsAStorageErrorAndEndsTheRefresh() = runTest {
+        server.enqueue(ok(payload("r-1")))
+        val sync = sync(dao = swapping { throw SQLiteFullException("database or disk is full") })
+        sync.refresh() // failures arrive through the state, never as exceptions (spec §5.4)
+        assertEquals(RefreshState(isRefreshing = false, lastError = SyncError.Storage), sync.state.value)
+    }
+
+    @Test
+    fun aCancelledRefreshEndsWithoutAnError() = runTest {
+        server.enqueue(ok(payload("r-1")))
+        val swapStarted = CompletableDeferred<Unit>()
+        val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+        val sync = sync(
+            dao = swapping {
+                swapStarted.complete(Unit)
+                awaitCancellation()
+            },
+            scope = applicationScope
+        )
+        val caller = launch { sync.refresh() }
+        swapStarted.await()
+        applicationScope.cancel()
+        caller.join()
+        assertEquals(RefreshState(isRefreshing = false, lastError = null), sync.state.value)
     }
 
     @Test

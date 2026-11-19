@@ -217,9 +217,10 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Error types.** `:core:data` maps every failure exactly once into a `SyncError`:
   - `Network`: no connection, DNS failure or timeout;
   - `Server(httpCode)`;
-  - `BadData`: malformed JSON, or no usable records.
-- **What the ViewModels see** is a `SyncStatus(lastSyncedAt, isRefreshing, lastError)`, never an exception.
-- **Error copy.** The UI picks its wording using the connectivity state: "You're offline" when there's no network, and "Couldn't connect" when there is.
+  - `BadData`: malformed JSON, or no usable records;
+  - `Storage`: the database failed, for example because the disk is full.
+- **What the ViewModels see** is a `SyncStatus(lastSyncedAt, isRefreshing, lastError)`, never an exception. A refresh always ends with `isRefreshing` false, whether it fails or is cancelled. Cancelling isn't a failure, so it leaves `lastError` as it was.
+- **Error copy.** The UI picks its wording using the connectivity state: "You're offline" when there's no network, and "Couldn't connect" when there is. `Storage` isn't a connection problem, so it gets its own wording.
 
 ### 5.5 Room schema
 

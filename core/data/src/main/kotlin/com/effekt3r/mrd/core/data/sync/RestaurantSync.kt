@@ -14,6 +14,7 @@ import java.net.HttpURLConnection.HTTP_NOT_MODIFIED
 import java.time.Clock
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -68,15 +69,26 @@ internal class RestaurantSync @Inject constructor(
 
     private suspend fun run() {
         mutableState.update { it.copy(isRefreshing = true) }
-        // Every failure becomes a SyncError here, exactly once (spec §5.4).
-        val error = try {
-            download()
-        } catch (e: IOException) {
-            SyncError.Network
-        } catch (e: IllegalArgumentException) {
-            SyncError.BadData // malformed JSON: SerializationException is an IllegalArgumentException
+        try {
+            // Every failure becomes a SyncError here, exactly once (spec §5.4).
+            val error = try {
+                download()
+            } catch (e: CancellationException) {
+                throw e // not a failure: the application scope is shutting down
+            } catch (e: IOException) {
+                SyncError.Network
+            } catch (e: IllegalArgumentException) {
+                SyncError.BadData // malformed JSON: SerializationException is an IllegalArgumentException
+            } catch (e: Exception) {
+                // The network fails with IOException and the parser with IllegalArgumentException, so what's left is
+                // the database: a full disk, an I/O error or a corrupt file (SQLiteException), or a closed database.
+                SyncError.Storage
+            }
+            mutableState.value = RefreshState(isRefreshing = false, lastError = error)
+        } finally {
+            // Cancelled, the refresh is still over; the last error stands.
+            mutableState.update { it.copy(isRefreshing = false) }
         }
-        mutableState.value = RefreshState(isRefreshing = false, lastError = error)
     }
 
     // decodeFromStream streams the body; it has been experimental since 1.3 but is stable in practice.
