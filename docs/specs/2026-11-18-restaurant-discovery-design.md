@@ -250,7 +250,7 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - Overlapping or touching intervals are merged.
 - **Status has three values:**
   - **Open** or **Closed** when the hours are known, depending on whether the current week minute falls inside an interval;
-  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old;
+  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old. The status is worked out for the latest minute tick, so a sync that lands between two ticks is up to a minute newer than that time, and still counts. A snapshot further ahead means the clock was set back, and doesn't;
   - **Unknown** after that.
 - **Open now includes only Open.** The app never claims a restaurant is open when it can't back that up.
 - **Details shows the next change:** "Closes 22:00" (following intervals across midnight), "Opens 11:00", "Opens tomorrow 11:00" or "Opens Mon 11:00".
@@ -264,7 +264,7 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - opening time included and closing time excluded;
   - overnight hours and the Sunday-to-Monday wrap;
   - split shifts, 24-hour places and closed days;
-  - missing hours with a fresh snapshot and with a stale one.
+  - missing hours with a fresh snapshot, a stale one, one synced since the latest tick, and one from a clock set back.
 - **Impact.** A JVM test counts, across the generated dataset, how many statuses a cached `is_open` would get wrong after 1, 3, 6 and 12 hours offline, sampled across the week. Derived status gets none wrong. The numbers go into SOLUTION.md.
 - **Demo.** Turn on airplane mode and set the emulator clock to one minute before a restaurant's closing time. It flips to Closed and drops out of the Open now list.
 

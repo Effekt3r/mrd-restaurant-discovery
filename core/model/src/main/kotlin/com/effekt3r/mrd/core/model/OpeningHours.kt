@@ -14,6 +14,9 @@ const val MINUTES_PER_WEEK = 7 * MINUTES_PER_DAY
 /** How long the server's `is_open` is trusted for a restaurant without hours (spec §5.6). */
 val SNAPSHOT_TRUSTED_FOR: Duration = Duration.ofMinutes(30)
 
+/** How often the minute ticker ticks. The time the screens pass as `now` is the latest tick, so it lags by less. */
+val TICK_INTERVAL: Duration = Duration.ofMinutes(1)
+
 /** A minute of the week in Cape Town time: 0 is Monday 00:00 and 10,079 is Sunday 23:59. */
 @JvmInline
 value class WeekMinute(val value: Int) {
@@ -134,6 +137,10 @@ fun openStatus(hours: OpeningHours?, openSnapshot: Boolean?, snapshotAt: Instant
     else -> OpenStatus.Closed(opensAt = null)
 }
 
-/** Whether a snapshot is less than 30 minutes old. One from the future (the clock was set back) isn't trusted. */
-fun isSnapshotFresh(snapshotAt: Instant?, now: Instant): Boolean =
-    snapshotAt != null && !now.isBefore(snapshotAt) && Duration.between(snapshotAt, now) < SNAPSHOT_TRUSTED_FOR
+/**
+ * Whether a snapshot is less than 30 minutes old at [now], the latest minute tick. A sync since that tick is newer than
+ * [now] by less than [TICK_INTERVAL], and fresh. One further ahead means the clock was set back, and isn't trusted.
+ */
+fun isSnapshotFresh(snapshotAt: Instant?, now: Instant): Boolean = snapshotAt != null &&
+    snapshotAt.isBefore(now + TICK_INTERVAL) &&
+    Duration.between(snapshotAt, now) < SNAPSHOT_TRUSTED_FOR
