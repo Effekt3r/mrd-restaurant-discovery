@@ -4,6 +4,13 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
+
+- **What:** spec §5.3 said a refresh streams the JSON on the IO dispatcher. `DiscoveryApi` returns a raw `ResponseBody` without `@Streaming`, so Retrofit reads the whole body into memory before returning it, about 6 MB for the stress file, on OkHttp's thread (`BuiltInConverters.java`, lines 32 to 35 and 104 to 105, in 3.0.0). Only the parse runs record by record on the IO dispatcher. A comment in the menu repository made the same assumption, and milestone 3's verification repeated the claim.
+- **Caught by:** the agent fixing milestone 3's review findings, while checking where the response body is read.
+- **Fix:** the spec and the comments say what happens. The code is unchanged: `@Streaming` is named as the next step if payloads grow, with what it changes in OkHttp's cache.
+- **Lesson:** check what a library does with a type, not what the type suggests. A raw `ResponseBody` is still read in full unless it's marked `@Streaming`.
+
 ## 2026-11-19 · Milestone 3's review found three failures the sync's tests never tried
 
 - **What:** the sync's tests covered failures of the network, the server and the data, but not the device's own:

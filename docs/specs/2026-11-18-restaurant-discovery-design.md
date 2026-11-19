@@ -197,11 +197,12 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 
 ### 5.3 Sync
 
-- **A refresh** streams the JSON and validates each record as it's read, on the IO dispatcher, so a 10,000-restaurant payload never sits in memory as a JSON tree. One Room transaction then:
+- **A refresh** reads the response body into memory, about 6 MB for the stress file: Retrofit buffers a `ResponseBody` on OkHttp's thread before returning it. The body is then parsed and validated record by record on the IO dispatcher, so the payload is never held as a JSON tree. One Room transaction then:
   - replaces the restaurants and their opening intervals. It deletes every restaurant and inserts the new snapshot, because `NOT IN` with 10,000 ids would exceed SQLite's 999-variable limit on Android 10 and lower;
   - records `sync_state.last_synced_at`, and in `sync_state.etag` the ETag of the response the snapshot came from.
 
   Favourites are never touched.
+- **`@Streaming` is the next step if payloads grow:** the parser would read the body as it arrives, without the buffer. It changes when OkHttp writes its cache, though. Today the cache entry is complete before parsing starts; with `@Streaming` it's written as the parser reads, and committed only once the whole body has been read, so a refresh that fails partway may leave no cache entry.
 - **When a refresh runs:**
   - when Browse becomes visible and the snapshot is missing or more than 5 minutes old;
   - on pull-to-refresh and on Retry;

@@ -31,7 +31,8 @@ internal class OfflineFirstMenuRepository @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : MenuRepository {
 
-    // flowOn: the response body is read where the flow runs, which must not be the main thread.
+    // flowOn: decoding the cached menu and parsing the fetched one stay off the main thread. Retrofit has already read
+    // the response body into memory, on OkHttp's thread (spec §5.3).
     // Both catches see only the database's failures, since cachedMenu handles the decoder's and fetch the network's and
     // the parser's: a full disk, an I/O error or a corrupt file (SQLiteException), or a closed database. They become
     // Storage (spec §5.4). Cancellation isn't a failure, so it's rethrown.
