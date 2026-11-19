@@ -59,13 +59,13 @@ class GeneratorTest {
 
     @Test
     fun missingValuesAndFreeDeliveryFollowTheSpecsRates() {
-        assertEquals("no rating", 6.0, percent(stress) { "rating" !in it }, 1.5)
-        assertEquals("no fee", 4.0, percent(stress) { "delivery_fee_cents" !in it }, 1.5)
-        assertEquals("no ETA", 4.0, percent(stress) { "eta_minutes" !in it }, 1.5)
-        assertEquals("no image", 6.0, percent(stress) { "image_url" !in it }, 1.5)
-        assertEquals("no opening_hours key", 4.0, percent(stress) { "opening_hours" !in it }, 1.5)
+        assertEquals("no rating", 6.0, percent(stress) { "rating" !in it }, 1.0)
+        assertEquals("no fee", 4.0, percent(stress) { "delivery_fee_cents" !in it }, 1.0)
+        assertEquals("no ETA", 4.0, percent(stress) { "eta_minutes" !in it }, 1.0)
+        assertEquals("no image", 6.0, percent(stress) { "image_url" !in it }, 1.0)
+        assertEquals("no opening_hours key", 4.0, percent(stress) { "opening_hours" !in it }, 1.0)
         assertEquals("opening_hours is []", 1.0, percent(stress) { it["opening_hours"] == JsonArray(emptyList()) }, 0.5)
-        assertEquals("free delivery", 15.0, percent(stress) { it["delivery_fee_cents"]?.jsonPrimitive?.int == 0 }, 1.5)
+        assertEquals("free delivery", 15.0, percent(stress) { it["delivery_fee_cents"]?.jsonPrimitive?.int == 0 }, 1.0)
         val withoutHours = normal.filter { it.hours().isNullOrEmpty() }
         val openWithoutHours = percent(withoutHours) { it.getValue("is_open").jsonPrimitive.boolean }
         assertEquals("open without hours", 70.0, openWithoutHours, 5.0)
@@ -113,6 +113,12 @@ class GeneratorTest {
     }
 
     @Test
+    fun theSnapshotIsFridayAt1900() {
+        // Monday 00:00 is week minute 0: Friday starts 4 × 1,440 minutes in, and 19:00 is 1,140 minutes into a day.
+        assertEquals(6_900, Generator.SNAPSHOT_WEEK_MINUTE)
+    }
+
+    @Test
     fun namesAreUniqueInTheStandardDatasetSomeHaveAccentsAndNoneIsReal() {
         val names = standard.map { it.text("name") }
         assertEquals(names.size, names.toSet().size)
@@ -124,7 +130,9 @@ class GeneratorTest {
 
     @Test
     fun theStandardDatasetHasEveryKindOfOpeningHours() {
-        val hours = standard.filterIndexed { index, _ -> index !in EdgeCases.indexes }.mapNotNull { it.hours() }
+        val hours = standard.filterIndexed { index, _ -> index !in EdgeCases.indexes }
+            .mapNotNull { it.hours() }
+            .filter { it.isNotEmpty() }
         assertTrue("overnight", hours.any { week -> week.any { it.closes < it.opens } })
         assertTrue("split shifts", hours.any { week -> week.groupBy { it.day }.values.any { it.size == 2 } })
         assertTrue("24 hours", hours.any { week -> week.all { it.opens == 0 && it.closes == MINUTES_PER_DAY } })
