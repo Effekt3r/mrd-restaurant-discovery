@@ -39,7 +39,8 @@ private fun fetchImages() {
     println("Wrote ${ImagePool.SOURCE_PATH}")
 }
 
-private val client: HttpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10)).build()
+// Built on first use, so `generate` never starts the HTTP stack.
+private val client: HttpClient by lazy { HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10)).build() }
 
 /** GETs [url] and returns the body. Anything but HTTP 200 stops the run, so a partial pool is never written. */
 private fun httpGet(url: String): String {
