@@ -22,7 +22,9 @@ import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -179,7 +181,11 @@ private fun Header(state: BrowseUiState, searchState: TextFieldState, onOpenNowT
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.semantics { heading() }
         )
-        MrdSearchField(searchState, placeholder = stringResource(R.string.browse_search_placeholder))
+        MrdSearchField(
+            searchState,
+            placeholder = stringResource(R.string.browse_search_placeholder),
+            inputTransformation = SEARCH_LENGTH_LIMIT
+        )
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(MrdSpacing.Medium),
             verticalArrangement = Arrangement.spacedBy(MrdSpacing.Small),
@@ -364,6 +370,7 @@ private fun NoMatches(
 // One column on a phone in portrait, two or three on foldables, tablets and landscape (spec §6.2).
 private val CARD_MIN_WIDTH = 300.dp
 private const val SKELETON_COUNT = 4
+private val SEARCH_LENGTH_LIMIT = InputTransformation.maxLength(BrowseViewModel.MAX_QUERY_LENGTH)
 private const val RESTAURANT_CONTENT_TYPE = "restaurant"
 
 @MrdPreviews

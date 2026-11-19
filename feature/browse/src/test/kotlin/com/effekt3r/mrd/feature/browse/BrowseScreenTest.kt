@@ -12,12 +12,14 @@ import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasScrollToIndexAction
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeUp
@@ -68,22 +70,25 @@ class BrowseScreenTest {
     private fun List<RestaurantSummary>.foundBy(query: String, openNow: Boolean = false) =
         map { BrowseListItem(it, BrowseFilters(query, openNow)) }
 
-    private fun setScreen(state: BrowseUiState, restaurants: List<RestaurantSummary> = emptyList()) =
-        compose.setContent {
-            MrdTheme {
-                BrowseScreen(
-                    state = state,
-                    searchState = TextFieldState(state.query),
-                    restaurants = flowOf(PagingData.from(restaurants.foundBy(state.query, state.openNow)))
-                        .collectAsLazyPagingItems(),
-                    onOpenNowToggled = { events += "openNow=$it" },
-                    onClearSearch = { events += "clear" },
-                    onRefresh = { events += "refresh" },
-                    onRestaurantClick = { events += "open $it" },
-                    onFavouriteToggled = { events += "favourite ${it.value}" }
-                )
-            }
+    private fun setScreen(
+        state: BrowseUiState,
+        restaurants: List<RestaurantSummary> = emptyList(),
+        searchState: TextFieldState = TextFieldState(state.query)
+    ) = compose.setContent {
+        MrdTheme {
+            BrowseScreen(
+                state = state,
+                searchState = searchState,
+                restaurants = flowOf(PagingData.from(restaurants.foundBy(state.query, state.openNow)))
+                    .collectAsLazyPagingItems(),
+                onOpenNowToggled = { events += "openNow=$it" },
+                onClearSearch = { events += "clear" },
+                onRefresh = { events += "refresh" },
+                onRestaurantClick = { events += "open $it" },
+                onFavouriteToggled = { events += "favourite ${it.value}" }
+            )
         }
+    }
 
     @Test
     fun theFirstLoadShowsSkeletonsThatTalkBackReadsOnce() {
@@ -128,6 +133,17 @@ class BrowseScreenTest {
         compose.onNodeWithText("You're offline · Showing restaurants from", substring = true).assertExists()
         compose.onNodeWithText("Retry").performClick()
         assertEquals(listOf("open r-1001", "refresh"), events)
+    }
+
+    @Test
+    fun theSearchTakesAtMost100Characters() {
+        // The search is copied into SavedStateHandle, which the activity saves through Binder.
+        val search = TextFieldState()
+        setScreen(BrowseUiState(resultCount = 1, syncStatus = synced, now = now), listOf(grill), search)
+        val field = compose.onNode(hasSetTextAction())
+        field.performTextInput("a".repeat(100))
+        field.performTextInput("b")
+        assertEquals(100, search.text.length)
     }
 
     @Test

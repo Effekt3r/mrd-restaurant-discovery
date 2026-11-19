@@ -131,6 +131,13 @@ class BrowseViewModel @Inject constructor(
 
         /** At most 250 ms, so the list follows typing without querying on every key (AC-2). */
         const val SEARCH_DEBOUNCE_MILLIS = 250L
+
+        /**
+         * The search field's limit. Every change is copied into [SavedStateHandle], which the activity's saved state
+         * carries through Binder, so a huge paste could fail with TransactionTooLargeException. No restaurant name
+         * comes close.
+         */
+        const val MAX_QUERY_LENGTH = 100
         const val STOP_TIMEOUT_MILLIS = 5_000L
     }
 }
