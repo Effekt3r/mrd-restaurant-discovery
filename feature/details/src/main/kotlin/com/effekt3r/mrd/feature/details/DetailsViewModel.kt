@@ -8,6 +8,7 @@ import com.effekt3r.mrd.core.common.MinuteTicker
 import com.effekt3r.mrd.core.common.NetworkMonitor
 import com.effekt3r.mrd.core.data.MenuRepository
 import com.effekt3r.mrd.core.data.RestaurantRepository
+import com.effekt3r.mrd.core.model.MenuState
 import com.effekt3r.mrd.core.model.RestaurantId
 import com.effekt3r.mrd.feature.details.navigation.RestaurantRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.onStart
@@ -47,6 +51,24 @@ class DetailsViewModel @Inject constructor(
     // Collecting the menu again retries it (MenuRepository); each retry bumps this.
     private val menuAttempts = MutableStateFlow(0)
 
+    /**
+     * The menu, fetched again on each attempt. One that failed is retried when the connection returns, as the
+     * restaurant list is (spec §5.7), so it doesn't keep blaming a connection that's back; one that loaded isn't.
+     */
+    private val menu: Flow<MenuState> = channelFlow {
+        var latest: MenuState = MenuState.Loading
+        launch {
+            // Only a change back to online counts, never the first value.
+            networkMonitor.isOnline.drop(1).filter { it }.collect {
+                if (latest is MenuState.Error) menuAttempts.update { it + 1 }
+            }
+        }
+        menuAttempts.flatMapLatest { menuRepository.menu(id) }.collect {
+            latest = it
+            send(it)
+        }
+    }
+
     private val restaurant: Flow<RestaurantState> =
         combine(restaurantRepository.restaurant(id), restaurantRepository.syncStatus, ::Pair)
             .transformLatest { (restaurant, sync) ->
@@ -70,12 +92,12 @@ class DetailsViewModel @Inject constructor(
 
     /**
      * The screen's state. Its upstream runs only while the screen collects it (`collectAsStateWithLifecycle`, plus 5
-     * seconds for a rotation): that's when the clock ticks, the menu is fetched, and a deep link to a restaurant that
-     * isn't cached yet starts the first sync.
+     * seconds for a rotation): that's when the clock ticks, the menu is fetched and retried on reconnecting, and a deep
+     * link to a restaurant that isn't cached yet starts the first sync.
      */
     val uiState: StateFlow<DetailsUiState> = combine(
         restaurant,
-        menuAttempts.flatMapLatest { menuRepository.menu(id) },
+        menu,
         networkMonitor.isOnline,
         ticker.ticks(),
         ::DetailsUiState

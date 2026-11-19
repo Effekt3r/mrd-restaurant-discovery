@@ -270,7 +270,7 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 
 ### 5.7 Connectivity and images
 
-- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes.
+- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes, and Details fetches a menu that failed again (§5.9).
 - **Images.** Coil 3 uses the shared `OkHttpClient`'s connections and Coil's own disk cache, so images the user has already seen still show offline. It doesn't use the client's HTTP cache (`newBuilder().cache(null)`): photos there would evict the restaurant list's entry, whose ETag makes an unchanged refresh a 304.
 - **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown: it's where an image CDN's resize parameters would go. A meal photo is 700 px wide, and TheMealDB also serves copies at `/large` (500 px), `/medium` (350 px) and `/small` (150 px). Measured across the 159 photos in `restaurants.json` on 2026-11-19:
   - **Cards and the details header** ask for the full-size photo, the URL itself. Both are as wide as a phone, about 1,000 px, where `/medium` looked soft. `/large` isn't enough either, because TheMealDB's copies aren't uniform: for 17 of the 159 photos (19 restaurants, including r-1001), `/large` is 350 px and `/medium` the full 700 px. Only the full size is sharp on every card.
@@ -305,6 +305,7 @@ Added on 2026-11-19, when I chose to include the brief's optional menu data.
 - **Duplicates and bad payloads.** Within a menu, the first of any duplicate ids wins. A payload that had items, none of which survived, is `BadData`, like the list (§5.3).
 - **Loading and caching:**
   - Details renders the restaurant from the list cache straight away, and the menu loads afterwards with its own state: loading, content, not available, or error.
+  - A menu that failed is fetched again by itself when the connection returns, as the list is (§5.7), and Retry fetches it at any time. A menu that loaded isn't fetched again.
   - The validated menu is cached in Room per restaurant, with the time it was fetched, so a menu seen before is available offline.
   - A cached menu that no longer decodes, for example after an app update changed the cache's format, counts as no cache: it's deleted and fetched again.
   - A database failure, such as a full disk, is a `Storage` error (§5.4), shown with the menu cached before, if any. If the cache can't even be read, the menu isn't fetched, because it couldn't be kept.

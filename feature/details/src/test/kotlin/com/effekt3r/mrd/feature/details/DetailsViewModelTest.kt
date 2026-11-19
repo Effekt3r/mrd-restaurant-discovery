@@ -161,6 +161,28 @@ class DetailsViewModelTest {
     }
 
     @Test
+    fun aFailedMenuLoadsAgainWhenTheConnectionReturns() = runTest {
+        menus.states = listOf(MenuState.Loading, MenuState.Error(SyncError.Network, cached = null))
+        network.setOnline(false)
+        val viewModel = viewModel()
+        visible(viewModel)
+        runCurrent()
+        assertEquals(SyncProblem.Offline, viewModel.uiState.value.menuProblem)
+        // Back online: the menu loads by itself, rather than blaming a connection that's back.
+        val content = MenuState.Content(menu, fetchedAt = clock.instant())
+        menus.states = listOf(MenuState.Loading, content)
+        network.setOnline(true)
+        runCurrent()
+        assertEquals(content, viewModel.uiState.value.menu)
+        // A menu that loaded isn't fetched again when the connection next returns, as the list isn't.
+        network.setOnline(false)
+        runCurrent()
+        network.setOnline(true)
+        runCurrent()
+        assertEquals(2, menus.requests.size)
+    }
+
+    @Test
     fun aMenuThatCouldNotBeStoredIsAStorageProblem() = runTest {
         menus.states = listOf(MenuState.Error(SyncError.Storage, cached = null))
         val viewModel = viewModel()
