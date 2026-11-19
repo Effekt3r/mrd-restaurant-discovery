@@ -271,12 +271,11 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 
 - **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes.
 - **Images.** Coil 3 uses the shared `OkHttpClient`'s connections and Coil's own disk cache, so images the user has already seen still show offline. It doesn't use the client's HTTP cache (`newBuilder().cache(null)`): photos there would evict the restaurant list's entry, whose ETag makes an unchanged refresh a 304.
-- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown, standing in for an image CDN's resize parameters. A meal photo is 700 px wide, and TheMealDB also serves copies at `/large` (500 px), `/medium` (350 px) and `/small` (150 px). Measured across the 159 photos in `restaurants.json` on 2026-11-19:
-  - **Cards** ask for `/large`. A card is as wide as a phone, about 1,000 px, where `/medium` looked soft. The trade-off is bytes: about 70 KB a card instead of 40 KB.
-  - **The details header**, as wide as the screen, asks for the full-size photo, the URL itself: about 146 KB, twice `/large`.
+- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown: it's where an image CDN's resize parameters would go. A meal photo is 700 px wide, and TheMealDB also serves copies at `/large` (500 px), `/medium` (350 px) and `/small` (150 px). Measured across the 159 photos in `restaurants.json` on 2026-11-19:
+  - **Cards and the details header** ask for the full-size photo, the URL itself. Both are as wide as a phone, about 1,000 px, where `/medium` looked soft. `/large` isn't enough either, because TheMealDB's copies aren't uniform: for 17 of the 159 photos (19 restaurants, including r-1001), `/large` is 350 px and `/medium` the full 700 px. Only the full size is sharp on every card.
+  - **The trade-off** is bytes: about 146 KB a card on first load, against 40 KB at `/medium`. Coil's disk cache keeps each photo for offline use.
+  - **Memory.** Coil decodes a photo at the size it's drawn at, but never larger than the photo itself: `AsyncImage` asks for an inexact size, which Coil doesn't scale up (`BitmapFactoryDecoder`, 3.4.0). A card is wider than 700 px on a phone, so its bitmap is the whole photo, 700 × 700 px at 4 bytes a pixel: about 2 MB, against 1 MB at `/large`. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
   - **Menu thumbnails** ask for `/small`.
-  - Coil's disk cache keeps each photo for offline use, whatever its size.
-  - TheMealDB's copies aren't uniform: for 17 of the 159 photos, `/large` is 350 px and `/medium` the full 700 px. Those cards, 19 restaurants including r-1001, are softer at `/large`.
 
 ### 5.8 Favourites
 

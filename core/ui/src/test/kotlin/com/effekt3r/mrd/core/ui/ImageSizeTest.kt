@@ -11,9 +11,9 @@ class ImageSizeTest {
     @Test
     fun aMealPhotoGetsTheSizeForWhereItIsShown() {
         assertEquals("$photo/small", sizedImageUrl(photo, ImageSize.Thumbnail))
-        // A card is as wide as a phone, about 1,000 px: /large (500 px) rather than /medium (350 px), which looked soft.
-        assertEquals("$photo/large", sizedImageUrl(photo, ImageSize.Card))
-        // Details' header is as wide as the screen too: the full-size photo, the URL as the API sends it.
+        // Cards and Details' header are as wide as a phone, about 1,000 px: the full-size photo (700 px), the URL as the
+        // API sends it. TheMealDB's /large is 350 px for some photos, so only the full size is sharp on every card.
+        assertEquals(photo, sizedImageUrl(photo, ImageSize.Card))
         assertEquals(photo, sizedImageUrl(photo, ImageSize.Header))
     }
 

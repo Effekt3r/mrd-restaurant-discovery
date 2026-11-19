@@ -21,12 +21,12 @@ enum class ImageSize(internal val suffix: String) {
     Thumbnail("/small"),
 
     /**
-     * A card's photo on Browse: `/large`. A card is as wide as a phone, about 1,000 px, where `/medium` looked soft;
-     * `/large` costs about 30 KB more a card.
+     * A card's photo on Browse: the full-size photo. A card is as wide as a phone, about 1,000 px, where `/medium`
+     * looked soft, and `/large` is only 350 px for the 17 photos above. It costs about 146 KB a card on first load.
      */
-    Card("/large"),
+    Card(""),
 
-    /** The photo across the top of Details, as wide as the screen: the full-size photo, the URL as the API sends it. */
+    /** The photo across the top of Details, as wide as the screen: the full-size photo. */
     Header("")
 }
 
@@ -36,7 +36,7 @@ private val MEAL_PHOTO = Regex("""https://www\.themealdb\.com/images/media/meals
 
 /**
  * [url] at [size]: TheMealDB serves a smaller copy of a meal photo at its URL plus `/small`, `/medium` or `/large`, and
- * the full-size photo at the URL itself. This stands in for an image CDN's resize parameters; any other URL is
+ * the full-size photo at the URL itself. This is where an image CDN's resize parameters would go; any other URL is
  * returned as it is.
  */
 fun sizedImageUrl(url: String, size: ImageSize): String = if (MEAL_PHOTO.matches(url)) url + size.suffix else url
