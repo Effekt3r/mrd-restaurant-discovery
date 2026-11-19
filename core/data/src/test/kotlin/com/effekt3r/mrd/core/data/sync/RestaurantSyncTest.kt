@@ -157,6 +157,18 @@ class RestaurantSyncTest {
     }
 
     @Test
+    fun a304WithAnEmptyDatabaseStoresTheCachedBody() = runTest {
+        server.enqueue(ok(payload("r-1")))
+        server.enqueue(notModified())
+        val sync = sync()
+        sync.refresh()
+        dao.deleteRestaurants() // sync_state still holds the matching ETag
+        clock.advanceBy(Duration.ofMinutes(10))
+        sync.refresh()
+        assertEquals(listOf("r-1"), dao.storedIds())
+    }
+
+    @Test
     fun a304AfterBadDataNeitherClearsTheErrorNorMarksTheOldSnapshotFresh() = runTest {
         seed("r-1")
         server.enqueue(ok("""{"restaurants": [{"name": "No id"}]}""", etag = "\"v2\""))
