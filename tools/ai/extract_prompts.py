@@ -362,6 +362,7 @@ def check() -> int:
         ("tool result, no metadata", kept(user(result + [{"type": "text", "text": "a hook's note"}])), []),
         ("task notification", kept(user(notification, origin={"kind": "task-notification"})), []),
         ("task notification, older log", kept(user(notification)), []),
+        ("not from me", kept(user('Agent "Spec review" finished', origin={"kind": "task-notification"})), []),
         ("skill injection", kept(user("Base directory for this skill: x", isMeta=True)), []),
         ("skill injection, unflagged", kept(user("Base directory for this skill: x", **human)), []),
         ("screenshot placeholder", kept(user("[Image: original 1080x2400, displayed at 900x2000.]", isMeta=True)), []),
