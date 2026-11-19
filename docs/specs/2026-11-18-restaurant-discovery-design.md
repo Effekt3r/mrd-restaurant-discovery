@@ -277,7 +277,7 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 Added on 2026-11-19, when I chose to include the brief's optional menu data.
 
 - **Endpoint.** `GET {API_BASE_URL}v1/menus/{restaurant_id}.json`, served from the repository like the list.
-  - Every distinct id in the 220-restaurant file has a menu: 219 files, because one record has no id and one id appears twice.
+  - Every distinct id in the 220-restaurant file has a menu: 218 files, because one record has no id and one id appears twice. The duplicated id's menu is made from its first record.
   - In the 10,000-restaurant stress file, restaurants after the first 220 have none. The API answers 404, and Details says the restaurant hasn't shared a menu. That's a deliberate "problem" state.
 - **Schema.** The brief's example: `restaurant_id`, then `categories` of `id`, `name` and `items`. Each item has `id`, `name`, `price_cents`, `available`, `description`, `image_url` and `options`, and each option has `id`, `name` and `price_cents`.
 
