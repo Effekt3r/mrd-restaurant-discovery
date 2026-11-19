@@ -3,7 +3,6 @@ package com.effekt3r.mrd.core.data.sync
 import com.effekt3r.mrd.core.common.ApplicationScope
 import com.effekt3r.mrd.core.common.IoDispatcher
 import com.effekt3r.mrd.core.data.database.RestaurantDao
-import com.effekt3r.mrd.core.data.database.SyncStateEntity
 import com.effekt3r.mrd.core.data.database.intervalEntities
 import com.effekt3r.mrd.core.data.database.toEntity
 import com.effekt3r.mrd.core.data.network.DiscoveryApi
@@ -103,9 +102,14 @@ internal class RestaurantSync @Inject constructor(
         val body = response.body() ?: return SyncError.BadData
         return body.use {
             val now = clock.millis()
-            // OkHttp answers a 304 with its cached copy; the network response keeps the real code.
-            if (response.raw().networkResponse?.code == HTTP_NOT_MODIFIED && dao.hasRestaurants()) {
-                dao.setSyncState(SyncStateEntity(lastSyncedAt = now))
+            val etag = response.headers()["ETag"]
+            // OkHttp answers a 304 with its cached copy; the network response keeps the real code. A 304 proves only
+            // that the copy is current, not that the database stored it: a refresh can fail after OkHttp caches the
+            // body (bad data, a failed write). So the write is skipped only when the database holds the snapshot with
+            // that ETag and isn't empty; otherwise the cached copy is processed like a 200 (spec §5.3).
+            val notModified = response.raw().networkResponse?.code == HTTP_NOT_MODIFIED
+            if (notModified && etag != null && etag == dao.snapshotEtag() && dao.hasRestaurants()) {
+                dao.setLastSyncedAt(now)
                 return@use null
             }
             val payload = withContext(ioDispatcher) { json.decodeFromStream(RestaurantsPayloadReader, it.byteStream()) }
@@ -114,7 +118,8 @@ internal class RestaurantSync @Inject constructor(
             dao.replaceSnapshot(
                 restaurants = payload.restaurants.mapIndexed { position, restaurant -> restaurant.toEntity(position) },
                 intervals = payload.restaurants.flatMap { it.intervalEntities() },
-                syncedAt = now
+                syncedAt = now,
+                etag = etag
             )
             null
         }

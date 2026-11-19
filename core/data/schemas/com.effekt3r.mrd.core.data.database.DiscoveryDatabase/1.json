@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "20db6fc1fbd0c14b49cbface152696e8",
+    "identityHash": "5dcbba4c374a37c3bb725fa2ddd59f7a",
     "entities": [
       {
         "tableName": "restaurants",
@@ -158,7 +158,7 @@
       },
       {
         "tableName": "sync_state",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `last_synced_at` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `last_synced_at` INTEGER NOT NULL, `etag` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -171,6 +171,11 @@
             "columnName": "last_synced_at",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "etag",
+            "columnName": "etag",
+            "affinity": "TEXT"
           }
         ],
         "primaryKey": {
@@ -213,7 +218,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '20db6fc1fbd0c14b49cbface152696e8')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5dcbba4c374a37c3bb725fa2ddd59f7a')"
     ]
   }
 }

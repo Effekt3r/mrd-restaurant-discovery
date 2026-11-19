@@ -69,7 +69,8 @@ class OfflineFirstRestaurantRepositoryTest {
     private suspend fun seed(vararg restaurants: ParsedRestaurant) = dao.replaceSnapshot(
         restaurants.mapIndexed { position, it -> it.toEntity(position) },
         restaurants.flatMap { it.intervalEntities() },
-        syncedAt = clock.millis()
+        syncedAt = clock.millis(),
+        etag = null
     )
 
     @Test

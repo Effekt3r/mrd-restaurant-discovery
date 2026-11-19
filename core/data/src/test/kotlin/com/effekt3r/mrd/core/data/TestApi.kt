@@ -33,6 +33,9 @@ internal fun ok(body: String, etag: String = "\"v1\"") = MockResponse.Builder()
     .body(body)
     .build()
 
+/** GitHub's answer to an `If-None-Match` that still matches: no body, and the same ETag. */
+internal fun notModified(etag: String = "\"v1\"") = MockResponse.Builder().code(304).addHeader("ETag", etag).build()
+
 internal fun status(code: Int) = MockResponse.Builder().code(code).build()
 
 /** A payload of restaurants open 11:00 to 22:00 every Monday. */

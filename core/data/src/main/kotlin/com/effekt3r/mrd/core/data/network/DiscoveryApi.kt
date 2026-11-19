@@ -9,7 +9,8 @@ import retrofit2.http.Path
 
 /**
  * The mock API (spec §5.1 and §5.9). `no-cache` makes OkHttp revalidate its cached copy with the ETag on every call,
- * so unchanged data comes back as a 304. The bodies stay raw: the list is parsed only when it changed.
+ * so unchanged data comes back as a 304. The bodies stay raw: the list is parsed only when the database doesn't hold
+ * it yet.
  */
 internal interface DiscoveryApi {
     @Headers("Cache-Control: max-age=0")

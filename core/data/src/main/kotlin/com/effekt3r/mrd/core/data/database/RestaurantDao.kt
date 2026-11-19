@@ -106,6 +106,13 @@ internal interface RestaurantDao {
     @Query("SELECT EXISTS (SELECT 1 FROM restaurants)")
     suspend fun hasRestaurants(): Boolean
 
+    /** The ETag of the response the stored snapshot came from: null before the first snapshot, or if it had none. */
+    @Query("SELECT etag FROM sync_state WHERE id = 0")
+    suspend fun snapshotEtag(): String?
+
+    @Query("UPDATE sync_state SET last_synced_at = :syncedAt WHERE id = 0")
+    suspend fun setLastSyncedAt(syncedAt: Long)
+
     @Upsert
     suspend fun setSyncState(state: SyncStateEntity)
 
@@ -119,20 +126,22 @@ internal interface RestaurantDao {
     suspend fun insertIntervals(intervals: List<OpeningIntervalEntity>)
 
     /**
-     * Swaps in a new snapshot in one transaction (spec §5.3): readers see the old one until it commits. Deleting every
-     * restaurant (their intervals cascade) rather than those missing from the snapshot avoids `NOT IN (:ids)`, which
-     * would exceed SQLite's 999-variable limit on Android 10 and lower. Favourites have no foreign key, so they stay.
+     * Swaps in a new snapshot in one transaction (spec §5.3): readers see the old one until it commits, and [etag], the
+     * ETag of the response it came from, commits with it. Deleting every restaurant (their intervals cascade) rather
+     * than those missing from the snapshot avoids `NOT IN (:ids)`, which would exceed SQLite's 999-variable limit on
+     * Android 10 and lower. Favourites have no foreign key, so they stay.
      */
     @Transaction
     suspend fun replaceSnapshot(
         restaurants: List<RestaurantEntity>,
         intervals: List<OpeningIntervalEntity>,
-        syncedAt: Long
+        syncedAt: Long,
+        etag: String?
     ) {
         deleteRestaurants()
         insertRestaurants(restaurants)
         insertIntervals(intervals)
-        setSyncState(SyncStateEntity(lastSyncedAt = syncedAt))
+        setSyncState(SyncStateEntity(lastSyncedAt = syncedAt, etag = etag))
     }
 
     @Query("SELECT EXISTS (SELECT 1 FROM favourites WHERE restaurant_id = :id)")

@@ -8,6 +8,7 @@ import com.effekt3r.mrd.core.data.database.RestaurantEntity
 import com.effekt3r.mrd.core.data.database.intervalEntities
 import com.effekt3r.mrd.core.data.database.toEntity
 import com.effekt3r.mrd.core.data.inMemoryDatabase
+import com.effekt3r.mrd.core.data.notModified
 import com.effekt3r.mrd.core.data.ok
 import com.effekt3r.mrd.core.data.parsedRestaurant
 import com.effekt3r.mrd.core.data.payload
@@ -77,17 +78,20 @@ class RestaurantSyncTest {
         override suspend fun replaceSnapshot(
             restaurants: List<RestaurantEntity>,
             intervals: List<OpeningIntervalEntity>,
-            syncedAt: Long
+            syncedAt: Long,
+            etag: String?
         ) = swap()
     }
 
-    // A snapshot written straight to the database, as if an earlier refresh had stored it.
-    private suspend fun seed(vararg ids: String) {
+    // A snapshot written straight to the database, as if an earlier refresh had stored it from the response tagged
+    // [etag]. Null: a snapshot of unknown version.
+    private suspend fun seed(vararg ids: String, etag: String? = null) {
         val restaurants = ids.map { parsedRestaurant(it) }
         dao.replaceSnapshot(
             restaurants.mapIndexed { position, it -> it.toEntity(position) },
             restaurants.flatMap { it.intervalEntities() },
-            syncedAt = 1
+            syncedAt = 1,
+            etag = etag
         )
     }
 
@@ -104,10 +108,10 @@ class RestaurantSyncTest {
     @Test
     fun a304SkipsTheDatabaseWriteAndOnlyRecordsTheTime() = runTest {
         server.enqueue(ok(payload("r-1")))
-        server.enqueue(MockResponse.Builder().code(304).addHeader("ETag", "\"v1\"").build())
+        server.enqueue(notModified())
         val sync = sync()
         sync.refresh()
-        seed("r-local") // anything the 304 rewrote would replace this
+        seed("r-local", etag = "\"v1\"") // the database holds v1; anything the 304 rewrote would replace this
         clock.advanceBy(Duration.ofMinutes(10))
         sync.refresh()
         server.takeRequest()
@@ -115,6 +119,57 @@ class RestaurantSyncTest {
         assertEquals(listOf("r-local"), dao.storedIds())
         assertEquals(clock.millis(), dao.lastSyncedAt().first())
         assertNull(sync.state.value.lastError)
+    }
+
+    @Test
+    fun a304ForAVersionTheDatabaseDoesntHoldStoresTheCachedBody() = runTest {
+        server.enqueue(ok(payload("r-1")))
+        server.enqueue(notModified())
+        val sync = sync()
+        sync.refresh()
+        seed("r-local") // an older snapshot, as if the swap of r-1 had never committed
+        clock.advanceBy(Duration.ofMinutes(10))
+        sync.refresh()
+        assertEquals(listOf("r-1"), dao.storedIds())
+        assertEquals(clock.millis(), dao.lastSyncedAt().first())
+        assertNull(sync.state.value.lastError)
+    }
+
+    @Test
+    fun a304WithoutAnETagStoresTheCachedBody() = runTest {
+        // Without an ETag, OkHttp revalidates with Last-Modified, and the 304 can't name the version it confirms.
+        server.enqueue(
+            ok(payload("r-1")).newBuilder()
+                .removeHeader("ETag")
+                .addHeader("Last-Modified", "Mon, 16 Nov 2026 09:00:00 GMT")
+                .build()
+        )
+        server.enqueue(status(304))
+        val sync = sync()
+        sync.refresh()
+        seed("r-local") // also without an ETag
+        clock.advanceBy(Duration.ofMinutes(10))
+        sync.refresh()
+        server.takeRequest()
+        assertEquals("Mon, 16 Nov 2026 09:00:00 GMT", server.takeRequest().headers["If-Modified-Since"])
+        assertEquals(listOf("r-1"), dao.storedIds())
+        assertNull(sync.state.value.lastError)
+    }
+
+    @Test
+    fun a304AfterBadDataNeitherClearsTheErrorNorMarksTheOldSnapshotFresh() = runTest {
+        seed("r-1")
+        server.enqueue(ok("""{"restaurants": [{"name": "No id"}]}""", etag = "\"v2\""))
+        server.enqueue(notModified("\"v2\""))
+        val sync = sync()
+        sync.refresh() // BadData keeps the snapshot, but OkHttp has cached the bad body with its ETag
+        clock.advanceBy(Duration.ofMinutes(10))
+        sync.refresh()
+        server.takeRequest()
+        assertEquals("\"v2\"", server.takeRequest().headers["If-None-Match"])
+        assertEquals(SyncError.BadData, sync.state.value.lastError)
+        assertEquals(1L, dao.lastSyncedAt().first())
+        assertEquals(listOf("r-1"), dao.storedIds())
     }
 
     @Test

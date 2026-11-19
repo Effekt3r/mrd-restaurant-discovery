@@ -48,11 +48,16 @@ internal data class FavouriteEntity(
     @ColumnInfo(name = "created_at") val createdAt: Long
 )
 
-/** A single row (id 0): when the snapshot was last fetched or confirmed unchanged, in epoch milliseconds. */
+/**
+ * A single row (id 0): when the snapshot was last fetched or confirmed unchanged, in epoch milliseconds, and the ETag
+ * of the response it came from. A 304 proves only that OkHttp's cached copy is current; [etag] says whether the
+ * database holds that copy too (spec §5.3).
+ */
 @Entity(tableName = "sync_state")
 internal data class SyncStateEntity(
     @PrimaryKey val id: Int = 0,
-    @ColumnInfo(name = "last_synced_at") val lastSyncedAt: Long
+    @ColumnInfo(name = "last_synced_at") val lastSyncedAt: Long,
+    val etag: String?
 )
 
 /** The validated menu of one restaurant, as JSON of [CachedMenu], so a menu seen before works offline (spec §5.9). */

@@ -40,7 +40,8 @@ class OpenStatusAgreementTest {
             dao.replaceSnapshot(
                 listOf(restaurant.toEntity(0)),
                 restaurant.intervalEntities(),
-                snapshotAt.toEpochMilli()
+                snapshotAt.toEpochMilli(),
+                etag = null
             )
             val weekMinute = WeekMinute.at(now).value
             val page = dao.restaurants("", openNow = false, weekMinute, now.toEpochMilli())
