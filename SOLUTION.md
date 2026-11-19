@@ -221,6 +221,23 @@ From spec [§12](docs/specs/2026-11-18-restaurant-discovery-design.md#12-deliber
 
 Menus were on this list until I added them on 2026-11-19 (spec [§5.9](docs/specs/2026-11-18-restaurant-discovery-design.md#59-menus)).
 
+## Known limitations
+
+What's still open at release, from [milestones 5 and 6's verification and review](docs/qa/2026-11-19-m5-m6-screens.md):
+
+- **A menu fetch in flight at a reconnect can still fail, on the emulator.** Details fetches a menu again when the connection returns if it failed or is still loading. But OkHttp can reuse an HTTP/2 connection it opened over the emulator's virtual cellular network just before airplane mode went on. That socket survives airplane mode, the retry is written to it too, and the menu fails after the 20-second read timeout, with its error and Retry. On a phone, airplane mode takes the radio down, so those sockets should fail at once; I've only seen this on the emulator.
+  - **The fix I'd make:** evict OkHttp's pooled connections and cancel its calls in flight when the default network is lost.
+  - **Its trade-off:** photos share the client's connections and dispatcher, so a photo still downloading would be cancelled too, and show its placeholder until it's requested again. I prototyped the fix and left it out of this release for that reason.
+- **Review findings not fixed yet:**
+  - **M-5, favourites toggle rather than set.** The card and Details pass the favourite's new value, but both ViewModels call `toggleFavourite(id)`. A double action from TalkBack, or a stale card, can flip it back. The fix is `setFavourite(id, value)` in the repository.
+  - **M-6, every visible card recomposes on every state change.** The grid's items read the whole UI state, though they only need the week minute, so a new count, sync, connectivity change or minute recomposes them all. The fix is to pass just the week minute.
+  - **M-7, cards can't skip recomposition.** Each card's photo slot, and each menu row's thumbnail, is a new lambda on every recomposition. The fix is to `remember` it.
+  - **M-8, Details' list has no content types.** Its photo, hours, category headers and dishes share one pool of reusable slots. The fix is a content type for each kind of row.
+  - **M-10, a design-system fix sits in a feature.** Browse's outlined button sets its own border colour for 3:1 contrast, so any other outlined button keeps Material's paler border. The fix is a design-system button.
+  - **M-12, readability.** A test reads a private field by reflection, a condition is split awkwardly, a type is written out in full although it's imported, and a test promises "once" without checking it. The stability configuration also covers only `:core:model`, so the UI states, which hold an `Instant`, are inferred unstable; strong skipping mostly hides that.
+- **A menu that fails for bad data says to check the connection,** even online. Spec [§5.4](docs/specs/2026-11-18-restaurant-discovery-design.md#54-errors) words errors by connectivity alone. Bad data deserves its own wording, as `Storage` has.
+- **Not walked on a device yet:** TalkBack itself, which was checked through the accessibility tree and the Compose tests; three-button navigation with the finished screens; and the 10,000-restaurant dataset (AC-16).
+
 ## Security and the supply chain
 
 [SECURITY.md](SECURITY.md) has the full detail.
