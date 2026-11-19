@@ -89,6 +89,12 @@ The data is fictional and deliberately messy, so the app's fallbacks get exercis
 
 Features never depend on each other. The build enforces it, and so do the architecture tests.
 
+## Credits
+
+- **Figtree**, the app's typeface, is by Erik Kennedy and the Figtree Project Authors, under the [SIL Open Font License 1.1](core/designsystem/FIGTREE-OFL.txt). The app bundles the variable font from [google/fonts](https://github.com/google/fonts/tree/main/ofl/figtree).
+- **Icons** are Google's [Material Symbols](https://fonts.google.com/icons) (rounded), under the Apache License 2.0.
+- **Food photos** in the mock API are from [TheMealDB](https://www.themealdb.com/api.php); see [`mock-api/README.md`](mock-api/README.md).
+
 ## Documentation
 
 - [Design spec](docs/specs/2026-11-18-restaurant-discovery-design.md). Its §14 links every technology to its official documentation.
@@ -113,3 +119,8 @@ Features never depend on each other. The build enforces it, and so do the archit
 | kotlinx.serialization (JSON) | https://kotlinlang.org/docs/serialization.html |
 | Gradle application plugin (the data generator) | https://docs.gradle.org/current/userguide/application_plugin.html |
 | TheMealDB API (food photos) | https://www.themealdb.com/api.php |
+| Custom design systems (theming Material 3) | https://developer.android.com/develop/ui/compose/designsystems/custom |
+| Fonts and variable fonts | https://developer.android.com/develop/ui/compose/text/fonts |
+| Material Symbols in Compose | https://developer.android.com/develop/ui/compose/graphics/images/material |
+| Adaptive icons | https://developer.android.com/develop/ui/views/launch/icon_design_adaptive |
+| Accessibility in Compose | https://developer.android.com/develop/ui/compose/accessibility |

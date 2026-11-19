@@ -279,9 +279,11 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - Sky blue as text on white has a contrast of about 1.8:1, which fails accessibility. It's therefore only used as a fill behind ink text, and links use a darker blue derived from it.
   - Status colours meet WCAG AA. A dark theme is built from the same tokens.
   - Nothing outside the design system uses a raw colour value (§7.2).
-- **Type:** Figtree, an open-licence geometric sans close to the lettering in the Mr D screenshots. It's bundled with the app rather than downloaded, so it works offline. Headings are extra-bold and body text is regular.
+- **Type:** Figtree, an open-licence geometric sans close to the lettering in the Mr D screenshots. It's bundled with the app rather than downloaded, so it works offline: one variable font covers every weight from API 26, the app's minimum. Headings are extra-bold, titles bold, body text regular and labels semi-bold.
 - **Shapes and spacing:** fields and image cards have 12 dp rounded corners; chips and pills are fully rounded. Spacing steps are 4, 8, 12, 16 and 24 dp.
-- **Components:** search field, filter chip, ETA pill, status label, rating, favourite button, skeleton card, state screens (error and empty), and the offline banner.
+- **Icons:** Material Symbols (rounded), committed as vector drawables.
+- **Theme:** `MrdTheme` themes Material 3 with these tokens, and adds the roles Material has no slot for (links, Open, Closed and photo placeholders).
+- **Components:** search field, filter chip, ETA pill, tag, status label, rating, favourite and back buttons, photo placeholder, restaurant card, menu category header and item row, skeleton card and rows, state screens (error and empty), and the offline banner. They take display-ready text, not model types; `:core:ui` formats the model for them (milestone 5).
 
 ### 6.2 Browse
 
