@@ -4,6 +4,13 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · A deep link was lost when Android had killed the app in the background
+
+- **What:** `MainActivity` registered its new-intent listener in a `DisposableEffect`, which runs only after the first composition. When Android has killed a backgrounded app's process but kept its task, a `mrd://restaurant/{id}` link recreates the activity from its saved state and arrives through `onNewIntent` before `onResume`, so before anything is composed. The link was dropped, and Browse showed instead of Details. The screens' design notes, tests and release walk covered a cold start after `force-stop` and a warm start with the process alive, but never killed the process with the task kept, which is how a link from a notification or another app usually reaches an app on a real phone.
+- **Caught by:** the verifier's release walk of milestones 5 and 6 (finding C-1): Home, `am kill`, then the link, which opened Browse 3 times out of 3.
+- **Fix:** `setNavigationContent()` registers the listener in `onCreate` and keeps the link in state until a `LaunchedEffect` can hand it to the `NavController`. A Robolectric test recreates the activity from its saved state and delivers the link before `onResume`, as Android does; it failed against the old wiring. On the release APK, the link now opens Details with Browse underneath after `am kill`, 3 times out of 3.
+- **Lesson:** cold and warm aren't the only states an app is in. Wherever an app receives intents or restores state, test process death with the task kept (`am kill` after Home), not just `force-stop`.
+
 ## 2026-11-19 · I said full-size card photos wouldn't cost memory, and Coil's source says they do
 
 - **What:** when I moved the cards to full-size photos, my instruction said Coil decodes to the view's size, so memory wouldn't change. `AsyncImage` asks for an inexact size, and Coil never scales a photo up past its own size. A phone's card is wider than the 700 px photo, so each card's bitmap is the whole photo: about 2 MB, against 1 MB at `/large`.
