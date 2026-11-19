@@ -67,7 +67,13 @@ private fun CircleButton(icon: ImageVector, modifier: Modifier) {
             modifier = Modifier.size(36.dp).background(MaterialTheme.colorScheme.surface, CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Icon(icon, contentDescription = null, modifier = Modifier.size(20.dp))
+            // Tinted explicitly: the circle draws its own surface, so the surrounding content colour may not contrast.
+            Icon(
+                icon,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp),
+                tint = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
