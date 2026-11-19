@@ -10,7 +10,7 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 |---|---|---|
 | Android Studio | Rabbit 2 (2026.2.2) or newer | Opens AGP 9.3 projects. |
 | JDK | 17 or newer (21 recommended) | Runs Gradle. Android Studio's bundled JDK works. |
-| Android SDK | Platform 36 and Build-Tools 36 | Install them with the SDK Manager. |
+| Android SDK | Platform 37 and Build-Tools 36 | Install them with the SDK Manager. The app compiles against API 37 and targets API 36. |
 | Device or emulator | Android 8.0 (API 26) or newer | Gesture or three-button navigation. |
 | Gradle | 9.7.1 | Comes with the wrapper; there's nothing to install. |
 | gitleaks | 8.x (optional) | Scans each commit for secrets (`brew install gitleaks`). |
@@ -37,7 +37,7 @@ Or open the folder in Android Studio and run the `app` configuration.
 
 ## Toolchain and version policy
 
-- **Proven over newest.** The toolchain (Gradle 9.7, AGP 9.3, Kotlin 2.3, KSP 2.3, Hilt 2.59) is the combination Google's [Now in Android](https://github.com/android/nowinandroid) builds with. Libraries are stable releases that had been out for at least four weeks when the project started, and that work with compile SDK 36 and Kotlin 2.3. Most are the newest such release; Activity (1.12) and Core (1.17) are a minor version behind.
+- **Proven over newest.** The toolchain (Gradle 9.7, AGP 9.3, Kotlin 2.3, KSP 2.3, Hilt 2.59) is the combination Google's [Now in Android](https://github.com/android/nowinandroid) builds with. When the project started, libraries were stable releases that had been out for at least four weeks and worked with compile SDK 36 and Kotlin 2.3. Dependabot's androidx updates of 2026-11-19 (Compose BOM 2026.09, Core 1.19, Navigation 2.10 and androidx.hilt 1.4) need compile SDK 37, so the app now compiles against API 37 but still targets API 36: the [target SDK](https://developer.android.com/build#android_sdk_settings), not the compile SDK, decides which platform behaviour the app gets.
 - **Why.** A time-boxed build has no room for toolchain surprises, and a large app updates on purpose. A throwaway spike build proved the toolchain before any project code was written. The full list is in the [roadmap](docs/plans/2026-11-18-00-roadmap.md).
 - **Updates.** From the first release on, Dependabot proposes library updates weekly once a release is at least 30 days old, and GitHub Actions updates after 7 days.
 

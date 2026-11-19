@@ -12,7 +12,11 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
-internal const val COMPILE_SDK = 36
+// Compile SDK and target SDK move separately. Compose 1.12 (BOM 2026.09.00), Core 1.19, Navigation 2.10 and
+// androidx.hilt 1.4 need compile SDK 37 (their AAR metadata says so), which only changes the APIs the code compiles
+// against. The target SDK opts the app into a platform's behaviour changes, so it stays at 36 until the app has been
+// tested against Android 17's.
+internal const val COMPILE_SDK = 37
 internal const val TARGET_SDK = 36
 
 // 26 gives java.time without core library desugaring.

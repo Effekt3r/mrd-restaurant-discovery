@@ -1,7 +1,6 @@
 package com.effekt3r.mrd.core.designsystem.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -22,8 +21,6 @@ internal val Figtree = FontFamily(
     figtree(FontWeight.ExtraBold)
 )
 
-// Variable-font settings are still marked experimental in Compose 1.11; Google's fonts guide opts in the same way.
-@OptIn(ExperimentalTextApi::class)
 private fun figtree(weight: FontWeight) = Font(
     resId = R.font.designsystem_figtree,
     weight = weight,
