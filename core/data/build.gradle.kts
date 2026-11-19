@@ -49,6 +49,7 @@ dependencies {
     testImplementation(projects.core.testing)
     testImplementation(libs.androidx.paging.testing)
     testImplementation(libs.androidx.test.core)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.okhttp.mockwebserver)
     testImplementation(libs.robolectric)
 }
