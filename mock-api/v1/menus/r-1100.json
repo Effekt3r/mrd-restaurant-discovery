@@ -1,0 +1,171 @@
+{
+  "restaurant_id": "r-1100",
+  "categories": [
+    {
+      "id": "c-1100-1",
+      "name": "Breakfast",
+      "items": [
+        {
+          "id": "i-1100-101",
+          "name": "Full Breakfast",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Eggs, bacon, boerewors, mushrooms, tomato and toast"
+        },
+        {
+          "id": "i-1100-102",
+          "name": "Shakshuka",
+          "price_cents": 10500,
+          "available": true,
+          "description": "Eggs baked in a spiced tomato sauce"
+        },
+        {
+          "id": "i-1100-103",
+          "name": "Flapjacks",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Three, with bacon and syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/sumomx1784395153.jpg"
+        },
+        {
+          "id": "i-1100-104",
+          "name": "Mince on Toast",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Savoury mince with a poached egg"
+        },
+        {
+          "id": "i-1100-105",
+          "name": "French Toast",
+          "price_cents": 9000,
+          "available": true,
+          "options": [
+            { "id": "o-1100-105-1", "name": "Extra egg", "price_cents": 2500 },
+            { "id": "o-1100-105-2", "name": "Swap to rye", "price_cents": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1100-2",
+      "name": "Light Meals",
+      "items": [
+        {
+          "id": "i-1100-201",
+          "name": "Chicken Mayo Toastie",
+          "price_cents": 8500,
+          "available": true,
+          "description": "On sourdough",
+          "image_url": "https://www.themealdb.com/images/media/meals/8oupz51761848432.jpg"
+        },
+        {
+          "id": "i-1100-202",
+          "name": "Club Sandwich",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Chicken, bacon and egg in three layers",
+          "image_url": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
+          "options": [
+            { "id": "o-1100-202-1", "name": "Gluten-free bread", "price_cents": 2500 },
+            { "id": "o-1100-202-2", "name": "Add a side salad", "price_cents": 1000 },
+            { "id": "o-1100-202-3", "name": "Add chips", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1100-203",
+          "name": "Quiche of the Day",
+          "price_cents": 9000,
+          "available": true,
+          "description": "With a side salad",
+          "options": [
+            { "id": "o-1100-203-1", "name": "Add chips", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1100-204",
+          "name": "Bobotie Pie",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Spiced mince in puff pastry",
+          "image_url": "https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg",
+          "options": [
+            { "id": "o-1100-204-1", "name": "Add avo", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1100-205",
+          "name": "Halloumi Wrap",
+          "price_cents": 8500,
+          "available": false,
+          "description": "Hummus, rocket and roasted peppers",
+          "image_url": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1100-3",
+      "name": "Bakery",
+      "items": [
+        {
+          "id": "i-1100-301",
+          "name": "Pain au Chocolat",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1100-302",
+          "name": "Blueberry Muffin",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1100-303",
+          "name": "Scones",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Two, with jam and cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/178z5o1585514569.jpg"
+        },
+        {
+          "id": "i-1100-304",
+          "name": "Rusks",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Buttermilk, two per portion"
+        }
+      ]
+    },
+    {
+      "id": "c-1100-4",
+      "name": "Coffee & Tea",
+      "items": [
+        {
+          "id": "i-1100-401",
+          "name": "Espresso",
+          "price_cents": 4500,
+          "available": true
+        },
+        {
+          "id": "i-1100-402",
+          "name": "Café Latte",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Mild and milky"
+        },
+        {
+          "id": "i-1100-403",
+          "name": "Red Cappuccino",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Rooibos espresso with foamed milk"
+        },
+        {
+          "id": "i-1100-404",
+          "name": "Hot Chocolate",
+          "price_cents": 3000,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "restaurant_id": "r-1122",
+  "categories": [
+    {
+      "id": "c-1122-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1122-101",
+          "name": "Quarter Chicken",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Leg and thigh, basted as you like it",
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg",
+          "options": [
+            { "id": "o-1122-101-1", "name": "Extra peri-peri sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1122-102",
+          "name": "Whole Chicken",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg"
+        },
+        {
+          "id": "i-1122-103",
+          "name": "Chicken Wings",
+          "price_cents": 16900,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting",
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+        },
+        {
+          "id": "i-1122-104",
+          "name": "Chicken Espetada",
+          "price_cents": 17900,
+          "available": true,
+          "description": "A hanging skewer with garlic butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg"
+        },
+        {
+          "id": "i-1122-105",
+          "name": "Chicken Prego Roll",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg"
+        },
+        {
+          "id": "i-1122-106",
+          "name": "Chicken Strips",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+          "options": [
+            { "id": "o-1122-106-1", "name": "Add a roll", "price_cents": 0 },
+            { "id": "o-1122-106-2", "name": "Lemon & herb basting", "price_cents": 0 },
+            { "id": "o-1122-106-3", "name": "Extra hot", "price_cents": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1122-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1122-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg"
+        },
+        {
+          "id": "i-1122-202",
+          "name": "Onion Rings",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg"
+        },
+        {
+          "id": "i-1122-203",
+          "name": "Side Salad",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+          "options": [
+            { "id": "o-1122-203-1", "name": "Large", "price_cents": 3500 },
+            { "id": "o-1122-203-2", "name": "Garlic aioli", "price_cents": 500 },
+            { "id": "o-1122-203-3", "name": "Peri-peri salt", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1122-204",
+          "name": "Creamed Spinach",
+          "price_cents": 4900,
+          "available": true
+        },
+        {
+          "id": "i-1122-205",
+          "name": "Pap & Chakalaka",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        },
+        {
+          "id": "i-1122-206",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg",
+          "options": [
+            { "id": "o-1122-206-1", "name": "Peri-peri salt", "price_cents": 2500 },
+            { "id": "o-1122-206-2", "name": "Garlic aioli", "price_cents": 3000 },
+            { "id": "o-1122-206-3", "name": "Large", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1122-207",
+          "name": "Coleslaw",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Creamy, with apple and carrot"
+        }
+      ]
+    },
+    {
+      "id": "c-1122-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1122-301",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1122-302",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1122-303",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1122-304",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1122-305",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1122-306",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

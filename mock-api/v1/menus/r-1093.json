@@ -1,0 +1,274 @@
+{
+  "restaurant_id": "r-1093",
+  "categories": [
+    {
+      "id": "c-1093-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1093-101",
+          "name": "Mussels",
+          "price_cents": 10900,
+          "available": true,
+          "description": "White wine, garlic and cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/cp74zo1762341241.jpg",
+          "options": [
+            { "id": "o-1093-101-1", "name": "Extra lemon", "price_cents": 0 },
+            { "id": "o-1093-101-2", "name": "Peri-peri sauce", "price_cents": 1000 },
+            { "id": "o-1093-101-3", "name": "Tartare sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1093-102",
+          "name": "Oysters",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Half a dozen, fresh from the West Coast"
+        },
+        {
+          "id": "i-1093-103",
+          "name": "Fish Cakes",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Two, with tartare sauce",
+          "options": [
+            { "id": "o-1093-103-1", "name": "Peri-peri sauce", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1093-104",
+          "name": "Smoked Snoek Pâté",
+          "price_cents": 8900,
+          "available": true
+        },
+        {
+          "id": "i-1093-105",
+          "name": "Seafood Chowder",
+          "price_cents": 5900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/a2ec961763587756.jpg"
+        },
+        {
+          "id": "i-1093-106",
+          "name": "Prawn Cocktail",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With Marie Rose sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/ikizdm1763760862.jpg",
+          "options": [
+            { "id": "o-1093-106-1", "name": "Peri-peri sauce", "price_cents": 2000 },
+            { "id": "o-1093-106-2", "name": "Extra lemon", "price_cents": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1093-2",
+      "name": "Fish & Chips",
+      "items": [
+        {
+          "id": "i-1093-201",
+          "name": "Hake & Chips",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ze8uwg1763196123.jpg"
+        },
+        {
+          "id": "i-1093-202",
+          "name": "Snoek & Chips",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Grilled with an apricot glaze",
+          "image_url": "https://www.themealdb.com/images/media/meals/njj1681763297231.jpg"
+        },
+        {
+          "id": "i-1093-203",
+          "name": "Calamari & Chips",
+          "price_cents": 14900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+          "options": [
+            { "id": "o-1093-203-1", "name": "Tartare sauce", "price_cents": 0 },
+            { "id": "o-1093-203-2", "name": "Swap chips for salad", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1093-204",
+          "name": "Yellowtail & Chips",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1548772327.jpg"
+        },
+        {
+          "id": "i-1093-205",
+          "name": "Hake Goujons & Chips",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Crumbed strips with tartare sauce",
+          "options": [
+            { "id": "o-1093-205-1", "name": "Extra lemon", "price_cents": 2500 },
+            { "id": "o-1093-205-2", "name": "Swap chips for salad", "price_cents": 2000 },
+            { "id": "o-1093-205-3", "name": "Large chips", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1093-206",
+          "name": "Prawns & Chips",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Six queen prawns",
+          "image_url": "https://www.themealdb.com/images/media/meals/118oj61763423896.jpg"
+        },
+        {
+          "id": "i-1093-207",
+          "name": "Fish Burger",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Crumbed hake, tartare and lettuce"
+        }
+      ]
+    },
+    {
+      "id": "c-1093-3",
+      "name": "Grills & Platters",
+      "items": [
+        {
+          "id": "i-1093-301",
+          "name": "Seafood Platter for One",
+          "price_cents": 22900,
+          "available": true,
+          "description": "Hake, calamari, prawns and mussels"
+        },
+        {
+          "id": "i-1093-302",
+          "name": "Seafood Platter for Two",
+          "price_cents": 23900,
+          "available": true,
+          "description": "Line fish, calamari, prawns and mussels",
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+        },
+        {
+          "id": "i-1093-303",
+          "name": "Queen Prawns",
+          "price_cents": 18900,
+          "available": true,
+          "description": "Ten, grilled",
+          "options": [
+            { "id": "o-1093-303-1", "name": "Add calamari", "price_cents": 2500 },
+            { "id": "o-1093-303-2", "name": "Peri-peri sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1093-304",
+          "name": "Grilled Kingklip",
+          "price_cents": 21900,
+          "available": true,
+          "description": "Lemon butter and seasonal vegetables",
+          "image_url": "https://www.themealdb.com/images/media/meals/118oj61763423896.jpg"
+        },
+        {
+          "id": "i-1093-305",
+          "name": "Seafood Paella",
+          "price_cents": 20900,
+          "available": true,
+          "description": "Saffron rice, mussels, prawns and calamari",
+          "image_url": "https://www.themealdb.com/images/media/meals/9r2xrg1763771238.jpg"
+        },
+        {
+          "id": "i-1093-306",
+          "name": "Cape Malay Fish Curry",
+          "price_cents": 15900,
+          "available": true,
+          "options": [
+            { "id": "o-1093-306-1", "name": "Peri-peri sauce", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1093-307",
+          "name": "Grilled Salmon",
+          "price_cents": 14900,
+          "available": true,
+          "description": "With a teriyaki glaze",
+          "options": [
+            { "id": "o-1093-307-1", "name": "Garlic butter", "price_cents": 0 },
+            { "id": "o-1093-307-2", "name": "Lemon butter", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1093-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1093-401",
+          "name": "Onion Rings",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg",
+          "options": [
+            { "id": "o-1093-401-1", "name": "Peri-peri salt", "price_cents": 3000 },
+            { "id": "o-1093-401-2", "name": "Garlic aioli", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1093-402",
+          "name": "Creamed Spinach",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg"
+        },
+        {
+          "id": "i-1093-403",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/n7h5zs1765318909.jpg"
+        },
+        {
+          "id": "i-1093-404",
+          "name": "Coleslaw",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/yhi46r1763330279.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1093-5",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1093-501",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1093-502",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1093-503",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1093-504",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

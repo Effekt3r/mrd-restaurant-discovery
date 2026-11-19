@@ -1,0 +1,236 @@
+{
+  "restaurant_id": "r-1170",
+  "categories": [
+    {
+      "id": "c-1170-1",
+      "name": "Breakfast",
+      "items": [
+        {
+          "id": "i-1170-101",
+          "name": "Full Breakfast",
+          "price_cents": 12500,
+          "available": false,
+          "description": "Eggs, bacon, boerewors, mushrooms, tomato and toast",
+          "options": [
+            { "id": "o-1170-101-1", "name": "Swap to rye", "price_cents": 2500 },
+            { "id": "o-1170-101-2", "name": "Add bacon", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1170-102",
+          "name": "Avo on Toast",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Sourdough, feta, chilli and lemon"
+        },
+        {
+          "id": "i-1170-103",
+          "name": "Shakshuka",
+          "price_cents": 11500,
+          "available": false,
+          "description": "Eggs baked in a spiced tomato sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/1543774956.jpg",
+          "options": [
+            { "id": "o-1170-103-1", "name": "Extra egg", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1170-104",
+          "name": "French Toast",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Brioche, berries and mascarpone",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        },
+        {
+          "id": "i-1170-105",
+          "name": "Granola Bowl",
+          "price_cents": 12500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1170-2",
+      "name": "Light Meals",
+      "items": [
+        {
+          "id": "i-1170-201",
+          "name": "Chicken Mayo Toastie",
+          "price_cents": 13500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/sqrtwu1511721265.jpg",
+          "options": [
+            { "id": "o-1170-201-1", "name": "Add chips", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1170-202",
+          "name": "Cheese & Tomato Toastie",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Melted cheddar and tomato",
+          "image_url": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg",
+          "options": [
+            { "id": "o-1170-202-1", "name": "Add avo", "price_cents": 1500 },
+            { "id": "o-1170-202-2", "name": "Add chips", "price_cents": 2000 },
+            { "id": "o-1170-202-3", "name": "Add a side salad", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1170-203",
+          "name": "Club Sandwich",
+          "price_cents": 8000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg"
+        },
+        {
+          "id": "i-1170-204",
+          "name": "Chicken Caesar Salad",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Cos, parmesan and croutons",
+          "image_url": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg",
+          "options": [
+            { "id": "o-1170-204-1", "name": "Add a side salad", "price_cents": 1500 },
+            { "id": "o-1170-204-2", "name": "Gluten-free bread", "price_cents": 3000 },
+            { "id": "o-1170-204-3", "name": "Add avo", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1170-205",
+          "name": "Quiche of the Day",
+          "price_cents": 7500,
+          "available": true,
+          "description": "With a side salad",
+          "image_url": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg"
+        },
+        {
+          "id": "i-1170-206",
+          "name": "Bobotie Pie",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Spiced mince in puff pastry",
+          "image_url": "https://www.themealdb.com/images/media/meals/hyk47c1762772689.jpg"
+        },
+        {
+          "id": "i-1170-207",
+          "name": "Soup of the Day",
+          "price_cents": 10500,
+          "available": true,
+          "description": "With freshly baked bread",
+          "options": [
+            { "id": "o-1170-207-1", "name": "Add a side salad", "price_cents": 2500 },
+            { "id": "o-1170-207-2", "name": "Add avo", "price_cents": 0 },
+            { "id": "o-1170-207-3", "name": "Gluten-free bread", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1170-208",
+          "name": "Halloumi Wrap",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Hummus, rocket and roasted peppers"
+        }
+      ]
+    },
+    {
+      "id": "c-1170-3",
+      "name": "Bakery",
+      "items": [
+        {
+          "id": "i-1170-301",
+          "name": "Pain au Chocolat",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Dark chocolate",
+          "image_url": "https://www.themealdb.com/images/media/meals/uryqru1511798039.jpg",
+          "options": [
+            { "id": "o-1170-301-1", "name": "Warmed", "price_cents": 0 },
+            { "id": "o-1170-301-2", "name": "Add butter and jam", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1170-302",
+          "name": "Blueberry Muffin",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Baked this morning",
+          "options": [
+            { "id": "o-1170-302-1", "name": "Add cream", "price_cents": 3000 },
+            { "id": "o-1170-302-2", "name": "Warmed", "price_cents": 2000 },
+            { "id": "o-1170-302-3", "name": "Add butter and jam", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1170-303",
+          "name": "Carrot Cake",
+          "price_cents": 5500,
+          "available": true,
+          "description": "With cream cheese icing",
+          "image_url": "https://www.themealdb.com/images/media/meals/rxvxrr1511797671.jpg"
+        },
+        {
+          "id": "i-1170-304",
+          "name": "Scones",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Two, with jam and cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/9zqrod1763075574.jpg",
+          "options": [
+            { "id": "o-1170-304-1", "name": "Warmed", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1170-305",
+          "name": "Milk Tart Slice",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Cinnamon custard on crisp pastry",
+          "image_url": "https://www.themealdb.com/images/media/meals/f9qog11784574376.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1170-4",
+      "name": "Coffee & Tea",
+      "items": [
+        {
+          "id": "i-1170-401",
+          "name": "Americano",
+          "price_cents": 4000,
+          "available": false,
+          "description": "Espresso and hot water"
+        },
+        {
+          "id": "i-1170-402",
+          "name": "Red Cappuccino",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1170-403",
+          "name": "Rooibos Tea",
+          "price_cents": 4500,
+          "available": true,
+          "description": "With honey and lemon",
+          "options": [
+            { "id": "o-1170-403-1", "name": "Decaf", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1170-404",
+          "name": "Chai Latte",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Spiced and sweetened",
+          "options": [
+            { "id": "o-1170-404-1", "name": "Oat milk", "price_cents": 1000 },
+            { "id": "o-1170-404-2", "name": "Decaf", "price_cents": 2500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

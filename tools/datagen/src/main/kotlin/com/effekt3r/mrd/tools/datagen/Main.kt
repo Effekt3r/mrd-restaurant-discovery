@@ -9,8 +9,8 @@ import java.time.Duration
 
 /**
  * The generator's entry point, run from the repository root by Gradle. `./gradlew :tools:datagen:run` writes both
- * datasets from the committed image pool, with no network. `--args=fetch-images` refreshes the pool from TheMealDB,
- * the only command that needs the network.
+ * datasets and the menus from the committed image pool, with no network. `--args=fetch-images` refreshes the pool
+ * from TheMealDB, the only command that needs the network.
  */
 fun main(args: Array<String>) {
     check(File("tools/datagen").isDirectory) {
@@ -30,6 +30,11 @@ private fun generate() {
         File(dataset.path).apply { parentFile.mkdirs() }.writeText(text)
         println("Wrote ${dataset.path}: ${dataset.size} restaurants, ${text.toByteArray().size} bytes")
     }
+    val menus = MenuGenerator.files(pool)
+    val deleted = MenuGenerator.write(File(MenuGenerator.DIRECTORY), menus)
+    val bytes = menus.values.sumOf { it.toByteArray().size }
+    println("Wrote ${MenuGenerator.DIRECTORY}/: ${menus.size} menus, $bytes bytes")
+    deleted.forEach { println("Deleted ${MenuGenerator.DIRECTORY}/$it: no restaurant has that id") }
 }
 
 private fun fetchImages() {

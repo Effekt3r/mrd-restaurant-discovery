@@ -1,0 +1,253 @@
+{
+  "restaurant_id": "r-1212",
+  "categories": [
+    {
+      "id": "c-1212-1",
+      "name": "Pizzas",
+      "items": [
+        {
+          "id": "i-1212-101",
+          "name": "Regina",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Ham and mushroom",
+          "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg"
+        },
+        {
+          "id": "i-1212-102",
+          "name": "Hawaiian",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Ham and pineapple"
+        },
+        {
+          "id": "i-1212-103",
+          "name": "Bacon, Avo & Feta",
+          "price_cents": 9000,
+          "available": true
+        },
+        {
+          "id": "i-1212-104",
+          "name": "Biltong & Avo",
+          "price_cents": 13500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg"
+        },
+        {
+          "id": "i-1212-105",
+          "name": "Vegetarian",
+          "price_cents": 15500,
+          "available": true,
+          "options": [
+            { "id": "o-1212-105-1", "name": "Chilli oil", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1212-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1212-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+          "options": [
+            { "id": "o-1212-201-1", "name": "Garlic aioli", "price_cents": 3500 },
+            { "id": "o-1212-201-2", "name": "Peri-peri salt", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1212-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 3000,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        },
+        {
+          "id": "i-1212-203",
+          "name": "Onion Rings",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+        },
+        {
+          "id": "i-1212-204",
+          "name": "Side Salad",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg",
+          "options": [
+            { "id": "o-1212-204-1", "name": "Add cheese sauce", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1212-205",
+          "name": "Creamed Spinach",
+          "price_cents": 6000,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg"
+        },
+        {
+          "id": "i-1212-206",
+          "name": "Grilled Mielies",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg"
+        },
+        {
+          "id": "i-1212-207",
+          "name": "Coleslaw",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg",
+          "options": [
+            { "id": "o-1212-207-1", "name": "Peri-peri salt", "price_cents": 1000 },
+            { "id": "o-1212-207-2", "name": "Garlic aioli", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1212-3",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1212-301",
+          "name": "Malva Pudding",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Warm apricot sponge with custard",
+          "image_url": "https://www.themealdb.com/images/media/meals/dm8kee1779553541.jpg"
+        },
+        {
+          "id": "i-1212-302",
+          "name": "Milk Tart",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/k9o0xr1764373018.jpg",
+          "options": [
+            { "id": "o-1212-302-1", "name": "Add whipped cream", "price_cents": 500 },
+            { "id": "o-1212-302-2", "name": "Add vanilla ice cream", "price_cents": 1500 },
+            { "id": "o-1212-302-3", "name": "Extra custard", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1212-303",
+          "name": "Koeksisters",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Plaited and syrup-soaked, two per portion",
+          "image_url": "https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg"
+        },
+        {
+          "id": "i-1212-304",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/qpqtuu1511386216.jpg"
+        },
+        {
+          "id": "i-1212-305",
+          "name": "Chocolate Brownie",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/tkwxmv1777540463.jpg"
+        },
+        {
+          "id": "i-1212-306",
+          "name": "Baked Cheesecake",
+          "price_cents": 5500,
+          "available": true,
+          "description": "With berry compote",
+          "options": [
+            { "id": "o-1212-306-1", "name": "Add whipped cream", "price_cents": 500 },
+            { "id": "o-1212-306-2", "name": "Add vanilla ice cream", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1212-307",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Three scoops with chocolate sauce"
+        }
+      ]
+    },
+    {
+      "id": "c-1212-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1212-401",
+          "name": "Still Water",
+          "price_cents": 2000,
+          "available": true,
+          "options": [
+            { "id": "o-1212-401-1", "name": "No ice", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1212-402",
+          "name": "Sparkling Water",
+          "price_cents": 3500,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1212-402-1", "name": "Extra lemon", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1212-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon",
+          "options": [
+            { "id": "o-1212-403-1", "name": "Extra lemon", "price_cents": 3000 },
+            { "id": "o-1212-403-2", "name": "Large", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1212-404",
+          "name": "Ginger Beer",
+          "price_cents": 4500,
+          "available": true
+        },
+        {
+          "id": "i-1212-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1212-406",
+          "name": "Rock Shandy",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1212-407",
+          "name": "Cream Soda Float",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

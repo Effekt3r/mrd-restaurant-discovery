@@ -1,0 +1,256 @@
+{
+  "restaurant_id": "r-1151",
+  "categories": [
+    {
+      "id": "c-1151-1",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1151-101",
+          "name": "Classic Beef Burger",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Lettuce, tomato, pickles and house sauce"
+        },
+        {
+          "id": "i-1151-102",
+          "name": "Cheese Burger",
+          "price_cents": 8900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/1543774956.jpg"
+        },
+        {
+          "id": "i-1151-103",
+          "name": "Bacon & Cheese Burger",
+          "price_cents": 15900,
+          "available": true,
+          "options": [
+            { "id": "o-1151-103-1", "name": "Add bacon", "price_cents": 2500 },
+            { "id": "o-1151-103-2", "name": "Make it a double", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1151-104",
+          "name": "Mushroom Burger",
+          "price_cents": 13900,
+          "available": true,
+          "description": "With a creamy mushroom sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg"
+        },
+        {
+          "id": "i-1151-105",
+          "name": "Chilli Cheese Burger",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Jalapeños, chilli jam and cheddar",
+          "image_url": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg"
+        },
+        {
+          "id": "i-1151-106",
+          "name": "Chicken Burger",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Crumbed breast, slaw and peri-peri mayo"
+        },
+        {
+          "id": "i-1151-107",
+          "name": "Boerewors Roll",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Grilled boerewors with tomato and onion relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1151-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1151-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg"
+        },
+        {
+          "id": "i-1151-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg"
+        },
+        {
+          "id": "i-1151-203",
+          "name": "Onion Rings",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Beer-battered",
+          "options": [
+            { "id": "o-1151-203-1", "name": "Peri-peri salt", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1151-204",
+          "name": "Side Salad",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg"
+        },
+        {
+          "id": "i-1151-205",
+          "name": "Creamed Spinach",
+          "price_cents": 2900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg",
+          "options": [
+            { "id": "o-1151-205-1", "name": "Large", "price_cents": 1000 },
+            { "id": "o-1151-205-2", "name": "Add cheese sauce", "price_cents": 2500 },
+            { "id": "o-1151-205-3", "name": "Garlic aioli", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1151-206",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1151-207",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg"
+        },
+        {
+          "id": "i-1151-208",
+          "name": "Coleslaw",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/swttys1511385853.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1151-3",
+      "name": "Milkshakes",
+      "items": [
+        {
+          "id": "i-1151-301",
+          "name": "Chocolate Milkshake",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Dark chocolate and cocoa"
+        },
+        {
+          "id": "i-1151-302",
+          "name": "Strawberry Milkshake",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Made with fresh strawberries",
+          "options": [
+            { "id": "o-1151-302-1", "name": "Large", "price_cents": 3000 },
+            { "id": "o-1151-302-2", "name": "Extra thick", "price_cents": 2000 },
+            { "id": "o-1151-302-3", "name": "Add whipped cream", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1151-303",
+          "name": "Peanut Butter Milkshake",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1151-304",
+          "name": "Bubblegum Milkshake",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1151-305",
+          "name": "Coffee Milkshake",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Espresso and vanilla"
+        }
+      ]
+    },
+    {
+      "id": "c-1151-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1151-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled",
+          "options": [
+            { "id": "o-1151-401-1", "name": "Extra lemon", "price_cents": 1000 },
+            { "id": "o-1151-401-2", "name": "Add mint", "price_cents": 2000 },
+            { "id": "o-1151-401-3", "name": "No ice", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1151-402",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1151-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon",
+          "options": [
+            { "id": "o-1151-403-1", "name": "No ice", "price_cents": 500 },
+            { "id": "o-1151-403-2", "name": "Large", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1151-404",
+          "name": "Ginger Beer",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1151-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1151-406",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1151-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1151-408",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1151-408-1", "name": "Large", "price_cents": 0 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "restaurant_id": "r-1070",
+  "categories": [
+    {
+      "id": "c-1070-1",
+      "name": "Platters",
+      "items": [
+        {
+          "id": "i-1070-101",
+          "name": "Salmon Platter",
+          "price_cents": 15900,
+          "available": true
+        },
+        {
+          "id": "i-1070-102",
+          "name": "Salmon & Tuna Platter",
+          "price_cents": 15900,
+          "available": true
+        },
+        {
+          "id": "i-1070-103",
+          "name": "Prawn Platter",
+          "price_cents": 18900,
+          "available": true,
+          "description": "Tempura prawn rolls and prawn nigiri",
+          "image_url": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg"
+        },
+        {
+          "id": "i-1070-104",
+          "name": "Fashion Sandwich Platter",
+          "price_cents": 24900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg"
+        },
+        {
+          "id": "i-1070-105",
+          "name": "Party Platter",
+          "price_cents": 24900,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1070-2",
+      "name": "Rolls",
+      "items": [
+        {
+          "id": "i-1070-201",
+          "name": "California Roll",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Crab stick, avo, cucumber and sesame",
+          "image_url": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg"
+        },
+        {
+          "id": "i-1070-202",
+          "name": "Prawn Tempura Roll",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg"
+        },
+        {
+          "id": "i-1070-203",
+          "name": "Salmon Roses",
+          "price_cents": 10900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        },
+        {
+          "id": "i-1070-204",
+          "name": "Salmon Fashion Sandwich",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Four pieces, crumbed and fried",
+          "options": [
+            { "id": "o-1070-204-1", "name": "Extra wasabi", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1070-205",
+          "name": "Tuna Maki",
+          "price_cents": 6900,
+          "available": true,
+          "options": [
+            { "id": "o-1070-205-1", "name": "Spicy mayo", "price_cents": 2000 },
+            { "id": "o-1070-205-2", "name": "Sweet chilli sauce", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1070-206",
+          "name": "Cucumber Maki",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Six pieces with sesame",
+          "image_url": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg",
+          "options": [
+            { "id": "o-1070-206-1", "name": "Sweet chilli sauce", "price_cents": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1070-3",
+      "name": "Sashimi",
+      "items": [
+        {
+          "id": "i-1070-301",
+          "name": "Tuna Sashimi",
+          "price_cents": 12900,
+          "available": false,
+          "description": "Six slices",
+          "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        },
+        {
+          "id": "i-1070-302",
+          "name": "Salmon Nigiri",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg"
+        },
+        {
+          "id": "i-1070-303",
+          "name": "Tuna Nigiri",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Four pieces",
+          "image_url": "https://www.themealdb.com/images/media/meals/wrustq1511475474.jpg"
+        },
+        {
+          "id": "i-1070-304",
+          "name": "Seared Salmon Sashimi",
+          "price_cents": 8900,
+          "available": true
+        },
+        {
+          "id": "i-1070-305",
+          "name": "Tuna Tataki",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Seared, with sesame and ponzu"
+        },
+        {
+          "id": "i-1070-306",
+          "name": "Sashimi Salad",
+          "price_cents": 10900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1070-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1070-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1070-402",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1070-402-1", "name": "Add mint", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1070-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon",
+          "options": [
+            { "id": "o-1070-403-1", "name": "Large", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1070-404",
+          "name": "Ginger Beer",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1070-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda",
+          "options": [
+            { "id": "o-1070-405-1", "name": "Large", "price_cents": 1000 },
+            { "id": "o-1070-405-2", "name": "Add mint", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1070-406",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1070-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1070-408",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

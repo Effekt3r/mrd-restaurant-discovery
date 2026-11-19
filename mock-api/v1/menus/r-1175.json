@@ -1,0 +1,148 @@
+{
+  "restaurant_id": "r-1175",
+  "categories": [
+    {
+      "id": "c-1175-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1175-101",
+          "name": "Quarter Chicken",
+          "price_cents": 7900,
+          "available": false,
+          "description": "Leg and thigh, basted as you like it",
+          "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg"
+        },
+        {
+          "id": "i-1175-102",
+          "name": "Whole Chicken",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+        },
+        {
+          "id": "i-1175-103",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 16900,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg"
+        },
+        {
+          "id": "i-1175-104",
+          "name": "Chicken Strips",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Crumbed, with honey mustard"
+        }
+      ]
+    },
+    {
+      "id": "c-1175-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1175-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        },
+        {
+          "id": "i-1175-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 2900,
+          "available": true,
+          "description": "With chipotle mayo"
+        },
+        {
+          "id": "i-1175-203",
+          "name": "Onion Rings",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg"
+        },
+        {
+          "id": "i-1175-204",
+          "name": "Side Salad",
+          "price_cents": 5900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        },
+        {
+          "id": "i-1175-205",
+          "name": "Creamed Spinach",
+          "price_cents": 4900,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1175-206",
+          "name": "Pap & Chakalaka",
+          "price_cents": 5900,
+          "available": false,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "options": [
+            { "id": "o-1175-206-1", "name": "Add cheese sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1175-207",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg"
+        },
+        {
+          "id": "i-1175-208",
+          "name": "Coleslaw",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1175-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1175-301",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1175-302",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1175-303",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1175-304",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1175-305",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true
+        }
+      ]
+    }
+  ]
+}
