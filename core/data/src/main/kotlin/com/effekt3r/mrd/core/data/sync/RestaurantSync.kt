@@ -90,10 +90,13 @@ internal class RestaurantSync @Inject constructor(
         }
     }
 
-    // decodeFromStream parses the body record by record, never as a JSON tree; Retrofit has already read the body into
-    // memory (spec §5.3). decodeFromStream has been experimental since 1.3 but is stable in practice.
+    /**
+     * Null when the snapshot was stored or confirmed unchanged; otherwise why it wasn't.
+     *
+     * `decodeFromStream` parses the body record by record, never as a JSON tree; Retrofit has already read the body
+     * into memory (spec §5.3). It has been experimental since kotlinx.serialization 1.3 but is stable in practice.
+     */
     @OptIn(ExperimentalSerializationApi::class)
-    /** Null when the snapshot was stored or confirmed unchanged; otherwise why it wasn't. */
     private suspend fun download(): SyncError? {
         val response = api.restaurants()
         if (!response.isSuccessful) {
