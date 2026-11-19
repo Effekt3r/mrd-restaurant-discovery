@@ -4,6 +4,12 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 
 > **Status:** version 1.0.0. Everything in the [design spec](docs/specs/2026-11-18-restaurant-discovery-design.md) is built, and the signed APK is on the [Releases page](https://github.com/Effekt3r/mrd-restaurant-discovery/releases). [SOLUTION.md](SOLUTION.md) explains the design, its trade-offs, Task 3 and the [known limitations](SOLUTION.md#known-limitations), and [AI_USAGE.md](AI_USAGE.md) how I used AI, with my prompts.
 
+| Browse | Details | Dark theme |
+|---|---|---|
+| <img src="docs/qa/screenshots/m5-browse.png" width="250" alt="Browse: the search field, the Open now chip, 217 restaurants, and Cape Town Grill's card with its photo, ETA, rating, delivery fee and status"> | <img src="docs/qa/screenshots/m6-details.png" width="250" alt="Cape Town Grill's details: the photo, rating, ETA and fee, Open · Closes 22:00, the week's opening hours with today highlighted, and the start of the menu"> | <img src="docs/qa/screenshots/m5-browse-dark.png" width="250" alt="Browse in the dark theme"> |
+
+Screenshots from the R8 release build on the emulator. [`docs/qa/`](docs/qa/) has the rest, with each milestone's verification report.
+
 ## Requirements
 
 | Tool | Version | Notes |
