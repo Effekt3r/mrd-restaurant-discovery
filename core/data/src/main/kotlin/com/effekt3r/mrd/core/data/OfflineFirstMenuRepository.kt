@@ -88,7 +88,9 @@ internal class OfflineFirstMenuRepository @Inject constructor(
         }
         return when {
             menu == null -> MenuState.Error(SyncError.BadData, cached)
+
             menu.categories.isEmpty() -> notAvailable(restaurantId)
+
             else -> {
                 val fetchedAt = clock.instant()
                 val menuJson = json.encodeToString(CachedMenu.serializer(), menu.toCached())
