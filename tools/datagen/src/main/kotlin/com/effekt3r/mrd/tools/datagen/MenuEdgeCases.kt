@@ -41,28 +41,39 @@ internal object MenuEdgeCases {
 
     fun apply(index: Int, menu: JsonObject): JsonObject = when (index) {
         ITEM_WITHOUT_PRICE -> menu.editFirstItem { it.withField("price_cents", null) }
+
         NEGATIVE_PRICE -> menu.editFirstItem { it.withField("price_cents", JsonPrimitive(-500)) }
+
         ITEM_WITHOUT_NAME -> menu.editFirstItem { it.withField("name", null) }
+
         PRICE_AS_STRING -> menu.editFirstItem { it.withField("price_cents", JsonPrimitive(it.text("price_cents"))) }
+
         CATEGORY_WITHOUT_NAME -> menu.editCategory(0) { it.withField("name", null) }
+
         CATEGORY_ALL_INVALID -> menu.editCategory(1) { category ->
             category.withField("items", JsonArray(category.items().map { it.withField("price_cents", JsonNull) }))
         }
+
         NEGATIVE_OPTION_PRICE -> menu.editFirstItem({ "options" in it }) { item ->
             val options = item.getValue("options").jsonArray.map { it.jsonObject }
             val negative = options.last().withField("price_cents", JsonPrimitive(-500))
             item.withField("options", JsonArray(options.dropLast(1) + negative))
         }
+
         HTTP_IMAGE -> menu.editFirstItem({ "image_url" in it }) {
             it.withField("image_url", JsonPrimitive(it.text("image_url").replace("https:", "http:")))
         }
+
         WRONG_RESTAURANT_ID -> menu.withField("restaurant_id", JsonPrimitive(Generator.idFor(index + 1)))
+
         NO_CATEGORIES -> menu.withField("categories", JsonArray(emptyList()))
+
         DUPLICATE_ITEM_ID -> menu.editCategory(0) { category ->
             val items = category.items()
             val repeated = items[1].withField("id", items[0].getValue("id"))
             category.withField("items", JsonArray(listOf(items[0], repeated) + items.drop(2)))
         }
+
         else -> menu
     }
 

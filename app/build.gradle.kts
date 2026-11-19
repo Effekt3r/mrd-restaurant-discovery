@@ -40,9 +40,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = when {
                 releaseKeystore != null -> signingConfigs.getByName("release")
+
                 requireReleaseSigning -> throw GradleException(
                     "Release signing is required, but MRD_KEYSTORE_FILE is not set."
                 )
+
                 else -> signingConfigs.getByName("debug")
             }
         }
