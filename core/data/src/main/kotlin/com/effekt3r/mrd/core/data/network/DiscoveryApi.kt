@@ -8,9 +8,9 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 /**
- * The mock API (spec §5.1 and §5.9). `no-cache` makes OkHttp revalidate its cached copy with the ETag on every call,
- * so unchanged data comes back as a 304. The bodies stay raw: the list is parsed only when the database doesn't hold
- * it yet.
+ * The mock API (spec §5.1 and §5.9). `max-age=0` makes OkHttp revalidate its cached copy with the ETag on every call,
+ * so unchanged data comes back as a 304; `no-cache` would bypass the cache and download the whole file (spec §5.3).
+ * The bodies stay raw: the list is parsed only when the database doesn't hold it yet.
  */
 internal interface DiscoveryApi {
     @Headers("Cache-Control: max-age=0")
