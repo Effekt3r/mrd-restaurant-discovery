@@ -19,11 +19,11 @@ tasks.named<JavaExec>("run") {
     args("generate")
 }
 
-// GoldenFilesTest reads the committed mock-api/ files from disk, which Gradle can't see. Declaring them as an input
+// GoldenFilesTest reads the committed mock-api/v1/ files from disk, which Gradle can't see. Declaring them as an input
 // makes Gradle re-run the tests when one changes, instead of reporting UP-TO-DATE or restoring a cached pass. RELATIVE
 // keeps the build-cache key the same wherever the repository is checked out.
 tasks.test {
-    inputs.dir(rootDir.resolve("mock-api"))
+    inputs.dir(rootDir.resolve("mock-api/v1"))
         .withPathSensitivity(PathSensitivity.RELATIVE)
         .withPropertyName("mockApiFiles")
 }
