@@ -4,6 +4,13 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The circle buttons' icons took their colour from whatever surrounded them
+
+- **What:** the design system's back and favourite buttons draw their own surface-coloured circle, but the icon inherited the surrounding content colour. Outside a full-screen `Surface` that colour is black, and the component's own dark preview showed black icons on an ink circle. The app looked right only because `MainActivity` wraps everything in a `Surface`.
+- **Caught by:** milestone 4's combined verifier and code review, from the preview and Material 3's sources.
+- **Fix:** the icon is tinted `onSurface`, the colour that belongs to the circle it sits on.
+- **Lesson:** a component that draws its own background must also set its own content colour.
+
 ## 2026-11-19 · Stripping an icon attribute by line broke the back arrow
 
 - **What:** milestone 4's spike removed each Material Symbols icon's `android:tint` line, because the attribute needs AppCompat. In `arrow_back`, `android:autoMirrored` comes after the tint, so the `>` that closed the tag went with it, and the attribute became stray text.
