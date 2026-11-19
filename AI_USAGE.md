@@ -8,7 +8,7 @@ I built this project with Claude Code. OfferZen's assessment details allow AI to
 
 ## Tools
 
-- **Claude Code,** Anthropic's command-line coding agent. One session coordinated the project, and I call it the controller; it ran on Claude Opus 5.5. It gave each piece of work to a fresh subagent, more than 50 in all, on Opus 5.5 or Sonnet 5. Implementers and spec reviewers mostly ran on Sonnet 5. The spikes and plans, most code-quality reviews and the later combined reviews ran on Opus 5.5.
+- **Claude Code,** Anthropic's command-line coding agent. One session coordinated the project, and I call it the controller; it ran on Claude Opus 5.5. It gave each piece of work to a fresh subagent, more than 50 in all, on Opus 5.5 or Sonnet 5. Implementers and spec reviewers mostly ran on Sonnet 5. The spikes and plans, most code-quality reviews, the later combined reviews, and the screens and their fixes ran on Opus 5.5.
 - **Skills from the superpowers plugin:**
   - brainstorming, for the design conversation that became the spec;
   - writing-plans, for the roadmap and each milestone's plan;
@@ -22,9 +22,9 @@ I built this project with Claude Code. OfferZen's assessment details allow AI to
 1. **Brainstorm.** Claude asked one question at a time, each with options and a recommendation, and I chose ([prompts 2 to 16](docs/ai/prompts.md#prompt-2)).
 2. **Spec.** The decisions went into the [design spec](docs/specs/2026-11-18-restaurant-discovery-design.md), reviewed in pull request #2.
 3. **Roadmap and plans.** The [roadmap](docs/plans/2026-11-18-00-roadmap.md) splits the work into seven milestones, plus 2b for the menus I added. Each milestone's plan was written just before it started.
-4. **Spikes.** A throwaway build proved the toolchain before the first plan. From milestone 2, the agent writing each plan first built the plan's code in a disposable clone and ran its checks, and the plan opens with what that spike found.
+4. **Spikes.** A throwaway build proved the toolchain before the first plan. From milestone 2 to milestone 4, the agent writing each plan first built the plan's code in a disposable clone and ran its checks, and the plan opens with what that spike found. Milestones 5 and 6 skipped the spike, to save time: one agent built both screens test-first from [64 lines of design notes](docs/plans/2026-11-19-05-screens.md).
 5. **Implementation by subagents,** test-first where the code allowed, one logical step per commit, each with a `Verified:` line.
-6. **Review.** In milestone 1, every task had two independent reviews: one against the spec, then one for code quality. The reviewers built the code and ran probes, and fixes went back through review. A whole-branch review closed the milestone. Milestone 2 had one implementer and one code-quality review for the whole milestone. From milestone 2b, after I asked for a faster pace, one combined verifier-and-review pass covered each milestone.
+6. **Review.** In milestone 1, every task had two independent reviews: one against the spec, then one for code quality. The reviewers built the code and ran probes, and fixes went back through review. A whole-branch review closed the milestone. Milestone 2 had one implementer and one code-quality review for the whole milestone. From milestone 2b, after I asked for a faster pace, one combined verifier-and-review pass covered each milestone. For milestones 5 and 6 it ran twice: once on the first build, and again after the fixes for what it found.
 7. **Verification.** The verifier's report, with the commands it ran and their output, is in [`docs/qa/`](docs/qa/).
 8. **Pull request,** with a description and "AI notes": which prompts drove the change, and what the AI got wrong.
 9. **Merge.** I merged the first eight pull requests myself. After that, Claude merged them: first the ones I asked for ([prompts 34](docs/ai/prompts.md#prompt-34), [35](docs/ai/prompts.md#prompt-35) and [37](docs/ai/prompts.md#prompt-37)), then each later one once its checks passed.
@@ -71,40 +71,41 @@ Five times I went against what Claude proposed: older versions rather than the n
 
 ## Where the AI was wrong
 
-[`docs/ai/corrections.md`](docs/ai/corrections.md) has 47 entries, newest first: each time the AI was wrong and it was caught.
+[`docs/ai/corrections.md`](docs/ai/corrections.md) has 54 entries, newest first: each time the AI was wrong and it was caught. One records a check rather than a mistake: Retrofit's and OkHttp's repositories had moved to a new organisation, and the move was genuine.
 
 | Kind of mistake | Entries |
 |---|---|
 | The build and its checks: Gradle, the architecture tests, lint | 12 |
-| CI, security and the supply chain, including version choices | 14 |
-| How a library, an API or the sync really behaves | 6 |
-| Tests and probes that couldn't fail | 3 |
-| UI and device behaviour | 6 |
-| Claims in the docs that weren't true | 5 |
+| CI, security and the supply chain, including version choices | 13 |
+| How a library, an API or a service really behaves | 6 |
+| Logic: sync, state, timing and the app's lifecycle | 6 |
+| UI, layout and resources | 6 |
+| Tests and probes that couldn't fail | 4 |
+| Docs and commit messages that were wrong: claims, counts, links and setup steps | 6 |
 | An agent breaking a house rule (an AI trailer, amended before review) | 1 |
 
-**What caught them:** the independent reviews, 26; the spikes, 9; me, 2; and the agents' own checks, the controller and the build, 10.
+**What caught them:** the independent reviews and the verifier, 28; the spikes, 9; me, 2; and the agents' own checks and tests, the controller and the build, 15.
 
 The five I learned most from:
 
 1. **`no-cache` would have downloaded the whole list on every refresh.** The spec said each request sends `Cache-Control: no-cache`, so OkHttp revalidates against GitHub's ETag. OkHttp does the opposite: it skips its cache and sends no `If-None-Match`. Milestone 3's spike caught it when its 304 test failed. Lesson: check what a library does with a header, not what the header means in the HTTP specification.
 2. **Three failures the sync's tests never tried.** A full disk during the snapshot swap escaped `refresh()` and left it refreshing forever; a 304 was trusted as proof that the database was current; and nothing tested that the swap is one transaction. Milestone 3's combined verifier and code review proved each one with a probe test in a disposable clone. Each fix now has a test that fails without it.
 3. **Gradle could skip the architecture tests.** Konsist reads source files Gradle can't see, so a violation in a module outside `:app`'s classpath left the tests UP-TO-DATE, or restored a cached pass. A code-quality review caught it by adding a public repository class and watching the build pass. The test task now declares every source as an input, and probes P8 and P9 prove it.
-4. **Marking the 6 MB stress file `-diff` would have hidden it from the secret scan.** gitleaks reads git's patches, and git treats a `-diff` file as binary. Milestone 2's spike caught it with a fake AWS key that passed the scan. Lesson: a check that silently skips its input fails open.
+4. **A deep link was lost after Android killed the app in the background.** The listener for new intents was registered after the first composition, but when Android recreates a killed app's activity, the link arrives before anything is composed. The design notes, the tests and the first walk covered a cold start and a warm one, never process death with the task kept, which is how a link from a notification usually arrives on a real phone. All 221 tests passed; the verifier's walk on the release APK caught it, 3 times out of 3. Lesson: test every state an app can receive input in, not just cold and warm.
 5. **"Use the latest versions" was the wrong default.** Claude's first version list took the newest release of everything, including a Robolectric released that morning. I caught that one, and it became the version policy.
 
 The pattern: most of these were plausible claims that nobody had run. What caught them wasn't reading the code harder. It was running it, and breaking it on purpose.
 
 ## What it cost
 
-The brief scopes the work at about 4 hours, and says I can take as long as I need. I chose a much larger scope ([prompt 2](docs/ai/prompts.md#prompt-2)), which Claude estimated at 1 to 1.5 days including my review. The whole project took more than a day of wall-clock time. By the time I asked for a faster pace ([prompt 33](docs/ai/prompts.md#prompt-33)), 23 hours had passed since my first prompt, about 9 of them pauses.
+The brief scopes the work at about 4 hours, and says I can take as long as I need. I chose a much larger scope ([prompt 2](docs/ai/prompts.md#prompt-2)), which Claude estimated at 1 to 1.5 days including my review. From my first prompt to these release documents took about a day and a half of wall-clock time. By the time I asked for a faster pace ([prompt 33](docs/ai/prompts.md#prompt-33)), 23 hours had passed, about 9 of them pauses.
 
 Why it took that long:
 - **The scope I chose:** both stretch goals, menus, ten modules, tests at every layer, CI, a hardened public repository and a signed release.
 - **The ceremony around each milestone:** a spike, a plan and a pull request to approve it, then implementation with reviews (two per task in milestone 1), and a verifier.
-- **Pauses:** a night, and four times the session stopped at Claude Code's usage limit until it reset.
+- **Pauses:** a night, and five times the session stopped at Claude Code's usage limit until it reset.
 
-The ceremony found real defects. By then the corrections log had about 35 entries, among them architecture tests that Gradle could skip, Java 21 methods that would crash Android 8 to 14, and a secret scan that would have missed a 6 MB file. After the change, milestones 2b, 3 and 4 ran in parallel and all three merged within five hours, with one combined review each. That single review still found the three gaps in the sync. So the rigour paid for itself on the risky parts, and two reviews for every small task was overhead.
+The ceremony found real defects. By then the corrections log had about 35 entries, among them architecture tests that Gradle could skip, Java 21 methods that would crash Android 8 to 14, and a secret scan that would have missed a 6 MB file. After the change, milestones 2b, 3 and 4 ran in parallel and all three merged within five hours, with one combined review each. That single review still found the three gaps in the sync. Milestones 5 and 6 went lighter still, with no spike and no full plan, and their verification still found the deep link lost after process death and a menu retry that skipped a fetch still running. So the rigour paid for itself on the risky parts, and two reviews for every small task was overhead.
 
 ## What I'd keep, and what I'd drop
 
@@ -112,11 +113,12 @@ The ceremony found real defects. By then the corrections log had about 35 entrie
 - **The spec first, one decision at a time.** Claude recommended, I chose, and I overrode it where I knew better.
 - **Spikes before plans.** They caught design errors before any plan carried them: `no-cache`, the secret-scan gap, TheMealDB's area names and the 219 menu files that were really 218.
 - **Reviews that run the code and break it on purpose,** and house rules proven with probes.
+- **The walk on the release APK.** It found the one critical bug, the deep link lost after process death, when every test passed.
 - **The corrections log.** Each lesson went into the next brief.
 
 **Drop or change:**
 - **Two reviews for every task.** One combined review per milestone found the important gaps in far less time. I'd keep two reviews for the risky tasks only.
 - **A pull request just to approve a plan.** The plan as the first commit on the milestone's branch is enough.
-- **Plans with complete code for every step.** The plans total nearly 14,000 lines. Plans with the interfaces, the tests and the tricky parts would be faster to write and to review.
+- **Plans with complete code for every step.** The plans total nearly 14,000 lines. Milestones 5 and 6 worked from 64 lines of design notes, and their verification still caught what mattered. Plans with the interfaces, the tests and the tricky parts would be faster to write and to review.
 - **Milestones one after another.** Independent milestones ran in parallel once I asked; I'd plan for that from the start.
 - **An open-ended time budget.** I'd set one at the start and fit the ceremony to it.
