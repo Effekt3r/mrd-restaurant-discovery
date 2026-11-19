@@ -1,6 +1,7 @@
 package com.effekt3r.mrd.feature.details
 
 import androidx.lifecycle.SavedStateHandle
+import com.effekt3r.mrd.core.data.RestaurantRepository
 import com.effekt3r.mrd.core.model.Menu
 import com.effekt3r.mrd.core.model.MenuCategory
 import com.effekt3r.mrd.core.model.MenuItem
@@ -21,6 +22,13 @@ import com.effekt3r.mrd.core.testing.TestMinuteTicker
 import com.effekt3r.mrd.core.ui.SyncProblem
 import java.time.Instant
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runCurrent
@@ -89,6 +97,29 @@ class DetailsViewModelTest {
         restaurants.status.value = synced
         runCurrent()
         assertEquals(RestaurantState.Found(grill), viewModel.uiState.value.restaurant)
+    }
+
+    @Test
+    fun aRestaurantIsNotCalledMissingWhileItsQueryCatchesUpWithTheFirstSnapshot() = runTest {
+        val database = LaggingRestaurantRepository(restaurants)
+        val viewModel = DetailsViewModel(
+            SavedStateHandle(mapOf("id" to "r-1001")),
+            database,
+            menus,
+            network,
+            TestMinuteTicker(clock),
+            clock
+        )
+        val shown = mutableListOf<RestaurantState>()
+        backgroundScope.launch { viewModel.uiState.map { it.restaurant }.distinctUntilChanged().toList(shown) }
+        runCurrent()
+        // The first snapshot lands. The sync status reports it before the restaurant's own query has run again.
+        restaurants.restaurants.value = listOf(grill)
+        restaurants.status.value = synced
+        runCurrent()
+        database.invalidate()
+        runCurrent()
+        assertEquals(listOf(RestaurantState.Loading, RestaurantState.Found(grill)), shown)
     }
 
     @Test
@@ -189,6 +220,22 @@ class DetailsViewModelTest {
         visible(viewModel)
         runCurrent()
         assertEquals(SyncProblem.Storage, viewModel.uiState.value.menuProblem)
+    }
+
+    /**
+     * Room's timing: a new query reads the database as it is, but a running query emits again only once its
+     * invalidation has been processed, which can be after the sync status has moved on.
+     */
+    private class LaggingRestaurantRepository(private val database: FakeRestaurantRepository) :
+        RestaurantRepository by database {
+        private val invalidations = MutableSharedFlow<Unit>()
+
+        suspend fun invalidate() = invalidations.emit(Unit)
+
+        override fun restaurant(id: RestaurantId): Flow<Restaurant?> = flow {
+            emit(database.restaurant(id).first())
+            invalidations.collect { emit(database.restaurant(id).first()) }
+        }
     }
 
     private val grill = Restaurant(
