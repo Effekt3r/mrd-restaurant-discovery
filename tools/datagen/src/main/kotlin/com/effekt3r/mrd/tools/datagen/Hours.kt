@@ -102,12 +102,13 @@ internal object Hours {
 /**
  * Whether a window covers [weekMinute], where 0 is Monday 00:00 (spec §5.6's model). A window that runs past
  * midnight continues into the next day, and one that runs past Sunday midnight continues at the start of the week.
+ * An entry that opens and closes at the same time is invalid (spec §5.1), so it's never open.
  */
 internal fun List<OpeningHours>.isOpenAt(weekMinute: Int): Boolean = any { (day, opens, closes) ->
     val dayStart = day.ordinal * MINUTES_PER_DAY
     val start = dayStart + opens
     val end = dayStart + if (closes > opens) closes else closes + MINUTES_PER_DAY
-    weekMinute in start until end || weekMinute + MINUTES_PER_WEEK in start until end
+    opens != closes && (weekMinute in start until end || weekMinute + MINUTES_PER_WEEK in start until end)
 }
 
 /** One of [options], each equally likely. List an option twice to make it twice as likely. */

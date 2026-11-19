@@ -101,6 +101,14 @@ class HoursTest {
     }
 
     @Test
+    fun anEntryThatOpensAndClosesAtTheSameTimeIsNeverOpen() {
+        // Spec §5.1 drops such an entry, so it must not read as a window that stays open for a whole day.
+        val sameTime = listOf(OpeningHours(DayOfWeek.WEDNESDAY, at(15), at(15)))
+        assertFalse(sameTime.isOpenAt(weekMinute(DayOfWeek.WEDNESDAY, 16)))
+        assertFalse(sameTime.isOpenAt(weekMinute(DayOfWeek.THURSDAY, 9)))
+    }
+
+    @Test
     fun entriesBecomeJsonWithDayNamesAndTwentyFourHourTimes() {
         assertEquals(
             """{"day":"FRIDAY","opens":"11:00","closes":"02:00"}""",
