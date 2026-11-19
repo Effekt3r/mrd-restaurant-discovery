@@ -1,6 +1,6 @@
 package com.effekt3r.mrd.core.designsystem.component
 
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import com.effekt3r.mrd.core.designsystem.theme.MrdTheme
