@@ -2,7 +2,7 @@
 
 A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. You can browse nearby restaurants, search by name, filter to what's open now, open a restaurant's details and menu, and keep favourites, and it all works offline. It's written in Kotlin and Jetpack Compose, with multiple modules, and built to slot into a large app maintained by several squads.
 
-> **Status:** version 1.0.0. Everything in the [design spec](docs/specs/2026-11-18-restaurant-discovery-design.md) is built, and the signed APK is on the [Releases page](https://github.com/Effekt3r/mrd-restaurant-discovery/releases). [SOLUTION.md](SOLUTION.md) explains the design, its trade-offs and Task 3, and [AI_USAGE.md](AI_USAGE.md) how I used AI, with my prompts.
+> **Status:** version 1.0.0. Everything in the [design spec](docs/specs/2026-11-18-restaurant-discovery-design.md) is built, and the signed APK is on the [Releases page](https://github.com/Effekt3r/mrd-restaurant-discovery/releases). [SOLUTION.md](SOLUTION.md) explains the design, its trade-offs, Task 3 and the [known limitations](SOLUTION.md#known-limitations), and [AI_USAGE.md](AI_USAGE.md) how I used AI, with my prompts.
 
 ## Requirements
 
@@ -77,8 +77,9 @@ The [version catalog](gradle/libs.versions.toml) is the source of truth. The mai
 | Activity / Lifecycle | 1.13.0 / 2.11.0 (resolved; the catalog says 1.12.4 / 2.10.0) |
 | Room / Paging | 2.8.4 / 3.4.2 |
 | Retrofit / OkHttp | 3.0.0 / 5.3.2 |
+| Coil | 3.4.0 |
 | kotlinx.serialization / coroutines | 1.12.0 / 1.10.2 |
-| JUnit / Robolectric / Konsist | 4.13.2 / 4.16.1 / 0.17.3 |
+| JUnit / Robolectric / Turbine / Konsist | 4.13.2 / 4.16.1 / 1.2.1 / 0.17.3 |
 | Spotless / ktlint | 8.10.4 / 1.8.0 |
 | SDK levels | compile 37, target 36, minimum 26 |
 
