@@ -40,8 +40,7 @@ class ConceptsTest {
 
     @Test
     fun feesComeFromTheLadderAndEveryStepIsUsed() {
-        assertEquals(listOf(900, 1200, 1500, 1900, 2500, 2900, 3500), Concepts.FEE_LADDER)
-        assertEquals(Concepts.FEE_LADDER.toSet(), Concepts.all.flatMap { it.feesCents }.toSet())
+        assertEquals(FEE_LADDER.toSet(), Concepts.all.flatMap { it.feesCents }.toSet())
     }
 
     @Test

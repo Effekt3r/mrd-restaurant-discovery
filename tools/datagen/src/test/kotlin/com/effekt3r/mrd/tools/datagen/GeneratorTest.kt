@@ -86,7 +86,7 @@ class GeneratorTest {
                 assertTrue(where, !rating.isString && rating.content.matches(Regex("""[34]\.\d""")))
                 assertTrue(where, rating.content.toDouble() in 3.2..4.9)
             }
-            record["delivery_fee_cents"]?.let { assertTrue(where, it.jsonPrimitive.int in Concepts.FEE_LADDER + 0) }
+            record["delivery_fee_cents"]?.let { assertTrue(where, it.jsonPrimitive.int in FEE_LADDER + 0) }
             record["eta_minutes"]?.let { assertTrue(where, it.jsonPrimitive.int in 15..55) }
             record["image_url"]?.let { assertTrue(where, it.jsonPrimitive.content in photos) }
             record.hours()?.forEach { assertTrue(where, it.opens != it.closes && it.opens % 15 == 0) }

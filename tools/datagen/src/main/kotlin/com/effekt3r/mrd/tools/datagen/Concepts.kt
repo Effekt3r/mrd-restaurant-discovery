@@ -26,9 +26,6 @@ internal data class Concept(
 
 internal object Concepts {
 
-    /** Delivery fees in cents, R9 to R35. Free delivery (0) is drawn separately. */
-    val FEE_LADDER = listOf(900, 1200, 1500, 1900, 2500, 2900, 3500)
-
     /** Weights are percentages of all restaurants. TheMealDB has no South African dishes, so Cape Malay borrows. */
     val all: List<Concept> = listOf(
         Concept(
