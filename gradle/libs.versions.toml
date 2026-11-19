@@ -1,8 +1,10 @@
 # Versions are pinned to a proven combination, not the newest releases (README: "Toolchain and
 # version policy"). Toolchain: the AGP, Kotlin, KSP and Hilt lines Google's Now in Android builds
-# with, at their latest patch. Libraries: stable releases that had been out for at least four weeks
-# on 2026-11-18 and work with compile SDK 36 and Kotlin 2.3. Most are the newest such release;
-# Activity and Core are a minor version behind. A spike build validated the set that day.
+# with, at their latest patch. Libraries started as stable releases that had been out for at least
+# four weeks on 2026-11-18 and worked with compile SDK 36 and Kotlin 2.3; a spike build validated
+# that set. Dependabot's androidx updates of 2026-11-19 (Compose BOM, Core, androidx.hilt and
+# Navigation) need compile SDK 37: see KotlinAndroid.kt. Gradle treats each version here as a
+# minimum, so those updates also pull in Activity 1.13.0 and Lifecycle 2.11.0.
 
 [versions]
 agp = "9.5.1"
