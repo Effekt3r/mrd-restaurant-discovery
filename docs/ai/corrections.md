@@ -39,6 +39,13 @@ This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most o
 - **Fix:** `:app` depends on `:core:data` from milestone 3.
 - **Lesson:** a check that covers "the dependencies" covers only what's depended on. Prove what a gate reaches with a probe.
 
+## 2026-11-19 · The compile SDK 37 brief assumed an AGP version dev had moved past
+
+- **What:** the brief for making Dependabot's androidx update (#12) pass CI said the project builds with AGP 9.3.3, and asked whether to silence AGP's warning about an untested compile SDK with `android.suppressUnsupportedCompileSdk=37`. Dev had been on AGP 9.5.1 since Dependabot's toolchain update (#11), and AGP 9.5.1 is tested up to compile SDK 37.2, so there was no warning to silence. The brief also named only Compose, Navigation and androidx.hilt as needing compile SDK 37; Core 1.19.1 needs it too, as do the Lifecycle 2.11.0 artifacts that androidx.hilt 1.4.0 pulls in. The README and the roadmap still give the toolchain versions from before #11, because Dependabot updates the version catalog but not the docs that quote it, and #12's CI log listed only the first two modules that failed.
+- **Caught by:** the build, which printed no warning; then AGP 9.5.1's own limit (`MAX_RECOMMENDED_COMPILE_SDK_VERSION` in `ToolsRevisionUtils`) and each library's AAR metadata (`minCompileSdk`).
+- **Fix:** no suppression. The build commit records AGP's limit, and the code comment and the docs name every library that needs compile SDK 37. Bringing the docs' toolchain versions up to date with the catalog is a follow-up.
+- **Lesson:** read versions from the build (the catalog, the resolved dependencies and the tools' own limits), not from docs that quote them.
+
 ## 2026-11-19 · The circle buttons' icons took their colour from whatever surrounded them
 
 - **What:** the design system's back and favourite buttons draw their own surface-coloured circle, but the icon inherited the surrounding content colour. Outside a full-screen `Surface` that colour is black, and the component's own dark preview showed black icons on an ink circle. The app looked right only because `MainActivity` wraps everything in a `Surface`.

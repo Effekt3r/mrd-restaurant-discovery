@@ -441,7 +441,7 @@ Following the rule that a passing build is not proof:
 
 - **Tools:** Android Studio 2026.2.2 or newer, and JDK 17 or newer (21 recommended), as the README lists.
 - **Versions:** proven rather than newest. The toolchain is the combination Google's Now in Android builds with, libraries have been out for at least four weeks, and a spike build validated the set before the plan was written (README, version policy).
-- **SDK levels:** compile and target SDK 36; minSdk 26.
+- **SDK levels:** compile SDK 37, target SDK 36, minSdk 26. Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37, which only changes the APIs the code compiles against. The target SDK sets the platform behaviour the app opts into, so it moves to 37 only once the app has been tested against Android 17's behaviour changes.
 - **Dependencies** are declared in a version catalogue (`gradle/libs.versions.toml`).
 - **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.android.room` (Room with KSP and the exported schema), `mrd.hilt` and `mrd.jvm.library`. The layering rule lives in `settings.gradle.kts` (§4.2).
 - **Formatting:** Spotless with ktlint.
@@ -613,6 +613,8 @@ Every link below was checked and resolves.
 - Convention plugins: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html and https://github.com/android/nowinandroid/tree/main/build-logic
 - KSP: https://developer.android.com/build/migrate-to-ksp
 - Compose Compiler Gradle plugin: https://developer.android.com/develop/ui/compose/setup-compose-dependencies-and-compiler
+- Android SDK settings (compileSdk, minSdk and targetSdk): https://developer.android.com/build#android_sdk_settings
+- Behaviour changes for apps targeting Android 17: https://developer.android.com/about/versions/17/behavior-changes-17
 - Java 8+ APIs (`java.time` on minSdk 26): https://developer.android.com/studio/write/java8-support
 - R8 app optimization: https://developer.android.com/topic/performance/app-optimization/enable-app-optimization
 - Keep rules: https://developer.android.com/topic/performance/app-optimization/add-keep-rules

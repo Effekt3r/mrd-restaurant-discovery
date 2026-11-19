@@ -59,25 +59,40 @@ internal object EdgeCases {
 
     fun apply(index: Int, record: JsonObject): JsonObject = when (index) {
         MISSING_ID -> record.withField("id", null)
+
         BLANK_NAME -> record.withField("name", JsonPrimitive("   "))
+
         DUPLICATE_ID -> record.withField("id", JsonPrimitive(Generator.idFor(DUPLICATE_ID_SOURCE)))
+
         RATING_OUT_OF_RANGE -> record.withField("rating", JsonPrimitive(5.4))
+
         RATING_NULL -> record.withField("rating", JsonNull)
+
         RATING_AS_STRING -> record.withField("rating", JsonPrimitive("4.5"))
+
         NEGATIVE_FEE -> record.withField("delivery_fee_cents", JsonPrimitive(-500))
+
         ZERO_ETA -> record.withField("eta_minutes", JsonPrimitive(0))
+
         HTTP_IMAGE -> record.withField("image_url", JsonPrimitive(record.text("image_url").replace("https:", "http:")))
+
         EMPTY_HOURS -> record.withField("opening_hours", JsonArray(emptyList()))
+
         HOURS_OPEN_EQUALS_CLOSE -> record.withHoursEntry("WEDNESDAY", "15:00", "15:00")
+
         HOURS_UNKNOWN_DAY -> record.withHoursEntry("FUNDAY", "10:00", "22:00")
+
         HOURS_INVALID_TIME -> record.withHoursEntry("SATURDAY", "10:00", "25:00")
+
         MESSY_CUISINES -> {
             val cuisines = record.getValue("cuisines").jsonArray
             val blank = JsonPrimitive(" ")
             val empty = JsonPrimitive("")
             record.withField("cuisines", JsonArray(listOf(cuisines[0], blank, cuisines[0], empty) + cuisines.drop(1)))
         }
+
         UNKNOWN_STATUS -> record.withField("is_open", null).withField("opening_hours", null)
+
         else -> record
     }
 

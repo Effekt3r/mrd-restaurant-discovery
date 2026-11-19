@@ -34,10 +34,12 @@ internal object JsonWriter {
         val oneLine = oneLine(element)
         when {
             oneLine != null -> append(oneLine)
+
             element is JsonObject -> appendBlock("{", "}", element.entries, depth) { (key, value) ->
                 append(JsonPrimitive(key)).append(": ")
                 appendPretty(value, depth + 1)
             }
+
             element is JsonArray -> appendBlock("[", "]", element, depth) { appendPretty(it, depth + 1) }
         }
     }
@@ -62,11 +64,15 @@ internal object JsonWriter {
     /** [element] on one line, or null when it holds an object or array or is too long. Values always fit. */
     private fun oneLine(element: JsonElement): String? = when (element) {
         is JsonPrimitive -> element.toString()
+
         is JsonArray -> if (element.all { it is JsonPrimitive }) element.joinToString(", ", "[", "]") else null
+
         is JsonObject -> when {
             element.isEmpty() -> "{}"
+
             element.values.all { it is JsonPrimitive } ->
                 element.entries.joinToString(", ", "{ ", " }") { (key, value) -> "${JsonPrimitive(key)}: $value" }
+
             else -> null
         }
     }?.takeIf { element is JsonPrimitive || it.length <= ONE_LINE_WIDTH }
