@@ -1,11 +1,15 @@
 package com.effekt3r.mrd.core.data
 
+import android.database.sqlite.SQLiteDiskIOException
+import android.database.sqlite.SQLiteFullException
+import com.effekt3r.mrd.core.data.database.MenuDao
 import com.effekt3r.mrd.core.data.database.MenuEntity
 import com.effekt3r.mrd.core.model.MenuState
 import com.effekt3r.mrd.core.model.RestaurantId
 import com.effekt3r.mrd.core.model.SyncError
 import com.effekt3r.mrd.core.testing.TestClock
 import java.time.Instant
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
@@ -13,6 +17,7 @@ import mockwebserver3.MockWebServer
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -28,10 +33,11 @@ class OfflineFirstMenuRepositoryTest {
     private val server = MockWebServer().apply { start() }
     private val database = inMemoryDatabase()
     private val clock = TestClock(Instant.parse("2026-11-16T10:42:00Z"))
-    private val repository by lazy {
-        OfflineFirstMenuRepository(testApi(server, cacheDir.root), database.menuDao(), testJson, clock, Dispatchers.IO)
-    }
+    private val repository by lazy { repositoryWith(database.menuDao()) }
     private val id = RestaurantId("r-1")
+
+    private fun repositoryWith(dao: MenuDao) =
+        OfflineFirstMenuRepository(testApi(server, cacheDir.root), dao, testJson, clock, Dispatchers.IO)
 
     private val menu = """
         {"restaurant_id": "r-1", "categories": [
@@ -104,6 +110,50 @@ class OfflineFirstMenuRepositoryTest {
         assertNull(database.menuDao().menu("r-1"))
         val recovered = repository.menu(id).toList().last() as MenuState.Content
         assertEquals(listOf("Samoosas"), recovered.menu.categories.single().items.map { it.name })
+    }
+
+    @Test
+    fun aDatabaseFailureIsAStorageErrorWithTheCachedMenu() = runTest {
+        val healthy = database.menuDao()
+        var diskFull = false
+        val repository = repositoryWith(
+            object : MenuDao by healthy {
+                override suspend fun upsert(menu: MenuEntity) {
+                    if (diskFull) throw SQLiteFullException("database or disk is full")
+                    healthy.upsert(menu)
+                }
+            }
+        )
+        server.enqueue(ok(menu))
+        server.enqueue(ok(menu))
+        val cached = repository.menu(id).toList().last() as MenuState.Content
+        diskFull = true
+        // Failures arrive as states, never as exceptions (spec §5.4), and the menu seen before stays.
+        assertEquals(listOf(cached, MenuState.Error(SyncError.Storage, cached)), repository.menu(id).toList())
+    }
+
+    @Test
+    fun aCacheThatCantBeReadIsAStorageErrorWithoutAFetch() = runTest {
+        val unreadable = object : MenuDao by database.menuDao() {
+            override suspend fun menu(restaurantId: String): MenuEntity? = throw SQLiteDiskIOException("disk I/O error")
+        }
+        assertEquals(listOf(MenuState.Error(SyncError.Storage, null)), repositoryWith(unreadable).menu(id).toList())
+        assertEquals(0, server.requestCount)
+    }
+
+    @Test
+    fun cancellationPassesThroughRatherThanBecomingAStorageError() = runTest {
+        val whileReading = object : MenuDao by database.menuDao() {
+            override suspend fun menu(restaurantId: String): MenuEntity? = throw CancellationException("cancelled")
+        }
+        val whileStoring = object : MenuDao by database.menuDao() {
+            override suspend fun upsert(menu: MenuEntity): Unit = throw CancellationException("cancelled")
+        }
+        server.enqueue(ok(menu))
+        for (dao in listOf(whileReading, whileStoring)) {
+            val failure = runCatching { repositoryWith(dao).menu(id).toList() }.exceptionOrNull()
+            assertTrue("expected the cancellation, got $failure", failure is CancellationException)
+        }
     }
 
     @Test

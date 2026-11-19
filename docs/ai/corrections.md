@@ -11,10 +11,11 @@ This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most o
   - a 304 was taken to mean the database was current, but it only proves that OkHttp's cache is. OkHttp caches a body before the app stores it, so after a refresh whose records all failed validation, the next 304 cleared the error and marked the old snapshot fresh. A failed write, or the process dying mid-refresh, did the same;
   - nothing tested that the snapshot swap is one transaction: without `@Transaction`, all 36 tests still passed.
 - **Caught by:** milestone 3's verification and code review, with probe tests in a disposable clone.
-- **Fix:** three changes, each with a test that fails without it:
+- **Fix:** four changes, each with a test that fails without it:
   - any other failure becomes the new `SyncError.Storage`, the refreshing state is reset in a `finally`, and cancellation is rethrown rather than recorded;
   - the swap records the response's ETag in `sync_state.etag`, in the same transaction, and a 304 skips the write only when its ETag matches;
-  - a DAO test breaks a swap halfway and checks that the previous snapshot survives.
+  - a DAO test breaks a swap halfway and checks that the previous snapshot survives;
+  - the menu repository had the first gap too, found while fixing it: a database failure there is now a `Storage` error as well.
 - **Lesson:** test what happens when each step fails, the device's own steps included. A 304 vouches for OkHttp's copy, not for what the app made of it.
 
 ## 2026-11-19 · `Cache-Control: no-cache` would have downloaded the whole list on every refresh
