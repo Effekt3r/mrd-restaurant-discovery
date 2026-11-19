@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Palette colours for XML that can't read the Compose tokens: the launcher icon and the window background.
+         They mirror MrdPalette in Color.kt, and ColorResourcesTest fails if the two drift apart. -->
+    <color name="designsystem_sky">#FF6DCFF6</color>
+    <color name="designsystem_ink">#FF1D1D1B</color>
+    <color name="designsystem_white">#FFFFFFFF</color>
+</resources>

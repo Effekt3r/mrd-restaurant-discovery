@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="browse_title">Restaurants</string>
-    <string name="browse_sample_restaurant_name">Cape Town Grill</string>
-    <string name="browse_sample_restaurant_cuisines">Steakhouse · Grill</string>
+    <string name="browse_search_placeholder">Search restaurants</string>
+    <string name="browse_open_now">Open now</string>
+
+    <!-- The sample cards' words, until milestone 5's formatters replace them. -->
+    <string name="browse_sample_separator">" · "</string>
+    <plurals name="browse_sample_eta">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
+    </plurals>
+    <string name="browse_sample_delivery_fee">R%1$s delivery</string>
+    <string name="browse_sample_free_delivery">Free delivery</string>
+    <string name="browse_sample_open">Open</string>
+    <string name="browse_sample_closed">Closed · Opens %1$s</string>
+
+    <!-- What TalkBack reads for a sample card, as spec section 6.5 describes. -->
+    <string name="browse_sample_description">%1$s. %2$s. %3$s. %4$s. %5$s. %6$s.</string>
+    <string name="browse_sample_spoken_separator">", "</string>
+    <string name="browse_sample_rated">Rated %1$s</string>
+    <string name="browse_sample_not_rated">New</string>
+    <plurals name="browse_sample_minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <string name="browse_sample_closed_spoken">Closed, opens %1$s</string>
 </resources>
