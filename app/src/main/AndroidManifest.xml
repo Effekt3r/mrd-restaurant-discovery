@@ -18,8 +18,9 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="33">
 
-        <!-- singleTop: a deep link while the app is running reaches this activity as a new intent, which
-             MainActivity hands to Navigation, rather than starting a second copy of it (spec §4.5). -->
+        <!-- singleTop: a deep link to the app's existing task, whether the app is running or Android has killed it
+             in the background, reaches this activity as a new intent, which MainActivity hands to Navigation,
+             rather than starting a second copy of it (spec §4.5). -->
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -72,7 +72,7 @@ The data is fictional and deliberately messy, so the app's fallbacks get exercis
 
 ## Deep link
 
-`mrd://restaurant/{id}` opens that restaurant's Details, with Browse underneath, whether the app is running or not:
+`mrd://restaurant/{id}` opens that restaurant's Details, with Browse underneath, whether the app is running, closed, or killed by Android in the background:
 
 ```sh
 adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd

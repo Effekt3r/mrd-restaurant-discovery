@@ -128,6 +128,7 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Routes.** Navigation Compose with `@Serializable` routes: `BrowseRoute` (a data object) and `RestaurantRoute(id: String)`.
 - **Deep link.** The link `mrd://restaurant/{id}` is declared with `navDeepLink<RestaurantRoute>(basePath = "mrd://restaurant")`. Its intent filter sits on `MainActivity` in `:app`, because the host owns external entry points.
 - **Back behaviour.** A deep link on a cold start, or on a warm start through `onNewIntent` and `handleDeepLink`, opens Details with Browse underneath, so Back returns to the list.
+- **After process death.** When Android has killed the app's process in the background but kept its task, it recreates `MainActivity` from its saved state and delivers the link through `onNewIntent` before `onResume`, so before anything is composed. The listener is therefore registered in `onCreate`, and the link waits in state until the `NavController` exists.
 - **Predictive back** is enabled (`android:enableOnBackInvokedCallback="true"`), and Navigation Compose animates it.
 - **Not HTTPS App Links.** Verifying them needs a hosted `assetlinks.json` that matches the signing key, which reviewers' own debug builds wouldn't match. SOLUTION.md covers this.
 - **Manual check:** `adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd`
