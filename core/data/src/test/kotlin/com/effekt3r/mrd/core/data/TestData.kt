@@ -1,8 +1,10 @@
 package com.effekt3r.mrd.core.data
 
+import androidx.paging.PagingSource
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.effekt3r.mrd.core.data.database.DiscoveryDatabase
+import com.effekt3r.mrd.core.data.database.RestaurantDao
 import com.effekt3r.mrd.core.data.network.ParsedRestaurant
 import com.effekt3r.mrd.core.model.DailyWindow
 import com.effekt3r.mrd.core.model.OpeningHours
@@ -16,6 +18,13 @@ internal fun inMemoryDatabase(): DiscoveryDatabase =
     Room.inMemoryDatabaseBuilder(ApplicationProvider.getApplicationContext(), DiscoveryDatabase::class.java)
         .allowMainThreadQueries()
         .build()
+
+/** The stored restaurants' ids, in the list's order. */
+internal suspend fun RestaurantDao.storedIds(): List<String> {
+    val page = restaurants("", openNow = false, weekMinute = 0, now = 0)
+        .load(PagingSource.LoadParams.Refresh(key = null, loadSize = 100, placeholdersEnabled = false))
+    return (page as PagingSource.LoadResult.Page).data.map { it.id }
+}
 
 /** Monday 16 November 2026, 00:00 in Cape Town. */
 internal val MONDAY_START: Instant = Instant.parse("2026-11-15T22:00:00Z")

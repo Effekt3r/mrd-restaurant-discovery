@@ -1,7 +1,6 @@
 package com.effekt3r.mrd.core.data.sync
 
 import android.database.sqlite.SQLiteFullException
-import androidx.paging.PagingSource
 import com.effekt3r.mrd.core.data.database.OpeningIntervalEntity
 import com.effekt3r.mrd.core.data.database.RestaurantDao
 import com.effekt3r.mrd.core.data.database.RestaurantEntity
@@ -13,6 +12,7 @@ import com.effekt3r.mrd.core.data.ok
 import com.effekt3r.mrd.core.data.parsedRestaurant
 import com.effekt3r.mrd.core.data.payload
 import com.effekt3r.mrd.core.data.status
+import com.effekt3r.mrd.core.data.storedIds
 import com.effekt3r.mrd.core.data.testApi
 import com.effekt3r.mrd.core.data.testJson
 import com.effekt3r.mrd.core.model.SyncError
@@ -262,11 +262,4 @@ class RestaurantSyncTest {
         sync.refreshIfStale()
         assertEquals(2, server.requestCount)
     }
-}
-
-/** The stored restaurants' ids, in the list's order. */
-internal suspend fun RestaurantDao.storedIds(): List<String> {
-    val page = restaurants("", openNow = false, weekMinute = 0, now = 0)
-        .load(PagingSource.LoadParams.Refresh(key = null, loadSize = 100, placeholdersEnabled = false))
-    return (page as PagingSource.LoadResult.Page).data.map { it.id }
 }
