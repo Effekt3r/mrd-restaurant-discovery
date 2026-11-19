@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_title">Restaurant %1$s</string>
-    <string name="details_back">Back</string>
+    <string name="details_menu">Menu</string>
+
+    <!-- Cape Town Grill (r-1001) and part of a steakhouse menu, until milestone 6 shows real data. -->
+    <string name="details_sample_name">Cape Town Grill</string>
+    <string name="details_sample_cuisines">Steakhouse · Grill</string>
+    <string name="details_sample_rating">4.6</string>
+    <string name="details_sample_eta_and_fee">· 32 mins · R15 delivery</string>
+    <string name="details_sample_status">Open · Closes 22:00</string>
+    <string name="details_sample_starters">Starters</string>
+    <string name="details_sample_halloumi">Grilled halloumi</string>
+    <string name="details_sample_halloumi_price">R69</string>
+    <string name="details_sample_halloumi_description">Citrus glaze, micro herbs</string>
+    <string name="details_sample_halloumi_options">+ Extra lemon R5</string>
+    <string name="details_sample_livers">Peri-peri chicken livers</string>
+    <string name="details_sample_livers_price">R79</string>
+    <string name="details_sample_livers_description">Creamy peri-peri sauce, served with toasted ciabatta for dipping</string>
+    <string name="details_sample_steaks">Steaks</string>
+    <string name="details_sample_sirloin">Sirloin 300 g</string>
+    <string name="details_sample_sirloin_price">R219</string>
+    <string name="details_sample_sirloin_description">Chips or salad, with pepper or mushroom sauce</string>
+    <string name="details_sample_sirloin_options">+ Mushroom sauce R25 · + Egg R10</string>
+    <string name="details_sample_rump">Rump 250 g</string>
+    <string name="details_sample_rump_price">R189</string>
+    <string name="details_sample_desserts">Desserts</string>
+    <string name="details_sample_malva">Malva pudding</string>
+    <string name="details_sample_malva_price">R65</string>
+    <string name="details_sample_malva_description">Warm, with custard</string>
 </resources>

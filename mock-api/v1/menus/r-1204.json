@@ -1,0 +1,275 @@
+{
+  "restaurant_id": "r-1204",
+  "categories": [
+    {
+      "id": "c-1204-1",
+      "name": "Tacos",
+      "items": [
+        {
+          "id": "i-1204-101",
+          "name": "Beef Barbacoa Tacos",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Three, with slow-cooked beef and pickled onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+        },
+        {
+          "id": "i-1204-102",
+          "name": "Chicken Tinga Tacos",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Three, with chipotle chicken",
+          "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg"
+        },
+        {
+          "id": "i-1204-103",
+          "name": "Fish Tacos",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Three, with crispy hake and lime crema",
+          "options": [
+            { "id": "o-1204-103-1", "name": "Add guacamole", "price_cents": 0 },
+            { "id": "o-1204-103-2", "name": "Extra hot sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1204-104",
+          "name": "Mushroom Tacos",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Three, with chipotle mushrooms and feta",
+          "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg"
+        },
+        {
+          "id": "i-1204-105",
+          "name": "Nachos",
+          "price_cents": 10900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1204-2",
+      "name": "Burritos & Bowls",
+      "items": [
+        {
+          "id": "i-1204-201",
+          "name": "Chicken Burrito",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Rice, black beans, cheese and salsa",
+          "options": [
+            { "id": "o-1204-201-1", "name": "Add jalapeños", "price_cents": 0 },
+            { "id": "o-1204-201-2", "name": "Extra cheese", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1204-202",
+          "name": "Beef Burrito",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Shredded beef, beans and cheese",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+          "options": [
+            { "id": "o-1204-202-1", "name": "Add jalapeños", "price_cents": 2000 },
+            { "id": "o-1204-202-2", "name": "Extra cheese", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1204-203",
+          "name": "Bean Burrito",
+          "price_cents": 9900,
+          "available": true,
+          "options": [
+            { "id": "o-1204-203-1", "name": "Extra cheese", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1204-204",
+          "name": "Pulled Pork Burrito",
+          "price_cents": 13900,
+          "available": true
+        },
+        {
+          "id": "i-1204-205",
+          "name": "Chicken Quesadilla",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Cheese, peppers and sour cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+        },
+        {
+          "id": "i-1204-206",
+          "name": "Burrito Bowl",
+          "price_cents": 10900,
+          "available": true,
+          "options": [
+            { "id": "o-1204-206-1", "name": "Make it a bowl", "price_cents": 2500 },
+            { "id": "o-1204-206-2", "name": "Extra cheese", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1204-207",
+          "name": "Enchiladas",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Two, baked in a red sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg"
+        },
+        {
+          "id": "i-1204-208",
+          "name": "Chimichanga",
+          "price_cents": 9900,
+          "available": true,
+          "description": "A fried burrito with beef and beans"
+        }
+      ]
+    },
+    {
+      "id": "c-1204-3",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1204-301",
+          "name": "Hand-Cut Chips",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+        },
+        {
+          "id": "i-1204-302",
+          "name": "Sweet Potato Fries",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg"
+        },
+        {
+          "id": "i-1204-303",
+          "name": "Onion Rings",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+          "options": [
+            { "id": "o-1204-303-1", "name": "Peri-peri salt", "price_cents": 3500 },
+            { "id": "o-1204-303-2", "name": "Garlic aioli", "price_cents": 500 },
+            { "id": "o-1204-303-3", "name": "Large", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1204-304",
+          "name": "Side Salad",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg"
+        },
+        {
+          "id": "i-1204-305",
+          "name": "Creamed Spinach",
+          "price_cents": 5900,
+          "available": true,
+          "options": [
+            { "id": "o-1204-305-1", "name": "Add cheese sauce", "price_cents": 1500 },
+            { "id": "o-1204-305-2", "name": "Garlic aioli", "price_cents": 1500 },
+            { "id": "o-1204-305-3", "name": "Large", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1204-306",
+          "name": "Pap & Chakalaka",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+          "options": [
+            { "id": "o-1204-306-1", "name": "Peri-peri salt", "price_cents": 2500 },
+            { "id": "o-1204-306-2", "name": "Large", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1204-307",
+          "name": "Grilled Mielies",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "options": [
+            { "id": "o-1204-307-1", "name": "Peri-peri salt", "price_cents": 2000 },
+            { "id": "o-1204-307-2", "name": "Garlic aioli", "price_cents": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1204-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1204-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": false,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1204-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1204-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1204-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1204-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": false,
+          "options": [
+            { "id": "o-1204-405-1", "name": "Large", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1204-406",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1204-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1204-408",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1204-408-1", "name": "Extra lemon", "price_cents": 0 },
+            { "id": "o-1204-408-2", "name": "No ice", "price_cents": 500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "restaurant_id": "r-1087",
+  "categories": [
+    {
+      "id": "c-1086-1",
+      "name": "Antipasti",
+      "items": [
+        {
+          "id": "i-1086-101",
+          "name": "Bruschetta",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Tomato, basil, garlic and olive oil",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg"
+        },
+        {
+          "id": "i-1086-102",
+          "name": "Arancini",
+          "price_cents": 10000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg"
+        },
+        {
+          "id": "i-1086-103",
+          "name": "Burrata",
+          "price_cents": 10500,
+          "available": true,
+          "description": "Tomatoes and basil oil",
+          "image_url": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+          "options": [
+            { "id": "o-1086-103-1", "name": "Gluten-free bread", "price_cents": 1500 },
+            { "id": "o-1086-103-2", "name": "Add parmesan", "price_cents": 3000 },
+            { "id": "o-1086-103-3", "name": "Extra bread", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1086-104",
+          "name": "Beef Carpaccio",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Rocket and parmesan",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg"
+        },
+        {
+          "id": "i-1086-105",
+          "name": "Garlic Focaccia",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Rosemary and sea salt"
+        },
+        {
+          "id": "i-1086-106",
+          "name": "Caprese Salad",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Tomato, mozzarella and basil"
+        }
+      ]
+    },
+    {
+      "id": "c-1086-2",
+      "name": "Pasta",
+      "items": [
+        {
+          "id": "i-1086-201",
+          "name": "Spaghetti Bolognese",
+          "price_cents": 12000,
+          "available": false,
+          "description": "Slow-cooked beef ragù",
+          "image_url": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"
+        },
+        {
+          "id": "i-1086-202",
+          "name": "Penne Arrabbiata",
+          "price_cents": 14000,
+          "available": true,
+          "description": "Tomato, garlic and chilli",
+          "image_url": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg",
+          "options": [
+            { "id": "o-1086-202-1", "name": "Gluten-free pasta", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1086-203",
+          "name": "Fettuccine Alfredo",
+          "price_cents": 10500,
+          "available": true,
+          "description": "Parmesan cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg"
+        },
+        {
+          "id": "i-1086-204",
+          "name": "Spaghetti Carbonara",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Guanciale, egg yolk and pecorino"
+        },
+        {
+          "id": "i-1086-205",
+          "name": "Lasagne",
+          "price_cents": 13500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg"
+        },
+        {
+          "id": "i-1086-206",
+          "name": "Linguine alle Vongole",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Clams, white wine and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg"
+        },
+        {
+          "id": "i-1086-207",
+          "name": "Gnocchi Gorgonzola",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Potato gnocchi in a blue cheese cream",
+          "options": [
+            { "id": "o-1086-207-1", "name": "Extra parmesan", "price_cents": 3000 },
+            { "id": "o-1086-207-2", "name": "Gluten-free pasta", "price_cents": 2000 },
+            { "id": "o-1086-207-3", "name": "Add chilli", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1086-208",
+          "name": "Butternut Ravioli",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Sage butter and toasted pine nuts",
+          "image_url": "https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1086-3",
+      "name": "Dolci",
+      "items": [
+        {
+          "id": "i-1086-301",
+          "name": "Tiramisu",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Espresso, mascarpone and cocoa",
+          "image_url": "https://www.themealdb.com/images/media/meals/tkwxmv1777540463.jpg",
+          "options": [
+            { "id": "o-1086-301-1", "name": "Add whipped cream", "price_cents": 2500 },
+            { "id": "o-1086-301-2", "name": "Extra espresso", "price_cents": 2000 },
+            { "id": "o-1086-301-3", "name": "Add vanilla gelato", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1086-302",
+          "name": "Panna Cotta",
+          "price_cents": 8000,
+          "available": true,
+          "description": "Vanilla, with a berry coulis",
+          "image_url": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg"
+        },
+        {
+          "id": "i-1086-303",
+          "name": "Cannoli",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Two, with ricotta and pistachio",
+          "image_url": "https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg"
+        },
+        {
+          "id": "i-1086-304",
+          "name": "Affogato",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Gelato drowned in espresso",
+          "options": [
+            { "id": "o-1086-304-1", "name": "Extra espresso", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1086-305",
+          "name": "Chocolate Fondant",
+          "price_cents": 8000,
+          "available": true,
+          "description": "With a molten centre"
+        },
+        {
+          "id": "i-1086-306",
+          "name": "Lemon Tart",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Torched meringue",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg"
+        },
+        {
+          "id": "i-1086-307",
+          "name": "Gelato",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Three scoops"
+        }
+      ]
+    },
+    {
+      "id": "c-1086-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1086-401",
+          "name": "Still Water",
+          "price_cents": 2500,
+          "available": true,
+          "options": [
+            { "id": "o-1086-401-1", "name": "Large", "price_cents": 500 },
+            { "id": "o-1086-401-2", "name": "No ice", "price_cents": 1000 },
+            { "id": "o-1086-401-3", "name": "Add mint", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1086-402",
+          "name": "Sparkling Water",
+          "price_cents": 4000,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1086-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1086-404",
+          "name": "Ginger Beer",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1086-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda",
+          "options": [
+            { "id": "o-1086-405-1", "name": "Extra lemon", "price_cents": 2000 },
+            { "id": "o-1086-405-2", "name": "No ice", "price_cents": 3000 },
+            { "id": "o-1086-405-3", "name": "Add mint", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1086-406",
+          "name": "Rock Shandy",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1086-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1086-408",
+          "name": "Cream Soda Float",
+          "price_cents": 4000,
+          "available": false,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

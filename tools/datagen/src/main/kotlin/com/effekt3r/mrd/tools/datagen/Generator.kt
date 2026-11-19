@@ -34,14 +34,17 @@ internal object Generator {
     // Without hours, `is_open` is all there is.
     private const val OPEN_WITHOUT_HOURS_PERCENT = 70
 
-    fun restaurants(count: Int, pool: ImagePool): List<JsonObject> {
+    fun restaurants(count: Int, pool: ImagePool): List<JsonObject> = generate(count, pool).map { it.record }
+
+    /** The restaurants with what their menus are made from. Generating them draws nothing more than [restaurants]. */
+    fun generate(count: Int, pool: ImagePool): List<GeneratedRestaurant> {
         val names = NameBook(uniqueCount = Dataset.STANDARD.size)
-        return List(count) { index -> EdgeCases.apply(index, restaurant(index, names, pool).toJson()) }
+        return List(count) { index -> restaurant(index, names, pool) }
     }
 
     fun idFor(index: Int) = "r-${1001 + index}"
 
-    private fun restaurant(index: Int, names: NameBook, pool: ImagePool): Restaurant {
+    private fun restaurant(index: Int, names: NameBook, pool: ImagePool): GeneratedRestaurant {
         if (index == 0) return capeTownGrill(pool)
         val random = Random(SEED * 31 + index)
 
@@ -73,13 +76,14 @@ internal object Generator {
         } else {
             openingHours.isOpenAt(SNAPSHOT_WEEK_MINUTE)
         }
-        return Restaurant(
+        val restaurant = Restaurant(
             idFor(index), name, menu.cuisines, rating, deliveryFeeCents, etaMinutes, isOpen, imageUrl, openingHours
         )
+        return GeneratedRestaurant(EdgeCases.apply(index, restaurant.toJson()), concept, menu.imageKey)
     }
 
     /** r-1001 is the brief's example, which the app's placeholder already shows. */
-    private fun capeTownGrill(pool: ImagePool): Restaurant {
+    private fun capeTownGrill(pool: ImagePool): GeneratedRestaurant {
         val hours = DayOfWeek.entries.map { day ->
             when (day) {
                 FRIDAY, SATURDAY -> OpeningHours(day, at(11), at(2))
@@ -87,7 +91,7 @@ internal object Generator {
                 else -> OpeningHours(day, at(11), at(22))
             }
         }
-        return Restaurant(
+        val restaurant = Restaurant(
             id = idFor(0),
             name = "Cape Town Grill",
             cuisines = listOf("Steakhouse", "Grill"),
@@ -98,5 +102,12 @@ internal object Generator {
             imageUrl = pool.first("beef"),
             openingHours = hours
         )
+        return GeneratedRestaurant(restaurant.toJson(), Concepts.named("steakhouse"), photoKey = "beef")
     }
 }
+
+/**
+ * A generated restaurant: its [record] as the API sends it, edge cases included, and what its menu is made from. The
+ * [concept] picks the menu's courses and [photoKey] its dishes' photos; neither is sent.
+ */
+internal class GeneratedRestaurant(val record: JsonObject, val concept: Concept, val photoKey: String)

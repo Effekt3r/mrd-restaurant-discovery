@@ -1,0 +1,191 @@
+{
+  "restaurant_id": "r-1089",
+  "categories": [
+    {
+      "id": "c-1089-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1089-101",
+          "name": "Quarter Chicken",
+          "price_cents": 19000,
+          "available": true,
+          "options": [
+            { "id": "o-1089-101-1", "name": "Add a roll", "price_cents": 3000 },
+            { "id": "o-1089-101-2", "name": "Extra peri-peri sauce", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1089-102",
+          "name": "Half Chicken",
+          "price_cents": 15000,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+          "options": [
+            { "id": "o-1089-102-1", "name": "Add a roll", "price_cents": 3500 },
+            { "id": "o-1089-102-2", "name": "Extra hot", "price_cents": 2000 },
+            { "id": "o-1089-102-3", "name": "Lemon & herb basting", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1089-103",
+          "name": "Whole Chicken",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        },
+        {
+          "id": "i-1089-104",
+          "name": "Chicken Wings",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting"
+        },
+        {
+          "id": "i-1089-105",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll"
+        },
+        {
+          "id": "i-1089-106",
+          "name": "Chicken Espetada",
+          "price_cents": 12500,
+          "available": false,
+          "description": "A hanging skewer with garlic butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg"
+        },
+        {
+          "id": "i-1089-107",
+          "name": "Chicken Prego Roll",
+          "price_cents": 14000,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg",
+          "options": [
+            { "id": "o-1089-107-1", "name": "Add a roll", "price_cents": 1500 },
+            { "id": "o-1089-107-2", "name": "Extra hot", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1089-108",
+          "name": "Chicken Strips",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
+          "options": [
+            { "id": "o-1089-108-1", "name": "Lemon & herb basting", "price_cents": 1000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1089-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1089-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 5500,
+          "available": false,
+          "description": "Sea salt and rosemary"
+        },
+        {
+          "id": "i-1089-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 4500,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg"
+        },
+        {
+          "id": "i-1089-203",
+          "name": "Onion Rings",
+          "price_cents": 6500,
+          "available": false,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg",
+          "options": [
+            { "id": "o-1089-203-1", "name": "Garlic aioli", "price_cents": 1500 },
+            { "id": "o-1089-203-2", "name": "Add cheese sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1089-204",
+          "name": "Side Salad",
+          "price_cents": 6500,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes"
+        },
+        {
+          "id": "i-1089-205",
+          "name": "Creamed Spinach",
+          "price_cents": 2500,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1089-206",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "options": [
+            { "id": "o-1089-206-1", "name": "Peri-peri salt", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1089-207",
+          "name": "Coleslaw",
+          "price_cents": 5500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1089-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1089-301",
+          "name": "Still Water",
+          "price_cents": 3500,
+          "available": true,
+          "options": [
+            { "id": "o-1089-301-1", "name": "Large", "price_cents": 2500 },
+            { "id": "o-1089-301-2", "name": "No ice", "price_cents": 0 },
+            { "id": "o-1089-301-3", "name": "Add mint", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1089-302",
+          "name": "Homemade Lemonade",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1089-303",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1089-303-1", "name": "Extra lemon", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1089-304",
+          "name": "Cream Soda Float",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

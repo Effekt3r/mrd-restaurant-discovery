@@ -1,0 +1,192 @@
+{
+  "restaurant_id": "r-1091",
+  "categories": [
+    {
+      "id": "c-1091-1",
+      "name": "Platters",
+      "items": [
+        {
+          "id": "i-1091-101",
+          "name": "Mixed Platter",
+          "price_cents": 19500,
+          "available": true,
+          "description": "18 pieces of the chef's choice",
+          "options": [
+            { "id": "o-1091-101-1", "name": "Spicy mayo", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1091-102",
+          "name": "Salmon & Tuna Platter",
+          "price_cents": 20000,
+          "available": true,
+          "description": "20 pieces of nigiri, sashimi and maki",
+          "image_url": "https://www.themealdb.com/images/media/meals/47y6ii1765658818.jpg"
+        },
+        {
+          "id": "i-1091-103",
+          "name": "Vegetarian Platter",
+          "price_cents": 19000,
+          "available": true
+        },
+        {
+          "id": "i-1091-104",
+          "name": "Prawn Platter",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Tempura prawn rolls and prawn nigiri",
+          "options": [
+            { "id": "o-1091-104-1", "name": "Extra wasabi", "price_cents": 3500 },
+            { "id": "o-1091-104-2", "name": "Add avo", "price_cents": 3000 },
+            { "id": "o-1091-104-3", "name": "Extra pickled ginger", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1091-105",
+          "name": "Fashion Sandwich Platter",
+          "price_cents": 19500,
+          "available": true,
+          "description": "12 pieces of the Cape Town favourite",
+          "image_url": "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg",
+          "options": [
+            { "id": "o-1091-105-1", "name": "Spicy mayo", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1091-106",
+          "name": "Party Platter",
+          "price_cents": 20000,
+          "available": true,
+          "description": "40 pieces, made for sharing",
+          "image_url": "https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1091-2",
+      "name": "Rolls",
+      "items": [
+        {
+          "id": "i-1091-201",
+          "name": "California Roll",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Crab stick, avo, cucumber and sesame",
+          "image_url": "https://www.themealdb.com/images/media/meals/9r2xrg1763771238.jpg"
+        },
+        {
+          "id": "i-1091-202",
+          "name": "Salmon Rainbow Roll",
+          "price_cents": 6500,
+          "available": true,
+          "description": "A California roll topped with salmon",
+          "options": [
+            { "id": "o-1091-202-1", "name": "Spicy mayo", "price_cents": 3000 },
+            { "id": "o-1091-202-2", "name": "Extra wasabi", "price_cents": 1500 },
+            { "id": "o-1091-202-3", "name": "Sweet chilli sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1091-203",
+          "name": "Prawn Tempura Roll",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Crispy prawn with spicy mayo",
+          "options": [
+            { "id": "o-1091-203-1", "name": "Add avo", "price_cents": 0 },
+            { "id": "o-1091-203-2", "name": "Sweet chilli sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1091-204",
+          "name": "Salmon Fashion Sandwich",
+          "price_cents": 8000,
+          "available": true,
+          "description": "Four pieces, crumbed and fried"
+        },
+        {
+          "id": "i-1091-205",
+          "name": "Tuna Maki",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Six pieces",
+          "image_url": "https://www.themealdb.com/images/media/meals/diuub11782687570.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1091-3",
+      "name": "Sashimi",
+      "items": [
+        {
+          "id": "i-1091-301",
+          "name": "Salmon Nigiri",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Four pieces"
+        },
+        {
+          "id": "i-1091-302",
+          "name": "Seared Salmon Sashimi",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Torched, with ponzu"
+        },
+        {
+          "id": "i-1091-303",
+          "name": "Sashimi Salad",
+          "price_cents": 9000,
+          "available": true
+        },
+        {
+          "id": "i-1091-304",
+          "name": "Salmon Tartare",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Chopped salmon, avo and wasabi mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/yx8j1i1763484612.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1091-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1091-401",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1091-402",
+          "name": "Rock Shandy",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1091-403",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1091-403-1", "name": "Extra lemon", "price_cents": 1000 },
+            { "id": "o-1091-403-2", "name": "Add mint", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1091-404",
+          "name": "Cream Soda Float",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1091-404-1", "name": "No ice", "price_cents": 0 }
+          ]
+        }
+      ]
+    }
+  ]
+}

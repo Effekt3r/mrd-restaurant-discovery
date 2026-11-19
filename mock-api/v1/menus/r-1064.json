@@ -1,0 +1,182 @@
+{
+  "restaurant_id": "r-1064",
+  "categories": [
+    {
+      "id": "c-1064-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1064-101",
+          "name": "Quarter Chicken",
+          "price_cents": 15900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg"
+        },
+        {
+          "id": "i-1064-102",
+          "name": "Half Chicken",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Basted with peri-peri or lemon and herb",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
+          "options": [
+            { "id": "o-1064-102-1", "name": "Add a roll", "price_cents": 0 },
+            { "id": "o-1064-102-2", "name": "Extra hot", "price_cents": 500 },
+            { "id": "o-1064-102-3", "name": "Extra peri-peri sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1064-103",
+          "name": "Whole Chicken",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg"
+        },
+        {
+          "id": "i-1064-104",
+          "name": "Chicken Wings",
+          "price_cents": 18900,
+          "available": true
+        },
+        {
+          "id": "i-1064-105",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 16900,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+          "options": [
+            { "id": "o-1064-105-1", "name": "Extra hot", "price_cents": 2000 },
+            { "id": "o-1064-105-2", "name": "Extra peri-peri sauce", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1064-106",
+          "name": "Chicken Prego Roll",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+        },
+        {
+          "id": "i-1064-107",
+          "name": "Chicken Strips",
+          "price_cents": 7900,
+          "available": true,
+          "options": [
+            { "id": "o-1064-107-1", "name": "Extra peri-peri sauce", "price_cents": 3500 },
+            { "id": "o-1064-107-2", "name": "Lemon & herb basting", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1064-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1064-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 5900,
+          "available": true
+        },
+        {
+          "id": "i-1064-202",
+          "name": "Onion Rings",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1064-203",
+          "name": "Creamed Spinach",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg",
+          "options": [
+            { "id": "o-1064-203-1", "name": "Large", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1064-204",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1064-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1064-301",
+          "name": "Still Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, chilled",
+          "options": [
+            { "id": "o-1064-301-1", "name": "Add mint", "price_cents": 3500 },
+            { "id": "o-1064-301-2", "name": "Large", "price_cents": 2000 },
+            { "id": "o-1064-301-3", "name": "No ice", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1064-302",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1064-303",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "options": [
+            { "id": "o-1064-303-1", "name": "No ice", "price_cents": 2500 },
+            { "id": "o-1064-303-2", "name": "Add mint", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1064-304",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger",
+          "options": [
+            { "id": "o-1064-304-1", "name": "Add mint", "price_cents": 0 },
+            { "id": "o-1064-304-2", "name": "Large", "price_cents": 3000 },
+            { "id": "o-1064-304-3", "name": "Extra lemon", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1064-305",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1064-306",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1064-307",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1064-307-1", "name": "No ice", "price_cents": 500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

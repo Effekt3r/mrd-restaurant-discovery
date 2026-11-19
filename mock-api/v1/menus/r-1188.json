@@ -1,0 +1,253 @@
+{
+  "restaurant_id": "r-1188",
+  "categories": [
+    {
+      "id": "c-1188-1",
+      "name": "Platters",
+      "items": [
+        {
+          "id": "i-1188-101",
+          "name": "Mixed Platter",
+          "price_cents": 23900,
+          "available": true,
+          "description": "18 pieces of the chef's choice",
+          "options": [
+            { "id": "o-1188-101-1", "name": "Spicy mayo", "price_cents": 2000 },
+            { "id": "o-1188-101-2", "name": "Extra wasabi", "price_cents": 1000 },
+            { "id": "o-1188-101-3", "name": "Extra pickled ginger", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1188-102",
+          "name": "Salmon Platter",
+          "price_cents": 22900,
+          "available": true,
+          "description": "20 pieces of salmon nigiri, sashimi and maki",
+          "image_url": "https://www.themealdb.com/images/media/meals/yx8j1i1763484612.jpg"
+        },
+        {
+          "id": "i-1188-103",
+          "name": "Salmon & Tuna Platter",
+          "price_cents": 18900,
+          "available": false,
+          "description": "20 pieces of nigiri, sashimi and maki"
+        },
+        {
+          "id": "i-1188-104",
+          "name": "Vegetarian Platter",
+          "price_cents": 16900,
+          "available": false,
+          "description": "16 pieces with cucumber, avo and pickled radish"
+        },
+        {
+          "id": "i-1188-105",
+          "name": "Prawn Platter",
+          "price_cents": 19900,
+          "available": true,
+          "description": "Tempura prawn rolls and prawn nigiri",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529445434.jpg",
+          "options": [
+            { "id": "o-1188-105-1", "name": "Spicy mayo", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1188-106",
+          "name": "Fashion Sandwich Platter",
+          "price_cents": 23900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg"
+        },
+        {
+          "id": "i-1188-107",
+          "name": "Party Platter",
+          "price_cents": 18900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1188-2",
+      "name": "Rolls",
+      "items": [
+        {
+          "id": "i-1188-201",
+          "name": "California Roll",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Crab stick, avo, cucumber and sesame",
+          "image_url": "https://www.themealdb.com/images/media/meals/prrirc1763781360.jpg"
+        },
+        {
+          "id": "i-1188-202",
+          "name": "Salmon Rainbow Roll",
+          "price_cents": 12900,
+          "available": true,
+          "description": "A California roll topped with salmon"
+        },
+        {
+          "id": "i-1188-203",
+          "name": "Prawn Tempura Roll",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"
+        },
+        {
+          "id": "i-1188-204",
+          "name": "Salmon Roses",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Four pieces topped with mayo"
+        },
+        {
+          "id": "i-1188-205",
+          "name": "Salmon Fashion Sandwich",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Four pieces, crumbed and fried",
+          "image_url": "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg",
+          "options": [
+            { "id": "o-1188-205-1", "name": "Extra wasabi", "price_cents": 500 },
+            { "id": "o-1188-205-2", "name": "Spicy mayo", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1188-206",
+          "name": "Spicy Tuna Roll",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Tuna, chilli mayo and spring onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg",
+          "options": [
+            { "id": "o-1188-206-1", "name": "Spicy mayo", "price_cents": 2000 },
+            { "id": "o-1188-206-2", "name": "Add avo", "price_cents": 500 },
+            { "id": "o-1188-206-3", "name": "Sweet chilli sauce", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1188-207",
+          "name": "Tuna Maki",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/9r2xrg1763771238.jpg"
+        },
+        {
+          "id": "i-1188-208",
+          "name": "Cucumber Maki",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Six pieces with sesame",
+          "image_url": "https://www.themealdb.com/images/media/meals/1549542994.jpg",
+          "options": [
+            { "id": "o-1188-208-1", "name": "Extra wasabi", "price_cents": 2000 },
+            { "id": "o-1188-208-2", "name": "Add avo", "price_cents": 3000 },
+            { "id": "o-1188-208-3", "name": "Sweet chilli sauce", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1188-3",
+      "name": "Sashimi",
+      "items": [
+        {
+          "id": "i-1188-301",
+          "name": "Salmon Nigiri",
+          "price_cents": 14900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1549542994.jpg"
+        },
+        {
+          "id": "i-1188-302",
+          "name": "Seared Salmon Sashimi",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Torched, with ponzu",
+          "image_url": "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg"
+        },
+        {
+          "id": "i-1188-303",
+          "name": "Tuna Tataki",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Seared, with sesame and ponzu"
+        },
+        {
+          "id": "i-1188-304",
+          "name": "Sashimi Salad",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/qqwhw51780093126.jpg",
+          "options": [
+            { "id": "o-1188-304-1", "name": "Extra wasabi", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1188-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1188-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1188-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1188-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1188-404",
+          "name": "Ginger Beer",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger",
+          "options": [
+            { "id": "o-1188-404-1", "name": "No ice", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1188-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1188-406",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1188-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1188-408",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

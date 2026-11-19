@@ -1,0 +1,311 @@
+{
+  "restaurant_id": "r-1020",
+  "categories": [
+    {
+      "id": "c-1020-1",
+      "name": "Curries & Bredies",
+      "items": [
+        {
+          "id": "i-1020-101",
+          "name": "Cape Malay Chicken Curry",
+          "price_cents": 11900,
+          "available": false,
+          "description": "Mild and fragrant, with potato",
+          "image_url": "https://www.themealdb.com/images/media/meals/lgmnff1763789847.jpg"
+        },
+        {
+          "id": "i-1020-102",
+          "name": "Lamb Curry",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Bone-in and slow-cooked",
+          "image_url": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg"
+        },
+        {
+          "id": "i-1020-103",
+          "name": "Bobotie",
+          "price_cents": 15900,
+          "available": false,
+          "description": "Spiced mince under a baked egg custard, with yellow rice",
+          "image_url": "https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg",
+          "options": [
+            { "id": "o-1020-103-1", "name": "Make it hot", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1020-104",
+          "name": "Tomato Bredie",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Lamb stewed with tomato and cinnamon",
+          "image_url": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg"
+        },
+        {
+          "id": "i-1020-105",
+          "name": "Denningvleis",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Sweet-sour lamb with tamarind and bay",
+          "image_url": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg",
+          "options": [
+            { "id": "o-1020-105-1", "name": "Make it hot", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1020-106",
+          "name": "Fish Curry",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Hake, tomato and curry leaves",
+          "image_url": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
+          "options": [
+            { "id": "o-1020-106-1", "name": "Add rice", "price_cents": 3000 },
+            { "id": "o-1020-106-2", "name": "Add sambals", "price_cents": 1000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1020-2",
+      "name": "Breyani",
+      "items": [
+        {
+          "id": "i-1020-201",
+          "name": "Chicken Breyani",
+          "price_cents": 10900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg"
+        },
+        {
+          "id": "i-1020-202",
+          "name": "Lamb Breyani",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Slow-cooked, with lentils and potato",
+          "image_url": "https://www.themealdb.com/images/media/meals/vssrtx1511557680.jpg"
+        },
+        {
+          "id": "i-1020-203",
+          "name": "Mutton Breyani",
+          "price_cents": 10900,
+          "available": true,
+          "description": "The Sunday favourite",
+          "image_url": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg",
+          "options": [
+            { "id": "o-1020-203-1", "name": "Extra lentils", "price_cents": 1000 },
+            { "id": "o-1020-203-2", "name": "Add sambals", "price_cents": 1000 },
+            { "id": "o-1020-203-3", "name": "Add a boiled egg", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1020-204",
+          "name": "Prawn Breyani",
+          "price_cents": 11900,
+          "available": true,
+          "description": "With saffron and fried onion",
+          "options": [
+            { "id": "o-1020-204-1", "name": "Make it hot", "price_cents": 0 },
+            { "id": "o-1020-204-2", "name": "Add sambals", "price_cents": 2000 },
+            { "id": "o-1020-204-3", "name": "Add a boiled egg", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1020-205",
+          "name": "Chicken Akhni",
+          "price_cents": 12900,
+          "available": true,
+          "description": "A lighter rice dish with chicken and potato",
+          "image_url": "https://www.themealdb.com/images/media/meals/cr2kyr1763793839.jpg",
+          "options": [
+            { "id": "o-1020-205-1", "name": "Extra lentils", "price_cents": 2000 },
+            { "id": "o-1020-205-2", "name": "Add a boiled egg", "price_cents": 0 },
+            { "id": "o-1020-205-3", "name": "Add sambals", "price_cents": 1500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1020-3",
+      "name": "Gatsbys & Rotis",
+      "items": [
+        {
+          "id": "i-1020-301",
+          "name": "Masala Steak Gatsby",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Steak, chips, lettuce and masala sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/gr4lo51763791826.jpg"
+        },
+        {
+          "id": "i-1020-302",
+          "name": "Slap Chip Gatsby",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Soft chips with vinegar and peri-peri",
+          "image_url": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg"
+        },
+        {
+          "id": "i-1020-303",
+          "name": "Chicken Gatsby",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Grilled chicken, chips and salad",
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg"
+        },
+        {
+          "id": "i-1020-304",
+          "name": "Calamari Gatsby",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Fried calamari, chips and sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg",
+          "options": [
+            { "id": "o-1020-304-1", "name": "Add egg", "price_cents": 2000 },
+            { "id": "o-1020-304-2", "name": "Extra chips", "price_cents": 2000 },
+            { "id": "o-1020-304-3", "name": "Add chilli sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1020-305",
+          "name": "Bunny Chow",
+          "price_cents": 12900,
+          "available": true,
+          "description": "A quarter loaf filled with mutton curry",
+          "image_url": "https://www.themealdb.com/images/media/meals/72fgzj1764109947.jpg"
+        },
+        {
+          "id": "i-1020-306",
+          "name": "Chicken Salomie",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Curry wrapped in a roti",
+          "image_url": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg"
+        },
+        {
+          "id": "i-1020-307",
+          "name": "Mutton Roti",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Curry in a flaky roti"
+        },
+        {
+          "id": "i-1020-308",
+          "name": "Dhaltjies",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Chilli bites, six per portion",
+          "image_url": "https://www.themealdb.com/images/media/meals/qtwtss1468572261.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1020-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1020-401",
+          "name": "Onion Rings",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/72fgzj1764109947.jpg"
+        },
+        {
+          "id": "i-1020-402",
+          "name": "Side Salad",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg"
+        },
+        {
+          "id": "i-1020-403",
+          "name": "Pap & Chakalaka",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/lgmnff1763789847.jpg",
+          "options": [
+            { "id": "o-1020-403-1", "name": "Garlic aioli", "price_cents": 0 },
+            { "id": "o-1020-403-2", "name": "Peri-peri salt", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1020-404",
+          "name": "Grilled Mielies",
+          "price_cents": 5900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg",
+          "options": [
+            { "id": "o-1020-404-1", "name": "Peri-peri salt", "price_cents": 1500 },
+            { "id": "o-1020-404-2", "name": "Add cheese sauce", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1020-405",
+          "name": "Coleslaw",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
+          "options": [
+            { "id": "o-1020-405-1", "name": "Peri-peri salt", "price_cents": 1000 },
+            { "id": "o-1020-405-2", "name": "Large", "price_cents": 500 },
+            { "id": "o-1020-405-3", "name": "Garlic aioli", "price_cents": 1000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1020-5",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1020-501",
+          "name": "Milk Tart",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg"
+        },
+        {
+          "id": "i-1020-502",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 4900,
+          "available": false,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+          "options": [
+            { "id": "o-1020-502-1", "name": "Extra custard", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1020-503",
+          "name": "Chocolate Brownie",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "options": [
+            { "id": "o-1020-503-1", "name": "Add whipped cream", "price_cents": 500 },
+            { "id": "o-1020-503-2", "name": "Extra custard", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1020-504",
+          "name": "Baked Cheesecake",
+          "price_cents": 7900,
+          "available": true,
+          "options": [
+            { "id": "o-1020-504-1", "name": "Extra custard", "price_cents": 2000 },
+            { "id": "o-1020-504-2", "name": "Add vanilla ice cream", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1020-505",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 4900,
+          "available": true
+        }
+      ]
+    }
+  ]
+}
