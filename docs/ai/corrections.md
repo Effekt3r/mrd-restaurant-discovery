@@ -4,6 +4,36 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · Two commit messages for the screens stated figures that weren't true
+
+- **What:** the `Verified:` line of `636326e` (the colour roles) says ":core:designsystem tests, 9 of 9"; the module had 7 tests, and the probe's own output said "7 tests completed". The body of `5217404` (the Browse screen) says the grid has "two or more [columns] from 600 dp"; with 300 dp cards, 16 dp gaps and the side padding, a second column needs a window about 650 dp wide.
+- **Caught by:** the agent, checking its commit messages against the test reports and the grid's sizes before handing over.
+- **Fix:** commits are never amended, so this entry records the right figures. Test counts in later commits are read from the JUnit XML.
+- **Lesson:** a `Verified:` line is evidence, so copy it from the output in front of you, not from memory.
+
+## 2026-11-19 · Photos would have pushed the restaurant list's ETag out of OkHttp's cache
+
+- **What:** spec §5.7 said Coil uses the shared `OkHttpClient` and Coil's own disk cache. The shared client has OkHttp's 10 MB HTTP cache, and TheMealDB sends an ETag and a Last-Modified header with every photo, so OkHttp would have cached each photo as well. A few hundred photos would evict the restaurant list's entry, and an unchanged refresh would then download the whole file instead of getting a 304.
+- **Caught by:** the agent, reading TheMealDB's response headers while building the image loader.
+- **Fix:** the loader uses `newBuilder().cache(null)`: the shared client's connection pool, dispatcher and interceptors, without its HTTP cache. A test pins it, and spec §5.7 says so.
+- **Lesson:** sharing a client shares everything it holds, its cache included. Check what a shared object carries before handing it to another library.
+
+## 2026-11-19 · A pinned header left almost no list at 200% font in landscape
+
+- **What:** spec §6.2 pinned Browse's header: the title, the search field, the chip and the count. On the emulator at 200% font in landscape it took about 60% of the screen, and with the keyboard open nothing of the list would have shown.
+- **Caught by:** the emulator walk of the first build of the screen, before it was committed.
+- **Fix:** the header slides away as the list scrolls up and comes back as soon as it scrolls down (Material's "enter always"), while a surface strip stays behind the status bar. A Compose test swipes it away and back, and spec §6.2 describes it.
+- **Lesson:** "pinned" is a promise about the smallest screen at the largest font. Walk that case before writing it into a spec.
+
+## 2026-11-19 · Two small bugs in the screens, caught by a test and by the walk
+
+- **What:**
+  - Browse's state paired a new filter with the previous filter's count for one emission, so "2 open now" would have flashed before "1 open now".
+  - TalkBack's description of a restaurant whose name ends in a full stop doubled it: "Fish Hoek Pizza Co.. Pizza, Italian."
+- **Caught by:** a ViewModel test that expected the new count, and the release walk's accessibility dump of the last card.
+- **Fix:** each count travels with the filters it counted, and the description doesn't add a full stop after one. Each fix has a test that failed first.
+- **Lesson:** when one state combines several flows, keep a derived value with the inputs it came from.
+
 ## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
 
 - **What:** spec §5.3 said a refresh streams the JSON on the IO dispatcher. `DiscoveryApi` returns a raw `ResponseBody` without `@Streaming`, so Retrofit reads the whole body into memory before returning it, about 6 MB for the stress file, on OkHttp's thread (`BuiltInConverters.java`, lines 32 to 35 and 104 to 105, in 3.0.0). Only the parse runs record by record on the IO dispatcher. A comment in the menu repository made the same assumption, and milestone 3's verification repeated the claim.
