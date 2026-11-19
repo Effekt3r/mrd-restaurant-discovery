@@ -57,6 +57,9 @@ if (releaseKeystore == null) {
 }
 
 dependencies {
+    // The data layer arrives before the screens that use it (milestones 5 and 6). Depending on it now puts its Hilt
+    // modules in the app's graph and its code under :app:lintDebug, which only lints the app's dependencies.
+    implementation(projects.core.data)
     implementation(projects.core.designsystem)
     implementation(projects.feature.browse)
     implementation(projects.feature.details)
