@@ -2,6 +2,9 @@ package com.effekt3r.mrd.core.network
 
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertSame
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -15,5 +18,16 @@ class NetworkModuleTest {
         val client = NetworkModule.okHttpClient(ApplicationProvider.getApplicationContext())
         assertEquals(10_000, client.connectTimeoutMillis)
         assertEquals(20_000, client.readTimeoutMillis)
+    }
+
+    // Spec §5.7: photos share the client's connections, but never its HTTP cache, which holds the list's ETag.
+    @Test
+    fun photosShareTheClientsConnectionsButNotItsHttpCache() {
+        val client = NetworkModule.okHttpClient(ApplicationProvider.getApplicationContext())
+        val images = NetworkModule.imageClient(client)
+        assertNotNull(client.cache)
+        assertNull(images.cache)
+        assertSame(client.connectionPool, images.connectionPool)
+        assertSame(client.dispatcher, images.dispatcher)
     }
 }

@@ -63,11 +63,14 @@ dependencies {
     // modules in the app's graph and its code under :app:lintDebug, which only lints the app's dependencies.
     implementation(projects.core.data)
     implementation(projects.core.designsystem)
+    // MrdApplication hands Coil the image loader that :core:network provides.
+    implementation(projects.core.network)
     implementation(projects.feature.browse)
     implementation(projects.feature.details)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil)
     testImplementation(libs.konsist)
 }
 
