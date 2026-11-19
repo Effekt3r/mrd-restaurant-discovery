@@ -22,6 +22,7 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
 }
 
 gradlePlugin {
@@ -37,6 +38,10 @@ gradlePlugin {
         register("androidCompose") {
             id = "mrd.android.compose"
             implementationClass = "AndroidComposeConventionPlugin"
+        }
+        register("androidRoom") {
+            id = "mrd.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
         }
         register("androidFeature") {
             id = "mrd.android.feature"

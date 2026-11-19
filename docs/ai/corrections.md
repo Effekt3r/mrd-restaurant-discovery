@@ -4,6 +4,41 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
+
+- **What:** spec §5.3 said a refresh streams the JSON on the IO dispatcher. `DiscoveryApi` returns a raw `ResponseBody` without `@Streaming`, so Retrofit reads the whole body into memory before returning it, about 6 MB for the stress file, on OkHttp's thread (`BuiltInConverters.java`, lines 32 to 35 and 104 to 105, in 3.0.0). Only the parse runs record by record on the IO dispatcher. A comment in the menu repository made the same assumption, and milestone 3's verification repeated the claim.
+- **Caught by:** the agent fixing milestone 3's review findings, while checking where the response body is read.
+- **Fix:** the spec and the comments say what happens. The code is unchanged: `@Streaming` is named as the next step if payloads grow, with what it changes in OkHttp's cache.
+- **Lesson:** check what a library does with a type, not what the type suggests. A raw `ResponseBody` is still read in full unless it's marked `@Streaming`.
+
+## 2026-11-19 · Milestone 3's review found three failures the sync's tests never tried
+
+- **What:** the sync's tests covered failures of the network, the server and the data, but not the device's own:
+  - a database failure, such as a full disk during the snapshot swap, escaped `refresh()`, breaking the repository's contract. Callers got the exception, `isRefreshing` stayed true for good and `lastError` stayed null, so milestone 5's spinner would never have stopped and the retry on reconnect would never have fired;
+  - a 304 was taken to mean the database was current, but it only proves that OkHttp's cache is. OkHttp caches a body before the app stores it, so after a refresh whose records all failed validation, the next 304 cleared the error and marked the old snapshot fresh. A failed write, or the process dying mid-refresh, did the same;
+  - nothing tested that the snapshot swap is one transaction: without `@Transaction`, all 36 tests still passed.
+- **Caught by:** milestone 3's verification and code review, with probe tests in a disposable clone.
+- **Fix:** four changes, each with a test that fails without it:
+  - any other failure becomes the new `SyncError.Storage`, the refreshing state is reset in a `finally`, and cancellation is rethrown rather than recorded;
+  - the swap records the response's ETag in `sync_state.etag`, in the same transaction, and a 304 skips the write only when its ETag matches;
+  - a DAO test breaks a swap halfway and checks that the previous snapshot survives;
+  - the menu repository had the first gap too, found while fixing it: a database failure there is now a `Storage` error as well.
+- **Lesson:** test what happens when each step fails, the device's own steps included. A 304 vouches for OkHttp's copy, not for what the app made of it.
+
+## 2026-11-19 · `Cache-Control: no-cache` would have downloaded the whole list on every refresh
+
+- **What:** the spec said each request sends `no-cache`, so OkHttp revalidates against GitHub's ETag and gets a 304. OkHttp does the opposite: when the request says `no-cache`, it ignores its cache and sends no `If-None-Match` (`CacheStrategy.kt`, line 158, in 5.3.2). Every refresh would have downloaded the whole file, 6 MB for the stress dataset.
+- **Caught by:** milestone 3's spike, whose MockWebServer test for a 304 failed: the second request had no `If-None-Match`.
+- **Fix:** requests send `max-age=0`, which OkHttp's `Cache` documentation recommends for revalidation. The test passes, and fails again if the header goes back to `no-cache`.
+- **Lesson:** check what a library does with a header, not what the header means in the HTTP specification.
+
+## 2026-11-19 · The lint gate didn't cover modules the app doesn't use yet
+
+- **What:** the gate runs `:app:lintDebug`, which lints the app and its dependencies (`checkDependencies`). The data layer arrives two milestones before the screens that use it, so none of its code would have been linted.
+- **Caught by:** milestone 3's spike, with a lint probe in `:core:data` that `:app:lintDebug` didn't report until the app depended on the module.
+- **Fix:** `:app` depends on `:core:data` from milestone 3.
+- **Lesson:** a check that covers "the dependencies" covers only what's depended on. Prove what a gate reaches with a probe.
+
 ## 2026-11-19 · The compile SDK 37 brief assumed an AGP version dev had moved past
 
 - **What:** the brief for making Dependabot's androidx update (#12) pass CI said the project builds with AGP 9.3.3, and asked whether to silence AGP's warning about an untested compile SDK with `android.suppressUnsupportedCompileSdk=37`. Dev had been on AGP 9.5.1 since Dependabot's toolchain update (#11), and AGP 9.5.1 is tested up to compile SDK 37.2, so there was no warning to silence. The brief also named only Compose, Navigation and androidx.hilt as needing compile SDK 37; Core 1.19.1 needs it too, as do the Lifecycle 2.11.0 artifacts that androidx.hilt 1.4.0 pulls in. The README and the roadmap still give the toolchain versions from before #11, because Dependabot updates the version catalog but not the docs that quote it, and #12's CI log listed only the first two modules that failed.

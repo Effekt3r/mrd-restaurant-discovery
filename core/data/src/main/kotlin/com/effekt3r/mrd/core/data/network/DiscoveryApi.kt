@@ -1,0 +1,24 @@
+package com.effekt3r.mrd.core.data.network
+
+import com.effekt3r.mrd.core.data.BuildConfig
+import okhttp3.ResponseBody
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.Path
+
+/**
+ * The mock API (spec §5.1 and §5.9). `max-age=0` makes OkHttp revalidate its cached copy with the ETag on every call,
+ * so unchanged data comes back as a 304; `no-cache` would bypass the cache and download the whole file (spec §5.3).
+ * The bodies stay raw: the list is parsed only when the database doesn't hold it yet. Without `@Streaming`, Retrofit
+ * reads each body into memory before returning it (spec §5.3 says when to add it, and what it changes in the cache).
+ */
+internal interface DiscoveryApi {
+    @Headers("Cache-Control: max-age=0")
+    @GET(BuildConfig.RESTAURANTS_PATH)
+    suspend fun restaurants(): Response<ResponseBody>
+
+    @Headers("Cache-Control: max-age=0")
+    @GET("v1/menus/{id}.json")
+    suspend fun menu(@Path("id") restaurantId: String): Response<ResponseBody>
+}

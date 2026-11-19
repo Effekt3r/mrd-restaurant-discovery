@@ -60,7 +60,7 @@ Without them, a local release build is signed with the debug key, and Gradle pri
 
 ## Mock API
 
-The app's restaurants come from static JSON in this repository, served over HTTPS by `raw.githubusercontent.com`. The `dev` branch plays the part of staging and `master` of production: from milestone 3, debug builds will read `dev` and release builds `master`.
+The app's restaurants come from static JSON in this repository, served over HTTPS by `raw.githubusercontent.com`. The `dev` branch plays the part of staging and `master` of production: debug builds read `dev` and release builds `master`. `./gradlew installDebug -Pmrd.dataset=10k` installs a debug build that reads the stress file, and `-Pmrd.apiBaseUrl=<an https URL ending in />` points a build at another copy of `mock-api/`.
 
 | File | Restaurants | Use |
 |---|---|---|

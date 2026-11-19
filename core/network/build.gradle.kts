@@ -9,4 +9,10 @@ android {
 
 dependencies {
     implementation(projects.core.common)
+    // The types this module provides through Hilt.
+    api(libs.kotlinx.serialization.json)
+    api(libs.okhttp)
+
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.robolectric)
 }
