@@ -51,4 +51,4 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 
 ## Current state
 
-Milestone 2 (mock API) is done: `:tools:datagen` generates the 220- and 10,000-restaurant files in `mock-api/v1/` from a committed TheMealDB image pool. Its verification report is `docs/qa/2026-11-19-m2-mock-api.md`. The milestone ends with the first release, v0.1.0, from `dev` to `master`. Milestones 3 (data layer) and 4 (design system) come next and can run in parallel; see `docs/plans/2026-11-18-00-roadmap.md`.
+Milestone 2 (mock API) is done: `:tools:datagen` generates the 220- and 10,000-restaurant files in `mock-api/v1/` from a committed TheMealDB image pool. Its verification report is `docs/qa/2026-11-19-m2-mock-api.md`. The milestone ends with the first release, v0.1.0, from `dev` to `master`. Milestone 4 (design system) is done: `:core:designsystem` has Mr D's tokens, Figtree, `MrdTheme` and the components, `:app` has the launcher icon, and the Browse and Details placeholders use them until milestones 5 and 6 replace them. Its verification report is `docs/qa/2026-11-19-m4-design-system.md`. See `docs/plans/2026-11-18-00-roadmap.md` for what's next.
