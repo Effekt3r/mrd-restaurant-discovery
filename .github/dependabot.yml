@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: dev
+    schedule:
+      interval: weekly
+    # Stability policy: only propose releases that have been out for 30 days.
+    cooldown:
+      default-days: 30
+    open-pull-requests-limit: 5
+    groups:
+      # AGP, Kotlin (with the kotlinx libraries that track it), KSP and Hilt have to move together.
+      toolchain:
+        patterns:
+          - "com.android.application*"
+          - "com.android.library*"
+          - "com.android.tools.build*"
+          - "org.jetbrains.kotlin*"
+          - "com.google.devtools.ksp*"
+          - "com.google.dagger*"
+      androidx:
+        patterns:
+          - "androidx.*"
+    commit-message:
+      prefix: build
+
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: dev
+    schedule:
+      interval: weekly
+    # Actions are pinned to commit SHAs, which never get vulnerability alerts, so updates are checked after a week
+    # rather than the 30 days used for libraries.
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: ci

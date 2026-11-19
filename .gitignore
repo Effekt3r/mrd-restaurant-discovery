@@ -33,3 +33,6 @@ CLAUDE.local.md
 .claude/settings.local.json
 .claude/worktrees/
 docs/ai/raw/
+
+# Local git worktrees
+.worktrees/
