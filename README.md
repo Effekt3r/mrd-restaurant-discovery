@@ -17,10 +17,10 @@ A restaurant discovery mini-app for the Mr D Senior Android Engineer take-home. 
 
 ## Getting started
 
-Until the first release reaches `master` (milestone 2), the code is on `dev`, so clone that branch. On the command line, Gradle also needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<absolute path to the SDK>` in `local.properties` (Gradle doesn't expand `~`). That file is git-ignored, and Android Studio writes it for you when it opens the project.
+On the command line, Gradle needs to know where the Android SDK is: set `ANDROID_HOME`, or put `sdk.dir=<absolute path to the SDK>` in `local.properties` (Gradle doesn't expand `~`). That file is git-ignored, and Android Studio writes it for you when it opens the project.
 
 ```sh
-git clone --branch dev https://github.com/Effekt3r/mrd-restaurant-discovery.git
+git clone https://github.com/Effekt3r/mrd-restaurant-discovery.git
 cd mrd-restaurant-discovery
 git config core.hooksPath .githooks   # optional: secret scan on every commit
 ./gradlew installDebug                # build and install on a connected device or emulator
