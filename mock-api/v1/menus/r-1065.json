@@ -1,0 +1,243 @@
+{
+  "restaurant_id": "r-1065",
+  "categories": [
+    {
+      "id": "c-1065-1",
+      "name": "Tacos",
+      "items": [
+        {
+          "id": "i-1065-101",
+          "name": "Beef Barbacoa Tacos",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Three, with slow-cooked beef and pickled onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg"
+        },
+        {
+          "id": "i-1065-102",
+          "name": "Chicken Tinga Tacos",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Three, with chipotle chicken",
+          "image_url": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg"
+        },
+        {
+          "id": "i-1065-103",
+          "name": "Fish Tacos",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg"
+        },
+        {
+          "id": "i-1065-104",
+          "name": "Carnitas Tacos",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Three, with pulled pork and salsa verde",
+          "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg",
+          "options": [
+            { "id": "o-1065-104-1", "name": "Extra hot sauce", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1065-105",
+          "name": "Mushroom Tacos",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg"
+        },
+        {
+          "id": "i-1065-106",
+          "name": "Prawn Tacos",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Three, with garlic prawns and mango salsa",
+          "image_url": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg"
+        },
+        {
+          "id": "i-1065-107",
+          "name": "Al Pastor Tacos",
+          "price_cents": 7900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg",
+          "options": [
+            { "id": "o-1065-107-1", "name": "Add guacamole", "price_cents": 3000 },
+            { "id": "o-1065-107-2", "name": "Extra salsa", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1065-108",
+          "name": "Nachos",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Cheese, jalapeños, guacamole and salsa",
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1065-2",
+      "name": "Burritos & Bowls",
+      "items": [
+        {
+          "id": "i-1065-201",
+          "name": "Chicken Burrito",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Rice, black beans, cheese and salsa",
+          "image_url": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+          "options": [
+            { "id": "o-1065-201-1", "name": "Add jalapeños", "price_cents": 500 },
+            { "id": "o-1065-201-2", "name": "Add guacamole", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1065-202",
+          "name": "Beef Burrito",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Shredded beef, beans and cheese"
+        },
+        {
+          "id": "i-1065-203",
+          "name": "Pulled Pork Burrito",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Pickled onion and chipotle mayo"
+        },
+        {
+          "id": "i-1065-204",
+          "name": "Chicken Quesadilla",
+          "price_cents": 9900,
+          "available": false,
+          "description": "Cheese, peppers and sour cream"
+        },
+        {
+          "id": "i-1065-205",
+          "name": "Enchiladas",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Two, baked in a red sauce"
+        },
+        {
+          "id": "i-1065-206",
+          "name": "Chimichanga",
+          "price_cents": 11900,
+          "available": true,
+          "description": "A fried burrito with beef and beans",
+          "options": [
+            { "id": "o-1065-206-1", "name": "Extra cheese", "price_cents": 3000 },
+            { "id": "o-1065-206-2", "name": "Make it a bowl", "price_cents": 2500 },
+            { "id": "o-1065-206-3", "name": "Add jalapeños", "price_cents": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1065-3",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1065-301",
+          "name": "Onion Rings",
+          "price_cents": 4900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg"
+        },
+        {
+          "id": "i-1065-302",
+          "name": "Side Salad",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes"
+        },
+        {
+          "id": "i-1065-303",
+          "name": "Creamed Spinach",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1065-304",
+          "name": "Grilled Mielies",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg"
+        },
+        {
+          "id": "i-1065-305",
+          "name": "Coleslaw",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg",
+          "options": [
+            { "id": "o-1065-305-1", "name": "Garlic aioli", "price_cents": 1000 },
+            { "id": "o-1065-305-2", "name": "Large", "price_cents": 2000 },
+            { "id": "o-1065-305-3", "name": "Add cheese sauce", "price_cents": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1065-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1065-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1065-402",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1065-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon",
+          "options": [
+            { "id": "o-1065-403-1", "name": "No ice", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1065-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1065-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1065-406",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1065-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1065-407-1", "name": "Add mint", "price_cents": 500 },
+            { "id": "o-1065-407-2", "name": "No ice", "price_cents": 0 }
+          ]
+        }
+      ]
+    }
+  ]
+}

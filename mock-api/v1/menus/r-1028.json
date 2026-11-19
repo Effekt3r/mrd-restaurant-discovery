@@ -1,0 +1,126 @@
+{
+  "restaurant_id": "r-1028",
+  "categories": [
+    {
+      "id": "c-1028-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1028-101",
+          "name": "Half Chicken",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/bmbvjk1782770310.jpg"
+        },
+        {
+          "id": "i-1028-102",
+          "name": "Whole Chicken",
+          "price_cents": 17900,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg"
+        },
+        {
+          "id": "i-1028-103",
+          "name": "Chicken Wings",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting",
+          "image_url": "https://www.themealdb.com/images/media/meals/kvbotn1581012881.jpg",
+          "options": [
+            { "id": "o-1028-103-1", "name": "Extra peri-peri sauce", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1028-104",
+          "name": "Chicken Prego Roll",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/hcg6l91763596970.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1028-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1028-201",
+          "name": "Onion Rings",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        },
+        {
+          "id": "i-1028-202",
+          "name": "Side Salad",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Leaves, cucumber and cherry tomatoes"
+        },
+        {
+          "id": "i-1028-203",
+          "name": "Creamed Spinach",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1028-204",
+          "name": "Pap & Chakalaka",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg",
+          "options": [
+            { "id": "o-1028-204-1", "name": "Large", "price_cents": 3000 },
+            { "id": "o-1028-204-2", "name": "Garlic aioli", "price_cents": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1028-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1028-301",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1028-302",
+          "name": "Homemade Lemonade",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1028-303",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "options": [
+            { "id": "o-1028-303-1", "name": "Add mint", "price_cents": 2500 },
+            { "id": "o-1028-303-2", "name": "Large", "price_cents": 0 },
+            { "id": "o-1028-303-3", "name": "No ice", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1028-304",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "options": [
+            { "id": "o-1028-304-1", "name": "Add mint", "price_cents": 2500 },
+            { "id": "o-1028-304-2", "name": "Large", "price_cents": 2000 },
+            { "id": "o-1028-304-3", "name": "No ice", "price_cents": 3000 }
+          ]
+        }
+      ]
+    }
+  ]
+}

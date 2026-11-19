@@ -1,0 +1,191 @@
+{
+  "restaurant_id": "r-1022",
+  "categories": [
+    {
+      "id": "c-1022-1",
+      "name": "Antipasti",
+      "items": [
+        {
+          "id": "i-1022-101",
+          "name": "Bruschetta",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Tomato, basil, garlic and olive oil",
+          "image_url": "https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg",
+          "options": [
+            { "id": "o-1022-101-1", "name": "Extra bread", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1022-102",
+          "name": "Arancini",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+        },
+        {
+          "id": "i-1022-103",
+          "name": "Calamari Fritti",
+          "price_cents": 6000,
+          "available": true,
+          "description": "With lemon aioli",
+          "image_url": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
+          "options": [
+            { "id": "o-1022-103-1", "name": "Gluten-free bread", "price_cents": 3500 },
+            { "id": "o-1022-103-2", "name": "Extra bread", "price_cents": 1500 },
+            { "id": "o-1022-103-3", "name": "Add parmesan", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1022-104",
+          "name": "Burrata",
+          "price_cents": 10000,
+          "available": true
+        },
+        {
+          "id": "i-1022-105",
+          "name": "Garlic Focaccia",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Rosemary and sea salt"
+        },
+        {
+          "id": "i-1022-106",
+          "name": "Caprese Salad",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Tomato, mozzarella and basil",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrrwpx1487347049.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1022-2",
+      "name": "Pasta",
+      "items": [
+        {
+          "id": "i-1022-201",
+          "name": "Spaghetti Bolognese",
+          "price_cents": 17000,
+          "available": true,
+          "description": "Slow-cooked beef ragù",
+          "image_url": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
+          "options": [
+            { "id": "o-1022-201-1", "name": "Gluten-free pasta", "price_cents": 3000 },
+            { "id": "o-1022-201-2", "name": "Extra parmesan", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1022-202",
+          "name": "Penne Arrabbiata",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Tomato, garlic and chilli"
+        },
+        {
+          "id": "i-1022-203",
+          "name": "Fettuccine Alfredo",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Parmesan cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg"
+        },
+        {
+          "id": "i-1022-204",
+          "name": "Spaghetti Carbonara",
+          "price_cents": 10500,
+          "available": true,
+          "description": "Guanciale, egg yolk and pecorino"
+        },
+        {
+          "id": "i-1022-205",
+          "name": "Lasagne",
+          "price_cents": 17000,
+          "available": true
+        },
+        {
+          "id": "i-1022-206",
+          "name": "Linguine alle Vongole",
+          "price_cents": 17000,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1022-3",
+      "name": "Dolci",
+      "items": [
+        {
+          "id": "i-1022-301",
+          "name": "Tiramisu",
+          "price_cents": 9500,
+          "available": false,
+          "description": "Espresso, mascarpone and cocoa",
+          "image_url": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg"
+        },
+        {
+          "id": "i-1022-302",
+          "name": "Panna Cotta",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Vanilla, with a berry coulis",
+          "image_url": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg"
+        },
+        {
+          "id": "i-1022-303",
+          "name": "Cannoli",
+          "price_cents": 7000,
+          "available": true
+        },
+        {
+          "id": "i-1022-304",
+          "name": "Chocolate Fondant",
+          "price_cents": 7500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/x73ll91763247842.jpg"
+        },
+        {
+          "id": "i-1022-305",
+          "name": "Gelato",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Three scoops",
+          "image_url": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1022-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1022-401",
+          "name": "Still Water",
+          "price_cents": 2000,
+          "available": true
+        },
+        {
+          "id": "i-1022-402",
+          "name": "Sparkling Water",
+          "price_cents": 3000,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1022-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1022-404",
+          "name": "Homemade Lemonade",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        }
+      ]
+    }
+  ]
+}

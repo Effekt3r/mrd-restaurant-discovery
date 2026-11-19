@@ -1,0 +1,214 @@
+{
+  "restaurant_id": "r-1058",
+  "categories": [
+    {
+      "id": "c-1058-1",
+      "name": "Pizzas",
+      "items": [
+        {
+          "id": "i-1058-101",
+          "name": "Margherita",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Tomato, mozzarella and fresh basil",
+          "options": [
+            { "id": "o-1058-101-1", "name": "Add jalapeños", "price_cents": 1000 },
+            { "id": "o-1058-101-2", "name": "Chilli oil", "price_cents": 500 },
+            { "id": "o-1058-101-3", "name": "Add olives", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1058-102",
+          "name": "Regina",
+          "price_cents": 16900,
+          "available": true,
+          "description": "Ham and mushroom",
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg"
+        },
+        {
+          "id": "i-1058-103",
+          "name": "Hawaiian",
+          "price_cents": 8900,
+          "available": true
+        },
+        {
+          "id": "i-1058-104",
+          "name": "Bacon, Avo & Feta",
+          "price_cents": 16900,
+          "available": true,
+          "description": "The local favourite, with a balsamic drizzle"
+        },
+        {
+          "id": "i-1058-105",
+          "name": "Boerewors & Chakalaka",
+          "price_cents": 8900,
+          "available": true
+        },
+        {
+          "id": "i-1058-106",
+          "name": "Peri-Peri Chicken",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Chicken, peppers and peri-peri sauce",
+          "options": [
+            { "id": "o-1058-106-1", "name": "Add olives", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1058-107",
+          "name": "Biltong & Avo",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Shaved beef biltong, avocado and feta"
+        },
+        {
+          "id": "i-1058-108",
+          "name": "Vegetarian",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Roast peppers, mushrooms, olives and onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1058-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1058-201",
+          "name": "Onion Rings",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg",
+          "options": [
+            { "id": "o-1058-201-1", "name": "Garlic aioli", "price_cents": 3000 },
+            { "id": "o-1058-201-2", "name": "Peri-peri salt", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1058-202",
+          "name": "Creamed Spinach",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With nutmeg and garlic"
+        },
+        {
+          "id": "i-1058-203",
+          "name": "Grilled Mielies",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Two cobs with herb butter"
+        },
+        {
+          "id": "i-1058-204",
+          "name": "Coleslaw",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1058-3",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1058-301",
+          "name": "Milk Tart",
+          "price_cents": 4900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/dokbyt1779645030.jpg"
+        },
+        {
+          "id": "i-1058-302",
+          "name": "Koeksisters",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Plaited and syrup-soaked, two per portion",
+          "options": [
+            { "id": "o-1058-302-1", "name": "Add whipped cream", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1058-303",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 7900,
+          "available": true
+        },
+        {
+          "id": "i-1058-304",
+          "name": "Chocolate Brownie",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/ytme8t1764111401.jpg",
+          "options": [
+            { "id": "o-1058-304-1", "name": "Extra custard", "price_cents": 500 },
+            { "id": "o-1058-304-2", "name": "Add whipped cream", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1058-305",
+          "name": "Baked Cheesecake",
+          "price_cents": 6900,
+          "available": true,
+          "description": "With berry compote"
+        }
+      ]
+    },
+    {
+      "id": "c-1058-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1058-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1058-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1058-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1058-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1058-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1058-406",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1058-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        }
+      ]
+    }
+  ]
+}

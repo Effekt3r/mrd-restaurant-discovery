@@ -17,6 +17,7 @@ The scope is the brief, done thoroughly:
 
 - every requirement;
 - both stretch goals (favourites and deep links);
+- the brief's optional menus on Details, added on 2026-11-19 at my request;
 - one measurable Task 3 improvement;
 - a real multi-module build;
 - tests at each layer;
@@ -36,6 +37,7 @@ Everything else is listed in §12 with the reason it was left out.
 | Distinct loading, empty and problem states | State tables (§6.2, §6.3) | AC-5, AC-6, AC-8, AC-12 |
 | Stretch: favourites from either screen, kept across restarts | `favourites` table (§5.8) | AC-11 |
 | Stretch: open a restaurant from a deep link | `mrd://restaurant/{id}` (§4.5) | AC-12 |
+| Optional: menu items on the details screen | A menu endpoint per restaurant, cached for offline (§5.9, §6.3) | AC-24 |
 | About 200 realistic restaurants; designed for a much larger list | 220 generated restaurants plus a 10,000-restaurant stress file; Paging 3 over Room with filtering in SQL (§5.2, §5.6) | AC-16 |
 | A REST-style JSON source | Static JSON served over HTTPS (§5.1) | AC-5 |
 | Offline: the last successful list is available | Room is the single source of truth (§5.3) | AC-6 |
@@ -270,6 +272,33 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 
 `toggleFavourite(id)` inserts or deletes a row in `favourites`. Browse and Details both observe that table, so they always agree. Favourites survive restarts and refreshes. They aren't a filter, because the brief limits filtering to search and Open now.
 
+### 5.9 Menus
+
+Added on 2026-11-19, when I chose to include the brief's optional menu data.
+
+- **Endpoint.** `GET {API_BASE_URL}v1/menus/{restaurant_id}.json`, served from the repository like the list.
+  - Every distinct id in the 220-restaurant file has a menu: 218 files, because one record has no id and one id appears twice. The duplicated id's menu is made from its first record.
+  - In the 10,000-restaurant stress file, restaurants after the first 220 have none. The API answers 404, and Details says the restaurant hasn't shared a menu. That's a deliberate "problem" state.
+- **Schema.** The brief's example: `restaurant_id`, then `categories` of `id`, `name` and `items`. Each item has `id`, `name`, `price_cents`, `available`, `description`, `image_url` and `options`, and each option has `id`, `name` and `price_cents`.
+
+| Field | When missing, null or invalid |
+|---|---|
+| `restaurant_id` | Must match the requested id, or the payload is `BadData`. |
+| category `id`, `name` | The category is dropped. A category with no valid items is hidden. |
+| item `id`, `name` | The item is dropped. |
+| item `price_cents` | Must be an integer of 0 or more, or the item is dropped: it can't be ordered. |
+| item `available` | Missing means available. `false` greys the item out with "Sold out". |
+| item `description` | Missing or blank: no description line. |
+| item `image_url` | HTTPS only; otherwise no thumbnail. |
+| `options` | An option without an id or name, or with a negative or non-integer price, is dropped. A price of 0 shows as "Free". |
+
+- **Duplicates and bad payloads.** Within a menu, the first of any duplicate ids wins. A payload that had items, none of which survived, is `BadData`, like the list (§5.3).
+- **Loading and caching:**
+  - Details renders the restaurant from the list cache straight away, and the menu loads afterwards with its own state: loading, content, not available, or error.
+  - The validated menu is cached in Room per restaurant, with the time it was fetched, so a menu seen before is available offline.
+  - Requests revalidate with the ETag, as the list's do (§5.3). A 404 deletes any cached menu for that id.
+- **Generated data.** `:tools:datagen` writes the menus from the same seed (§5.2). The dishes are curated per concept and Cape Town-flavoured, the prices are integer cents, and some items are sold out or carry options. The deliberate edge cases are listed in `mock-api/README.md`.
+
 ## 6. UI
 
 ### 6.1 Design tokens (`:core:designsystem`)
@@ -321,8 +350,14 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - the name and cuisines;
   - a row of three stats: rating, ETA and delivery fee;
   - a status line showing the next change;
-  - the week's opening hours, with today highlighted.
+  - the week's opening hours, with today highlighted;
+  - the menu (§5.9), by category. Each item shows its name, up to two lines of description, its price in rand, an optional thumbnail and its options ("+ Extra lemon R5"). Sold-out items are greyed out.
 - **States:** content; not found (unknown id); and loading or offline error, which only happen for a deep link whose restaurant isn't cached yet.
+- **The menu's own states:**
+  - skeleton rows while it loads;
+  - "This restaurant hasn't shared a menu yet" for a 404 or an empty menu;
+  - an error with Retry, worded for being offline when offline;
+  - a cached menu with a small "Menu from 10:42" note when its refresh failed.
 
 ### 6.4 System UI
 
@@ -523,12 +558,12 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
 | AC-21 | CI passes on `dev` and `master`: formatting, lint, unit, Robolectric and architecture tests, the release build and the secret scan. |
 | AC-22 | A `v*` tag produces a signed release APK attached to a GitHub Release. |
 | AC-23 | README.md explains how to run and test the app, use the stress dataset and trigger the deep link. SOLUTION.md answers every Task 3 question. AI_USAGE.md includes the prompts. |
+| AC-24 | Details shows the restaurant's menu by category, with prices in rand and sold-out items marked. The menu loads separately, with its own loading, not-available and error states, and a menu seen before is available offline. |
 
 ## 12. Deliberately not done
 
 | Not done | Why, and when it would be done |
 |---|---|
-| Menus on Details | The brief makes them optional. They would be a separate endpoint: Details renders straight away from the cache and the menu loads afterwards with its own state. |
 | Address picker and maps | There's no location data, and the API already returns the restaurants for one delivery area. |
 | Navigation 3 and a two-pane list-detail layout | Worth it once tablet layouts are a goal. The adaptive grid covers large screens for now. |
 | `api`/`impl` module splits, a database per squad, dynamic feature delivery | Worth it when many squads navigate into Details (faster builds) and when migrations start to collide. SOLUTION.md covers them. |

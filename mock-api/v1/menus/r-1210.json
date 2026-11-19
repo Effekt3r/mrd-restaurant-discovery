@@ -1,0 +1,207 @@
+{
+  "restaurant_id": "r-1210",
+  "categories": [
+    {
+      "id": "c-1210-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1210-101",
+          "name": "Chicken Satay",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Four skewers with peanut sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg"
+        },
+        {
+          "id": "i-1210-102",
+          "name": "Spring Rolls",
+          "price_cents": 7500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg",
+          "options": [
+            { "id": "o-1210-102-1", "name": "Extra sweet chilli", "price_cents": 3500 },
+            { "id": "o-1210-102-2", "name": "Make it spicy", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1210-103",
+          "name": "Tom Yum Soup",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Hot and sour, with prawns",
+          "image_url": "https://www.themealdb.com/images/media/meals/sstssx1487349585.jpg"
+        },
+        {
+          "id": "i-1210-104",
+          "name": "Tom Kha Gai",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Coconut chicken soup with galangal"
+        },
+        {
+          "id": "i-1210-105",
+          "name": "Thai Fish Cakes",
+          "price_cents": 9500,
+          "available": true,
+          "description": "With a cucumber relish",
+          "options": [
+            { "id": "o-1210-105-1", "name": "Add peanut sauce", "price_cents": 2500 },
+            { "id": "o-1210-105-2", "name": "Make it spicy", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1210-106",
+          "name": "Larb Gai",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Spicy minced chicken salad with mint"
+        }
+      ]
+    },
+    {
+      "id": "c-1210-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1210-201",
+          "name": "Massaman Curry",
+          "price_cents": 13500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/qqlwv91763501559.jpg"
+        },
+        {
+          "id": "i-1210-202",
+          "name": "Panang Curry",
+          "price_cents": 16500,
+          "available": true,
+          "description": "Chicken in a thick peanut sauce"
+        },
+        {
+          "id": "i-1210-203",
+          "name": "Yellow Curry",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Chicken, potato and turmeric",
+          "image_url": "https://www.themealdb.com/images/media/meals/7kb44y1763589084.jpg"
+        },
+        {
+          "id": "i-1210-204",
+          "name": "Jungle Curry",
+          "price_cents": 11000,
+          "available": true,
+          "description": "Vegetables, no coconut, very hot"
+        }
+      ]
+    },
+    {
+      "id": "c-1210-3",
+      "name": "Noodles & Stir-Fries",
+      "items": [
+        {
+          "id": "i-1210-301",
+          "name": "Pad Thai",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Rice noodles, tamarind, peanuts and egg",
+          "options": [
+            { "id": "o-1210-301-1", "name": "Add prawns", "price_cents": 2000 },
+            { "id": "o-1210-301-2", "name": "Add egg", "price_cents": 1000 },
+            { "id": "o-1210-301-3", "name": "Extra peanuts", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1210-302",
+          "name": "Pad See Ew",
+          "price_cents": 15500,
+          "available": false,
+          "description": "Wide noodles, soy and Chinese broccoli"
+        },
+        {
+          "id": "i-1210-303",
+          "name": "Thai Fried Rice",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Egg, onion and lime"
+        },
+        {
+          "id": "i-1210-304",
+          "name": "Pad Kra Pao",
+          "price_cents": 10000,
+          "available": false,
+          "description": "Minced pork, holy basil and a fried egg"
+        }
+      ]
+    },
+    {
+      "id": "c-1210-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1210-401",
+          "name": "Still Water",
+          "price_cents": 3000,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1210-402",
+          "name": "Sparkling Water",
+          "price_cents": 2000,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1210-402-1", "name": "No ice", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1210-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1210-404",
+          "name": "Ginger Beer",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1210-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 4000,
+          "available": false
+        },
+        {
+          "id": "i-1210-406",
+          "name": "Rock Shandy",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1210-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2500,
+          "available": true,
+          "options": [
+            { "id": "o-1210-407-1", "name": "Extra lemon", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1210-408",
+          "name": "Cream Soda Float",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1210-408-1", "name": "Add mint", "price_cents": 1500 },
+            { "id": "o-1210-408-2", "name": "Large", "price_cents": 0 }
+          ]
+        }
+      ]
+    }
+  ]
+}

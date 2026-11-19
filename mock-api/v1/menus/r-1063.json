@@ -1,0 +1,271 @@
+{
+  "restaurant_id": "r-1063",
+  "categories": [
+    {
+      "id": "c-1063-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1063-101",
+          "name": "Vegetable Samoosas",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Four, with mint chutney",
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+          "options": [
+            { "id": "o-1063-101-1", "name": "Mint chutney", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1063-102",
+          "name": "Mince Samoosas",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Four, with spiced lamb mince",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+          "options": [
+            { "id": "o-1063-102-1", "name": "Mint chutney", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1063-103",
+          "name": "Onion Bhaji",
+          "price_cents": 7900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
+          "options": [
+            { "id": "o-1063-103-1", "name": "Extra raita", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1063-104",
+          "name": "Chilli Bites",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Spiced fritters, a Durban favourite",
+          "options": [
+            { "id": "o-1063-104-1", "name": "Make it hot", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1063-105",
+          "name": "Chicken Tikka",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Roasted in the tandoor, with raita",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+          "options": [
+            { "id": "o-1063-105-1", "name": "Make it hot", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1063-106",
+          "name": "Lamb Seekh Kebab",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Minced lamb skewers",
+          "image_url": "https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg"
+        },
+        {
+          "id": "i-1063-107",
+          "name": "Papadums",
+          "price_cents": 8900,
+          "available": true,
+          "description": "With three chutneys"
+        }
+      ]
+    },
+    {
+      "id": "c-1063-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1063-201",
+          "name": "Butter Chicken",
+          "price_cents": 15900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1550441275.jpg"
+        },
+        {
+          "id": "i-1063-202",
+          "name": "Lamb Rogan Josh",
+          "price_cents": 16900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/uwxusv1487344500.jpg"
+        },
+        {
+          "id": "i-1063-203",
+          "name": "Chicken Tikka Masala",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Charred chicken in a spiced tomato sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/uwxusv1487344500.jpg",
+          "options": [
+            { "id": "o-1063-203-1", "name": "Extra naan", "price_cents": 0 },
+            { "id": "o-1063-203-2", "name": "Make it hot", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1063-204",
+          "name": "Durban Lamb Curry",
+          "price_cents": 15900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg"
+        },
+        {
+          "id": "i-1063-205",
+          "name": "Prawn Curry",
+          "price_cents": 15900,
+          "available": true
+        },
+        {
+          "id": "i-1063-206",
+          "name": "Lamb Vindaloo",
+          "price_cents": 15900,
+          "available": true,
+          "options": [
+            { "id": "o-1063-206-1", "name": "Extra naan", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1063-207",
+          "name": "Paneer Makhani",
+          "price_cents": 16900,
+          "available": true,
+          "description": "Cottage cheese in a buttery sauce",
+          "options": [
+            { "id": "o-1063-207-1", "name": "Extra naan", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1063-208",
+          "name": "Dhal Makhani",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Black lentils, slow-cooked overnight",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1063-3",
+      "name": "Breads & Rice",
+      "items": [
+        {
+          "id": "i-1063-301",
+          "name": "Butter Naan",
+          "price_cents": 3900,
+          "available": true,
+          "description": "From the tandoor"
+        },
+        {
+          "id": "i-1063-302",
+          "name": "Garlic Naan",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With coriander",
+          "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg",
+          "options": [
+            { "id": "o-1063-302-1", "name": "Large", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1063-303",
+          "name": "Cheese Naan",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Stuffed with cheddar",
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        },
+        {
+          "id": "i-1063-304",
+          "name": "Roti",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Flaky and pan-fried",
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg"
+        },
+        {
+          "id": "i-1063-305",
+          "name": "Basmati Rice",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg"
+        },
+        {
+          "id": "i-1063-306",
+          "name": "Jeera Rice",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg"
+        },
+        {
+          "id": "i-1063-307",
+          "name": "Pilau Rice",
+          "price_cents": 3900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg"
+        },
+        {
+          "id": "i-1063-308",
+          "name": "Sambals",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Tomato and onion, and cucumber raita"
+        }
+      ]
+    },
+    {
+      "id": "c-1063-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1063-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1063-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1063-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1063-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1063-405",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1063-405-1", "name": "Extra lemon", "price_cents": 0 },
+            { "id": "o-1063-405-2", "name": "No ice", "price_cents": 3500 },
+            { "id": "o-1063-405-3", "name": "Large", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1063-406",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

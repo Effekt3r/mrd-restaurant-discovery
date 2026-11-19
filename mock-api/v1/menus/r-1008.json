@@ -1,0 +1,213 @@
+{
+  "restaurant_id": "r-1008",
+  "categories": [
+    {
+      "id": "c-1008-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1008-101",
+          "name": "Chicken Satay",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Four skewers with peanut sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/l50vz41763422681.jpg",
+          "options": [
+            { "id": "o-1008-101-1", "name": "Extra sweet chilli", "price_cents": 500 },
+            { "id": "o-1008-101-2", "name": "Add peanut sauce", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1008-102",
+          "name": "Spring Rolls",
+          "price_cents": 7900,
+          "available": true
+        },
+        {
+          "id": "i-1008-103",
+          "name": "Tom Kha Gai",
+          "price_cents": 5900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        },
+        {
+          "id": "i-1008-104",
+          "name": "Prawn Crackers",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With sweet chilli",
+          "image_url": "https://www.themealdb.com/images/media/meals/9c5nlx1763424766.jpg"
+        },
+        {
+          "id": "i-1008-105",
+          "name": "Som Tam",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Green papaya salad with peanuts and lime",
+          "image_url": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg"
+        },
+        {
+          "id": "i-1008-106",
+          "name": "Larb Gai",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Spicy minced chicken salad with mint",
+          "image_url": "https://www.themealdb.com/images/media/meals/4k8nzy1763583384.jpg",
+          "options": [
+            { "id": "o-1008-106-1", "name": "Add peanut sauce", "price_cents": 0 },
+            { "id": "o-1008-106-2", "name": "Extra sweet chilli", "price_cents": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1008-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1008-201",
+          "name": "Yellow Curry",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Chicken, potato and turmeric",
+          "image_url": "https://www.themealdb.com/images/media/meals/a2ec961763587756.jpg"
+        },
+        {
+          "id": "i-1008-202",
+          "name": "Jungle Curry",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Vegetables, no coconut, very hot",
+          "options": [
+            { "id": "o-1008-202-1", "name": "Add jasmine rice", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1008-203",
+          "name": "Prawn Red Curry",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Coconut and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+          "options": [
+            { "id": "o-1008-203-1", "name": "Add jasmine rice", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1008-204",
+          "name": "Tofu Green Curry",
+          "price_cents": 15900,
+          "available": true,
+          "description": "Vegetables and Thai basil"
+        }
+      ]
+    },
+    {
+      "id": "c-1008-3",
+      "name": "Noodles & Stir-Fries",
+      "items": [
+        {
+          "id": "i-1008-301",
+          "name": "Pad Thai",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Rice noodles, tamarind, peanuts and egg",
+          "image_url": "https://www.themealdb.com/images/media/meals/sstssx1487349585.jpg"
+        },
+        {
+          "id": "i-1008-302",
+          "name": "Drunken Noodles",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Holy basil, chilli and wide noodles",
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        },
+        {
+          "id": "i-1008-303",
+          "name": "Thai Fried Rice",
+          "price_cents": 9900,
+          "available": true
+        },
+        {
+          "id": "i-1008-304",
+          "name": "Cashew Chicken",
+          "price_cents": 10900,
+          "available": true
+        },
+        {
+          "id": "i-1008-305",
+          "name": "Pad Kra Pao",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Minced pork, holy basil and a fried egg",
+          "options": [
+            { "id": "o-1008-305-1", "name": "Extra chilli", "price_cents": 3000 },
+            { "id": "o-1008-305-2", "name": "Extra peanuts", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1008-306",
+          "name": "Khao Soi",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Curry noodle soup with crispy noodles",
+          "image_url": "https://www.themealdb.com/images/media/meals/6g3rso1763486069.jpg",
+          "options": [
+            { "id": "o-1008-306-1", "name": "Extra peanuts", "price_cents": 3000 },
+            { "id": "o-1008-306-2", "name": "Add prawns", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1008-307",
+          "name": "Glass Noodle Stir-Fry",
+          "price_cents": 14900,
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "c-1008-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1008-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1008-402",
+          "name": "Sparkling Water",
+          "price_cents": 2900,
+          "available": false,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1008-403",
+          "name": "Ginger Beer",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1008-404",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters",
+          "options": [
+            { "id": "o-1008-404-1", "name": "Extra lemon", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1008-405",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

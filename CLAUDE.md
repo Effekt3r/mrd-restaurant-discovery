@@ -38,7 +38,7 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 - **Never weaken a test or a rule to make something pass.** Fix the code, or stop and ask.
 - **House rules are proven, not assumed.** When you change `ArchitectureTest`, re-run the probes in `tools/architecture-probes/` and compare the results with its README. A rule that can't fail is worse than having no rule.
 - **Release builds are R8-minified.** Anything read by name at runtime needs a keep rule with a comment. Check R8 changes by running the release APK, not by compiling.
-- **The mock API's data is generated, never edited by hand.** Change the generator, run `./gradlew :tools:datagen:run`, and commit the code and the data together. Why: `GoldenFilesTest` fails when `mock-api/v1/*.json` differs from the generator's output, so the data always matches the code and the docs that describe it.
+- **The mock API's data is generated, never edited by hand.** Change the generator, run `./gradlew :tools:datagen:run`, and commit the code and the data together. Why: `GoldenFilesTest` fails when a restaurant file or a menu differs from the generator's output, or when `mock-api/v1/menus/` holds a file the generator didn't write, so the data always matches the code and the docs that describe it.
 - **Never commit secrets.** Signing comes from `MRD_*` properties or environment variables, so no keystore or password ever lives in the repository. `.claude/settings.json` also stops Claude Code's Read tool from opening keystore and signing files, but it doesn't cover shell commands, so keep those files outside the repository.
 
 ## Definition of done for each change
@@ -51,4 +51,4 @@ Mr D Restaurant Discovery is a take-home assessment for Mr D (Senior Android Eng
 
 ## Current state
 
-Milestone 2 (mock API) is done: `:tools:datagen` generates the 220- and 10,000-restaurant files in `mock-api/v1/` from a committed TheMealDB image pool. Its verification report is `docs/qa/2026-11-19-m2-mock-api.md`. The milestone ends with the first release, v0.1.0, from `dev` to `master`. Milestone 4 (design system) is done: `:core:designsystem` has Mr D's tokens, Figtree, `MrdTheme` and the components, `:app` has the launcher icon, and the Browse and Details placeholders use them until milestones 5 and 6 replace them. Its verification report is `docs/qa/2026-11-19-m4-design-system.md`. See `docs/plans/2026-11-18-00-roadmap.md` for what's next.
+Milestones 1 (foundation) and 2 (mock API) are released as v0.1.0 on `master`. Milestone 2b (mock menus) added a menu for each of the 220 restaurants in `mock-api/v1/menus/`. Milestone 4 (design system) is done: `:core:designsystem` has Mr D's tokens, Figtree, `MrdTheme` and the components, `:app` has the launcher icon, and the Browse and Details placeholders use them until milestones 5 and 6 replace them. Each milestone's verification report is in `docs/qa/`. See `docs/plans/2026-11-18-00-roadmap.md` for what's next.

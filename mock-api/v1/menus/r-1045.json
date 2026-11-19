@@ -1,0 +1,263 @@
+{
+  "restaurant_id": "r-1045",
+  "categories": [
+    {
+      "id": "c-1045-1",
+      "name": "Pizzas",
+      "items": [
+        {
+          "id": "i-1045-101",
+          "name": "Margherita",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Tomato, mozzarella and fresh basil",
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg"
+        },
+        {
+          "id": "i-1045-102",
+          "name": "Hawaiian",
+          "price_cents": 10500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg",
+          "options": [
+            { "id": "o-1045-102-1", "name": "Add bacon", "price_cents": 1500 },
+            { "id": "o-1045-102-2", "name": "Add olives", "price_cents": 3500 },
+            { "id": "o-1045-102-3", "name": "Gluten-free base", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1045-103",
+          "name": "Bacon, Avo & Feta",
+          "price_cents": 8500,
+          "available": true,
+          "options": [
+            { "id": "o-1045-103-1", "name": "Add olives", "price_cents": 500 },
+            { "id": "o-1045-103-2", "name": "Gluten-free base", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1045-104",
+          "name": "Boerewors & Chakalaka",
+          "price_cents": 11000,
+          "available": false,
+          "description": "Spicy relish, red onion and mozzarella",
+          "options": [
+            { "id": "o-1045-104-1", "name": "Add jalapeños", "price_cents": 2500 },
+            { "id": "o-1045-104-2", "name": "Extra mozzarella", "price_cents": 2500 },
+            { "id": "o-1045-104-3", "name": "Gluten-free base", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1045-105",
+          "name": "Peri-Peri Chicken",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Chicken, peppers and peri-peri sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        },
+        {
+          "id": "i-1045-106",
+          "name": "Four Cheese",
+          "price_cents": 14500,
+          "available": true,
+          "description": "Mozzarella, gorgonzola, feta and parmesan",
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg",
+          "options": [
+            { "id": "o-1045-106-1", "name": "Add olives", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1045-107",
+          "name": "Vegetarian",
+          "price_cents": 10000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1045-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1045-201",
+          "name": "Sweet Potato Fries",
+          "price_cents": 6000,
+          "available": true,
+          "options": [
+            { "id": "o-1045-201-1", "name": "Peri-peri salt", "price_cents": 0 },
+            { "id": "o-1045-201-2", "name": "Large", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1045-202",
+          "name": "Onion Rings",
+          "price_cents": 4000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg"
+        },
+        {
+          "id": "i-1045-203",
+          "name": "Side Salad",
+          "price_cents": 5500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+        },
+        {
+          "id": "i-1045-204",
+          "name": "Creamed Spinach",
+          "price_cents": 5500,
+          "available": true,
+          "options": [
+            { "id": "o-1045-204-1", "name": "Peri-peri salt", "price_cents": 1500 },
+            { "id": "o-1045-204-2", "name": "Large", "price_cents": 3000 },
+            { "id": "o-1045-204-3", "name": "Add cheese sauce", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1045-205",
+          "name": "Pap & Chakalaka",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish"
+        },
+        {
+          "id": "i-1045-206",
+          "name": "Grilled Mielies",
+          "price_cents": 5500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg"
+        },
+        {
+          "id": "i-1045-207",
+          "name": "Coleslaw",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1045-3",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1045-301",
+          "name": "Malva Pudding",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Warm apricot sponge with custard",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg"
+        },
+        {
+          "id": "i-1045-302",
+          "name": "Milk Tart",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "options": [
+            { "id": "o-1045-302-1", "name": "Add vanilla ice cream", "price_cents": 1500 },
+            { "id": "o-1045-302-2", "name": "Extra custard", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1045-303",
+          "name": "Koeksisters",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Plaited and syrup-soaked, two per portion",
+          "options": [
+            { "id": "o-1045-303-1", "name": "Extra custard", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1045-304",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Dates, pecans and a brandy syrup"
+        },
+        {
+          "id": "i-1045-305",
+          "name": "Chocolate Brownie",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg",
+          "options": [
+            { "id": "o-1045-305-1", "name": "Extra custard", "price_cents": 1000 },
+            { "id": "o-1045-305-2", "name": "Add whipped cream", "price_cents": 1000 },
+            { "id": "o-1045-305-3", "name": "Add vanilla ice cream", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1045-306",
+          "name": "Baked Cheesecake",
+          "price_cents": 9000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ryspuw1511786688.jpg"
+        },
+        {
+          "id": "i-1045-307",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Torched meringue on a buttery base",
+          "image_url": "https://www.themealdb.com/images/media/meals/pjbaq11784731571.jpg"
+        },
+        {
+          "id": "i-1045-308",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Three scoops with chocolate sauce",
+          "options": [
+            { "id": "o-1045-308-1", "name": "Add vanilla ice cream", "price_cents": 500 },
+            { "id": "o-1045-308-2", "name": "Extra custard", "price_cents": 2500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1045-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1045-401",
+          "name": "Sparkling Water",
+          "price_cents": 3000,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1045-402",
+          "name": "Ginger Beer",
+          "price_cents": 3000,
+          "available": false,
+          "options": [
+            { "id": "o-1045-402-1", "name": "Large", "price_cents": 3000 },
+            { "id": "o-1045-402-2", "name": "Extra lemon", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1045-403",
+          "name": "Rock Shandy",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1045-404",
+          "name": "Fresh Orange Juice",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Squeezed to order",
+          "options": [
+            { "id": "o-1045-404-1", "name": "Large", "price_cents": 1500 }
+          ]
+        }
+      ]
+    }
+  ]
+}
