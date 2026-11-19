@@ -119,8 +119,8 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Upstream work stops in the background.** State flows are shared with `stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), …)`, so the ticker and the connectivity callback stop 5 seconds after the screen leaves the foreground. They keep running through a rotation.
 - **Paging.** The restaurant list is a `Flow<PagingData<RestaurantSummary>>` cached with `cachedIn(viewModelScope)`.
 - **Inputs and navigation.** User input arrives as plain ViewModel functions (`onOpenNowToggled()`, `onRetry()`, `onFavouriteToggled(id)`). Navigation is a callback passed into the screen, not an event channel.
-- **Search field.** It's a `TextFieldState` held in the ViewModel and copied into `SavedStateHandle`. The query sent to the database is debounced by 250 ms, so typing never lags.
-- **Toggle and scroll position.** The Open now toggle is a `SavedStateHandle` flow, so the search text and the toggle both survive process death. Scroll position lives in `rememberLazyGridState()`. The grid isn't composed until the first page arrives, so a restored position isn't reset to the top.
+- **Search field.** It's a `TextFieldState` held in the ViewModel and copied into `SavedStateHandle`. It takes at most 100 characters, because the saved state goes through Binder. The query sent to the database is debounced by 250 ms, so typing never lags.
+- **Toggle and scroll position.** The Open now toggle is a `SavedStateHandle` flow, so the search text and the toggle both survive process death. The scroll position is a `LazyGridState` saved with `rememberSaveable`, one for each list: every restaurant in the paged list carries the filters that found it, and the grid's state is keyed on the filters of the list on screen. A new search's results start at the top however late they arrive, while a rotation, a restored process, a tick or a refresh keeps the position. The grid isn't composed until the first page arrives, so a restored position isn't reset to the top.
 - **Previewable screens.** Each screen is a stateless composable (`BrowseScreen(state, items, callbacks)`), wrapped by a route composable that gets the ViewModel with `hiltViewModel()`. Screens can then be previewed and tested without Hilt.
 
 ### 4.5 Navigation and deep links
@@ -128,6 +128,7 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Routes.** Navigation Compose with `@Serializable` routes: `BrowseRoute` (a data object) and `RestaurantRoute(id: String)`.
 - **Deep link.** The link `mrd://restaurant/{id}` is declared with `navDeepLink<RestaurantRoute>(basePath = "mrd://restaurant")`. Its intent filter sits on `MainActivity` in `:app`, because the host owns external entry points.
 - **Back behaviour.** A deep link on a cold start, or on a warm start through `onNewIntent` and `handleDeepLink`, opens Details with Browse underneath, so Back returns to the list.
+- **After process death.** When Android has killed the app's process in the background but kept its task, it recreates `MainActivity` from its saved state and delivers the link through `onNewIntent` before `onResume`, so before anything is composed. The listener is therefore registered in `onCreate`, and the link waits in state until the `NavController` exists.
 - **Predictive back** is enabled (`android:enableOnBackInvokedCallback="true"`), and Navigation Compose animates it.
 - **Not HTTPS App Links.** Verifying them needs a hosted `assetlinks.json` that matches the signing key, which reviewers' own debug builds wouldn't match. SOLUTION.md covers this.
 - **Manual check:** `adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd`
@@ -249,27 +250,33 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - Overlapping or touching intervals are merged.
 - **Status has three values:**
   - **Open** or **Closed** when the hours are known, depending on whether the current week minute falls inside an interval;
-  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old;
+  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old. The status is worked out for the latest minute tick, so a sync that lands between two ticks is up to a minute newer than that time, and still counts. A snapshot further ahead means the clock was set back, and doesn't;
   - **Unknown** after that.
 - **Open now includes only Open.** The app never claims a restaurant is open when it can't back that up.
 - **Details shows the next change:** "Closes 22:00" (following intervals across midnight), "Opens 11:00", "Opens tomorrow 11:00" or "Opens Mon 11:00".
 - **Status is computed in SQL.** The list status and the filter come from two parameters, `:weekMinute` and `:now`, so paging and the result count stay correct at 10,000 rows. The query reads the snapshot's freshness from `sync_state`, so Room re-runs it when a sync lands. Details uses the same rules as pure Kotlin functions.
-- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting. On each tick, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting its state. On each tick in a new minute, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+  - The paged list takes its ticks from the screen: `restaurants(query, openNow, ticks)`. `cachedIn(viewModelScope)` keeps the list collected for as long as the ViewModel lives, so the list couldn't stop a ticker of its own when the app goes to the background.
+  - A tick in the minute the list was loaded for changes nothing, so the tick a screen sends as it becomes visible reloads the list only if it's out of date.
 
 **How it's measured:**
 - **Correctness.** The same boundary cases run against both the Kotlin functions and the SQL query:
   - opening time included and closing time excluded;
   - overnight hours and the Sunday-to-Monday wrap;
   - split shifts, 24-hour places and closed days;
-  - missing hours with a fresh snapshot and with a stale one.
+  - missing hours with a fresh snapshot, a stale one, one synced since the latest tick, and one from a clock set back.
 - **Impact.** A JVM test counts, across the generated dataset, how many statuses a cached `is_open` would get wrong after 1, 3, 6 and 12 hours offline, sampled across the week. Derived status gets none wrong. The numbers go into SOLUTION.md.
 - **Demo.** Turn on airplane mode and set the emulator clock to one minute before a restaurant's closing time. It flips to Closed and drops out of the Open now list.
 
 ### 5.7 Connectivity and images
 
-- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes.
-- **Images.** Coil 3 uses the shared `OkHttpClient` and Coil's own disk cache, so images the user has already seen still show offline.
-- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown. TheMealDB serves `/medium` (about 33 KB) for cards and `/large` (about 58 KB) for the details header, against about 105 KB at full size. The resolver stands in for an image CDN's resize parameters.
+- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes, and Details fetches its menu again if that failed or is still running (§5.9).
+- **Images.** Coil 3 uses the shared `OkHttpClient`'s connections and Coil's own disk cache, so images the user has already seen still show offline. It doesn't use the client's HTTP cache (`newBuilder().cache(null)`): photos there would evict the restaurant list's entry, whose ETag makes an unchanged refresh a 304.
+- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown: it's where an image CDN's resize parameters would go. A meal photo is 700 px wide, and TheMealDB also serves copies at `/large` (500 px), `/medium` (350 px) and `/small` (150 px). Measured across the 159 photos in `restaurants.json` on 2026-11-19:
+  - **Cards and the details header** ask for the full-size photo, the URL itself. Both are as wide as a phone, about 1,000 px, where `/medium` looked soft. `/large` isn't enough either, because TheMealDB's copies aren't uniform: for 17 of the 159 photos (19 restaurants, including r-1001), `/large` is 350 px and `/medium` the full 700 px. Only the full size is sharp on every card.
+  - **The trade-off** is bytes: about 146 KB a card on first load, against 40 KB at `/medium`. Coil's disk cache keeps each photo for offline use.
+  - **Memory.** Coil decodes a photo at the size it's drawn at, but never larger than the photo itself: `AsyncImage` asks for an inexact size, which Coil doesn't scale up (`BitmapFactoryDecoder`, 3.4.0). A card is wider than 700 px on a phone, so its bitmap is the whole photo, 700 × 700 px at 4 bytes a pixel: about 2 MB, against 1 MB at `/large`. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
+  - **Menu thumbnails** ask for `/small`.
 
 ### 5.8 Favourites
 
@@ -298,6 +305,7 @@ Added on 2026-11-19, when I chose to include the brief's optional menu data.
 - **Duplicates and bad payloads.** Within a menu, the first of any duplicate ids wins. A payload that had items, none of which survived, is `BadData`, like the list (§5.3).
 - **Loading and caching:**
   - Details renders the restaurant from the list cache straight away, and the menu loads afterwards with its own state: loading, content, not available, or error.
+  - A menu that failed, or whose fetch is still running, is fetched again by itself when the connection returns, as the list is (§5.7), and Retry fetches it at any time. A fetch still running began before the connection returned, so it would fail after it, even under a cached menu. A menu that loaded isn't fetched again.
   - The validated menu is cached in Room per restaurant, with the time it was fetched, so a menu seen before is available offline.
   - A cached menu that no longer decodes, for example after an app update changed the cache's format, counts as no cache: it's deleted and fetched again.
   - A database failure, such as a full disk, is a `Storage` error (§5.4), shown with the menu cached before, if any. If the cache can't even be read, the menu isn't fetched, because it couldn't be kept.
@@ -322,7 +330,7 @@ Added on 2026-11-19, when I chose to include the brief's optional menu data.
 ### 6.2 Browse
 
 **Layout:**
-- **Pinned header:**
+- **Header**, which slides away as the list scrolls up and comes back as soon as it scrolls down. Pinned whole, at 200% font in landscape it left the list about 40% of the screen, and none with the keyboard open. A surface strip stays behind the status bar.
   - a "Restaurants" title;
   - a grey search field ("Search restaurants", with a clear button and the keyboard's search action);
   - the Open now chip, filled with ink when on and outlined when off;

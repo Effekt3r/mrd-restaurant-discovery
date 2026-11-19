@@ -39,6 +39,17 @@ class ContrastTest {
             "a chip that's on, and buttons" to (scheme.onPrimary to scheme.primary),
             "tags and the offline banner (sky)" to (scheme.onPrimaryContainer to scheme.primaryContainer),
             "errors" to (scheme.onError to scheme.error),
+            "error containers" to (scheme.onErrorContainer to scheme.errorContainer),
+            "tonal buttons and stock chips (secondary containers)" to
+                (scheme.onSecondaryContainer to scheme.secondaryContainer),
+            "tertiary accents" to (scheme.onTertiary to scheme.tertiary),
+            "tertiary containers" to (scheme.onTertiaryContainer to scheme.tertiaryContainer),
+            "primary fixed" to (scheme.onPrimaryFixed to scheme.primaryFixed),
+            "primary fixed, variant on dim" to (scheme.onPrimaryFixedVariant to scheme.primaryFixedDim),
+            "secondary fixed" to (scheme.onSecondaryFixed to scheme.secondaryFixed),
+            "secondary fixed, variant on dim" to (scheme.onSecondaryFixedVariant to scheme.secondaryFixedDim),
+            "tertiary fixed" to (scheme.onTertiaryFixed to scheme.tertiaryFixed),
+            "tertiary fixed, variant on dim" to (scheme.onTertiaryFixedVariant to scheme.tertiaryFixedDim),
             "links" to (mrd.link to scheme.surface),
             "Open" to (mrd.open to scheme.surface),
             "Closed and Sold out" to (mrd.closed to scheme.surface)

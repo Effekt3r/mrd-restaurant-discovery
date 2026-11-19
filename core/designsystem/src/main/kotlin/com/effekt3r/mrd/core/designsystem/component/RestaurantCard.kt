@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +27,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.effekt3r.mrd.core.designsystem.R
@@ -39,8 +39,8 @@ import com.effekt3r.mrd.core.designsystem.theme.MrdTheme
 
 /**
  * A restaurant in Mr D's card style (spec section 6.2): a 16:9 photo with the ETA pill and the favourite heart, then
- * the name, the cuisines and a details row that wraps between its parts at large font sizes. A closed restaurant's
- * photo is dimmed.
+ * the name, the cuisines and a details row that wraps between its parts at large font sizes, never leaving a "·" at
+ * either end of a line. A closed restaurant's photo is dimmed.
  *
  * It takes display-ready text, not model types: milestone 5's `:core:ui` formats a restaurant and calls this. TalkBack
  * reads the whole card as one item, [contentDescription], with a custom action for the favourite (spec section 6.5).
@@ -50,6 +50,7 @@ import com.effekt3r.mrd.core.designsystem.theme.MrdTheme
  * @param isFreeDelivery highlights [deliveryFee].
  * @param eta "25 mins", or null for no pill.
  * @param placeholderSeed picks the placeholder's colour, such as the first cuisine.
+ * @param onFavouriteChange receives the value the heart toggles to: true adds the restaurant to favourites.
  * @param image the photo; null shows the placeholder.
  */
 @Composable
@@ -65,7 +66,7 @@ fun MrdRestaurantCard(
     isFavourite: Boolean,
     contentDescription: String,
     onClick: () -> Unit,
-    onFavouriteClick: () -> Unit,
+    onFavouriteChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
     placeholderSeed: String = cuisines,
     image: (@Composable () -> Unit)? = null
@@ -73,6 +74,7 @@ fun MrdRestaurantCard(
     val favouriteAction = stringResource(
         if (isFavourite) R.string.designsystem_remove_from_favourites else R.string.designsystem_add_to_favourites
     )
+    val favouriteState = stringResource(R.string.designsystem_favourite_on)
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -80,6 +82,7 @@ fun MrdRestaurantCard(
             .clickable(onClick = onClick)
             .clearAndSetSemantics {
                 this.contentDescription = contentDescription
+                if (isFavourite) stateDescription = favouriteState
                 role = Role.Button
                 onClick {
                     onClick()
@@ -87,7 +90,7 @@ fun MrdRestaurantCard(
                 }
                 customActions = listOf(
                     CustomAccessibilityAction(favouriteAction) {
-                        onFavouriteClick()
+                        onFavouriteChange(!isFavourite)
                         true
                     }
                 )
@@ -107,7 +110,7 @@ fun MrdRestaurantCard(
             }
             MrdFavouriteButton(
                 isFavourite = isFavourite,
-                onClick = onFavouriteClick,
+                onFavouriteChange = onFavouriteChange,
                 modifier = Modifier.align(Alignment.TopEnd).padding(MrdSpacing.ExtraSmall)
             )
         }
@@ -125,23 +128,22 @@ fun MrdRestaurantCard(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(MrdSpacing.ExtraSmall),
-            verticalArrangement = Arrangement.spacedBy(MrdSpacing.ExtraSmall),
-            itemVerticalAlignment = Alignment.CenterVertically
-        ) {
-            MrdRating(rating)
-            if (deliveryFee != null) {
-                Separator()
-                if (isFreeDelivery) {
-                    MrdTag(deliveryFee)
-                } else {
-                    Text(text = deliveryFee, style = MaterialTheme.typography.bodyMedium)
-                }
-            }
-            Separator()
-            MrdStatusLabel(status, statusTone)
-        }
+        SeparatedFlowRow(
+            separator = { Separator() },
+            items = listOfNotNull<@Composable () -> Unit>(
+                { MrdRating(rating) },
+                deliveryFee?.let { fee ->
+                    {
+                        if (isFreeDelivery) {
+                            MrdTag(fee)
+                        } else {
+                            Text(text = fee, style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                },
+                { MrdStatusLabel(status, statusTone) }
+            )
+        )
     }
 }
 
@@ -191,7 +193,7 @@ private fun MrdRestaurantCardPreview() {
                     isFavourite = true,
                     contentDescription = "",
                     onClick = {},
-                    onFavouriteClick = {}
+                    onFavouriteChange = {}
                 )
                 MrdRestaurantCard(
                     name = "Kirstenbosch Coffee Bar",
@@ -205,7 +207,7 @@ private fun MrdRestaurantCardPreview() {
                     isFavourite = false,
                     contentDescription = "",
                     onClick = {},
-                    onFavouriteClick = {}
+                    onFavouriteChange = {}
                 )
             }
         }

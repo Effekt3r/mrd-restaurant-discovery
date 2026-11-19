@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.clearText
@@ -41,14 +42,21 @@ import com.effekt3r.mrd.core.designsystem.theme.MrdTheme
 /**
  * Mr D's grey, rounded search field. The caller owns [state] (spec section 4.4 keeps it in the ViewModel). A clear
  * button appears once there's text, and the keyboard's search key closes the keyboard: results update as you type.
+ * [inputTransformation] applies to what the user types or pastes, such as a length limit.
  */
 @Composable
-fun MrdSearchField(state: TextFieldState, placeholder: String, modifier: Modifier = Modifier) {
+fun MrdSearchField(
+    state: TextFieldState,
+    placeholder: String,
+    modifier: Modifier = Modifier,
+    inputTransformation: InputTransformation? = null
+) {
     val keyboard = LocalSoftwareKeyboardController.current
     val colors = MaterialTheme.colorScheme
     BasicTextField(
         state = state,
         modifier = modifier.fillMaxWidth().semantics { contentDescription = placeholder },
+        inputTransformation = inputTransformation,
         textStyle = MaterialTheme.typography.bodyLarge.copy(color = colors.onSurface),
         cursorBrush = SolidColor(colors.onSurface),
         lineLimits = TextFieldLineLimits.SingleLine,

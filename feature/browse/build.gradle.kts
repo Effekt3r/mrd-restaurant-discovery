@@ -5,3 +5,9 @@ plugins {
 android {
     namespace = "com.effekt3r.mrd.feature.browse"
 }
+
+dependencies {
+    implementation(libs.androidx.paging.compose)
+
+    testImplementation(libs.androidx.paging.testing)
+}

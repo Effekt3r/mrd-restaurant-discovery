@@ -19,9 +19,11 @@ private const val FROM_RESTAURANTS = """
         ON c.restaurant_id = r.id AND c.start_minute <= :weekMinute AND c.end_minute > :weekMinute
 """
 
-// The snapshot is from 0 to 30 minutes old (1,800,000 ms, exclusive). With no sync_state row it's NULL: not fresh.
+// isSnapshotFresh() in SQL. :now is the latest minute tick, so a sync that lands between two ticks is newer than it.
+// Fresh is less than 30 minutes old (1,800,000 ms) and less than a minute newer (60,000 ms); further ahead, the clock was
+// set back. With no sync_state row it's NULL: not fresh.
 private const val SNAPSHOT_FRESH = """
-    (:now - (SELECT s.last_synced_at FROM sync_state s WHERE s.id = 0)) BETWEEN 0 AND 1799999
+    (:now - (SELECT s.last_synced_at FROM sync_state s WHERE s.id = 0)) BETWEEN -59999 AND 1799999
 """
 
 private const val STATUS = """

@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import com.effekt3r.mrd.core.designsystem.R
 import com.effekt3r.mrd.core.designsystem.icon.MrdIcons
@@ -38,15 +40,23 @@ fun MrdStatusLabel(text: String, tone: MrdStatusTone, modifier: Modifier = Modif
     )
 }
 
-/** A star and the rating ("4.6"), or a "New" tag when [rating] is null. */
+/**
+ * A star and the rating ("4.6"), or a "New" tag when [rating] is null. TalkBack reads "Rated 4.6", or "New, not rated
+ * yet", rather than a bare number.
+ */
 @Composable
 fun MrdRating(rating: String?, modifier: Modifier = Modifier) {
     if (rating == null) {
-        MrdTag(stringResource(R.string.designsystem_rating_new), modifier)
+        val spoken = stringResource(R.string.designsystem_rating_new_spoken)
+        MrdTag(
+            stringResource(R.string.designsystem_rating_new),
+            modifier.clearAndSetSemantics { contentDescription = spoken }
+        )
         return
     }
+    val spoken = stringResource(R.string.designsystem_rated, rating)
     Row(
-        modifier = modifier,
+        modifier = modifier.clearAndSetSemantics { contentDescription = spoken },
         horizontalArrangement = Arrangement.spacedBy(2.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

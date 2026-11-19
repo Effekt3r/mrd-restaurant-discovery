@@ -4,6 +4,60 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · The menu's reconnect retry skipped a fetch still running, and Open now lagged each sync
+
+- **What:**
+  - The fix for M-2 (`9ec9546`) fetched a menu again on reconnecting only when its state was an error. Its test failed the fetch before the connection returned, and its emulator check used a menu whose offline fetch had already failed. Neither covered a fetch still running when the connection returned, which then fails with the phone online: on the device the menu stayed on "The menu didn't load" 3 times out of 3.
+  - `count()` and `restaurant()` work statuses out for the latest minute tick, and the freshness check, in SQL and again in Kotlin, read a sync newer than that tick as one from a clock set back, so as stale. Right after a pull-to-refresh, restaurants without hours counted as Unknown until the next tick: "168 open now" became 176 a minute later. The boundary cases covered snapshots 29 and 30 minutes old and one a minute ahead, never one taken after the tick it's checked against, which every sync between two ticks is.
+- **Caught by:** the verifier's re-run of milestones 5 and 6 (R4 for the menu; the count under Observations).
+- **Fix:** a reconnect starts a new attempt unless the latest has finished with the menu, which also covers a cached menu whose refresh is still running. A sync less than a minute newer than the tick counts as fresh, in SQL and in Kotlin. The new tests, which hold the first fetch until the connection has returned and check a sync 6 and 59 seconds after the tick, failed before their fixes. On the emulator, menus still loading when airplane mode went off then loaded by themselves, and the count no longer drops after a pull-to-refresh.
+- **Still open:** when a menu's request is on a connection OkHttp opened over the emulator's cellular network just before airplane mode, the socket outlives it, OkHttp writes the retry to it too, and the menu fails after the 20 s read timeout. The retry fires; the connection pool needs its own fix.
+- **Lesson:** test a trigger in every state it can arrive in, not only the one the report showed. And where a comparison mixes two clocks, such as a tick and a sync time, test them arriving in the other order.
+
+## 2026-11-19 · A deep link was lost when Android had killed the app in the background
+
+- **What:** `MainActivity` registered its new-intent listener in a `DisposableEffect`, which runs only after the first composition. When Android has killed a backgrounded app's process but kept its task, a `mrd://restaurant/{id}` link recreates the activity from its saved state and arrives through `onNewIntent` before `onResume`, so before anything is composed. The link was dropped, and Browse showed instead of Details. The screens' design notes, tests and release walk covered a cold start after `force-stop` and a warm start with the process alive, but never killed the process with the task kept, which is how a link from a notification or another app usually reaches an app on a real phone.
+- **Caught by:** the verifier's release walk of milestones 5 and 6 (finding C-1): Home, `am kill`, then the link, which opened Browse 3 times out of 3.
+- **Fix:** `setNavigationContent()` registers the listener in `onCreate` and keeps the link in state until a `LaunchedEffect` can hand it to the `NavController`. A Robolectric test recreates the activity from its saved state and delivers the link before `onResume`, as Android does; it failed against the old wiring. On the release APK, the link now opens Details with Browse underneath after `am kill`, 3 times out of 3.
+- **Lesson:** cold and warm aren't the only states an app is in. Wherever an app receives intents or restores state, test process death with the task kept (`am kill` after Home), not just `force-stop`.
+
+## 2026-11-19 · I said full-size card photos wouldn't cost memory, and Coil's source says they do
+
+- **What:** when I moved the cards to full-size photos, my instruction said Coil decodes to the view's size, so memory wouldn't change. `AsyncImage` asks for an inexact size, and Coil never scales a photo up past its own size. A phone's card is wider than the 700 px photo, so each card's bitmap is the whole photo: about 2 MB, against 1 MB at `/large`.
+- **Caught by:** the implementing agent, which read Coil's decoder before writing the claim into the spec.
+- **Fix:** spec §5.7 states the real cost. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
+- **Lesson:** check a library's behaviour in its source before stating it, even when the claim sounds standard.
+
+## 2026-11-19 · Two commit messages for the screens stated figures that weren't true
+
+- **What:** the `Verified:` line of `636326e` (the colour roles) says ":core:designsystem tests, 9 of 9"; the module had 7 tests, and the probe's own output said "7 tests completed". The body of `5217404` (the Browse screen) says the grid has "two or more [columns] from 600 dp"; with 300 dp cards, 16 dp gaps and the side padding, a second column needs a window about 650 dp wide.
+- **Caught by:** the agent, checking its commit messages against the test reports and the grid's sizes before handing over.
+- **Fix:** commits are never amended, so this entry records the right figures. Test counts in later commits are read from the JUnit XML.
+- **Lesson:** a `Verified:` line is evidence, so copy it from the output in front of you, not from memory.
+
+## 2026-11-19 · Photos would have pushed the restaurant list's ETag out of OkHttp's cache
+
+- **What:** spec §5.7 said Coil uses the shared `OkHttpClient` and Coil's own disk cache. The shared client has OkHttp's 10 MB HTTP cache, and TheMealDB sends an ETag and a Last-Modified header with every photo, so OkHttp would have cached each photo as well. A few hundred photos would evict the restaurant list's entry, and an unchanged refresh would then download the whole file instead of getting a 304.
+- **Caught by:** the agent, reading TheMealDB's response headers while building the image loader.
+- **Fix:** the loader uses `newBuilder().cache(null)`: the shared client's connection pool, dispatcher and interceptors, without its HTTP cache. A test pins it, and spec §5.7 says so.
+- **Lesson:** sharing a client shares everything it holds, its cache included. Check what a shared object carries before handing it to another library.
+
+## 2026-11-19 · A pinned header left almost no list at 200% font in landscape
+
+- **What:** spec §6.2 pinned Browse's header: the title, the search field, the chip and the count. On the emulator at 200% font in landscape it took about 60% of the screen, and with the keyboard open nothing of the list would have shown.
+- **Caught by:** the emulator walk of the first build of the screen, before it was committed.
+- **Fix:** the header slides away as the list scrolls up and comes back as soon as it scrolls down (Material's "enter always"), while a surface strip stays behind the status bar. A Compose test swipes it away and back, and spec §6.2 describes it.
+- **Lesson:** "pinned" is a promise about the smallest screen at the largest font. Walk that case before writing it into a spec.
+
+## 2026-11-19 · Two small bugs in the screens, caught by a test and by the walk
+
+- **What:**
+  - Browse's state paired a new filter with the previous filter's count for one emission, so "2 open now" would have flashed before "1 open now".
+  - TalkBack's description of a restaurant whose name ends in a full stop doubled it: "Fish Hoek Pizza Co.. Pizza, Italian."
+- **Caught by:** a ViewModel test that expected the new count, and the release walk's accessibility dump of the last card.
+- **Fix:** each count travels with the filters it counted, and the description doesn't add a full stop after one. Each fix has a test that failed first.
+- **Lesson:** when one state combines several flows, keep a derived value with the inputs it came from.
+
 ## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
 
 - **What:** spec §5.3 said a refresh streams the JSON on the IO dispatcher. `DiscoveryApi` returns a raw `ResponseBody` without `@Streaming`, so Retrofit reads the whole body into memory before returning it, about 6 MB for the stress file, on OkHttp's thread (`BuiltInConverters.java`, lines 32 to 35 and 104 to 105, in 3.0.0). Only the parse runs record by record on the IO dispatcher. A comment in the menu repository made the same assumption, and milestone 3's verification repeated the claim.
