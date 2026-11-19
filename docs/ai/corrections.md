@@ -4,6 +4,19 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · Milestone 3's review found three failures the sync's tests never tried
+
+- **What:** the sync's tests covered failures of the network, the server and the data, but not the device's own:
+  - a database failure, such as a full disk during the snapshot swap, escaped `refresh()`, breaking the repository's contract. Callers got the exception, `isRefreshing` stayed true for good and `lastError` stayed null, so milestone 5's spinner would never have stopped and the retry on reconnect would never have fired;
+  - a 304 was taken to mean the database was current, but it only proves that OkHttp's cache is. OkHttp caches a body before the app stores it, so after a refresh whose records all failed validation, the next 304 cleared the error and marked the old snapshot fresh. A failed write, or the process dying mid-refresh, did the same;
+  - nothing tested that the snapshot swap is one transaction: without `@Transaction`, all 36 tests still passed.
+- **Caught by:** milestone 3's verification and code review, with probe tests in a disposable clone.
+- **Fix:** three changes, each with a test that fails without it:
+  - any other failure becomes the new `SyncError.Storage`, the refreshing state is reset in a `finally`, and cancellation is rethrown rather than recorded;
+  - the swap records the response's ETag in `sync_state.etag`, in the same transaction, and a 304 skips the write only when its ETag matches;
+  - a DAO test breaks a swap halfway and checks that the previous snapshot survives.
+- **Lesson:** test what happens when each step fails, the device's own steps included. A 304 vouches for OkHttp's copy, not for what the app made of it.
+
 ## 2026-11-19 · `Cache-Control: no-cache` would have downloaded the whole list on every refresh
 
 - **What:** the spec said each request sends `no-cache`, so OkHttp revalidates against GitHub's ETag and gets a 304. OkHttp does the opposite: when the request says `no-cache`, it ignores its cache and sends no `If-None-Match` (`CacheStrategy.kt`, line 158, in 5.3.2). Every refresh would have downloaded the whole file, 6 MB for the stress dataset.
