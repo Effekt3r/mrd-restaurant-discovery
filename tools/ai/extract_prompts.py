@@ -14,9 +14,9 @@ Kept:
 Dropped: system reminders, tool results, task notifications, skill injections, compaction summaries, interruption
 markers, command wrappers and empty messages.
 
-Redacted: home paths become ~/, /Volumes/<name> becomes [another drive], temporary paths become [temp path], email
-addresses become [email] and my employer's name becomes [work]. A pasted copy of the OfferZen brief becomes a pointer
-to spec section 2.
+Redacted: home paths become ~/, /Volumes/<name> becomes [another drive], temporary paths become [temp path], a
+keystore's path becomes [keystore path], email addresses become [email] and my employer's name becomes [work]. A pasted
+copy of the OfferZen brief becomes a pointer to spec section 2.
 
 Usage:
     python3 tools/ai/extract_prompts.py SESSION.jsonl [SESSION.jsonl ...] [--output FILE]
@@ -63,6 +63,7 @@ PASTED_BLOCK = re.compile(r"<pasted_content[^>]*>(.*?)</pasted_content[^>]*>", r
 TEMP_PATH = re.compile(r"(?<![\w~./:-])(?:/private)?/(?:tmp|var/folders)/[^\s'\"`)\]]+")
 OTHER_DRIVE = re.compile(r"/Volumes/(?:\\.|[^/\s\\'\"`)\]])+")
 HOME_PATH = re.compile(r"(?<![\w~])/(?:Users|home)/(?:\\.|[^/\s\\'\"`)\]])+")
+KEYSTORE_PATH = re.compile(r"[^\s'\"`(*]*/[^\s'\"`)*]*\.(?:jks|keystore|p12)\b")
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 
 # Words that must never appear in this public repository: the SHA-256 of the word in lowercase, its length and its
@@ -117,6 +118,7 @@ def redact(text: str) -> str:
     text = replace_brief(text)
     text = TEMP_PATH.sub("[temp path]", text)
     text = OTHER_DRIVE.sub("[another drive]", text)
+    text = KEYSTORE_PATH.sub("[keystore path]", text)
     text = HOME_PATH.sub("~", text)
     text = EMAIL.sub("[email]", text)
     return redact_private_words(text, PRIVATE_WORDS)
@@ -150,7 +152,7 @@ class Prompt:
     at: datetime
     source: str  # "typed", "queued" (typed while Claude was working), or "answer" or "own answer" to Claude's question
     text: str  # my words, redacted
-    context: str = ""  # for an answer: Claude's question and its options, redacted
+    context: str = ""  # for an answer: Claude's question and its options, as Markdown, redacted
 
 
 def timestamp(value: str) -> datetime:
@@ -190,8 +192,11 @@ def answers(record: dict) -> list[Prompt]:
         answer = result["answers"].get(asked)
         if not answer:
             continue
-        labels = [option.get("label", "") for option in question.get("options") or []]
-        context = f'Claude asked: "{asked}" The options were ' + ", ".join(f'"{label}"' for label in labels) + "."
+        options = question.get("options") or []
+        labels = [option.get("label", "") for option in options]
+        context = f'Claude asked: "{asked}"\n\n' + "\n".join(
+            f"- **{option.get('label', '')}:** {option.get('description', '')}".rstrip() for option in options
+        )
         source = "answer" if answer in labels else "own answer"
         note = notes.get(asked)
         note = note.get("notes") if isinstance(note, dict) else note
@@ -273,11 +278,11 @@ multiple-choice questions. The brief asks for the prompts behind AI-assisted wor
 session logs and writes it. The logs aren't committed: they also hold tool output, local paths and the agents' working.
 - **Left out:** system reminders, tool output, task notifications, skill text, compaction summaries, interruption \
 markers, command wrappers and empty messages.
-- **Redacted:** home paths become `~/`, other drives `[another drive]`, email addresses `[email]` and my employer's \
-name `[work]`. The OfferZen brief I pasted in at the start is replaced by a pointer to spec §2, which maps each \
-of its requirements to the design.
-- **Claude's questions:** where I answered one, the question and its options come first. "(Recommended)" is Claude's \
-label for the option it recommended.
+- **Redacted:** home paths become `~/`, other drives `[another drive]`, a keystore's path `[keystore path]`, email \
+addresses `[email]` and my employer's name `[work]`. The OfferZen brief I pasted in at the start is replaced by a \
+pointer to spec §2, which maps each of its requirements to the design.
+- **Claude's questions:** where I answered one, its question and options come first, in Claude's words, and my answer \
+is the quote. "(Recommended)" is Claude's label for the option it recommended.
 - **Not here:** the prompts Claude wrote for its own subagents. The milestone plans in [`docs/plans/`](../plans/) are \
 what the implementing agents worked from, and the verifier's reports are in [`docs/qa/`](../qa/).
 - **Times** are UTC. Cape Town is two hours ahead."""
@@ -302,7 +307,7 @@ def render(prompts: list[Prompt]) -> str:
         parts.append(f"### Prompt {number}")
         parts.append(f"*{prompt.at:%H:%M} UTC · {SOURCE_LABELS[prompt.source]}*")
         if prompt.context:
-            parts.append(prompt.context)
+            parts.append(re.sub(r"<(?=[A-Za-z/!?])", "&lt;", prompt.context))
         parts.append(quote(prompt.text))
     return "\n\n".join(parts) + "\n"
 
@@ -325,6 +330,9 @@ def check() -> int:
     for name, actual, expected in [
         ("home path", redact("open /Users/someone/Downloads/brief.pdf"), "open ~/Downloads/brief.pdf"),
         ("home path, Linux", redact("/home/someone/notes.md"), "~/notes.md"),
+        ("keystore path", redact("kept at ~/.android/upload.jks, outside"), "kept at [keystore path], outside"),
+        ("keystore path, absolute", redact("(/Users/someone/keys/release.keystore)"), "([keystore path])"),
+        ("keystore pattern kept", redact("deny Read(**/*.jks)"), "deny Read(**/*.jks)"),
         ("another drive", redact("~/Development and /Volumes/Office"), "~/Development and [another drive]"),
         ("another drive, nested", redact("/Volumes/Office/docs/CLAUDE.md"), "[another drive]/docs/CLAUDE.md"),
         ("temp path", redact("in /private/tmp/claude-1/x.md now"), "in [temp path] now"),
@@ -380,10 +388,11 @@ def check() -> int:
         expect(name, actual, expected)
 
     # Answers to Claude's questions.
-    question = {"question": "Maps?", "options": [{"label": "Map card (Recommended)"}, {"label": "No maps"}]}
+    card = {"label": "Map card (Recommended)", "description": "A lite-mode map on Details."}
+    question = {"question": "Maps?", "options": [card, {"label": "No maps"}]}
     own = prompts_in(user(result, toolUseResult={"questions": [question], "answers": {"Maps?": "No maps, no data"}}))
     chosen = prompts_in(user(result, toolUseResult={"questions": [question], "answers": {"Maps?": "No maps"}}))
-    asked = 'Claude asked: "Maps?" The options were "Map card (Recommended)", "No maps".'
+    asked = 'Claude asked: "Maps?"\n\n- **Map card (Recommended):** A lite-mode map on Details.\n- **No maps:**'
     expect("answer, with the question", [p.context for p in own + chosen], [asked, asked])
     expect("answer in my own words", [(p.source, p.text) for p in own], [("own answer", "No maps, no data")])
     expect("answer from the options", [(p.source, p.text) for p in chosen], [("answer", "No maps")])
