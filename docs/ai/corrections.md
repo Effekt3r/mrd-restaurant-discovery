@@ -4,6 +4,36 @@ Every time the AI got something wrong and it was caught: what happened, what cau
 
 This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
 
+## 2026-11-19 · Three of the generator's tests couldn't fail
+
+- **What:** three of the plan's checks passed whatever the data said.
+  - The check that some places open 24 hours looked for a week whose every entry runs from `00:00` to `24:00`. An empty week passes that, and a normal record with `"opening_hours": []` is always there.
+  - The rate checks allowed 1.5 points either way. That let through a 13.8% free-delivery rate and a 5.3% missing-fee rate.
+  - Nothing pinned `is_open` to Friday 19:00. Moving the snapshot to 13:00 flipped 888 values, and every test still passed.
+- **Caught by:** the code-quality review of milestone 2's generator, which broke the code on purpose in a scratch clone.
+- **Fix:** the 24-hour check skips empty weeks, the rates must hold within a point, and a test pins the snapshot to week minute 6,900.
+- **Lesson:** a test is only proven when breaking the code makes it fail. The same goes for house rules.
+
+## 2026-11-19 · The generator's open check read a same-time entry as open all day
+
+- **What:** `isOpenAt` treated an entry that opens and closes at the same time as a window lasting a whole day, though §5.1 drops such entries. No generated data reached it, because the edge case with that entry is added after `is_open` is computed.
+- **Caught by:** the same review, with a probe test.
+- **Fix:** such an entry is never open, and a test covers it.
+
+## 2026-11-18 · Marking the stress file `-diff` would have hidden it from the secret scan
+
+- **What:** milestone 2's design marked `mock-api/v1/restaurants-10k.json` as `-diff` in `.gitattributes`, to keep git's output readable. Git then treats the file as binary, and gitleaks reads git's patches: in the pre-commit hook and in CI's required Secret scan, it would have scanned none of the file's 6 MB.
+- **Caught by:** the spike for milestone 2's plan. A fake AWS key in the stress file passed `gitleaks git`; the same key in `restaurants.json` failed it.
+- **Fix:** the file isn't marked `-diff`. `linguist-generated=true` still collapses it in pull requests, and scanning it adds about 2.5 seconds.
+- **Lesson:** before an attribute changes how git sees a file, check what else reads git's view of it. A check that silently skips its input fails open.
+
+## 2026-11-18 · TheMealDB's area list didn't match its meals
+
+- **What:** milestone 2's design fetched photos by the area names that TheMealDB's `list.php?a=list` returns. For American, Indian, Lebanese and South African, `filter.php` finds no meals: those meals are filed under country names (United States, India), and there are no South African dishes at all. A search for pizza finds three meals.
+- **Caught by:** the spike for milestone 2's plan, whose fetch fails when an image key has fewer than five photos.
+- **Fix:** the queries use country names where needed, the pizza key adds flatbread searches, and there's no South African key: Cape Malay restaurants use the Indian and lamb photos.
+- **Lesson:** check what an API returns for each request you rely on, not what its listing endpoints suggest.
+
 ## 2026-11-18 · The verifier's report misquoted its own setup step
 
 - **What:** the verifier's second report said it created `local.properties` with `sdk.dir=~/Library/Android/sdk`. Its command had been `echo "sdk.dir=$HOME/Library/Android/sdk"`, so the shell wrote an absolute path. The Android Gradle plugin doesn't expand `~`, so a reader copying the quoted line would hit "SDK location not found". The README didn't say the path must be absolute either.
