@@ -2,7 +2,7 @@
 
 Every time the AI got something wrong and it was caught: what happened, what caught it, the fix and the lesson. Entries are newest first.
 
-This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
+This is the honest half of [`AI_USAGE.md`](../../AI_USAGE.md). Most of these were caught by independent reviews that build the code and run probes: two per task in milestone 1, one against the specification and one for code quality, then one combined verifier-and-review pass per milestone. The spikes that run before each plan caught nine more.
 
 ## 2026-11-19 · The menu's reconnect retry skipped a fetch still running, and Open now lagged each sync
 
@@ -57,6 +57,13 @@ This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most o
 - **Caught by:** a ViewModel test that expected the new count, and the release walk's accessibility dump of the last card.
 - **Fix:** each count travels with the filters it counted, and the description doesn't add a full stop after one. Each fix has a test that failed first.
 - **Lesson:** when one state combines several flows, keep a derived value with the inputs it came from.
+
+## 2026-11-19 · The docs brief said Kotlin 2.4.21 fixed the Kotlin Gradle plugin advisory, but its alert stays open
+
+- **What:** the brief for milestone 7's documents said the Kotlin Gradle plugin advisory (CVE-2026-53914, unsafe deserialization in Kotlin's build-cache metadata, fixed in 2.4.20) was fixed by Kotlin 2.4.21. That's true of the project's own Kotlin plugin, but Dependabot's alert is still open. `build-logic` is compiled by Gradle's `kotlin-dsl` plugin, which brings the Kotlin embedded in Gradle: 2.4.0 in Gradle 9.7.1 on `master`, and 2.4.10 in Gradle 9.8.2 on `dev`. Both are older than 2.4.20.
+- **Caught by:** the agent writing the documents. GitHub's dependency graph for `master` lists `kotlin-gradle-plugin` 2.4.0 under `gradle-kotlin-dsl-plugins` 6.7.3, and `./gradlew -p build-logic :convention:buildEnvironment` on `dev` shows 2.4.10.
+- **Fix:** SECURITY.md and SOLUTION.md say what's fixed and what isn't. The alert closes when a Gradle release embeds Kotlin 2.4.20 or later.
+- **Lesson:** an alert closes when nothing in the dependency graph matches it, not when the version you pin is fixed. Check every copy, the build tool's own included.
 
 ## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
 

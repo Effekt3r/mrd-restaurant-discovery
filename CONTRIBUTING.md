@@ -30,8 +30,10 @@ Branches are short-lived and start from `dev`. Rulesets protect `master` and `de
 
 ## Releases
 
-1. Open a release pull request from `dev` to `master`.
-2. After it merges, tag `master` as `vX.Y.Z`. Release tags can't be moved or deleted.
+1. Bump `mrd.versionName` and `mrd.versionCode` in `gradle.properties`, the one place the app's version comes from, in a pull request into `dev`.
+2. Open a release pull request from `dev` to `master`.
+3. After it merges, get the owner's go-ahead before tagging: a tag publishes a release, and release tags can't be moved or deleted.
+4. Tag `master` as `vX.Y.Z`. The tag runs [`release.yml`](.github/workflows/release.yml), in the `release` environment, which only `v*` tags can deploy from. It builds the R8-minified APK, signed with the upload key from that environment's secrets, checks that R8 found no missing keep rules and that the APK's certificate is the upload key's, and creates the GitHub Release with the APK attached. R8's `mapping.txt` stays with the workflow run.
 
 Dependabot's security-fix pull requests, for direct dependencies in the version catalog, target `master`. After one merges, merge `master` back into `dev`, as with a hotfix.
 
