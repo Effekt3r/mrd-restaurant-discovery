@@ -9,7 +9,7 @@ Everything I said to Claude Code while building this project, in order: what I t
 - **Not here:** the prompts Claude wrote for its own subagents. The milestone plans in [`docs/plans/`](../plans/) are what the implementing agents worked from, and the verifier's reports are in [`docs/qa/`](../qa/).
 - **Times** are UTC. Cape Town is two hours ahead.
 
-38 prompts, the last at 2026-11-19 10:24 UTC.
+41 prompts, the last at 2026-11-20 08:44 UTC.
 
 ## 2026-11-18
 
@@ -292,3 +292,23 @@ Claude asked: "For the signed v1.0.0 release, how should the upload keystore and
 - **Skip signing:** No release workflow or signed APK: AC-22 is listed as not done in SOLUTION.md, and local release builds keep the debug-key fallback.
 
 > I generate it (Recommended)
+
+### Prompt 39
+
+*14:17 UTC · typed*
+
+> continue
+
+### Prompt 40
+
+*14:35 UTC · typed*
+
+> what background agent is running?
+
+## 2026-11-20
+
+### Prompt 41
+
+*08:44 UTC · typed*
+
+> continue
