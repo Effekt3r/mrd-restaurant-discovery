@@ -1,0 +1,173 @@
+{
+  "restaurant_id": "r-1017",
+  "categories": [
+    {
+      "id": "c-1017-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1017-101",
+          "name": "Half Chicken",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg",
+          "options": [
+            { "id": "o-1017-101-1", "name": "Add a roll", "price_cents": 500 },
+            { "id": "o-1017-101-2", "name": "Lemon & herb basting", "price_cents": 1500 },
+            { "id": "o-1017-101-3", "name": "Extra peri-peri sauce", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1017-102",
+          "name": "Chicken Wings",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Eight wings with an extra-hot basting"
+        },
+        {
+          "id": "i-1017-103",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 13900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg",
+          "options": [
+            { "id": "o-1017-103-1", "name": "Lemon & herb basting", "price_cents": 1500 },
+            { "id": "o-1017-103-2", "name": "Extra hot", "price_cents": 1000 },
+            { "id": "o-1017-103-3", "name": "Add a roll", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1017-104",
+          "name": "Chicken Espetada",
+          "price_cents": 15900,
+          "available": false,
+          "description": "A hanging skewer with garlic butter"
+        },
+        {
+          "id": "i-1017-105",
+          "name": "Chicken Prego Roll",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Grilled fillet on a soft Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
+          "options": [
+            { "id": "o-1017-105-1", "name": "Extra hot", "price_cents": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1017-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1017-201",
+          "name": "Sweet Potato Fries",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg",
+          "options": [
+            { "id": "o-1017-201-1", "name": "Add cheese sauce", "price_cents": 2000 },
+            { "id": "o-1017-201-2", "name": "Large", "price_cents": 2000 },
+            { "id": "o-1017-201-3", "name": "Garlic aioli", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1017-202",
+          "name": "Onion Rings",
+          "price_cents": 5900,
+          "available": false,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg"
+        },
+        {
+          "id": "i-1017-203",
+          "name": "Side Salad",
+          "price_cents": 4900,
+          "available": true
+        },
+        {
+          "id": "i-1017-204",
+          "name": "Creamed Spinach",
+          "price_cents": 3900,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "options": [
+            { "id": "o-1017-204-1", "name": "Add cheese sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1017-205",
+          "name": "Pap & Chakalaka",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+          "options": [
+            { "id": "o-1017-205-1", "name": "Add cheese sauce", "price_cents": 2000 },
+            { "id": "o-1017-205-2", "name": "Peri-peri salt", "price_cents": 0 },
+            { "id": "o-1017-205-3", "name": "Large", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1017-206",
+          "name": "Grilled Mielies",
+          "price_cents": 2900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1017-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1017-301",
+          "name": "Still Water",
+          "price_cents": 2900,
+          "available": true
+        },
+        {
+          "id": "i-1017-302",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon"
+        },
+        {
+          "id": "i-1017-303",
+          "name": "Ginger Beer",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1017-304",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1017-305",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1017-306",
+          "name": "Cream Soda Float",
+          "price_cents": 3900,
+          "available": false,
+          "options": [
+            { "id": "o-1017-306-1", "name": "No ice", "price_cents": 3500 },
+            { "id": "o-1017-306-2", "name": "Add mint", "price_cents": 1500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

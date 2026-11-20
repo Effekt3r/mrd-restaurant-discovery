@@ -1,0 +1,216 @@
+{
+  "restaurant_id": "r-1159",
+  "categories": [
+    {
+      "id": "c-1159-1",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1159-101",
+          "name": "Classic Beef Burger",
+          "price_cents": 10000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg"
+        },
+        {
+          "id": "i-1159-102",
+          "name": "Cheese Burger",
+          "price_cents": 16500,
+          "available": true,
+          "description": "Double cheddar and caramelised onion"
+        },
+        {
+          "id": "i-1159-103",
+          "name": "Mushroom Burger",
+          "price_cents": 12500,
+          "available": true,
+          "description": "With a creamy mushroom sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg",
+          "options": [
+            { "id": "o-1159-103-1", "name": "Add cheese", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1159-104",
+          "name": "Veggie Burger",
+          "price_cents": 13500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/b5ft861583188991.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1159-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1159-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Sea salt and rosemary",
+          "image_url": "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg",
+          "options": [
+            { "id": "o-1159-201-1", "name": "Large", "price_cents": 2000 },
+            { "id": "o-1159-201-2", "name": "Garlic aioli", "price_cents": 3000 },
+            { "id": "o-1159-201-3", "name": "Add cheese sauce", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1159-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 2500,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/b5ft861583188991.jpg"
+        },
+        {
+          "id": "i-1159-203",
+          "name": "Onion Rings",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg",
+          "options": [
+            { "id": "o-1159-203-1", "name": "Add cheese sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1159-204",
+          "name": "Side Salad",
+          "price_cents": 4500,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/1543774956.jpg",
+          "options": [
+            { "id": "o-1159-204-1", "name": "Garlic aioli", "price_cents": 2000 },
+            { "id": "o-1159-204-2", "name": "Peri-peri salt", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1159-205",
+          "name": "Creamed Spinach",
+          "price_cents": 3000,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg"
+        },
+        {
+          "id": "i-1159-206",
+          "name": "Pap & Chakalaka",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Stiff maize pap with a spicy vegetable relish"
+        },
+        {
+          "id": "i-1159-207",
+          "name": "Grilled Mielies",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg"
+        },
+        {
+          "id": "i-1159-208",
+          "name": "Coleslaw",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1159-3",
+      "name": "Milkshakes",
+      "items": [
+        {
+          "id": "i-1159-301",
+          "name": "Vanilla Milkshake",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Real vanilla ice cream"
+        },
+        {
+          "id": "i-1159-302",
+          "name": "Chocolate Milkshake",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1159-303",
+          "name": "Strawberry Milkshake",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1159-304",
+          "name": "Peanut Butter Milkshake",
+          "price_cents": 4500,
+          "available": true,
+          "options": [
+            { "id": "o-1159-304-1", "name": "Large", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1159-305",
+          "name": "Coffee Milkshake",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Espresso and vanilla"
+        }
+      ]
+    },
+    {
+      "id": "c-1159-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1159-401",
+          "name": "Still Water",
+          "price_cents": 4500,
+          "available": true
+        },
+        {
+          "id": "i-1159-402",
+          "name": "Sparkling Water",
+          "price_cents": 4500,
+          "available": true
+        },
+        {
+          "id": "i-1159-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1159-404",
+          "name": "Ginger Beer",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1159-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1159-406",
+          "name": "Rock Shandy",
+          "price_cents": 2000,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1159-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Squeezed to order"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "restaurant_id": "r-1207",
+  "categories": [
+    {
+      "id": "c-1207-1",
+      "name": "Flame-Grilled Chicken",
+      "items": [
+        {
+          "id": "i-1207-101",
+          "name": "Quarter Chicken",
+          "price_cents": 15500,
+          "available": true,
+          "description": "Leg and thigh, basted as you like it"
+        },
+        {
+          "id": "i-1207-102",
+          "name": "Whole Chicken",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Feeds two to four",
+          "image_url": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg"
+        },
+        {
+          "id": "i-1207-103",
+          "name": "Chicken Wings",
+          "price_cents": 10000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg"
+        },
+        {
+          "id": "i-1207-104",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 13000,
+          "available": true,
+          "description": "Pan-fried, with a Portuguese roll",
+          "image_url": "https://www.themealdb.com/images/media/meals/tytyxu1515363282.jpg"
+        },
+        {
+          "id": "i-1207-105",
+          "name": "Chicken Espetada",
+          "price_cents": 11000,
+          "available": true
+        },
+        {
+          "id": "i-1207-106",
+          "name": "Chicken Strips",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Crumbed, with honey mustard",
+          "image_url": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1207-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1207-201",
+          "name": "Onion Rings",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg"
+        },
+        {
+          "id": "i-1207-202",
+          "name": "Side Salad",
+          "price_cents": 4000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg"
+        },
+        {
+          "id": "i-1207-203",
+          "name": "Pap & Chakalaka",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Stiff maize pap with a spicy vegetable relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/k5qzdl1782689660.jpg"
+        },
+        {
+          "id": "i-1207-204",
+          "name": "Coleslaw",
+          "price_cents": 3000,
+          "available": true,
+          "description": "Creamy, with apple and carrot",
+          "image_url": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg",
+          "options": [
+            { "id": "o-1207-204-1", "name": "Add cheese sauce", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1207-3",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1207-301",
+          "name": "Sparkling Water",
+          "price_cents": 4500,
+          "available": true,
+          "options": [
+            { "id": "o-1207-301-1", "name": "No ice", "price_cents": 500 },
+            { "id": "o-1207-301-2", "name": "Add mint", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1207-302",
+          "name": "Ginger Beer",
+          "price_cents": 3500,
+          "available": true
+        },
+        {
+          "id": "i-1207-303",
+          "name": "Fresh Orange Juice",
+          "price_cents": 4500,
+          "available": false,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1207-304",
+          "name": "Cream Soda Float",
+          "price_cents": 4500,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1207-304-1", "name": "Extra lemon", "price_cents": 3500 },
+            { "id": "o-1207-304-2", "name": "Large", "price_cents": 3500 },
+            { "id": "o-1207-304-3", "name": "Add mint", "price_cents": 500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

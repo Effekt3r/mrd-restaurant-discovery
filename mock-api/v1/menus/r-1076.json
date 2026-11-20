@@ -1,0 +1,235 @@
+{
+  "restaurant_id": "r-1076",
+  "categories": [
+    {
+      "id": "c-1076-1",
+      "name": "Dim Sum",
+      "items": [
+        {
+          "id": "i-1076-101",
+          "name": "Pork Dumplings",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Six, steamed",
+          "options": [
+            { "id": "o-1076-101-1", "name": "Chilli oil", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1076-102",
+          "name": "Prawn Har Gow",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Four, in translucent wrappers",
+          "options": [
+            { "id": "o-1076-102-1", "name": "Black vinegar", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1076-103",
+          "name": "Chicken Siu Mai",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Four, open-topped",
+          "image_url": "http://www.themealdb.com/images/media/meals/fpl3mv1766433431.jpg",
+          "options": [
+            { "id": "o-1076-103-1", "name": "Extra soy sauce", "price_cents": 2000 },
+            { "id": "o-1076-103-2", "name": "Black vinegar", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1076-104",
+          "name": "Vegetable Spring Rolls",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Four, with a sweet chilli dip"
+        },
+        {
+          "id": "i-1076-105",
+          "name": "Bao Buns",
+          "price_cents": 4900,
+          "available": true,
+          "description": "Two, with sticky pork belly",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529445893.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1076-2",
+      "name": "Noodles",
+      "items": [
+        {
+          "id": "i-1076-201",
+          "name": "Chicken Chow Mein",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Egg noodles, vegetables and soy",
+          "image_url": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg"
+        },
+        {
+          "id": "i-1076-202",
+          "name": "Beef Chow Fun",
+          "price_cents": 9900,
+          "available": true
+        },
+        {
+          "id": "i-1076-203",
+          "name": "Dan Dan Noodles",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Spicy pork, sesame and chilli oil",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529443236.jpg"
+        },
+        {
+          "id": "i-1076-204",
+          "name": "Singapore Noodles",
+          "price_cents": 13900,
+          "available": false
+        },
+        {
+          "id": "i-1076-205",
+          "name": "Vegetable Lo Mein",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Soft noodles with seasonal vegetables",
+          "image_url": "https://www.themealdb.com/images/media/meals/1525876468.jpg"
+        },
+        {
+          "id": "i-1076-206",
+          "name": "Prawn Noodle Soup",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg"
+        },
+        {
+          "id": "i-1076-207",
+          "name": "Sesame Noodles",
+          "price_cents": 10900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1529444113.jpg",
+          "options": [
+            { "id": "o-1076-207-1", "name": "Extra chilli", "price_cents": 2500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1076-3",
+      "name": "From the Wok",
+      "items": [
+        {
+          "id": "i-1076-301",
+          "name": "Sweet & Sour Pork",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Pineapple and peppers",
+          "image_url": "https://www.themealdb.com/images/media/meals/arzs741766434335.jpg"
+        },
+        {
+          "id": "i-1076-302",
+          "name": "Kung Pao Chicken",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Peanuts and dried chillies",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529444830.jpg"
+        },
+        {
+          "id": "i-1076-303",
+          "name": "Lemon Chicken",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Crispy, with a lemon glaze",
+          "image_url": "https://www.themealdb.com/images/media/meals/1529442316.jpg"
+        },
+        {
+          "id": "i-1076-304",
+          "name": "Salt & Pepper Prawns",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Wok-tossed with garlic and chilli",
+          "image_url": "https://www.themealdb.com/images/media/meals/1525873040.jpg",
+          "options": [
+            { "id": "o-1076-304-1", "name": "Extra chilli", "price_cents": 0 },
+            { "id": "o-1076-304-2", "name": "Add cashews", "price_cents": 0 },
+            { "id": "o-1076-304-3", "name": "Make it vegetarian", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1076-305",
+          "name": "Egg Fried Rice",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1529446137.jpg",
+          "options": [
+            { "id": "o-1076-305-1", "name": "Make it vegetarian", "price_cents": 1000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1076-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1076-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1076-402",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1076-403",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1076-404",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1076-405",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Fresh lemons, cane sugar and soda"
+        },
+        {
+          "id": "i-1076-406",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters",
+          "options": [
+            { "id": "o-1076-406-1", "name": "Large", "price_cents": 3500 },
+            { "id": "o-1076-406-2", "name": "Add mint", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1076-407",
+          "name": "Fresh Orange Juice",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1076-408",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Money in rand (spec §6.6): "R15", "R12.50". The amount is already formatted. -->
+    <string name="ui_rand">R%1$s</string>
+    <string name="ui_delivery_fee">%1$s delivery</string>
+    <string name="ui_free_delivery">Free delivery</string>
+
+    <plurals name="ui_eta">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
+    </plurals>
+    <plurals name="ui_eta_spoken">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+
+    <!-- Between a restaurant's cuisines: "Steakhouse · Grill". -->
+    <string name="ui_cuisine_separator">" · "</string>
+
+    <!-- Open status (spec §5.6). The next change is "Opens 11:00", "Opens tomorrow 11:00", "Opens Mon 11:00",
+         "Closes 22:00" or, more than a day ahead, "Closes Sun 21:00". -->
+    <string name="ui_status_open">Open</string>
+    <string name="ui_status_closed">Closed</string>
+    <string name="ui_status_unknown">Hours unknown</string>
+    <string name="ui_status_open_24_hours">Open 24 hours</string>
+    <!-- A status and its next change: "Closed · Opens 11:00", "Open · Closes 22:00". -->
+    <string name="ui_status_with_change">%1$s · %2$s</string>
+    <string name="ui_opens_today">Opens %1$s</string>
+    <string name="ui_opens_tomorrow">Opens tomorrow %1$s</string>
+    <!-- %1$s is a short day name, such as Mon. -->
+    <string name="ui_opens_on">Opens %1$s %2$s</string>
+    <string name="ui_closes_today">Closes %1$s</string>
+    <string name="ui_closes_on">Closes %1$s %2$s</string>
+
+    <!-- When a snapshot or a menu was fetched, on another day: "Mon 10:42" or "8 Nov 10:42". -->
+    <string name="ui_day_and_time">%1$s %2$s</string>
+
+    <!-- What TalkBack reads for a card (spec §6.5): "Cape Town Grill. Steakhouse, Grill. Rated 4.6. 32 minutes.
+         R15 delivery. Open, closes 22:00." The parts are joined with the sentence separator. -->
+    <string name="ui_spoken_sentence_separator">". "</string>
+    <string name="ui_spoken_sentence_end">.</string>
+    <string name="ui_spoken_list_separator">", "</string>
+    <string name="ui_spoken_rated">Rated %1$s</string>
+    <string name="ui_spoken_not_rated">New, not rated yet</string>
+    <!-- A status and its next change, as spoken: "Open, closes 22:00". -->
+    <string name="ui_spoken_status_with_change">%1$s, %2$s</string>
+</resources>

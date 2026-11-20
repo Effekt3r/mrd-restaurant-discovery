@@ -1,0 +1,189 @@
+{
+  "restaurant_id": "r-1177",
+  "categories": [
+    {
+      "id": "c-1177-1",
+      "name": "Pizzas",
+      "items": [
+        {
+          "id": "i-1177-101",
+          "name": "Regina",
+          "price_cents": 14500,
+          "available": true,
+          "description": "Ham and mushroom",
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+          "options": [
+            { "id": "o-1177-101-1", "name": "Chilli oil", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1177-102",
+          "name": "Hawaiian",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Ham and pineapple",
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg",
+          "options": [
+            { "id": "o-1177-102-1", "name": "Extra mozzarella", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1177-103",
+          "name": "Bacon, Avo & Feta",
+          "price_cents": 14500,
+          "available": true
+        },
+        {
+          "id": "i-1177-104",
+          "name": "Peri-Peri Chicken",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Chicken, peppers and peri-peri sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg",
+          "options": [
+            { "id": "o-1177-104-1", "name": "Chilli oil", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1177-105",
+          "name": "Four Cheese",
+          "price_cents": 17000,
+          "available": true,
+          "description": "Mozzarella, gorgonzola, feta and parmesan",
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1177-2",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1177-201",
+          "name": "Hand-Cut Chips",
+          "price_cents": 4000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg"
+        },
+        {
+          "id": "i-1177-202",
+          "name": "Sweet Potato Fries",
+          "price_cents": 4500,
+          "available": true,
+          "description": "With chipotle mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg"
+        },
+        {
+          "id": "i-1177-203",
+          "name": "Onion Rings",
+          "price_cents": 4000,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg"
+        },
+        {
+          "id": "i-1177-204",
+          "name": "Side Salad",
+          "price_cents": 2500,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1177-3",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1177-301",
+          "name": "Malva Pudding",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Warm apricot sponge with custard"
+        },
+        {
+          "id": "i-1177-302",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/v5jrnn1764362830.jpg"
+        },
+        {
+          "id": "i-1177-303",
+          "name": "Chocolate Brownie",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg"
+        },
+        {
+          "id": "i-1177-304",
+          "name": "Baked Cheesecake",
+          "price_cents": 5500,
+          "available": true,
+          "description": "With berry compote",
+          "image_url": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg"
+        },
+        {
+          "id": "i-1177-305",
+          "name": "Lemon Meringue Pie",
+          "price_cents": 8500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg"
+        },
+        {
+          "id": "i-1177-306",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Three scoops with chocolate sauce",
+          "options": [
+            { "id": "o-1177-306-1", "name": "Extra custard", "price_cents": 2500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1177-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1177-401",
+          "name": "Still Water",
+          "price_cents": 4500,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1177-402",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1177-403",
+          "name": "Ginger Beer",
+          "price_cents": 4000,
+          "available": true
+        },
+        {
+          "id": "i-1177-404",
+          "name": "Homemade Lemonade",
+          "price_cents": 4500,
+          "available": true
+        },
+        {
+          "id": "i-1177-405",
+          "name": "Cream Soda Float",
+          "price_cents": 3500,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1177-405-1", "name": "Extra lemon", "price_cents": 500 },
+            { "id": "o-1177-405-2", "name": "No ice", "price_cents": 500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

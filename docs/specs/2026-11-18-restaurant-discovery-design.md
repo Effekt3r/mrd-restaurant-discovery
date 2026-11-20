@@ -17,6 +17,7 @@ The scope is the brief, done thoroughly:
 
 - every requirement;
 - both stretch goals (favourites and deep links);
+- the brief's optional menus on Details, added on 2026-11-19 at my request;
 - one measurable Task 3 improvement;
 - a real multi-module build;
 - tests at each layer;
@@ -36,6 +37,7 @@ Everything else is listed in §12 with the reason it was left out.
 | Distinct loading, empty and problem states | State tables (§6.2, §6.3) | AC-5, AC-6, AC-8, AC-12 |
 | Stretch: favourites from either screen, kept across restarts | `favourites` table (§5.8) | AC-11 |
 | Stretch: open a restaurant from a deep link | `mrd://restaurant/{id}` (§4.5) | AC-12 |
+| Optional: menu items on the details screen | A menu endpoint per restaurant, cached for offline (§5.9, §6.3) | AC-24 |
 | About 200 realistic restaurants; designed for a much larger list | 220 generated restaurants plus a 10,000-restaurant stress file; Paging 3 over Room with filtering in SQL (§5.2, §5.6) | AC-16 |
 | A REST-style JSON source | Static JSON served over HTTPS (§5.1) | AC-5 |
 | Offline: the last successful list is available | Room is the single source of truth (§5.3) | AC-6 |
@@ -98,7 +100,8 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
   - an `OkHttpClient`, carrying whatever auth, logging or certificate-pinning interceptors the host uses;
   - the `Json` configuration;
   - an `@IoDispatcher` `CoroutineDispatcher`;
-  - a `java.time.Clock`.
+  - a `java.time.Clock`;
+  - a `NetworkMonitor` (validated internet as a flow) and an `@ApplicationScope` `CoroutineScope`.
 
   In this repo, `:core:network` and `:core:common` provide them.
 - **The features expose:**
@@ -116,8 +119,8 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Upstream work stops in the background.** State flows are shared with `stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), …)`, so the ticker and the connectivity callback stop 5 seconds after the screen leaves the foreground. They keep running through a rotation.
 - **Paging.** The restaurant list is a `Flow<PagingData<RestaurantSummary>>` cached with `cachedIn(viewModelScope)`.
 - **Inputs and navigation.** User input arrives as plain ViewModel functions (`onOpenNowToggled()`, `onRetry()`, `onFavouriteToggled(id)`). Navigation is a callback passed into the screen, not an event channel.
-- **Search field.** It's a `TextFieldState` held in the ViewModel and copied into `SavedStateHandle`. The query sent to the database is debounced by 250 ms, so typing never lags.
-- **Toggle and scroll position.** The Open now toggle is a `SavedStateHandle` flow, so the search text and the toggle both survive process death. Scroll position lives in `rememberLazyGridState()`. The grid isn't composed until the first page arrives, so a restored position isn't reset to the top.
+- **Search field.** It's a `TextFieldState` held in the ViewModel and copied into `SavedStateHandle`. It takes at most 100 characters, because the saved state goes through Binder. The query sent to the database is debounced by 250 ms, so typing never lags.
+- **Toggle and scroll position.** The Open now toggle is a `SavedStateHandle` flow, so the search text and the toggle both survive process death. The scroll position is a `LazyGridState` saved with `rememberSaveable`, one for each list: every restaurant in the paged list carries the filters that found it, and the grid's state is keyed on the filters of the list on screen. A new search's results start at the top however late they arrive, while a rotation, a restored process, a tick or a refresh keeps the position. The grid isn't composed until the first page arrives, so a restored position isn't reset to the top.
 - **Previewable screens.** Each screen is a stateless composable (`BrowseScreen(state, items, callbacks)`), wrapped by a route composable that gets the ViewModel with `hiltViewModel()`. Screens can then be previewed and tested without Hilt.
 
 ### 4.5 Navigation and deep links
@@ -125,6 +128,7 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Routes.** Navigation Compose with `@Serializable` routes: `BrowseRoute` (a data object) and `RestaurantRoute(id: String)`.
 - **Deep link.** The link `mrd://restaurant/{id}` is declared with `navDeepLink<RestaurantRoute>(basePath = "mrd://restaurant")`. Its intent filter sits on `MainActivity` in `:app`, because the host owns external entry points.
 - **Back behaviour.** A deep link on a cold start, or on a warm start through `onNewIntent` and `handleDeepLink`, opens Details with Browse underneath, so Back returns to the list.
+- **After process death.** When Android has killed the app's process in the background but kept its task, it recreates `MainActivity` from its saved state and delivers the link through `onNewIntent` before `onResume`, so before anything is composed. The listener is therefore registered in `onCreate`, and the link waits in state until the `NavController` exists.
 - **Predictive back** is enabled (`android:enableOnBackInvokedCallback="true"`), and Navigation Compose animates it.
 - **Not HTTPS App Links.** Verifying them needs a hosted `assetlinks.json` that matches the signing key, which reviewers' own debug builds wouldn't match. SOLUTION.md covers this.
 - **Manual check:** `adb shell am start -W -a android.intent.action.VIEW -d "mrd://restaurant/r-1001" com.effekt3r.mrd`
@@ -194,20 +198,20 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 
 ### 5.3 Sync
 
-- **A refresh** fetches the JSON, then maps and validates it on `Dispatchers.Default`. One Room transaction then:
-  - upserts the restaurants;
-  - replaces their opening intervals;
-  - deletes restaurants missing from the new snapshot;
-  - records `sync_state.last_synced_at`.
+- **A refresh** reads the response body into memory, about 6 MB for the stress file: Retrofit buffers a `ResponseBody` on OkHttp's thread before returning it. The body is then parsed and validated record by record on the IO dispatcher, so the payload is never held as a JSON tree. One Room transaction then:
+  - replaces the restaurants and their opening intervals. It deletes every restaurant and inserts the new snapshot, because `NOT IN` with 10,000 ids would exceed SQLite's 999-variable limit on Android 10 and lower;
+  - records `sync_state.last_synced_at`, and in `sync_state.etag` the ETag of the response the snapshot came from.
 
   Favourites are never touched.
+- **`@Streaming` is the next step if payloads grow:** the parser would read the body as it arrives, without the buffer. It changes when OkHttp writes its cache, though. Today the cache entry is complete before parsing starts; with `@Streaming` it's written as the parser reads, and committed only once the whole body has been read, so a refresh that fails partway may leave no cache entry.
 - **When a refresh runs:**
   - when Browse becomes visible and the snapshot is missing or more than 5 minutes old;
   - on pull-to-refresh and on Retry;
   - when the connection returns after a failed refresh;
   - when Details is opened for an id that isn't cached and no sync has happened yet.
 - **One request at a time.** Refreshes that overlap join the one already running, so there is only one network call.
-- **HTTP caching.** OkHttp has a 10 MB disk cache, and each request sends `Cache-Control: no-cache`, so the response is always revalidated against GitHub's ETag. Unchanged data comes back as a 304 of a few hundred bytes. A 304 skips the database write and only updates `last_synced_at`, unless the database is empty.
+- **HTTP caching.** OkHttp has a 10 MB disk cache, and each request sends `Cache-Control: max-age=0`, so the response is always revalidated against GitHub's ETag. (`no-cache` would make OkHttp skip its cache and download the whole file every time.) Unchanged data comes back as a 304 of a few hundred bytes.
+- **A 304 confirms OkHttp's cache, not the database.** OkHttp caches a body before the app has stored it, so a refresh that then fails (bad data, a failed write, the process dying) leaves OkHttp with a body the database doesn't hold. A 304 therefore skips the database write and only updates `last_synced_at` when its ETag matches `sync_state.etag` and the database isn't empty. Otherwise the cached body OkHttp returns with the 304 is processed like a 200.
 - **Timeouts** are 10 seconds to connect and 20 seconds to read, since the stress file is about 6 MB (under 0.5 MB gzipped).
 - **Bad data never wipes the cache.** If the payload contained records but none survived validation, the refresh fails as `BadData` and the current snapshot stays.
 
@@ -216,9 +220,10 @@ tools/datagen        build-time tool that generates the mock API's data (§5.2);
 - **Error types.** `:core:data` maps every failure exactly once into a `SyncError`:
   - `Network`: no connection, DNS failure or timeout;
   - `Server(httpCode)`;
-  - `BadData`: malformed JSON, or no usable records.
-- **What the ViewModels see** is a `SyncStatus(lastSyncedAt, isRefreshing, lastError)`, never an exception.
-- **Error copy.** The UI picks its wording using the connectivity state: "You're offline" when there's no network, and "Couldn't connect" when there is.
+  - `BadData`: malformed JSON, or no usable records;
+  - `Storage`: the database failed, for example because the disk is full.
+- **What the ViewModels see** is a `SyncStatus(lastSyncedAt, isRefreshing, lastError)`, never an exception. A refresh always ends with `isRefreshing` false, whether it fails or is cancelled. Cancelling isn't a failure, so it leaves `lastError` as it was.
+- **Error copy.** The UI picks its wording using the connectivity state: "You're offline" when there's no network, and "Couldn't connect" when there is. `Storage` isn't a connection problem, so it gets its own wording.
 
 ### 5.5 Room schema
 
@@ -226,10 +231,11 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
 
 | Table | Columns | Notes |
 |---|---|---|
-| `restaurants` | `id` (primary key), `name`, `name_search`, `cuisines`, `rating`, `delivery_fee_cents`, `eta_minutes`, `is_open_snapshot`, `image_url`, `has_hours`, `position` | `name_search` is the name lowercased, with accents removed and whitespace collapsed, so "cafe" finds "Café". `cuisines` is stored as a JSON array through a type converter. `position` keeps the server's order, because ranking is a backend concern. |
+| `restaurants` | `id` (primary key), `name`, `name_search`, `cuisines`, `rating_tenths`, `delivery_fee_cents`, `eta_minutes`, `is_open_snapshot`, `image_url`, `has_hours`, `position` | `name_search` is the name lowercased, with accents removed and whitespace collapsed, so "cafe" finds "Café". `cuisines` is stored as a JSON array through a type converter. `position` keeps the server's order, because ranking is a backend concern. |
 | `opening_intervals` | `restaurant_id`, `start_minute`, `end_minute` | Primary key (`restaurant_id`, `start_minute`). A foreign key to `restaurants` with cascade delete. |
 | `favourites` | `restaurant_id` (primary key), `created_at` | No foreign key, so a favourite survives snapshot replacement and a restaurant that temporarily disappears. |
-| `sync_state` | `id` (always 0), `last_synced_at` | A single row. |
+| `sync_state` | `id` (always 0), `last_synced_at`, `etag` | A single row. `etag` is the ETag of the response the stored snapshot came from, written in the swap's transaction (§5.3). |
+| `menus` | `restaurant_id` (primary key), `menu_json`, `fetched_at` | The validated menu as JSON (§5.9). No foreign key: a restaurant's menu is replaced, or deleted on a 404. |
 
 **Search.** The query is normalised the same way as `name_search`. The wildcard characters `%`, `_` and `\` are escaped, and the query is matched with `LIKE '%' || :query || '%' ESCAPE '\'`.
 
@@ -244,31 +250,67 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - Overlapping or touching intervals are merged.
 - **Status has three values:**
   - **Open** or **Closed** when the hours are known, depending on whether the current week minute falls inside an interval;
-  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old;
+  - when the hours are unknown, the server's `is_open`, but only while the snapshot is less than 30 minutes old. The status is worked out for the latest minute tick, so a sync that lands between two ticks is up to a minute newer than that time, and still counts. A snapshot further ahead means the clock was set back, and doesn't;
   - **Unknown** after that.
 - **Open now includes only Open.** The app never claims a restaurant is open when it can't back that up.
 - **Details shows the next change:** "Closes 22:00" (following intervals across midnight), "Opens 11:00", "Opens tomorrow 11:00" or "Opens Mon 11:00".
-- **Status is computed in SQL.** The list status and the filter come from a single `:weekMinute` parameter plus `:snapshotFresh`, so paging and the result count stay correct at 10,000 rows. Details uses the same rules as pure Kotlin functions.
-- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting. On each tick, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+- **Status is computed in SQL.** The list status and the filter come from two parameters, `:weekMinute` and `:now`, so paging and the result count stay correct at 10,000 rows. The query reads the snapshot's freshness from `sync_state`, so Room re-runs it when a sync lands. Details uses the same rules as pure Kotlin functions.
+- **Keeping it current.** A minute ticker driven by `java.time.Clock` and aligned to minute boundaries runs only while a screen is collecting its state. On each tick in a new minute, the repository invalidates the current PagingSource rather than building a new Pager. Paging's refresh key then keeps the scroll position when a status flips.
+  - The paged list takes its ticks from the screen: `restaurants(query, openNow, ticks)`. `cachedIn(viewModelScope)` keeps the list collected for as long as the ViewModel lives, so the list couldn't stop a ticker of its own when the app goes to the background.
+  - A tick in the minute the list was loaded for changes nothing, so the tick a screen sends as it becomes visible reloads the list only if it's out of date.
 
 **How it's measured:**
 - **Correctness.** The same boundary cases run against both the Kotlin functions and the SQL query:
   - opening time included and closing time excluded;
   - overnight hours and the Sunday-to-Monday wrap;
   - split shifts, 24-hour places and closed days;
-  - missing hours with a fresh snapshot and with a stale one.
+  - missing hours with a fresh snapshot, a stale one, one synced since the latest tick, and one from a clock set back.
 - **Impact.** A JVM test counts, across the generated dataset, how many statuses a cached `is_open` would get wrong after 1, 3, 6 and 12 hours offline, sampled across the week. Derived status gets none wrong. The numbers go into SOLUTION.md.
 - **Demo.** Turn on airplane mode and set the emulator clock to one minute before a restaurant's closing time. It flips to Closed and drops out of the Open now list.
 
 ### 5.7 Connectivity and images
 
-- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes.
-- **Images.** Coil 3 uses the shared `OkHttpClient` and Coil's own disk cache, so images the user has already seen still show offline.
-- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown. TheMealDB serves `/medium` (about 33 KB) for cards and `/large` (about 58 KB) for the details header, against about 105 KB at full size. The resolver stands in for an image CDN's resize parameters.
+- **Connectivity.** The `ConnectivityManager` default-network callback is exposed as a `Flow<Boolean>` meaning "validated internet". The callback is registered only while someone collects the flow. When the connection returns after a failed refresh, the app refreshes, and Details fetches its menu again if that failed or is still running (§5.9).
+- **Images.** Coil 3 uses the shared `OkHttpClient`'s connections and Coil's own disk cache, so images the user has already seen still show offline. It doesn't use the client's HTTP cache (`newBuilder().cache(null)`): photos there would evict the restaurant list's entry, whose ETag makes an unchanged refresh a 304.
+- **Image sizes.** The API returns one canonical image URL, and a small resolver asks for a size that suits where it's shown: it's where an image CDN's resize parameters would go. A meal photo is 700 px wide, and TheMealDB also serves copies at `/large` (500 px), `/medium` (350 px) and `/small` (150 px). Measured across the 159 photos in `restaurants.json` on 2026-11-19:
+  - **Cards and the details header** ask for the full-size photo, the URL itself. Both are as wide as a phone, about 1,000 px, where `/medium` looked soft. `/large` isn't enough either, because TheMealDB's copies aren't uniform: for 17 of the 159 photos (19 restaurants, including r-1001), `/large` is 350 px and `/medium` the full 700 px. Only the full size is sharp on every card.
+  - **The trade-off** is bytes: about 146 KB a card on first load, against 40 KB at `/medium`. Coil's disk cache keeps each photo for offline use.
+  - **Memory.** Coil decodes a photo at the size it's drawn at, but never larger than the photo itself: `AsyncImage` asks for an inexact size, which Coil doesn't scale up (`BitmapFactoryDecoder`, 3.4.0). A card is wider than 700 px on a phone, so its bitmap is the whole photo, 700 × 700 px at 4 bytes a pixel: about 2 MB, against 1 MB at `/large`. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
+  - **Menu thumbnails** ask for `/small`.
 
 ### 5.8 Favourites
 
 `toggleFavourite(id)` inserts or deletes a row in `favourites`. Browse and Details both observe that table, so they always agree. Favourites survive restarts and refreshes. They aren't a filter, because the brief limits filtering to search and Open now.
+
+### 5.9 Menus
+
+Added on 2026-11-19, when I chose to include the brief's optional menu data.
+
+- **Endpoint.** `GET {API_BASE_URL}v1/menus/{restaurant_id}.json`, served from the repository like the list.
+  - Every distinct id in the 220-restaurant file has a menu: 218 files, because one record has no id and one id appears twice. The duplicated id's menu is made from its first record.
+  - In the 10,000-restaurant stress file, restaurants after the first 220 have none. The API answers 404, and Details says the restaurant hasn't shared a menu. That's a deliberate "problem" state.
+- **Schema.** The brief's example: `restaurant_id`, then `categories` of `id`, `name` and `items`. Each item has `id`, `name`, `price_cents`, `available`, `description`, `image_url` and `options`, and each option has `id`, `name` and `price_cents`.
+
+| Field | When missing, null or invalid |
+|---|---|
+| `restaurant_id` | Must match the requested id, or the payload is `BadData`. |
+| category `id`, `name` | The category is dropped. A category with no valid items is hidden. |
+| item `id`, `name` | The item is dropped. |
+| item `price_cents` | Must be an integer of 0 or more, or the item is dropped: it can't be ordered. |
+| item `available` | Missing means available. `false` greys the item out with "Sold out". |
+| item `description` | Missing or blank: no description line. |
+| item `image_url` | HTTPS only; otherwise no thumbnail. |
+| `options` | An option without an id or name, or with a negative or non-integer price, is dropped. A price of 0 shows as "Free". |
+
+- **Duplicates and bad payloads.** Within a menu, the first of any duplicate ids wins. A payload that had items, none of which survived, is `BadData`, like the list (§5.3).
+- **Loading and caching:**
+  - Details renders the restaurant from the list cache straight away, and the menu loads afterwards with its own state: loading, content, not available, or error.
+  - A menu that failed, or whose fetch is still running, is fetched again by itself when the connection returns, as the list is (§5.7), and Retry fetches it at any time. A fetch still running began before the connection returned, so it would fail after it, even under a cached menu. A menu that loaded isn't fetched again.
+  - The validated menu is cached in Room per restaurant, with the time it was fetched, so a menu seen before is available offline.
+  - A cached menu that no longer decodes, for example after an app update changed the cache's format, counts as no cache: it's deleted and fetched again.
+  - A database failure, such as a full disk, is a `Storage` error (§5.4), shown with the menu cached before, if any. If the cache can't even be read, the menu isn't fetched, because it couldn't be kept.
+  - Requests revalidate with the ETag, as the list's do (§5.3). A 404 deletes any cached menu for that id.
+- **Generated data.** `:tools:datagen` writes the menus from the same seed (§5.2). The dishes are curated per concept and Cape Town-flavoured, the prices are integer cents, and some items are sold out or carry options. The deliberate edge cases are listed in `mock-api/README.md`.
 
 ## 6. UI
 
@@ -279,14 +321,16 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - Sky blue as text on white has a contrast of about 1.8:1, which fails accessibility. It's therefore only used as a fill behind ink text, and links use a darker blue derived from it.
   - Status colours meet WCAG AA. A dark theme is built from the same tokens.
   - Nothing outside the design system uses a raw colour value (§7.2).
-- **Type:** Figtree, an open-licence geometric sans close to the lettering in the Mr D screenshots. It's bundled with the app rather than downloaded, so it works offline. Headings are extra-bold and body text is regular.
+- **Type:** Figtree, an open-licence geometric sans close to the lettering in the Mr D screenshots. It's bundled with the app rather than downloaded, so it works offline: one variable font covers every weight from API 26, the app's minimum. Headings are extra-bold, titles bold, body text regular and labels semi-bold.
 - **Shapes and spacing:** fields and image cards have 12 dp rounded corners; chips and pills are fully rounded. Spacing steps are 4, 8, 12, 16 and 24 dp.
-- **Components:** search field, filter chip, ETA pill, status label, rating, favourite button, skeleton card, state screens (error and empty), and the offline banner.
+- **Icons:** Material Symbols (rounded), committed as vector drawables.
+- **Theme:** `MrdTheme` themes Material 3 with these tokens, and adds the roles Material has no slot for (links, Open, Closed and photo placeholders).
+- **Components:** search field, filter chip, ETA pill, tag, status label, rating, favourite and back buttons, photo placeholder, restaurant card, menu category header and item row, skeleton card and rows, state screens (error and empty), and the offline banner. They take display-ready text, not model types; `:core:ui` formats the model for them (milestone 5).
 
 ### 6.2 Browse
 
 **Layout:**
-- **Pinned header:**
+- **Header**, which slides away as the list scrolls up and comes back as soon as it scrolls down. Pinned whole, at 200% font in landscape it left the list about 40% of the screen, and none with the keyboard open. A surface strip stays behind the status bar.
   - a "Restaurants" title;
   - a grey search field ("Search restaurants", with a clear button and the keyboard's search action);
   - the Open now chip, filled with ink when on and outlined when off;
@@ -319,8 +363,14 @@ The database is `discovery.db`, version 1. Its schema is exported to `core/data/
   - the name and cuisines;
   - a row of three stats: rating, ETA and delivery fee;
   - a status line showing the next change;
-  - the week's opening hours, with today highlighted.
+  - the week's opening hours, with today highlighted;
+  - the menu (§5.9), by category. Each item shows its name, up to two lines of description, its price in rand, an optional thumbnail and its options ("+ Extra lemon R5"). Sold-out items are greyed out.
 - **States:** content; not found (unknown id); and loading or offline error, which only happen for a deep link whose restaurant isn't cached yet.
+- **The menu's own states:**
+  - skeleton rows while it loads;
+  - "This restaurant hasn't shared a menu yet" for a 404 or an empty menu;
+  - an error with Retry, worded for being offline when offline;
+  - a cached menu with a small "Menu from 10:42" note when its refresh failed.
 
 ### 6.4 System UI
 
@@ -398,10 +448,10 @@ Following the rule that a passing build is not proof:
 ### 8.1 Toolchain
 
 - **Tools:** Android Studio 2026.2.2 or newer, and JDK 17 or newer (21 recommended), as the README lists.
-- **Versions:** proven rather than newest. The toolchain is the combination Google's Now in Android builds with, libraries have been out for at least four weeks, and a spike build validated the set before the plan was written (README, version policy).
-- **SDK levels:** compile and target SDK 36; minSdk 26.
+- **Versions:** proven rather than newest. The toolchain started as the combination Google's Now in Android builds with, libraries had been out for at least four weeks, and a spike build validated the set before the plan was written. Dependabot has updated it since, each update merged once CI passed (README, version policy).
+- **SDK levels:** compile SDK 37, target SDK 36, minSdk 26. Compose 1.12, Core 1.19, Navigation 2.10 and androidx.hilt 1.4 need compile SDK 37, which only changes the APIs the code compiles against. The target SDK sets the platform behaviour the app opts into, so it moves to 37 only once the app has been tested against Android 17's behaviour changes.
 - **Dependencies** are declared in a version catalogue (`gradle/libs.versions.toml`).
-- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.hilt` and `mrd.jvm.library`. `mrd.android.room` arrives with the data layer in milestone 3. The layering rule lives in `settings.gradle.kts` (§4.2).
+- **Convention plugins** in `build-logic/convention`: `mrd.android.application`, `mrd.android.library`, `mrd.android.feature` (library, Compose, Hilt, serialization and the shared feature dependencies), `mrd.android.compose`, `mrd.android.room` (Room with KSP and the exported schema), `mrd.hilt` and `mrd.jvm.library`. The layering rule lives in `settings.gradle.kts` (§4.2).
 - **Formatting:** Spotless with ktlint.
 - **Compose stability:** a stability configuration file marks the `:core:model` types as stable.
 
@@ -434,7 +484,7 @@ Following the rule that a passing build is not proof:
 
   It uploads the APKs, test reports and `mapping.txt`.
 - **Hardening:**
-  - The workflow token is read-only (`permissions: contents: read`). The one job that can write submits the dependency graph and runs no build code.
+  - The workflow token is read-only (`permissions: contents: read`). Two jobs can write: dependency submission's submit job, which runs no build code, and `release.yml`'s job, which runs only for `v*` tags and needs `contents: write` to create the GitHub Release.
   - Every action is pinned to a commit SHA, and checkout uses `persist-credentials: false`.
   - Only GitHub-owned actions and `gradle/actions` may run, and the repository requires SHA pinning. That's stricter than allowing verified creators.
   - Gradle caching uses the open-source `basic` provider. Pushes to `dev` and `master` write the cache; pull requests only read it.
@@ -521,12 +571,12 @@ This is set up by the repository-setup pull request (#1), and `CONTRIBUTING.md` 
 | AC-21 | CI passes on `dev` and `master`: formatting, lint, unit, Robolectric and architecture tests, the release build and the secret scan. |
 | AC-22 | A `v*` tag produces a signed release APK attached to a GitHub Release. |
 | AC-23 | README.md explains how to run and test the app, use the stress dataset and trigger the deep link. SOLUTION.md answers every Task 3 question. AI_USAGE.md includes the prompts. |
+| AC-24 | Details shows the restaurant's menu by category, with prices in rand and sold-out items marked. The menu loads separately, with its own loading, not-available and error states, and a menu seen before is available offline. |
 
 ## 12. Deliberately not done
 
 | Not done | Why, and when it would be done |
 |---|---|
-| Menus on Details | The brief makes them optional. They would be a separate endpoint: Details renders straight away from the cache and the menu loads afterwards with its own state. |
 | Address picker and maps | There's no location data, and the API already returns the restaurants for one delivery area. |
 | Navigation 3 and a two-pane list-detail layout | Worth it once tablet layouts are a goal. The adaptive grid covers large screens for now. |
 | `api`/`impl` module splits, a database per squad, dynamic feature delivery | Worth it when many squads navigate into Details (faster builds) and when migrations start to collide. SOLUTION.md covers them. |
@@ -571,6 +621,8 @@ Every link below was checked and resolves.
 - Convention plugins: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html and https://github.com/android/nowinandroid/tree/main/build-logic
 - KSP: https://developer.android.com/build/migrate-to-ksp
 - Compose Compiler Gradle plugin: https://developer.android.com/develop/ui/compose/setup-compose-dependencies-and-compiler
+- Android SDK settings (compileSdk, minSdk and targetSdk): https://developer.android.com/build#android_sdk_settings
+- Behaviour changes for apps targeting Android 17: https://developer.android.com/about/versions/17/behavior-changes-17
 - Java 8+ APIs (`java.time` on minSdk 26): https://developer.android.com/studio/write/java8-support
 - R8 app optimization: https://developer.android.com/topic/performance/app-optimization/enable-app-optimization
 - Keep rules: https://developer.android.com/topic/performance/app-optimization/add-keep-rules

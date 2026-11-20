@@ -1,0 +1,211 @@
+{
+  "restaurant_id": "r-1003",
+  "categories": [
+    {
+      "id": "c-1003-1",
+      "name": "Cakes & Tarts",
+      "items": [
+        {
+          "id": "i-1003-101",
+          "name": "Red Velvet Cake",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Cream cheese frosting",
+          "image_url": "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg"
+        },
+        {
+          "id": "i-1003-102",
+          "name": "Chocolate Cake",
+          "price_cents": 7900,
+          "available": true,
+          "description": "Three layers with ganache",
+          "image_url": "https://www.themealdb.com/images/media/meals/qawvoy1777627952.jpg"
+        },
+        {
+          "id": "i-1003-103",
+          "name": "Carrot Cake",
+          "price_cents": 3900,
+          "available": false
+        },
+        {
+          "id": "i-1003-104",
+          "name": "Lemon Meringue Tart",
+          "price_cents": 4900,
+          "available": false,
+          "description": "Torched meringue"
+        },
+        {
+          "id": "i-1003-105",
+          "name": "Milk Tart",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Cinnamon custard"
+        },
+        {
+          "id": "i-1003-106",
+          "name": "Cheesecake",
+          "price_cents": 7900,
+          "available": true,
+          "description": "New York style, with berry compote",
+          "options": [
+            { "id": "o-1003-106-1", "name": "Warmed", "price_cents": 3500 },
+            { "id": "o-1003-106-2", "name": "Add ice cream", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1003-107",
+          "name": "Pecan Pie",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Caramel and toasted pecans",
+          "image_url": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg"
+        },
+        {
+          "id": "i-1003-108",
+          "name": "Apple Crumble",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Cinnamon, with custard",
+          "image_url": "https://www.themealdb.com/images/media/meals/rsqwus1511640214.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1003-2",
+      "name": "Waffles & Crêpes",
+      "items": [
+        {
+          "id": "i-1003-201",
+          "name": "Belgian Waffle",
+          "price_cents": 7900,
+          "available": false,
+          "description": "Maple syrup and cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/z9g8011763075640.jpg"
+        },
+        {
+          "id": "i-1003-202",
+          "name": "Berry Waffle",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Mixed berries and mascarpone"
+        },
+        {
+          "id": "i-1003-203",
+          "name": "Chocolate & Banana Crêpe",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Served warm, with cream",
+          "image_url": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg"
+        },
+        {
+          "id": "i-1003-204",
+          "name": "Salted Caramel Crêpe",
+          "price_cents": 7900,
+          "available": true,
+          "description": "With toasted nuts",
+          "image_url": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg",
+          "options": [
+            { "id": "o-1003-204-1", "name": "Add banana", "price_cents": 1000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1003-3",
+      "name": "Ice Cream",
+      "items": [
+        {
+          "id": "i-1003-301",
+          "name": "Dark Chocolate",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Two scoops",
+          "image_url": "https://www.themealdb.com/images/media/meals/fx0exq1779646651.jpg"
+        },
+        {
+          "id": "i-1003-302",
+          "name": "Salted Caramel",
+          "price_cents": 6900,
+          "available": false,
+          "description": "Two scoops",
+          "image_url": "https://www.themealdb.com/images/media/meals/xlqqhw1764369924.jpg"
+        },
+        {
+          "id": "i-1003-303",
+          "name": "Strawberry Sorbet",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Dairy-free"
+        },
+        {
+          "id": "i-1003-304",
+          "name": "Mango Sorbet",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Dairy-free",
+          "image_url": "https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1003-4",
+      "name": "Coffee & Tea",
+      "items": [
+        {
+          "id": "i-1003-401",
+          "name": "Espresso",
+          "price_cents": 3900,
+          "available": true,
+          "description": "A double shot"
+        },
+        {
+          "id": "i-1003-402",
+          "name": "Americano",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Espresso and hot water",
+          "options": [
+            { "id": "o-1003-402-1", "name": "Large", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1003-403",
+          "name": "Flat White",
+          "price_cents": 2900,
+          "available": true,
+          "description": "A double shot with steamed milk"
+        },
+        {
+          "id": "i-1003-404",
+          "name": "Café Latte",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1003-405",
+          "name": "Red Cappuccino",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Rooibos espresso with foamed milk"
+        },
+        {
+          "id": "i-1003-406",
+          "name": "Chai Latte",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Spiced and sweetened",
+          "options": [
+            { "id": "o-1003-406-1", "name": "Oat milk", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1003-407",
+          "name": "Hot Chocolate",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Rich, with marshmallows"
+        }
+      ]
+    }
+  ]
+}

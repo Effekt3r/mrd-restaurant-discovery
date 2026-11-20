@@ -1,0 +1,191 @@
+{
+  "restaurant_id": "r-1087",
+  "categories": [
+    {
+      "id": "c-1087-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1087-101",
+          "name": "Chicken Satay",
+          "price_cents": 7900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg"
+        },
+        {
+          "id": "i-1087-102",
+          "name": "Tom Yum Soup",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Hot and sour, with prawns",
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        },
+        {
+          "id": "i-1087-103",
+          "name": "Tom Kha Gai",
+          "price_cents": 7900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg"
+        },
+        {
+          "id": "i-1087-104",
+          "name": "Thai Fish Cakes",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With a cucumber relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/568t931763584227.jpg"
+        },
+        {
+          "id": "i-1087-105",
+          "name": "Prawn Crackers",
+          "price_cents": 6900,
+          "available": true,
+          "description": "With sweet chilli"
+        },
+        {
+          "id": "i-1087-106",
+          "name": "Som Tam",
+          "price_cents": 5900,
+          "available": true,
+          "description": "Green papaya salad with peanuts and lime",
+          "options": [
+            { "id": "o-1087-106-1", "name": "Add peanut sauce", "price_cents": 1500 },
+            { "id": "o-1087-106-2", "name": "Extra sweet chilli", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1087-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1087-201",
+          "name": "Green Curry",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Chicken, Thai basil and aubergine",
+          "image_url": "https://www.themealdb.com/images/media/meals/118oj61763423896.jpg"
+        },
+        {
+          "id": "i-1087-202",
+          "name": "Yellow Curry",
+          "price_cents": 11900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/568t931763584227.jpg"
+        },
+        {
+          "id": "i-1087-203",
+          "name": "Jungle Curry",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Vegetables, no coconut, very hot",
+          "image_url": "https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg",
+          "options": [
+            { "id": "o-1087-203-1", "name": "Add jasmine rice", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1087-204",
+          "name": "Prawn Red Curry",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Coconut and cherry tomatoes",
+          "image_url": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg"
+        },
+        {
+          "id": "i-1087-205",
+          "name": "Tofu Green Curry",
+          "price_cents": 15900,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1087-3",
+      "name": "Noodles & Stir-Fries",
+      "items": [
+        {
+          "id": "i-1087-301",
+          "name": "Drunken Noodles",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Holy basil, chilli and wide noodles"
+        },
+        {
+          "id": "i-1087-302",
+          "name": "Thai Fried Rice",
+          "price_cents": 10900,
+          "available": true,
+          "description": "Egg, onion and lime",
+          "image_url": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg"
+        },
+        {
+          "id": "i-1087-303",
+          "name": "Cashew Chicken",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Stir-fried with dried chilli",
+          "image_url": "https://www.themealdb.com/images/media/meals/4k8nzy1763583384.jpg"
+        },
+        {
+          "id": "i-1087-304",
+          "name": "Pad Kra Pao",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Minced pork, holy basil and a fried egg",
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1087-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1087-401",
+          "name": "Still Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, chilled"
+        },
+        {
+          "id": "i-1087-402",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1087-402-1", "name": "Add mint", "price_cents": 1500 },
+            { "id": "o-1087-402-2", "name": "Large", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1087-403",
+          "name": "Ginger Beer",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Home-brewed with fresh ginger"
+        },
+        {
+          "id": "i-1087-404",
+          "name": "Rock Shandy",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters"
+        },
+        {
+          "id": "i-1087-405",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream",
+          "options": [
+            { "id": "o-1087-405-1", "name": "Add mint", "price_cents": 3000 },
+            { "id": "o-1087-405-2", "name": "Extra lemon", "price_cents": 2000 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "restaurant_id": "r-1143",
+  "categories": [
+    {
+      "id": "c-1143-1",
+      "name": "Mezze",
+      "items": [
+        {
+          "id": "i-1143-101",
+          "name": "Hummus",
+          "price_cents": 5000,
+          "available": true,
+          "description": "Chickpeas, tahini and olive oil, with pita",
+          "image_url": "https://www.themealdb.com/images/media/meals/gpon5u1763801180.jpg"
+        },
+        {
+          "id": "i-1143-102",
+          "name": "Baba Ganoush",
+          "price_cents": 9000,
+          "available": true,
+          "description": "Smoky aubergine and pomegranate",
+          "image_url": "https://www.themealdb.com/images/media/meals/0p7l6b1763813981.jpg",
+          "options": [
+            { "id": "o-1143-102-1", "name": "Extra tahini", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1143-103",
+          "name": "Falafel",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Six, with tahini",
+          "image_url": "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg"
+        },
+        {
+          "id": "i-1143-104",
+          "name": "Tzatziki",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Yoghurt, cucumber and garlic, with pita",
+          "image_url": "https://www.themealdb.com/images/media/meals/lgmnff1763789847.jpg"
+        },
+        {
+          "id": "i-1143-105",
+          "name": "Dolmades",
+          "price_cents": 8500,
+          "available": false,
+          "description": "Vine leaves stuffed with rice",
+          "options": [
+            { "id": "o-1143-105-1", "name": "Extra pita", "price_cents": 1500 },
+            { "id": "o-1143-105-2", "name": "Add feta", "price_cents": 3000 },
+            { "id": "o-1143-105-3", "name": "Extra tahini", "price_cents": 500 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1143-2",
+      "name": "Shawarma & Wraps",
+      "items": [
+        {
+          "id": "i-1143-201",
+          "name": "Chicken Shawarma",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Garlic sauce and pickles in pita",
+          "image_url": "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg"
+        },
+        {
+          "id": "i-1143-202",
+          "name": "Lamb Shawarma",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Tahini, tomato and onion",
+          "image_url": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg"
+        },
+        {
+          "id": "i-1143-203",
+          "name": "Lamb Souvlaki Pita",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Tzatziki, tomato and onion"
+        },
+        {
+          "id": "i-1143-204",
+          "name": "Chicken Gyro",
+          "price_cents": 10500,
+          "available": true,
+          "description": "Tzatziki and chips in pita",
+          "image_url": "https://www.themealdb.com/images/media/meals/0p7l6b1763813981.jpg",
+          "options": [
+            { "id": "o-1143-204-1", "name": "Extra garlic sauce", "price_cents": 3000 },
+            { "id": "o-1143-204-2", "name": "Make it spicy", "price_cents": 3500 },
+            { "id": "o-1143-204-3", "name": "Add halloumi", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1143-205",
+          "name": "Halloumi Wrap",
+          "price_cents": 12500,
+          "available": true,
+          "description": "Grilled halloumi and roasted peppers",
+          "image_url": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg"
+        },
+        {
+          "id": "i-1143-206",
+          "name": "Beef Kofta Wrap",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Spiced mince and a yoghurt sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg"
+        },
+        {
+          "id": "i-1143-207",
+          "name": "Mixed Shawarma Plate",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Chicken and lamb with rice and salad",
+          "image_url": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1143-3",
+      "name": "Grills",
+      "items": [
+        {
+          "id": "i-1143-301",
+          "name": "Lamb Chops",
+          "price_cents": 21500,
+          "available": true,
+          "description": "Lemon and oregano",
+          "image_url": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
+          "options": [
+            { "id": "o-1143-301-1", "name": "Garlic sauce", "price_cents": 3000 },
+            { "id": "o-1143-301-2", "name": "Add rice", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1143-302",
+          "name": "Chicken Kebab Plate",
+          "price_cents": 17000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg"
+        },
+        {
+          "id": "i-1143-303",
+          "name": "Lamb Kofta Plate",
+          "price_cents": 14500,
+          "available": true,
+          "description": "Three kofta with tahini and salad",
+          "image_url": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg",
+          "options": [
+            { "id": "o-1143-303-1", "name": "Chilli sauce", "price_cents": 2500 },
+            { "id": "o-1143-303-2", "name": "Add rice", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1143-304",
+          "name": "Moussaka",
+          "price_cents": 19000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg"
+        },
+        {
+          "id": "i-1143-305",
+          "name": "Grilled Calamari",
+          "price_cents": 18000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ro8mzj1763800655.jpg"
+        },
+        {
+          "id": "i-1143-306",
+          "name": "Lamb Kleftiko",
+          "price_cents": 21000,
+          "available": true,
+          "description": "Slow-roasted, with potatoes"
+        },
+        {
+          "id": "i-1143-307",
+          "name": "Beef Kebab Plate",
+          "price_cents": 21500,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1143-4",
+      "name": "Sweets",
+      "items": [
+        {
+          "id": "i-1143-401",
+          "name": "Baklava",
+          "price_cents": 6500,
+          "available": true
+        },
+        {
+          "id": "i-1143-402",
+          "name": "Loukoumades",
+          "price_cents": 7000,
+          "available": true,
+          "description": "Honey doughnuts with cinnamon"
+        },
+        {
+          "id": "i-1143-403",
+          "name": "Galaktoboureko",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Semolina custard in filo",
+          "options": [
+            { "id": "o-1143-403-1", "name": "Add ice cream", "price_cents": 3000 },
+            { "id": "o-1143-403-2", "name": "Extra syrup", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1143-404",
+          "name": "Turkish Delight",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Rose and lemon"
+        },
+        {
+          "id": "i-1143-405",
+          "name": "Rice Pudding",
+          "price_cents": 7000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/rsqwus1511640214.jpg"
+        }
+      ]
+    }
+  ]
+}

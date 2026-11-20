@@ -1,0 +1,234 @@
+{
+  "restaurant_id": "r-1041",
+  "categories": [
+    {
+      "id": "c-1041-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1041-101",
+          "name": "Chicken Satay",
+          "price_cents": 6900,
+          "available": true,
+          "description": "Four skewers with peanut sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg"
+        },
+        {
+          "id": "i-1041-102",
+          "name": "Spring Rolls",
+          "price_cents": 9900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ittake1763586925.jpg"
+        },
+        {
+          "id": "i-1041-103",
+          "name": "Tom Kha Gai",
+          "price_cents": 9900,
+          "available": false,
+          "description": "Coconut chicken soup with galangal"
+        },
+        {
+          "id": "i-1041-104",
+          "name": "Thai Fish Cakes",
+          "price_cents": 5900,
+          "available": true,
+          "description": "With a cucumber relish",
+          "image_url": "https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg"
+        },
+        {
+          "id": "i-1041-105",
+          "name": "Prawn Crackers",
+          "price_cents": 6900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/prjve31763486864.jpg",
+          "options": [
+            { "id": "o-1041-105-1", "name": "Add peanut sauce", "price_cents": 2500 },
+            { "id": "o-1041-105-2", "name": "Extra sweet chilli", "price_cents": 2500 },
+            { "id": "o-1041-105-3", "name": "Make it spicy", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1041-106",
+          "name": "Som Tam",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/6s3i3p1763488540.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1041-2",
+      "name": "Curries",
+      "items": [
+        {
+          "id": "i-1041-201",
+          "name": "Green Curry",
+          "price_cents": 10900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg"
+        },
+        {
+          "id": "i-1041-202",
+          "name": "Red Curry",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/96lt871763480970.jpg",
+          "options": [
+            { "id": "o-1041-202-1", "name": "Add prawns", "price_cents": 2500 },
+            { "id": "o-1041-202-2", "name": "Extra hot", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1041-203",
+          "name": "Panang Curry",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Chicken in a thick peanut sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/sstssx1487349585.jpg"
+        },
+        {
+          "id": "i-1041-204",
+          "name": "Jungle Curry",
+          "price_cents": 11900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/0dhtwr1763371444.jpg"
+        },
+        {
+          "id": "i-1041-205",
+          "name": "Tofu Green Curry",
+          "price_cents": 14900,
+          "available": true,
+          "options": [
+            { "id": "o-1041-205-1", "name": "Make it vegetarian", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1041-3",
+      "name": "Noodles & Stir-Fries",
+      "items": [
+        {
+          "id": "i-1041-301",
+          "name": "Pad Thai",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Rice noodles, tamarind, peanuts and egg",
+          "image_url": "https://www.themealdb.com/images/media/meals/qqlwv91763501559.jpg",
+          "options": [
+            { "id": "o-1041-301-1", "name": "Add prawns", "price_cents": 500 },
+            { "id": "o-1041-301-2", "name": "Extra chilli", "price_cents": 500 }
+          ]
+        },
+        {
+          "id": "i-1041-302",
+          "name": "Pad See Ew",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Wide noodles, soy and Chinese broccoli"
+        },
+        {
+          "id": "i-1041-303",
+          "name": "Drunken Noodles",
+          "price_cents": 9900,
+          "available": true,
+          "description": "Holy basil, chilli and wide noodles",
+          "image_url": "https://www.themealdb.com/images/media/meals/l50vz41763422681.jpg"
+        },
+        {
+          "id": "i-1041-304",
+          "name": "Thai Fried Rice",
+          "price_cents": 10900,
+          "available": false,
+          "image_url": "https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg"
+        },
+        {
+          "id": "i-1041-305",
+          "name": "Cashew Chicken",
+          "price_cents": 13900,
+          "available": true,
+          "description": "Stir-fried with dried chilli",
+          "image_url": "https://www.themealdb.com/images/media/meals/yx8j1i1763484612.jpg",
+          "options": [
+            { "id": "o-1041-305-1", "name": "Add prawns", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1041-306",
+          "name": "Pad Kra Pao",
+          "price_cents": 14900,
+          "available": true,
+          "description": "Minced pork, holy basil and a fried egg",
+          "options": [
+            { "id": "o-1041-306-1", "name": "Extra chilli", "price_cents": 0 },
+            { "id": "o-1041-306-2", "name": "Extra peanuts", "price_cents": 3000 },
+            { "id": "o-1041-306-3", "name": "Add prawns", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1041-307",
+          "name": "Khao Soi",
+          "price_cents": 10900,
+          "available": false,
+          "description": "Curry noodle soup with crispy noodles",
+          "image_url": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg"
+        },
+        {
+          "id": "i-1041-308",
+          "name": "Glass Noodle Stir-Fry",
+          "price_cents": 12900,
+          "available": true,
+          "description": "Prawns, cabbage and egg"
+        }
+      ]
+    },
+    {
+      "id": "c-1041-4",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "i-1041-401",
+          "name": "Sparkling Water",
+          "price_cents": 3900,
+          "available": true,
+          "description": "500 ml, with a slice of lemon",
+          "options": [
+            { "id": "o-1041-401-1", "name": "Add mint", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1041-402",
+          "name": "Rooibos Iced Tea",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Brewed in-house with honey and lemon"
+        },
+        {
+          "id": "i-1041-403",
+          "name": "Homemade Lemonade",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1041-404",
+          "name": "Rock Shandy",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Lemonade, soda water and bitters",
+          "options": [
+            { "id": "o-1041-404-1", "name": "Extra lemon", "price_cents": 3500 },
+            { "id": "o-1041-404-2", "name": "Add mint", "price_cents": 3500 },
+            { "id": "o-1041-404-3", "name": "Large", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1041-405",
+          "name": "Cream Soda Float",
+          "price_cents": 2900,
+          "available": true,
+          "description": "Green cream soda with vanilla ice cream"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_title">Restaurant %1$s</string>
-    <string name="details_back">Back</string>
+    <!-- The stats row under the name (spec §6.3). A missing ETA or fee shows a dash (spec §5.1). -->
+    <string name="details_rating">Rating</string>
+    <string name="details_delivery_time">Delivery time</string>
+    <string name="details_delivery_fee">Delivery fee</string>
+    <string name="details_missing">–</string>
+    <string name="details_free">Free</string>
+    <!-- What TalkBack reads for a stat: "Delivery time, 32 minutes". -->
+    <string name="details_stat_spoken">%1$s, %2$s</string>
+    <string name="details_not_known">not known</string>
+    <string name="details_rating_new_spoken">new, not rated yet</string>
+
+    <!-- The week's hours, with today highlighted. -->
+    <string name="details_hours">Opening hours</string>
+    <string name="details_hours_unknown">This restaurant hasn\'t shared its opening hours.</string>
+    <string name="details_closed">Closed</string>
+    <string name="details_open_24_hours">Open 24 hours</string>
+    <string name="details_window">%1$s–%2$s</string>
+    <string name="details_window_spoken">%1$s to %2$s</string>
+    <string name="details_windows_separator">", "</string>
+    <string name="details_today">Today</string>
+    <!-- A day's line, as TalkBack reads it: "Monday, 11:00 to 22:00", or "Today, Monday, …". -->
+    <string name="details_day_spoken">%1$s, %2$s</string>
+
+    <!-- The menu (spec §5.9 and §6.3). -->
+    <string name="details_menu">Menu</string>
+    <string name="details_menu_loading">Loading the menu</string>
+    <string name="details_menu_not_available">This restaurant hasn\'t shared a menu yet.</string>
+    <!-- Over a menu seen before, when it couldn't be refreshed. %1$s is when it was fetched: "10:42", "Mon 10:42". -->
+    <string name="details_menu_from">Menu from %1$s</string>
+    <string name="details_menu_offline">You\'re offline. Connect to the internet to see the menu.</string>
+    <string name="details_menu_failed">The menu didn\'t load. Check your connection and try again.</string>
+    <string name="details_menu_storage">Couldn\'t save the menu on this device. Free up some space and try again.</string>
+    <!-- A dish's extra: "+ Extra lemon R5", or "+ Extra napkins Free". -->
+    <string name="details_option">+ %1$s %2$s</string>
+    <string name="details_options_separator">" · "</string>
+    <string name="details_retry">Retry</string>
+
+    <!-- Details' own states (spec §6.3): a deep link's restaurant loading, missing, or not reachable. -->
+    <string name="details_loading">Loading the restaurant</string>
+    <string name="details_not_found_title">Restaurant not found</string>
+    <string name="details_not_found_message">It may have stopped delivering here, or the link may be wrong.</string>
+    <string name="details_see_all_restaurants">See all restaurants</string>
+    <string name="details_offline_title">You\'re offline</string>
+    <string name="details_offline_message">Connect to the internet to see this restaurant.</string>
+    <string name="details_failed_title">Couldn\'t connect</string>
+    <string name="details_failed_message">This restaurant didn\'t load. Check your connection and try again.</string>
+    <string name="details_storage_title">Couldn\'t save restaurants</string>
+    <string name="details_storage_message">Couldn\'t save restaurants on this device. Free up some space and try again.</string>
 </resources>

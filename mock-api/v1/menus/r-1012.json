@@ -1,0 +1,317 @@
+{
+  "restaurant_id": "r-1012",
+  "categories": [
+    {
+      "id": "c-1012-1",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "i-1012-101",
+          "name": "Peri-Peri Chicken Livers",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Creamy peri-peri sauce and toasted ciabatta",
+          "options": [
+            { "id": "o-1012-101-1", "name": "Add garlic bread", "price_cents": 1000 },
+            { "id": "o-1012-101-2", "name": "Make it a main", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1012-102",
+          "name": "Biltong Platter",
+          "price_cents": 8000,
+          "available": true
+        },
+        {
+          "id": "i-1012-103",
+          "name": "Garlic Snails",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Six, baked in garlic butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg",
+          "options": [
+            { "id": "o-1012-103-1", "name": "Make it a main", "price_cents": 0 },
+            { "id": "o-1012-103-2", "name": "Add garlic bread", "price_cents": 3000 }
+          ]
+        },
+        {
+          "id": "i-1012-104",
+          "name": "Pork Belly Bites",
+          "price_cents": 8000,
+          "available": true,
+          "description": "With a sticky soy glaze",
+          "image_url": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"
+        },
+        {
+          "id": "i-1012-105",
+          "name": "Boerewors Bites",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Grilled, with a chakalaka dip",
+          "image_url": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"
+        },
+        {
+          "id": "i-1012-106",
+          "name": "Prawn Cocktail",
+          "price_cents": 6500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1012-2",
+      "name": "Steaks",
+      "items": [
+        {
+          "id": "i-1012-201",
+          "name": "Rump 300 g",
+          "price_cents": 23000,
+          "available": true,
+          "description": "Aged for 21 days and basted",
+          "options": [
+            { "id": "o-1012-201-1", "name": "Pepper sauce", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1012-202",
+          "name": "Sirloin 300 g",
+          "price_cents": 18000,
+          "available": true,
+          "description": "Aged, with its fat cap"
+        },
+        {
+          "id": "i-1012-203",
+          "name": "Fillet 250 g",
+          "price_cents": 17000,
+          "available": true,
+          "description": "The leanest, most tender cut",
+          "image_url": "https://www.themealdb.com/images/media/meals/st9shl1763755808.jpg"
+        },
+        {
+          "id": "i-1012-204",
+          "name": "Ribeye 350 g",
+          "price_cents": 23000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1529443236.jpg"
+        },
+        {
+          "id": "i-1012-205",
+          "name": "T-Bone 500 g",
+          "price_cents": 24000,
+          "available": true,
+          "description": "Sirloin and fillet on the bone",
+          "options": [
+            { "id": "o-1012-205-1", "name": "Pepper sauce", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1012-206",
+          "name": "Wagyu Rump 250 g",
+          "price_cents": 17000,
+          "available": true,
+          "description": "Rich and buttery",
+          "image_url": "https://www.themealdb.com/images/media/meals/dnd87q1782775269.jpg",
+          "options": [
+            { "id": "o-1012-206-1", "name": "Mushroom sauce", "price_cents": 2500 },
+            { "id": "o-1012-206-2", "name": "Garlic butter", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1012-207",
+          "name": "Lamb Chops",
+          "price_cents": 24500,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "c-1012-3",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "i-1012-301",
+          "name": "Classic Beef Burger",
+          "price_cents": 11500,
+          "available": true,
+          "description": "Lettuce, tomato, pickles and house sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg"
+        },
+        {
+          "id": "i-1012-302",
+          "name": "Cheese Burger",
+          "price_cents": 12500,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vz94r81760534692.jpg"
+        },
+        {
+          "id": "i-1012-303",
+          "name": "Bacon & Cheese Burger",
+          "price_cents": 9000,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/vz94r81760534692.jpg"
+        },
+        {
+          "id": "i-1012-304",
+          "name": "Mushroom Burger",
+          "price_cents": 13500,
+          "available": false,
+          "description": "With a creamy mushroom sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/qysyss1511558054.jpg"
+        },
+        {
+          "id": "i-1012-305",
+          "name": "Chilli Cheese Burger",
+          "price_cents": 15000,
+          "available": true,
+          "description": "Jalapeños, chilli jam and cheddar",
+          "image_url": "https://www.themealdb.com/images/media/meals/pvfkz61761595976.jpg",
+          "options": [
+            { "id": "o-1012-305-1", "name": "Add avo", "price_cents": 1500 },
+            { "id": "o-1012-305-2", "name": "Add cheese", "price_cents": 2000 }
+          ]
+        },
+        {
+          "id": "i-1012-306",
+          "name": "Chicken Burger",
+          "price_cents": 9500,
+          "available": true,
+          "description": "Crumbed breast, slaw and peri-peri mayo",
+          "image_url": "https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg",
+          "options": [
+            { "id": "o-1012-306-1", "name": "Add avo", "price_cents": 3000 },
+            { "id": "o-1012-306-2", "name": "Add a fried egg", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1012-307",
+          "name": "Veggie Burger",
+          "price_cents": 12000,
+          "available": true,
+          "description": "Chickpea patty, avo and tomato relish"
+        },
+        {
+          "id": "i-1012-308",
+          "name": "Boerewors Roll",
+          "price_cents": 10000,
+          "available": true,
+          "description": "Grilled boerewors with tomato and onion relish",
+          "options": [
+            { "id": "o-1012-308-1", "name": "Add cheese", "price_cents": 3000 },
+            { "id": "o-1012-308-2", "name": "Make it a double", "price_cents": 3000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-1012-4",
+      "name": "Sides",
+      "items": [
+        {
+          "id": "i-1012-401",
+          "name": "Sweet Potato Fries",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1012-402",
+          "name": "Onion Rings",
+          "price_cents": 5500,
+          "available": true,
+          "description": "Beer-battered",
+          "image_url": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg",
+          "options": [
+            { "id": "o-1012-402-1", "name": "Large", "price_cents": 3500 },
+            { "id": "o-1012-402-2", "name": "Peri-peri salt", "price_cents": 3500 }
+          ]
+        },
+        {
+          "id": "i-1012-403",
+          "name": "Side Salad",
+          "price_cents": 3000,
+          "available": true
+        },
+        {
+          "id": "i-1012-404",
+          "name": "Creamed Spinach",
+          "price_cents": 6500,
+          "available": true,
+          "description": "With nutmeg and garlic",
+          "image_url": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg"
+        },
+        {
+          "id": "i-1012-405",
+          "name": "Pap & Chakalaka",
+          "price_cents": 2500,
+          "available": false
+        },
+        {
+          "id": "i-1012-406",
+          "name": "Grilled Mielies",
+          "price_cents": 2500,
+          "available": true,
+          "description": "Two cobs with herb butter",
+          "image_url": "https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1012-5",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "i-1012-501",
+          "name": "Milk Tart",
+          "price_cents": 7500,
+          "available": true,
+          "description": "Cinnamon-dusted custard tart",
+          "image_url": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+          "options": [
+            { "id": "o-1012-501-1", "name": "Extra custard", "price_cents": 500 },
+            { "id": "o-1012-501-2", "name": "Add vanilla ice cream", "price_cents": 1000 }
+          ]
+        },
+        {
+          "id": "i-1012-502",
+          "name": "Cape Brandy Pudding",
+          "price_cents": 6000,
+          "available": true,
+          "description": "Dates, pecans and a brandy syrup",
+          "image_url": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg",
+          "options": [
+            { "id": "o-1012-502-1", "name": "Add whipped cream", "price_cents": 1000 },
+            { "id": "o-1012-502-2", "name": "Extra custard", "price_cents": 1500 }
+          ]
+        },
+        {
+          "id": "i-1012-503",
+          "name": "Chocolate Brownie",
+          "price_cents": 8500,
+          "available": true,
+          "description": "Served warm, with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg"
+        },
+        {
+          "id": "i-1012-504",
+          "name": "Baked Cheesecake",
+          "price_cents": 6000,
+          "available": true,
+          "description": "With berry compote"
+        },
+        {
+          "id": "i-1012-505",
+          "name": "Vanilla Ice Cream",
+          "price_cents": 7000,
+          "available": false,
+          "description": "Three scoops with chocolate sauce",
+          "image_url": "https://www.themealdb.com/images/media/meals/gdn1ot1763075684.jpg",
+          "options": [
+            { "id": "o-1012-505-1", "name": "Add vanilla ice cream", "price_cents": 0 },
+            { "id": "o-1012-505-2", "name": "Add whipped cream", "price_cents": 0 },
+            { "id": "o-1012-505-3", "name": "Extra custard", "price_cents": 2500 }
+          ]
+        }
+      ]
+    }
+  ]
+}

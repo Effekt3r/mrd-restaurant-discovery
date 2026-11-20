@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Window theme only; Compose draws everything else. Milestone 4 adds the brand theme. -->
-    <style name="Theme.Mrd" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Window theme only; Compose draws everything else with MrdTheme. The window background matches MrdTheme's, so
+         launch and screen transitions don't flash a different colour. -->
+    <style name="Theme.Mrd" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/designsystem_white</item>
+    </style>
 </resources>

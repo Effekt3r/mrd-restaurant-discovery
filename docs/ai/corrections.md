@@ -2,7 +2,157 @@
 
 Every time the AI got something wrong and it was caught: what happened, what caught it, the fix and the lesson. Entries are newest first.
 
-This is the honest half of `AI_USAGE.md`, which arrives with milestone 7. Most of these were caught by the two independent review passes that every task goes through: one checks the work against its specification, the other checks code quality. Both reviewers build the code and run probes.
+This is the honest half of [`AI_USAGE.md`](../../AI_USAGE.md). Most of these were caught by independent reviews that build the code and run probes: two per task in milestone 1, one against the specification and one for code quality, then one combined verifier-and-review pass per milestone. The spikes that run before each plan caught nine more.
+
+## 2026-11-19 · The menu's reconnect retry skipped a fetch still running, and Open now lagged each sync
+
+- **What:**
+  - The fix for M-2 (`9ec9546`) fetched a menu again on reconnecting only when its state was an error. Its test failed the fetch before the connection returned, and its emulator check used a menu whose offline fetch had already failed. Neither covered a fetch still running when the connection returned, which then fails with the phone online: on the device the menu stayed on "The menu didn't load" 3 times out of 3.
+  - `count()` and `restaurant()` work statuses out for the latest minute tick, and the freshness check, in SQL and again in Kotlin, read a sync newer than that tick as one from a clock set back, so as stale. Right after a pull-to-refresh, restaurants without hours counted as Unknown until the next tick: "168 open now" became 176 a minute later. The boundary cases covered snapshots 29 and 30 minutes old and one a minute ahead, never one taken after the tick it's checked against, which every sync between two ticks is.
+- **Caught by:** the verifier's re-run of milestones 5 and 6 (R4 for the menu; the count under Observations).
+- **Fix:** a reconnect starts a new attempt unless the latest has finished with the menu, which also covers a cached menu whose refresh is still running. A sync less than a minute newer than the tick counts as fresh, in SQL and in Kotlin. The new tests, which hold the first fetch until the connection has returned and check a sync 6 and 59 seconds after the tick, failed before their fixes. On the emulator, menus still loading when airplane mode went off then loaded by themselves, and the count no longer drops after a pull-to-refresh.
+- **Still open:** when a menu's request is on a connection OkHttp opened over the emulator's cellular network just before airplane mode, the socket outlives it, OkHttp writes the retry to it too, and the menu fails after the 20 s read timeout. The retry fires; the connection pool needs its own fix.
+- **Lesson:** test a trigger in every state it can arrive in, not only the one the report showed. And where a comparison mixes two clocks, such as a tick and a sync time, test them arriving in the other order.
+
+## 2026-11-19 · A deep link was lost when Android had killed the app in the background
+
+- **What:** `MainActivity` registered its new-intent listener in a `DisposableEffect`, which runs only after the first composition. When Android has killed a backgrounded app's process but kept its task, a `mrd://restaurant/{id}` link recreates the activity from its saved state and arrives through `onNewIntent` before `onResume`, so before anything is composed. The link was dropped, and Browse showed instead of Details. The screens' design notes, tests and release walk covered a cold start after `force-stop` and a warm start with the process alive, but never killed the process with the task kept, which is how a link from a notification or another app usually reaches an app on a real phone.
+- **Caught by:** the verifier's release walk of milestones 5 and 6 (finding C-1): Home, `am kill`, then the link, which opened Browse 3 times out of 3.
+- **Fix:** `setNavigationContent()` registers the listener in `onCreate` and keeps the link in state until a `LaunchedEffect` can hand it to the `NavController`. A Robolectric test recreates the activity from its saved state and delivers the link before `onResume`, as Android does; it failed against the old wiring. On the release APK, the link now opens Details with Browse underneath after `am kill`, 3 times out of 3.
+- **Lesson:** cold and warm aren't the only states an app is in. Wherever an app receives intents or restores state, test process death with the task kept (`am kill` after Home), not just `force-stop`.
+
+## 2026-11-19 · I said full-size card photos wouldn't cost memory, and Coil's source says they do
+
+- **What:** when I moved the cards to full-size photos, my instruction said Coil decodes to the view's size, so memory wouldn't change. `AsyncImage` asks for an inexact size, and Coil never scales a photo up past its own size. A phone's card is wider than the 700 px photo, so each card's bitmap is the whole photo: about 2 MB, against 1 MB at `/large`.
+- **Caught by:** the implementing agent, which read Coil's decoder before writing the claim into the spec.
+- **Fix:** spec §5.7 states the real cost. Coil's memory cache is capped at a share of the app's memory, so it holds fewer photos rather than growing.
+- **Lesson:** check a library's behaviour in its source before stating it, even when the claim sounds standard.
+
+## 2026-11-19 · Two commit messages for the screens stated figures that weren't true
+
+- **What:** the `Verified:` line of `636326e` (the colour roles) says ":core:designsystem tests, 9 of 9"; the module had 7 tests, and the probe's own output said "7 tests completed". The body of `5217404` (the Browse screen) says the grid has "two or more [columns] from 600 dp"; with 300 dp cards, 16 dp gaps and the side padding, a second column needs a window about 650 dp wide.
+- **Caught by:** the agent, checking its commit messages against the test reports and the grid's sizes before handing over.
+- **Fix:** commits are never amended, so this entry records the right figures. Test counts in later commits are read from the JUnit XML.
+- **Lesson:** a `Verified:` line is evidence, so copy it from the output in front of you, not from memory.
+
+## 2026-11-19 · Photos would have pushed the restaurant list's ETag out of OkHttp's cache
+
+- **What:** spec §5.7 said Coil uses the shared `OkHttpClient` and Coil's own disk cache. The shared client has OkHttp's 10 MB HTTP cache, and TheMealDB sends an ETag and a Last-Modified header with every photo, so OkHttp would have cached each photo as well. A few hundred photos would evict the restaurant list's entry, and an unchanged refresh would then download the whole file instead of getting a 304.
+- **Caught by:** the agent, reading TheMealDB's response headers while building the image loader.
+- **Fix:** the loader uses `newBuilder().cache(null)`: the shared client's connection pool, dispatcher and interceptors, without its HTTP cache. A test pins it, and spec §5.7 says so.
+- **Lesson:** sharing a client shares everything it holds, its cache included. Check what a shared object carries before handing it to another library.
+
+## 2026-11-19 · A pinned header left almost no list at 200% font in landscape
+
+- **What:** spec §6.2 pinned Browse's header: the title, the search field, the chip and the count. On the emulator at 200% font in landscape it took about 60% of the screen, and with the keyboard open nothing of the list would have shown.
+- **Caught by:** the emulator walk of the first build of the screen, before it was committed.
+- **Fix:** the header slides away as the list scrolls up and comes back as soon as it scrolls down (Material's "enter always"), while a surface strip stays behind the status bar. A Compose test swipes it away and back, and spec §6.2 describes it.
+- **Lesson:** "pinned" is a promise about the smallest screen at the largest font. Walk that case before writing it into a spec.
+
+## 2026-11-19 · Two small bugs in the screens, caught by a test and by the walk
+
+- **What:**
+  - Browse's state paired a new filter with the previous filter's count for one emission, so "2 open now" would have flashed before "1 open now".
+  - TalkBack's description of a restaurant whose name ends in a full stop doubled it: "Fish Hoek Pizza Co.. Pizza, Italian."
+- **Caught by:** a ViewModel test that expected the new count, and the release walk's accessibility dump of the last card.
+- **Fix:** each count travels with the filters it counted, and the description doesn't add a full stop after one. Each fix has a test that failed first.
+- **Lesson:** when one state combines several flows, keep a derived value with the inputs it came from.
+
+## 2026-11-19 · The docs brief said Kotlin 2.4.21 fixed the Kotlin Gradle plugin advisory, but its alert stays open
+
+- **What:** the brief for milestone 7's documents said the Kotlin Gradle plugin advisory (CVE-2026-53914, unsafe deserialization in Kotlin's build-cache metadata, fixed in 2.4.20) was fixed by Kotlin 2.4.21. That's true of the project's own Kotlin plugin, but Dependabot's alert is still open. `build-logic` is compiled by Gradle's `kotlin-dsl` plugin, which brings the Kotlin embedded in Gradle: 2.4.0 in Gradle 9.7.1 on `master`, and 2.4.10 in Gradle 9.8.2 on `dev`. Both are older than 2.4.20.
+- **Caught by:** the agent writing the documents. GitHub's dependency graph for `master` lists `kotlin-gradle-plugin` 2.4.0 under `gradle-kotlin-dsl-plugins` 6.7.3, and `./gradlew -p build-logic :convention:buildEnvironment` on `dev` shows 2.4.10.
+- **Fix:** SECURITY.md and SOLUTION.md say what's fixed and what isn't. The alert closes when a Gradle release embeds Kotlin 2.4.20 or later.
+- **Lesson:** an alert closes when nothing in the dependency graph matches it, not when the version you pin is fixed. Check every copy, the build tool's own included.
+
+## 2026-11-19 · The spec said the restaurant list was streamed, but Retrofit reads it into memory first
+
+- **What:** spec §5.3 said a refresh streams the JSON on the IO dispatcher. `DiscoveryApi` returns a raw `ResponseBody` without `@Streaming`, so Retrofit reads the whole body into memory before returning it, about 6 MB for the stress file, on OkHttp's thread (`BuiltInConverters.java`, lines 32 to 35 and 104 to 105, in 3.0.0). Only the parse runs record by record on the IO dispatcher. A comment in the menu repository made the same assumption, and milestone 3's verification repeated the claim.
+- **Caught by:** the agent fixing milestone 3's review findings, while checking where the response body is read.
+- **Fix:** the spec and the comments say what happens. The code is unchanged: `@Streaming` is named as the next step if payloads grow, with what it changes in OkHttp's cache.
+- **Lesson:** check what a library does with a type, not what the type suggests. A raw `ResponseBody` is still read in full unless it's marked `@Streaming`.
+
+## 2026-11-19 · Milestone 3's review found three failures the sync's tests never tried
+
+- **What:** the sync's tests covered failures of the network, the server and the data, but not the device's own:
+  - a database failure, such as a full disk during the snapshot swap, escaped `refresh()`, breaking the repository's contract. Callers got the exception, `isRefreshing` stayed true for good and `lastError` stayed null, so milestone 5's spinner would never have stopped and the retry on reconnect would never have fired;
+  - a 304 was taken to mean the database was current, but it only proves that OkHttp's cache is. OkHttp caches a body before the app stores it, so after a refresh whose records all failed validation, the next 304 cleared the error and marked the old snapshot fresh. A failed write, or the process dying mid-refresh, did the same;
+  - nothing tested that the snapshot swap is one transaction: without `@Transaction`, all 36 tests still passed.
+- **Caught by:** milestone 3's verification and code review, with probe tests in a disposable clone.
+- **Fix:** four changes, each with a test that fails without it:
+  - any other failure becomes the new `SyncError.Storage`, the refreshing state is reset in a `finally`, and cancellation is rethrown rather than recorded;
+  - the swap records the response's ETag in `sync_state.etag`, in the same transaction, and a 304 skips the write only when its ETag matches;
+  - a DAO test breaks a swap halfway and checks that the previous snapshot survives;
+  - the menu repository had the first gap too, found while fixing it: a database failure there is now a `Storage` error as well.
+- **Lesson:** test what happens when each step fails, the device's own steps included. A 304 vouches for OkHttp's copy, not for what the app made of it.
+
+## 2026-11-19 · `Cache-Control: no-cache` would have downloaded the whole list on every refresh
+
+- **What:** the spec said each request sends `no-cache`, so OkHttp revalidates against GitHub's ETag and gets a 304. OkHttp does the opposite: when the request says `no-cache`, it ignores its cache and sends no `If-None-Match` (`CacheStrategy.kt`, line 158, in 5.3.2). Every refresh would have downloaded the whole file, 6 MB for the stress dataset.
+- **Caught by:** milestone 3's spike, whose MockWebServer test for a 304 failed: the second request had no `If-None-Match`.
+- **Fix:** requests send `max-age=0`, which OkHttp's `Cache` documentation recommends for revalidation. The test passes, and fails again if the header goes back to `no-cache`.
+- **Lesson:** check what a library does with a header, not what the header means in the HTTP specification.
+
+## 2026-11-19 · The lint gate didn't cover modules the app doesn't use yet
+
+- **What:** the gate runs `:app:lintDebug`, which lints the app and its dependencies (`checkDependencies`). The data layer arrives two milestones before the screens that use it, so none of its code would have been linted.
+- **Caught by:** milestone 3's spike, with a lint probe in `:core:data` that `:app:lintDebug` didn't report until the app depended on the module.
+- **Fix:** `:app` depends on `:core:data` from milestone 3.
+- **Lesson:** a check that covers "the dependencies" covers only what's depended on. Prove what a gate reaches with a probe.
+
+## 2026-11-19 · The compile SDK 37 brief assumed an AGP version dev had moved past
+
+- **What:** the brief for making Dependabot's androidx update (#12) pass CI said the project builds with AGP 9.3.3, and asked whether to silence AGP's warning about an untested compile SDK with `android.suppressUnsupportedCompileSdk=37`. Dev had been on AGP 9.5.1 since Dependabot's toolchain update (#11), and AGP 9.5.1 is tested up to compile SDK 37.2, so there was no warning to silence. The brief also named only Compose, Navigation and androidx.hilt as needing compile SDK 37; Core 1.19.1 needs it too, as do the Lifecycle 2.11.0 artifacts that androidx.hilt 1.4.0 pulls in. The README and the roadmap still give the toolchain versions from before #11, because Dependabot updates the version catalog but not the docs that quote it, and #12's CI log listed only the first two modules that failed.
+- **Caught by:** the build, which printed no warning; then AGP 9.5.1's own limit (`MAX_RECOMMENDED_COMPILE_SDK_VERSION` in `ToolsRevisionUtils`) and each library's AAR metadata (`minCompileSdk`).
+- **Fix:** no suppression. The build commit records AGP's limit, and the code comment and the docs name every library that needs compile SDK 37. Bringing the docs' toolchain versions up to date with the catalog is a follow-up.
+- **Lesson:** read versions from the build (the catalog, the resolved dependencies and the tools' own limits), not from docs that quote them.
+
+## 2026-11-19 · The circle buttons' icons took their colour from whatever surrounded them
+
+- **What:** the design system's back and favourite buttons draw their own surface-coloured circle, but the icon inherited the surrounding content colour. Outside a full-screen `Surface` that colour is black, and the component's own dark preview showed black icons on an ink circle. The app looked right only because `MainActivity` wraps everything in a `Surface`.
+- **Caught by:** milestone 4's combined verifier and code review, from the preview and Material 3's sources.
+- **Fix:** the icon is tinted `onSurface`, the colour that belongs to the circle it sits on.
+- **Lesson:** a component that draws its own background must also set its own content colour.
+
+## 2026-11-19 · Stripping an icon attribute by line broke the back arrow
+
+- **What:** milestone 4's spike removed each Material Symbols icon's `android:tint` line, because the attribute needs AppCompat. In `arrow_back`, `android:autoMirrored` comes after the tint, so the `>` that closed the tag went with it, and the attribute became stray text.
+- **Caught by:** lint's `ExtraText` error, in the spike's gate. The spike's own check, parsing each file as XML, passed, because stray text is valid XML.
+- **Fix:** the download removes the attribute, not the line, and each icon is checked against a recorded SHA-256 hash.
+- **Lesson:** check a generated file with the tool that consumes it. "Well-formed" isn't "valid for Android".
+
+## 2026-11-19 · The restyled lists scrolled under the status-bar icons
+
+- **What:** the restyled placeholders draw edge to edge, so their content scrolled behind the transparent status bar: Browse's cards always, and Details' menu at 200% font, where the text ran into the clock. Over a dark photo, the dark icons would have disappeared.
+- **Caught by:** screenshots of the scrolled screens in milestone 4's spike; the first frames looked fine.
+- **Fix:** a strip in the surface colour sits behind the status bar: always on Browse, and on Details once its header, which belongs under the status bar, has scrolled away.
+- **Lesson:** walk a screen in motion and at 200% font, not just its first frame.
+
+## 2026-11-19 · Milestone 2b's review found checks that couldn't fail
+
+- **What:** some of milestone 2b's tests and docs promised more than they checked.
+  - Each deliberately broken menu is meant to carry only its listed problem, but the edge-case tests only look at the spot they break. Widening one break to a whole category passed every test.
+  - One generator test compared the code with itself. The "generate twice" test compared two calls in the same process, so it couldn't catch a difference between runs.
+  - CLAUDE.md said the golden test covers any file in `mock-api/v1/`, but only `menus/` is checked for stray files.
+- **Caught by:** the combined verifier and code review of milestone 2b, which proved each one in a disposable clone.
+- **Fix:**
+  - CLAUDE.md now says what the golden test covers.
+  - The test gaps stay as known gaps, to save time. The verifier's own checker confirmed that each broken menu has exactly its listed problem, and the golden test still pins every byte of the data.
+- **Lesson:** a test proves only what it compares, and comparing code with itself proves nothing.
+
+## 2026-11-19 · The menu spec counted 219 files where there are 218
+
+- **What:** spec §5.9, written with the menu design, said every distinct id in the 220-restaurant file has a menu, "219 files, because one record has no id and one id appears twice". Without the record that has no id there are 219 ids, but one of them appears twice, so there are 218 distinct ids and 218 files.
+- **Caught by:** the spike for milestone 2b's plan, counting the ids in `restaurants.json`.
+- **Fix:** the spec says 218, and a test pins the count.
+- **Lesson:** count from the data, not from the description of it.
+
+## 2026-11-19 · A probe passed because its edit never happened
+
+- **What:** the spike for milestone 2b's plan checked that an edited menu fails the golden test. The edit targeted a line number that held a different key, so nothing changed, and the test passed as it should have for unchanged data.
+- **Caught by:** the spike itself: `git diff --stat` after the edit was empty.
+- **Fix:** the plan's break-it steps show the diff before running the test, and say to stop when it's empty.
+- **Lesson:** a probe proves nothing until it shows that it changed what it meant to change.
 
 ## 2026-11-19 · Three of the generator's tests couldn't fail
 

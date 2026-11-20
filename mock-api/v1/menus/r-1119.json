@@ -1,0 +1,158 @@
+{
+  "restaurant_id": "r-1119",
+  "categories": [
+    {
+      "id": "c-1119-1",
+      "name": "Bowls",
+      "items": [
+        {
+          "id": "i-1119-101",
+          "name": "Buddha Bowl",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Roast sweet potato, chickpeas and tahini",
+          "image_url": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg"
+        },
+        {
+          "id": "i-1119-102",
+          "name": "Chicken Quinoa Bowl",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Grilled chicken, quinoa and greens",
+          "image_url": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg"
+        },
+        {
+          "id": "i-1119-103",
+          "name": "Falafel Bowl",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Hummus, tabbouleh and pickles",
+          "image_url": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg",
+          "options": [
+            { "id": "o-1119-103-1", "name": "Extra dressing", "price_cents": 0 },
+            { "id": "o-1119-103-2", "name": "Add chicken", "price_cents": 1000 },
+            { "id": "o-1119-103-3", "name": "Swap to quinoa", "price_cents": 0 }
+          ]
+        },
+        {
+          "id": "i-1119-104",
+          "name": "Açaí Bowl",
+          "price_cents": 12900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/1brbso1763585098.jpg"
+        },
+        {
+          "id": "i-1119-105",
+          "name": "Harvest Bowl",
+          "price_cents": 11900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg"
+        }
+      ]
+    },
+    {
+      "id": "c-1119-2",
+      "name": "Salads",
+      "items": [
+        {
+          "id": "i-1119-201",
+          "name": "Butternut & Feta Salad",
+          "price_cents": 11900,
+          "available": true,
+          "description": "Roasted butternut, rocket and pumpkin seeds"
+        },
+        {
+          "id": "i-1119-202",
+          "name": "Quinoa Salad",
+          "price_cents": 8900,
+          "available": true,
+          "image_url": "https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg"
+        },
+        {
+          "id": "i-1119-203",
+          "name": "Caesar Salad",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Cos, parmesan and croutons",
+          "image_url": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg",
+          "options": [
+            { "id": "o-1119-203-1", "name": "Add avo", "price_cents": 3500 },
+            { "id": "o-1119-203-2", "name": "Dressing on the side", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1119-204",
+          "name": "Beetroot & Goat's Cheese",
+          "price_cents": 9900,
+          "available": false,
+          "description": "Walnuts and a honey dressing",
+          "image_url": "https://www.themealdb.com/images/media/meals/quuxsx1511476154.jpg"
+        },
+        {
+          "id": "i-1119-205",
+          "name": "Halloumi Salad",
+          "price_cents": 8900,
+          "available": true,
+          "description": "Grilled halloumi and roasted peppers"
+        }
+      ]
+    },
+    {
+      "id": "c-1119-3",
+      "name": "Smoothies & Juices",
+      "items": [
+        {
+          "id": "i-1119-301",
+          "name": "Green Smoothie",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Spinach, apple, cucumber and ginger"
+        },
+        {
+          "id": "i-1119-302",
+          "name": "Berry Smoothie",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Mixed berries, banana and yoghurt"
+        },
+        {
+          "id": "i-1119-303",
+          "name": "Mango Smoothie",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Mango, granadilla and coconut",
+          "options": [
+            { "id": "o-1119-303-1", "name": "Large", "price_cents": 500 },
+            { "id": "o-1119-303-2", "name": "Oat milk", "price_cents": 2500 }
+          ]
+        },
+        {
+          "id": "i-1119-304",
+          "name": "Peanut Butter Smoothie",
+          "price_cents": 3900,
+          "available": false,
+          "description": "Banana, oats and dates"
+        },
+        {
+          "id": "i-1119-305",
+          "name": "Cold-Pressed Juice",
+          "price_cents": 3900,
+          "available": true
+        },
+        {
+          "id": "i-1119-306",
+          "name": "Fresh Orange Juice",
+          "price_cents": 3900,
+          "available": true,
+          "description": "Squeezed to order"
+        },
+        {
+          "id": "i-1119-307",
+          "name": "Iced Matcha",
+          "price_cents": 3900,
+          "available": false
+        }
+      ]
+    }
+  ]
+}
